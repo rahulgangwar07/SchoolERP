@@ -8,7 +8,7 @@ namespace SchoolERPSYSTEM.Server.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching","Hot","Testing
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching","Hot","Testing"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
