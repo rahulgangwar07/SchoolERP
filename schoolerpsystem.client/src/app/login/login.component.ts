@@ -40,12 +40,8 @@ export class LoginComponent implements OnInit {
 
     // Make login request to the backend
     this._authService.loginRequest(loginData).subscribe(
-      (response) => {
-        console.log("Login Response: ", response);
-        //alert(response.token);
-        console.log("token:- ", response.token);
-        // Assuming the backend returns `role`, `user_id`, and `token`
-        this._authService.setUserRole(response.role, response.user_id, response.token, response.school_id);  // Store the token and user data
+      (response) => {   
+        this._authService.setUserRole(response.role, response.user_id, response.token, response.school_id);  
 
         // Navigate based on user role
         this.loginInfo(response.role);
