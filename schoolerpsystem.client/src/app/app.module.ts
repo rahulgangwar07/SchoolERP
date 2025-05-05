@@ -21,6 +21,7 @@ import { StuEContentComponent } from './Student/Acedmics L.M.S/stu-e-content/stu
 import { StuHomeWorkComponent } from './Student/Acedmics L.M.S/stu-home-work/stu-home-work.component';
 import { StuSelfLearningMaterialComponent } from './Student/Acedmics L.M.S/stu-self-learning-material/stu-self-learning-material.component';
 import { StuStudyMaterialComponent } from './Student/Acedmics L.M.S/stu-study-material/stu-study-material.component';
+import { SuperadminLoginComponent } from './SuperAdmin/superadmin-login/superadmin-login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { StuStudyMaterialComponent } from './Student/Acedmics L.M.S/stu-study-ma
     StuEContentComponent,
     StuHomeWorkComponent,
     StuSelfLearningMaterialComponent,
-    StuStudyMaterialComponent
+    StuStudyMaterialComponent,
+    SuperadminLoginComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
