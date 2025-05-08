@@ -21,15 +21,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: Router, private _authService: AuthServiceService) { }
 
-  ngOnInit() {
-    // Clear any previous session data if required
+  ngOnInit() { 
     const userRole = this._authService.clearUserRole();
   }
 
   login() {
     if (!this.username || !this.password) {
       console.log('Please fill all fields');
-      return; // Prevent form submission if fields are empty
+      return;  
     }
 
     const loginData: ILogin = {
