@@ -1,0 +1,56 @@
+
+.firstdiv{
+    background-color:#ccc;
+    padding:10px;
+}
+
+.firstchild {
+  margin: 5px;
+}
+
+.firstchild div label:first-child {
+  font-weight: bold;
+  margin-right: 10px;
+  float: left;
+}
+
+.slipdiv{
+    font-size:14px;
+}
+
+.firstdiv .slipdiv, input, textarea {
+  margin-bottom: 10px;
+  width: 95%;
+}
+
+.firstdiv button {
+  border:0px;
+  color:white;
+  background-color:#3480c1;
+}
+
+.seconddiv {
+  margin-left: 30px;
+}
+.seconddiv table thead{
+ font-weight:bold;
+}
+
+.paymentamt{
+    display:flex;
+    margin-top:15px;
+}
+
+.paymentbtn {
+  margin-top: 10px;
+}
+.paymentbtn button{
+  border:0px;
+  color:white;
+  background-color:#4ca1e1;
+}
+ 
+
+/*  .firstdiv div label:first-child {
+    font-weight: bold;
+  }*/

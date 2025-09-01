@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <h6>List of Certificates</h6>
+    </div>
+    <div class="col-md-6 text-right">
+      <a (click)="addCertificate()" class="btn btn-outline-primary btn-sm mx-2">Add Certificate</a>
+    </div>
+  </div>
+
+  <!-- Certificate Types Table -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered charactertable">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Title</th>
+              <th>Generate</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Certificate Row 1 -->
+            <tr *ngFor="let c of templates;index as i;">
+              <td>{{c.template_id}}</td>
+              <td>{{c.title}}</td>
+              <td>
+                <button [routerLink]="['/viewcertificate/certificate',c.template_id]" class="btn btn-success btn-sm">Generate</button>
+              </td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="editTemplate(c.template_id)">Edit</button>
+              </td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4">
+        <p><strong>Total Certificates Available:</strong> 10</p>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <h6 *ngIf="copyclip" class="copyclip"> {{name}} Copy to clipboard</h6>
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of macros;index as i;">
+              <td><i (click)="copyElement(m.macroName)" class="fa fa-copy"></i> {{ m.description }}</td>
+              <td>{{m.macroName}}</td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Section --> 
+</div>
+<app-add-certificate *ngIf="showAddCertificate" [template_id]="template_id" [showCertificate]="showAddCertificate" (hideCertificate)="closePopup($event)"></app-add-certificate>
+
+

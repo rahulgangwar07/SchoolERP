@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="pdf-viewer-container" *ngIf="registrationForm"> 
+
+    <ng-container *ngIf="!isPdf">
+      <img [src]="registrationForm.form_url" alt="Image" />
+    </ng-container>
+
+    <!-- Display PDF if it's a PDF -->
+    <ng-container *ngIf="isPdf">
+      <embed src="https://localhost:7030/api/Image/getImage/a2Vhc3JfMTIzOjgyXzBfMjgyODYwXzYzNDU5MjczLWJhYWQtNGI5My1hYmIxLTVjYTQyODZkNTE0ZV8yMDI1QXByMDUtMTA1MjI1LnBkZjpmb3Jtcw==" type="application/pdf" width="100%" height="600px" />
+
+    </ng-container>
+  </div>
+</div>

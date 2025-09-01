@@ -1,0 +1,176 @@
+
+/* General Container Styling */
+.container {
+ 
+  padding: 5px;
+  max-width: 100%;
+  background-color: #f8f9fa;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  .table th, .table td {
+    text-align: center;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+
+  .table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Form Styling */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+  select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+/* Button Styling */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn-sm {
+  font-size: 12px;
+}
+
+.attlabels label {
+  margin: 10px;
+}
+
+/* Layout Header Section Styling */
+.layout-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+  .layout-header p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  .layout-header .action-btn { 
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+    .layout-header .action-btn:hover {
+      background-color: #0156b3;
+    }
+
+.rollno{
+    font-size:12px;
+}
+
+.guardianname {
+  color: #cc4407;
+}
+.present {
+  background: #e8dcd9;
+  border: solid 1px #79204b;
+  border-radius: 4px;
+  padding: 2px 10px;
+}
+
+.absent {
+  background-color: #baa8a4;
+}
+
+.leave {
+  background: #fdd8b8;
+  border: solid 1px #e7b991;
+  border-radius: 4px;
+  padding: 2px 10px;
+}
+
+
+/* Card and Table Responsive Layout */
+@media (max-width: 767px) {
+  .card-body {
+    padding: 20px;
+  }
+
+  .table th, .table td {
+    padding: 10px;
+  }
+
+  .col-md-2 {
+    margin-bottom: 10px;
+  }
+
+  .layout-header .col-md-5 {
+    text-align: left;
+    margin-top: 10px;
+  }
+}

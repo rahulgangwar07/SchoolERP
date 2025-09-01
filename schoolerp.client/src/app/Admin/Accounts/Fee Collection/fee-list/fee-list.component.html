@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Take Student Fees</div>
+    <div class="col-md-6">
+      <a routerLink="/registration/add_lateral_entry" routerLinkActive="active">Lateral Entry</a>
+      <a routerLink="/reports/yearly" routerLinkActive="active">Yearly Report</a>
+      <a routerLink="/accounts/fee-list" routerLinkActive="active">Fee List</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <select>
+        <option>Select Branch</option>
+        <option>B Block</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select>
+        <option>Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+        <option>IV</option>
+        <option>V</option>
+        <option>VI</option>
+        <option>VII</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select>
+        <option>Section</option>
+        <option>A</option>
+        <option>B</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select>
+        <option>Academic Year</option>
+        <option>2024 - 2025</option>
+        <option>2025 - 2026</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-danger">Export Report</button>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <input type="text" class="search-input" placeholder="Search Student" />
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary go-btn">GO</button>
+      </div>
+    </div>
+  </div>
+  <!-- Table with Action Button -->
+  <!-- Table with Action Button -->
+  <!-- Table with Action Button -->
+  <table class="student-fees-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Student's Name</th>
+        <th>Father's Name</th>
+        <th>Reg No</th>
+        <th>Class</th>
+        <th>Paid</th>
+        <th>Dues</th>
+        <th>Receipt</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.fatherName }}</td>
+        <td>{{ student.regNo }}</td>
+        <td>{{ student.class }}</td>
+        <td>{{ student.paid }}</td>
+        <td>{{ student.dues }}</td>
+        <td><a href="receipt.html">Print({{ student.receiptNo }})</a></td>
+        <td>
+          <button class="action-btn" (click)="openModal(i)">Action</button>
+          <!-- Modal Display below each row (for each student) -->
+          <div *ngIf="activeIndex === i" class="action-modal">
+            <button (click)="editStudent(i)">Edit</button>
+            <button (click)="collectFee(i)">Collect Fee</button>
+            <button (click)="deleteStudent(i)">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- Modal Structure for Action -->
+  <!--<div *ngIf="studentId == null" class="modal">
+    <div class="modal-content">
+      <h3>Action for Student</h3>
+      <p>Student ID: {{ studentId }}</p>
+      <button (click)="editStudent(studentId)">Edit</button>
+      <button (click)="collectFee(studentId)">Collect Fee</button>
+      <button (click)="deleteStudent(studentId)">Delete</button>
+      <button (click)="closeModal(studentId)">Close</button>
+    </div>
+  </div>
+
+
+  <div *ngIf="studentId != null" class="modal">
+    <div class="modal-content">
+      <h3>Action for Student</h3>
+      <p>Student ID: {{ studentId }}</p>
+      <button (click)="editStudent()">Edit</button>
+      <button (click)="collectFee()">Collect Fee</button>
+      <button (click)="deleteStudent()">Delete</button>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>-->
+
+
+</div>

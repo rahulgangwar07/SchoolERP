@@ -1,0 +1,70 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Optional Subject Allotment</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Optional Subject Allotment</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLinkActive="active" (click)="print()" class="action-btn">Print</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+
+
+  <!-- Select Class & Section -->
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 selectClass">Select Class & Section to Assign Subject</div>
+      <div class="col-md-3">
+        <select class="form-control" id="class" name="class" (change)="classChange($event)">
+          <option value="">--- Select Class ---</option>
+          <option *ngFor="let cls of classList; let i = index" [value]="cls.class_id" [attr.data-name]="cls.class_name">{{cls.class_name}}</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" id="section" name="section" [(ngModel)]="sec_id" (change)="sectionChange()">
+          <option value="0">-- All --</option>
+          <option *ngFor="let sec of sectionList" value="{{sec.sec_id}}">{{sec.sec_dis_name}}</option>
+          <!--<option value="A">A</option>
+          <option value="B">B</option>-->
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="printableArea">
+    <div class="assigned-subjects-list">
+      <table *ngIf="subjectData && subjectData.length > 0">
+        <thead>
+          <tr>
+            <th style="width:70px;">{{subjectHeader?.roll_no}}</th>
+            <th style="width:150px;">{{subjectHeader?.stu_name}}</th>
+            <th *ngFor="let sub of subjectHeader?.optSubjects">{{sub}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subdata of subjectData;">
+            <td>{{subdata.roll_no}}</td>
+            <td class="name-div">
+              <label>{{subdata.stu_name}}</label>
+              <p>{{subdata.father_name}}</p>
+            </td>
+            <td *ngFor="let opt of subdata.subjectDtos">
+              <input type="checkbox" [checked]="opt.check" [value]="opt.check == true ? 1:0" [attr.data-check]="opt.check.toString()" (change)="insertoptSubject(subdata.roll_no, opt.subject_id)">
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="subjectData && subjectData.length === 0" style="padding:25px;">Student not exists in this Class</p>
+    </div>
+  </div>
+
+</div>

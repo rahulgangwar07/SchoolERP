@@ -1,0 +1,71 @@
+
+.container {
+  margin-top: 30px;
+}
+
+.layout-header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.tutorials-grid .row {
+  margin-top: 20px;
+}
+
+.tutorial-card {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+  .tutorial-card:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+.tutorial-thumbnail img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #ddd;
+}
+
+.tutorial-content {
+  padding: 15px;
+}
+
+  .tutorial-content h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+.tutorial-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+@media (max-width: 767px) {
+  .col-md-3 {
+    width: 100% !important; /* Stack on small screens */
+  }
+}
+

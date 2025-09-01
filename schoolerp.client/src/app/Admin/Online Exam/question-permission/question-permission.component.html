@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="d-flex justify-content-end close-btn">
+      <label (click)="close()">
+        <i class="fa fa-close"></i>
+      </label>
+    </div>
+
+    <!-- Fee Restriction Result -->
+    <div class="form-group col-md-12 permission-header">
+      <label for="fee-restriction-result">Fee Restriction Result</label>
+      <select id="fee-restriction-result" class="col-md-4" [(ngModel)]="pHeader.result_restriction">
+        <option [ngValue]="false">No</option>
+        <option [ngValue]="true">Yes</option>
+      </select>
+      <button class="btn btn-primary" (click)="saveHeader()">Save</button>
+    </div>
+
+    <!-- Fee Restriction Exam -->
+    <div class="form-group col-md-12 permission-header">
+      <label for="fee-restriction-exam">Fee Restriction Exam</label>
+      <select id="fee-restriction-exam" class="col-md-4" [(ngModel)]="pHeader.exam_restriction">
+        <option [ngValue]="false">No</option>
+        <option [ngValue]="true">Yes</option>
+      </select>
+      <button class="btn btn-primary" (click)="saveHeader()">Save</button>
+    </div>
+
+    <!-- Result Date -->
+    <div class="form-group col-md-12 permission-header">
+      <label for="result-date">Result Date</label>
+      <input type="date" id="result-date" class="col-md-4" [(ngModel)]="pHeader.result_date" />
+      <button class="btn btn-primary" (click)="saveHeader()">Save</button>
+    </div>
+
+    <!-- Lock Date -->
+    <div class="form-group col-md-12 permission-header">
+      <label for="lock-date">Lock Date</label>
+      <input type="date" id="lock-date" class="col-md-4" [(ngModel)]="pHeader.lock_date" />
+      <button class="btn btn-primary" (click)="saveHeader()">Save</button>
+    </div>
+
+    <!-- Show Answer Sheet -->
+    <div class="form-group col-md-12 permission-header">
+      <label for="show-ans-sheet">Show Answer Sheet</label>
+      <select id="show-ans-sheet" class="col-md-4" [(ngModel)]="pHeader.ans_sheet_status">
+        <option [ngValue]="false">No</option>
+        <option [ngValue]="true">Yes</option>
+      </select>
+      <button class="btn btn-primary" (click)="saveHeader()">Save</button>
+    </div>
+  </div>
+  
+  <ng-container *ngIf="studentData.length>0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ROLL</th>
+          <th>STUDENT NAME</th>
+          <th>DATE</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let stu of studentData;index as i;">
+          <td>{{stu.stu_id}}</td>
+          <td>
+            <label>{{stu.stu_name}}</label>&nbsp;
+            <label>{{stu.father_name}}</label>
+          </td>
+          <td>
+            <input type="date" name="exam_date_{{i}}" [(ngModel)]="stu.exam_date" />
+          </td>
+          <td><button class="stu-btn" (click)="changeResultDate(stu.student_exam_id,stu.exam_date)">Save</button></td>
+        </tr>
+        <!--<tr>
+        <td>4</td>
+        <td>
+          <label>Arun Raj</label>&nbsp;
+          <label>Mr. Alok Kumar</label>
+        </td>
+        <td><input type="date" /></td>
+        <td><button class="stu-btn">Save</button></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>
+          <label>Siv</label>&nbsp;
+          <label>mohan</label>
+        </td>
+        <td><input type="date" /></td>
+        <td><button class="stu-btn">Save</button></td>
+      </tr>-->
+      </tbody>
+    </table>
+  </ng-container>
+
+
+
+
+</div>
+<div class="popup" *ngIf="showSuccessPopup">
+  <div class="popup-content">
+
+    <h6>successfully!</h6>
+    <p>Permission Assigned Successfully!</p>
+    <button (click)="closepPopup()">Close</button>
+  </div>
+</div>

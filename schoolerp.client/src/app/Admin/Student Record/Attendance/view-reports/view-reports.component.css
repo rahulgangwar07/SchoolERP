@@ -1,0 +1,221 @@
+
+ 
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 2px solid #ddd;
+}
+
+.card-body {
+  padding: 30px;
+  overflow-x:auto;
+}
+
+.filtersec { 
+  margin-bottom: 15px; 
+}
+
+  .filtersec select {
+    width: 100%; /* Ensure that the select dropdowns are responsive */
+  }
+
+  .filtersec .col-md-2 {
+    margin-bottom: 10px;
+  }
+
+    .filtersec .col-md-2 select {
+      width: 100%;
+    }
+
+    .filtersec .col-md-6 button {
+      font-size: 12px;
+      color: white;
+      width: 40%; /* Make sure buttons are full-width inside the column */
+    }
+
+    .filtersec .col-md-6.d-flex {
+      justify-content: space-around; /* Space the buttons evenly */
+      align-items: center;
+    }
+
+  .filtersec button.btn-danger {
+    background-color: #dc3545;
+  }
+
+  .filtersec button.btn-primary {
+    background-color: #007bff;
+  }
+
+
+/* Table Styling */
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0px;
+}
+
+  table th, table td {
+    text-align: center;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  /* Alternate Row Colors */
+  table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+/* Badge Styling for Status */
+.badge {
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.bgsuccess {
+  color: #28a745;
+}
+
+.bgdanger {
+  color: #dc3545;
+}
+.bgleave {
+  color: #c8c81c;
+}
+
+.bg-success i {
+  margin-right: 5px;
+}
+
+.bg-danger i {
+  margin-right: 5px;
+}
+
+/* Hover Effect */
+table tbody tr:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+/* Search Input Styling */
+#searchInput {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+  #searchInput:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+/* Button Styling */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  margin-right: 10px;
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 150px;
+}
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+input[type="text"], input[type="date"], select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* Column Styling */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.col-md-4 {
+  flex: 0 0 30%;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container-fluid {
+    padding: 15px;
+  }
+
+  .btn-primary, .btn-success {
+    width: 100%;
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+}

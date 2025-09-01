@@ -1,0 +1,81 @@
+<div class="container mt-2">
+  <p><strong>STUDENT PROFILE</strong></p>
+  <div class="layout-header">
+    <div class="col-md-8">
+      <p class="page-title">User since Monday 24th of February 2025 04:56:21 PM</p>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <div class="top-div">
+    <p class="first-para">Welcome back <span *ngIf="profile?.gender === 'Male'">Mr.</span> <span>{{profile?.name}}</span> Your Login ID is <span>{{profile?.userid}}</span></p>
+    <p class="erp-link">https://erp.aks.com/</p>
+  </div>
+  <div class="profile-section row">
+    <div class="col-md-6 profile-leftside">
+      <div class="profile-header"> 
+        <img *ngIf="profile.stuImage" src="{{profile.stuImage}}" alt="Profile Picture" class="profile-img">
+        <img *ngIf="!profile.stuImage" src="/assets/img/img-01.jpg" alt="Profile Picture" class="profile-img">
+        <h2>{{profile?.name}}</h2>
+      </div>
+      <div class="info-section">
+        <div class="info-item">
+          <label>Name</label>
+          <p>{{profile?.name}} </p>
+        </div>
+        <div class="info-item">
+          <label>Class</label>
+          <p>{{profile?.class_name}}</p>
+        </div>
+        <div class="info-item">
+          <label>Roll No.</label>
+          <p>{{profile?.reg_no}}</p>
+        </div>
+        <div class="info-item">
+          <label>Phone.</label>
+          <p>{{profile?.contact_no}}</p>
+        </div>
+        <div class="info-item">
+          <label>Alternate Contact.</label>
+          <p>{{profile?.alt_contact}}</p>
+        </div>
+        <div class="info-item">
+          <label>Date of Birth.</label>
+          <p>{{profile?.dob | date:'dd-MM-yyyy'}}</p>
+        </div>
+        <div class="info-item">
+          <label>Father's Name</label>
+          <p>{{profile?.father_name}}</p>
+        </div>
+        <div class="info-item">
+          <label>Mother's Name</label>
+          <p>{{profile?.mother_name}}</p>
+        </div>
+        <div class="info-item">
+          <label>Gender</label>
+          <p>{{profile?.gender}}</p>
+        </div>
+        <div class="info-item">
+          <label>House ID</label>
+          <p>{{profile?.house_id || 'Not available'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 form-section">
+      <form>
+        <div class="form-group">
+          <label>Change Password (If you want to change)</label>
+          <input type="password" name="password" [(ngModel)]="profile.password" /> 
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" name="Cpassword" [(ngModel)]="confirmPsw" />
+        </div>
+        <div class="form-group">
+          <button type="button" class="update-btn m-l-5" (click)="updatePassword()">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

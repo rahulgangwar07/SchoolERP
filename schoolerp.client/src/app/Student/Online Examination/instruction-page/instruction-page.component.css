@@ -1,0 +1,91 @@
+
+.exam-container {
+  border: 1px solid #f0f0f0;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .exam-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+.exam-header {
+  background-color: #2d3e50; /* Dark blue-gray */
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.exam-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+ 
+.exam-instructions, .exam-description {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.instructions, .exam-description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.start-exam-btn {
+  background-color: #007bff; /* Professional blue */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+  .start-exam-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  .start-exam-btn:active {
+    transform: scale(1);
+  }
+
+.redinstructions{
+    color:red;
+}
+
+
+@media (max-width: 768px) {
+  .exam-container {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .exam-title {
+    font-size: 20px;
+  }
+   
+
+  .start-exam-btn {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+}

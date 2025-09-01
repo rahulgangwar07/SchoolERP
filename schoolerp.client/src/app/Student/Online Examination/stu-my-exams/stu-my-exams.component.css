@@ -1,0 +1,63 @@
+
+.my-test-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.divpart {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.fstpart {
+  display: flex;   
+  background-color: aliceblue; 
+}
+
+.fstpart div:first-child{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+
+.fstpartImg {
+  display: flex; 
+}
+
+.fstpartImg img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+  .fstpart label {
+    margin: 0;
+  }
+
+.start-exam-btn {
+  background-color: #6c776d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 15px;
+}
+
+  .start-exam-btn:hover {
+    background-color: #45a049;
+  }

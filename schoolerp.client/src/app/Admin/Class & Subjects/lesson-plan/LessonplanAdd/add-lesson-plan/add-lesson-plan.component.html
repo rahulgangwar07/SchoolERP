@@ -1,0 +1,102 @@
+
+<div class="container">
+  <h2 mat-dialog-title>Add New Lesson</h2>
+  <mat-dialog-content>
+    <form [formGroup]="lessonForm" (ngSubmit)="onSave()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Start Date</mat-label>
+        <input matInput formControlName="startDate" type="date" />
+        <mat-error *ngIf="lessonForm.get('startDate').hasError('required')">
+          Start Date is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>End Date</mat-label>
+        <input matInput formControlName="endDate" type="date" />
+        <mat-error *ngIf="lessonForm.get('endDate').hasError('required')">
+          End Date is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Teacher Name</mat-label>
+        <input matInput formControlName="teacherName" />
+        <mat-error *ngIf="lessonForm.get('teacherName').hasError('required')">
+          Teacher Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Class</mat-label>
+        <mat-select formControlName="className">
+          <mat-option value="Class 1">Class 1</mat-option>
+          <mat-option value="Class 2">Class 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Subject</mat-label>
+        <mat-select formControlName="subject">
+          <mat-option value="English">English</mat-option>
+          <mat-option value="Math">Math</mat-option>
+          <mat-option value="Science">Science</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Lesson Name</mat-label>
+        <mat-select formControlName="lessonName">
+          <mat-option value="Lesson 1">Lesson 1</mat-option>
+          <mat-option value="Lesson 2">Lesson 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Topic</mat-label>
+        <input matInput formControlName="topic" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Lesson Plan Description</mat-label>
+        <textarea matInput formControlName="lessonDescription"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>No. of holidays in the week</mat-label>
+        <input matInput formControlName="holidaysInWeek" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>No. of periods in the week</mat-label>
+        <input matInput formControlName="periodsInWeek" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Amount Taught (Written & Oral)</mat-label>
+        <input matInput formControlName="amountTaught" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Assignment for Students</mat-label>
+        <input matInput formControlName="assignment" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Notes by Teacher</mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Remarks</mat-label>
+        <textarea matInput formControlName="remarks"></textarea>
+      </mat-form-field>
+
+      <div class="dialog-actions">
+        <button mat-button (click)="onClose()">Cancel</button>
+        <button mat-button color="primary" type="submit" [disabled]="lessonForm.invalid">Save</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+</div>

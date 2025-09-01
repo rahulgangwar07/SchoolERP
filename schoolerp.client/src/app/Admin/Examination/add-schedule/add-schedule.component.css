@@ -1,0 +1,99 @@
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: #555;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+  .row div {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+    .row div:last-child {
+      margin-right: 0;
+    }
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+.subject-fields {
+  margin-top: 30px;
+}
+
+.subject-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+  .subject-row input, .subject-row select {
+    width: 23%;
+  }
+
+  .subject-row .remove-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+    .subject-row .remove-btn:hover {
+      background-color: #c82333;
+    }
+
+.add-more-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+  .add-more-btn:hover {
+    background-color: #218838;
+  }

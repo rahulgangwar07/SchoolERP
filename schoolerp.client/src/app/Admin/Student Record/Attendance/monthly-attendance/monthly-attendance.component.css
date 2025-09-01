@@ -1,0 +1,61 @@
+
+.filtersec {
+  margin-bottom: 15px;
+}
+
+  .filtersec select, .filtersec input {
+    width: 100%; /* Ensure full width for input/select fields */
+  }
+
+  .filtersec .col-md-3 {
+    margin-bottom: 10px;
+  }
+
+  .filtersec .col-md-6 button {
+    font-size: 12px;
+    color: white;
+    width: 100%; /* Make sure buttons are full-width inside the column */
+  }
+
+  .filtersec .col-md-6.d-flex {
+    justify-content: space-around; /* Space the buttons evenly */
+    align-items: center;
+  }
+
+.action-btn {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+  .action-btn:hover {
+    background-color: #0056b3;
+  }
+
+.table-container {
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  .table th {
+    background-color: #d0d6d0;
+    color: #202b5d;
+    font-weight: bold;
+  }
+
+.table-striped tbody tr:nth-child(even):hover td {
+  background-color: #f2f2f2;
+}
+
+.totalrow {
+  color: #21bd1d;
+  font-weight: 400;
+}

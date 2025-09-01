@@ -1,0 +1,47 @@
+<h5 class="mb-3">📋 All Exam Sets</h5>
+
+<div class="table-responsive table-container">
+  <table class="table table-bordered table-striped align-middle">
+
+    <ng-container *ngFor="let sets of exam_sets">
+      <!-- Group Header Row -->
+      <tr class="table-secondary fw-bold">
+        <td colspan="4">
+          <span class="me-2">📘</span>
+          Common Exam Set ID:
+          <strong>{{ sets.common_exam_set_id }}</strong>
+          <br>
+
+          <ng-container *ngIf="sets.assign_exam_sets.length > 0">
+            <span class="text-muted">Classes:</span>
+            <span *ngFor="let assign of sets.assign_exam_sets">
+              <span class="badge bg-primary me-1">{{ className(assign.class_id) }}</span>
+            </span>
+          </ng-container>
+        </td>
+      </tr>
+
+      <thead class="table-light">
+        <tr>
+          <th style="width: 60px;">#</th>
+          <th>Exam Term</th>
+          <th>Exam Title</th>
+          <th>Session</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- Nested Rows for Each Set -->
+        <ng-container *ngFor="let set of sets.exam_sets; let i = index">
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ set.exam_name.exam_term?.term_name || 'N/A' }}</td>
+            <td>{{ set.exam_name?.exam_title || 'N/A' }}</td>
+            <td>{{ set.session }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </ng-container>
+
+  </table>
+</div>

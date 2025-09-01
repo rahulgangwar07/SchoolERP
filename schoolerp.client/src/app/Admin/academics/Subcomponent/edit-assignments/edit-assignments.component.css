@@ -1,0 +1,150 @@
+/* General container and form styles */
+.container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  position: absolute;
+  top: 40px;
+  z-index: auto;
+  left: 460px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+/* Form control styles */
+.form-control {
+  box-sizing: border-box;
+  width: 70% !important;
+}
+
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+select.form-control {
+  height: 40px;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+.form-group select,
+.form-group input[type="date"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+}
+
+.form-group input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 5px;
+}
+
+  .form-group select:focus,
+  .form-group input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+.form-group select option {
+  padding: 10px;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+/* Class select styling */
+.Class {
+  width: 30% !important;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: 5px;
+}
+
+/* Responsive Design: Make inputs and select elements full width on small screens */
+@media (max-width: 768px) {
+  .form-group select,
+  .form-group input[type="date"],
+  .form-group input[type="text"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .Class {
+    width: 48% !important;
+    margin: 5px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+    .form-group label {
+      width: 50%;
+      margin-bottom: 10px;
+    }
+
+    
+
+  .container {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Extra small devices (mobiles) */
+@media (max-width: 480px) {
+  .Class {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,106 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p class="text-muted">Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/counsellor-leads/view-leads" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2 shadow-sm">View Leads</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Add Lead Form -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4 shadow-sm">
+        <h4 class="card-title text-primary font-weight-bold mb-4">Add New Lead</h4>
+        <form id="leadForm" #leadForm="ngForm" (ngSubmit)="submitLead()">
+
+          <div class="form-group row">
+            <label for="leadType" class="col-sm-3 col-form-label">Lead Type <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <select class="form-control" id="leadType" name="leadType" #leadType="ngModel" [(ngModel)]="lead.lead_type_id" required>
+                <option value="">Please select</option>
+                <option *ngFor="let lt of leadTypeList; index as i" [value]="lt.lead_type_id">{{lt.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="leadName" class="col-sm-3 col-form-label">Name <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="leadName" name="leadName" [(ngModel)]="lead.name" #leadName="ngModel" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="fatherName" class="col-sm-3 col-form-label">Father's Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="fatherName" name="fatherName" [(ngModel)]="lead.father_name">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="motherName" class="col-sm-3 col-form-label">Mother's Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="motherName" name="motherName" [(ngModel)]="lead.mother_name">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="leadPhone" class="col-sm-3 col-form-label">Phone <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <input type="tel" class="form-control" id="leadPhone" name="leadPhone" #leadPhone="ngModel" [(ngModel)]="lead.phone" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="leadAddress" class="col-sm-3 col-form-label">Address</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" id="leadAddress" name="leadAddress" [(ngModel)]="lead.address" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="leadDate" class="col-sm-3 col-form-label">Date <span class="text-danger">*</span></label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="leadDate" name="leadDate" #leadDate="ngModel" [(ngModel)]="lead.date" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="nextFollowup" class="col-sm-3 col-form-label">Next Followup</label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="nextFollowup" name="nextFollowup" [(ngModel)]="lead.next_followup">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="leadComment" class="col-sm-3 col-form-label">Comment</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" id="leadComment" name="leadComment" [(ngModel)]="lead.comment" rows="3" placeholder="Add any additional comment"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="sendSMS" class="col-sm-3 col-form-label">Send SMS To Lead</label>
+            <div class="col-sm-9">
+              <input type="checkbox" id="sendSMS" name="sendSMS" [(ngModel)]="lead.isActive">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="leadForm.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">Add Lead</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

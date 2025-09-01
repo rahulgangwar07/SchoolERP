@@ -1,0 +1,90 @@
+<div class="container">
+  <!-- Fee Heading Page Header -->
+  <div class="row layout-header">
+    <div class="col-md-6">List of Fee Types</div>
+    <div class="col-md-6 text-right">
+      <button routerLink="/account-settings/fee-headings" routerLinkActive="active" class="action-btn" data-toggle="modal" data-target="#addFeeHeadingModal">Add New Fee Heading</button>
+    </div>
+  </div>
+
+  <!-- Fee Headings Table -->
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <td colspan="5"> <strong>List of Fee Types</strong> </td>
+            </tr>
+            <tr>
+              <td>#</td>
+              <td>Fee Type</td>
+              <td>Months</td>
+              <td>Description</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fee of fee_types;index as i;">
+              <td>{{i+1}}</td>
+              <td>{{fee.fee_type_name}}</td>
+              <td>{{fee.month}}</td>
+              <td>{{fee.description}}</td>
+              <td>
+                <ng-container *ngIf="fee.school_id!=='All'">
+
+                  <div class="action-container">
+                    <button class="btn btn-info btn-sm btn-action" (click)="toggleBtn(i)">Action</button>
+                    <ul *ngIf="toggleIndex === i" class="action-list">
+                      <li (click)="editFeeType(fee)"><i class="fas fa-edit"></i> Edit</li>
+                      <li (click)="deleteFeeType(fee.fee_type_id,i)"><i class="fas fa-trash-alt"></i> Delete</li>
+                    </ul>
+                  </div>
+                </ng-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card shadow-sm p-4 rounded">
+        <h5 class="mb-4">Add Fee Types</h5>
+
+        <div class="mb-3">
+          <label for="feetype" class="form-label">Fee Type</label>
+          <input type="text" id="feetype" class="form-control" name="feetype" [(ngModel)]="fee_type.fee_type_name" placeholder="Enter Fee Type">
+        </div>
+        <div class="mb-3">
+          <label for="month" class="form-label">Month Count</label>
+          <input type="number" id="month" class="form-control" name="month" min="1" max="12" [(ngModel)]="fee_type.month" placeholder="Enter Fee Months">
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" id="description" name="description" class="form-control" [(ngModel)]="fee_type.description" placeholder="Enter Description">
+        </div>
+
+        <button class="btn btn-primary w-100" id="save-fee-category" (click)="submitFeeType()">Save All</button>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Late Fine Settings Section -->
+  <div class="row m-2">
+    <div class="col-md-8 p-20 bg-body-tertiary">
+      <h5>Late Fine Setting</h5>
+      <p>Duration / Type: Quarterly</p>
+      <p>Amount / Date After: ₹500</p>
+      <p>Current Month</p>
+      <button class="action-btn" id="update-late-fine">Update Fine</button>
+    </div>
+  </div>
+
+</div>
+
+

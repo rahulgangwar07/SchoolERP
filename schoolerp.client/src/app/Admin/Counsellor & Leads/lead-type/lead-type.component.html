@@ -1,0 +1,72 @@
+
+<div class="container mt-2">
+  <!-- Page Header -->
+  <h6>Counsellor/Lead Type List</h6> 
+  <div class="row layout-header" style="background-color: #f8f9fa; padding: 15px 0; border-radius: 8px;">
+    <div class="col-md-7">
+      <p style="color: #333; font-weight: 500;">Counsellor / Lead Type List</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/counsellor-leads/add-lead" class="btn btn-primary">Add New Lead</a>
+      <a routerLink="/counsellor-leads/view-leads" class="btn btn-secondary">View Leads</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Lead Type Table -->
+    <div class="col-md-7" style="width:60%;">
+      <table class="lead-type-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Type ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Total</th>
+            <th>Send SMS</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of leadTypeList;index as i;">
+            <td>{{i+1}}</td>
+            <td>{{l.lead_type_id}}</td>
+            <td>{{l.name}}</td>
+            <td>{{l.category_type}}</td>
+            <td>0</td>
+            <td><button class="btn btn-sm btn-info">Send SMS</button></td>
+            <td>
+              <div class="action-container">
+                <button class="btn btn-info btn-sm btn-action" (click)="toggleBtn(i)">Action</button>
+                <ul *ngIf="toggleIndex === i" class="action-list">
+                  <li (click)="editleadType(l.lead_type_id)"><i class="fas fa-edit"></i> Edit</li> 
+                  <li (click)="deleteleadType(l.lead_type_id,i)"><i class="fas fa-trash-alt"></i> Delete</li>
+                </ul>
+              </div>  
+            </td>
+          </tr>
+       
+        </tbody>
+      </table>
+    </div>
+    <!-- Settings Section -->
+    <div class="col-md-5 settings-section" style="width:40%;">
+      <div class="settings">
+        <h6>Category Type</h6>
+        <select class="form-control" name="leadCat" [(ngModel)]="leadType.category_type" >
+          <option value="lead">Lead</option>
+          <option value="vendor">Vendor</option>
+          <option value="counsellor">Counsellor</option>
+        </select>
+
+        <h6>Type Name</h6>
+        <input type="text" class="form-control" name="leadname" [(ngModel)]="leadType.name" placeholder="Enter Type Name">
+
+        <div class="save-settings">
+          <button class="btn btn-info" (click)="submitLead()" [ngStyle]="{'background-color':themeSetting?.button_color}">Save All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

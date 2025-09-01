@@ -1,0 +1,19 @@
+
+#searchbook {
+  width: 100%;
+}
+
+#searchInput {
+    border:0px;
+  width: 50%;
+  color:white;
+  background-color:#41a2b7
+}
+
+ thead tr td{
+    background-color:#ccc;
+}
+
+table {
+  margin-top: 50px;
+}

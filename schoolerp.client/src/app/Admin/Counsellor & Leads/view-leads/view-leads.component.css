@@ -1,0 +1,44 @@
+
+/* Search form styling */
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+  #searchForm button {
+    margin-left: 10px;
+  }
+   
+.action-container {
+  position: relative;
+}
+  
+     
+.follow-up {
+  background-color: #ffeb3b;  
+  color: #000;
+}
+ 
+#leadTable {
+  font-size: 14px;
+}
+
+  #leadTable th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+  }
+
+  #leadTable td {
+    text-align: center;
+  }
+    
+.btn-action {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#sendSmsBtn {
+  margin-top: 8px;
+}

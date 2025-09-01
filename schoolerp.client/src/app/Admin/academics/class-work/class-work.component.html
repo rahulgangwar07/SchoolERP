@@ -1,0 +1,93 @@
+
+<div class="container">
+  <h6><u>View Classwork & Daily Notes</u></h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>List of all classwork</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/academics/copy-correction" routerLinkActive="active" class="action-btn">Copy Correction</a>
+      <a routerLink="/academics/video-tutorial" routerLinkActive="active" class="action-btn">Videos</a>
+      <a routerLink="/academics/add-work" routerLinkActive="active" class="action-btn">Add New</a>
+
+    </div>
+  </div>
+
+
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <div>
+      <label for="class-select">Select Class: </label>
+      <select id="class-select">
+        <option value="I A">I A</option>
+        <option value="II B">II B</option>
+        <option value="III C">III C</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="teacher-select">Select Teacher: </label>
+      <select id="teacher-select">
+        <option value="Mr. Alok">Mr. Alok</option>
+        <option value="Ms. Sapna">Ms. Sapna</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="search-classwork-notes">Search Classwork/Notes: </label>
+      <input type="text" id="search-classwork-notes" placeholder="Search by subject or description">
+    </div>
+
+    <button id="btngo">GO</button>
+  </div>
+
+  <!-- Classwork List -->
+  <h3>Classwork</h3>
+  <div class="classwork-notes-list">
+    <div class="classwork-entry">
+      <div class="row">
+        <div class="col-md-3">
+          <p>05 May 2024 at 17:46 PM</p>
+          <h6>Classwork for</h6>
+        </div>
+        <div class="col-md-1">II</div>
+        <div class="col-md-8">
+          <div>
+            <label><strong>Description:</strong> <br />English: Read chapter 1</label>
+          </div>
+          <div class="action-buttons">
+            <label>Classwork By: Administrator</label>
+            <button><i class="fas fa-flag"></i> Report</button>
+            <button><i class="fas fa-edit"></i> Edit</button>
+            <button><i class="fas fa-trash-alt"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Classwork Entries -->
+    <div class="classwork-entry">
+      <div class="row">
+        <div class="col-md-3">
+          <p>03 May 2024 at 14:30 PM</p>
+          <h6>Classwork for</h6>
+        </div>
+        <div class="col-md-1">III</div>
+        <div class="col-md-8">
+          <div>
+            <label><strong>Description:</strong> <br />Math: Practice problems</label>
+          </div>
+          <div class="action-buttons">
+            <label>Classwork By: Mr. Alok</label>
+            <button><i class="fas fa-flag"></i> Report</button>
+            <button><i class="fas fa-edit"></i> Edit</button>
+            <button><i class="fas fa-trash-alt"></i> Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add more classwork entries here -->
+  </div>
+
+</div>

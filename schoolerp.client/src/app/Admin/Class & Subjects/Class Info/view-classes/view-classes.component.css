@@ -1,0 +1,145 @@
+
+/* Main wrapper and container */
+.main-wrapper {
+  margin: 20px;
+}
+
+/* Page title */
+.page-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+
+
+/* Buttons */
+.btn {
+  background-color: #48b3e9;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.subject-div{
+    color:#f56505;
+    cursor:pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Filter section */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+  .filter-section label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .filter-section input {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+.sec-div a{
+  background-color: #e7edf1;
+  border: 1px solid #4343a3;
+}
+/* Classes Table */
+.classes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+
+  .classes-table th, .classes-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .classes-table th {
+    background-color: #577ca3;
+    color: white;
+  }
+
+.class-teacher-select {
+  border: 1px solid #ddd;
+}
+
+/* Action menu */
+.action-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Summary section */
+.summary-section p {
+  font-size: 16px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+
+
+/* Option List Styling for actions */
+.optionListTD ul {
+  padding-left: 5px;
+  margin-left: 20px;
+}
+
+.optionListTD ul i{
+  padding-right: 5px;
+}
+
+.optionListTD a {
+  text-decoration:none;
+  color:black;
+}
+
+.optionList {
+  position: absolute;
+  list-style: none;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid #cfbbbb;
+}
+
+  .optionList li {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 5px;
+  }
+
+    .optionList li:hover {
+      background-color: #f0f0f0;
+    }
+
+  .optionList i.fa-pencil-alt,
+  .optionList i.fa-trash-alt {
+    color: red;
+  }
+
+@media (max-width:768px){
+  .container {
+    margin-left: -18px;
+  }
+}
+
+ 
+
+ 
+
+
+
+ 
+

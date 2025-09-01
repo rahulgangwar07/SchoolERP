@@ -1,0 +1,71 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>ALUMNI TEACHER/STAFF</h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Teacher/Staff Alumni List</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a (click)="print()" class="action-btn">Print</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <!-- Search Box -->
+  <div class="search-box">
+    <input type="text" id="searchTeacher" placeholder="Search Name or Phone...">
+    <button type="button" onclick="searchAlumni()">Search</button>
+  </div>
+
+  <!-- Alumni Teacher/Staff Table -->
+  <table *ngIf="facultyList.length != 0" class="faculty-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Faculty Name</th>
+        <!--<th>Course</th>-->
+        <!--<th>Shift</th>-->
+        <th>Phone Number</th>
+        <th>Date of Birth</th>
+        <th>Report</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of facultyList; index as i" [ngClass]="{'disabled-account':f.status == 'Suspended'}">
+        <td>{{i+1}}</td>
+        <td><img src="{{f.image}}" /></td>
+        <td>
+          <p style="font-size:15px;margin:0;">{{f.first_name}}</p>
+        </td>
+        <!--<td>3rd Shift</td>-->
+        <td *ngIf="f.phone != null">{{f.phone}}</td>
+        <td *ngIf="f.phone == null">{{f.whatsapp_no}}</td>
+        <td style="font-size:15px;">{{f.dob | date:'dd-MMM-YYYY'}}</td>
+        <td><button class="btn-action"><i class="fas fa-file-alt"></i> Report</button></td>
+        <td>
+          <!-- Action Button Container -->
+          <div class="action-container">
+            <button class="btn-action" (click)="restoreFaculty(f.faculty_id)">
+              <i class="fas fa-undo"></i> Restore
+            </button>
+            <!--<ng-container>-->
+            <button *ngIf="permissions?.canDelete" class="btn-action" (click)="deletefaculty(f.faculty_id)">
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+
+            <!--</ng-container>-->
+
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

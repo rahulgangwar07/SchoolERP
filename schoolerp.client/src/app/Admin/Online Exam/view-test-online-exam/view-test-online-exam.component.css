@@ -1,0 +1,193 @@
+/* General Styling */
+.container {
+  max-width: 1200px;
+  position:relative;
+
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.table{
+    font-size:13px;
+}
+
+  .table td {
+    text-align: start;
+  }
+  .table p {
+   margin-bottom:0px;
+  }
+
+.exam-class{
+    color:#ff6a00;
+}
+
+.created-div span {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.QMbutton {
+  background-color: #c7d3ec;
+  padding: 8px;
+}
+
+.resultBtn {
+  background-color: #c7f0ec;
+  padding: 8px;
+} 
+
+.duration {
+  color: red;
+}
+
+.action-btn {
+  width: 100%;
+  /*position:relative;*/
+  border: 1px solid red;
+}
+
+.action-btn-list {
+  background-color: #f0f0f0;
+}
+
+  .action-btn-list {
+    background-color: white;
+    width: 150px;
+    position: absolute;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+    .action-btn-list ul li {
+    padding: 2px 11px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+.table-row{
+    border-bottom:1px solid #cb1616;
+}
+
+select.form-control {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+  select.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Button Styling */
+.go-btn, .btn-link {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.resultCount, .questionCount {
+  background-color: white;
+  border-radius: 19px;
+  padding: 5px;
+}
+
+.go-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  .go-btn:hover {
+    background-color: #0056b3;
+  }
+
+.btn-link {
+  padding: 0;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+  .btn-link:hover {
+    color: #0056b3;
+  }
+
+/* Layout */
+.row {
+  margin-bottom: 20px;
+}
+
+  .row.layout-header {
+    margin-bottom: 30px;
+  }
+
+.table td {
+  vertical-align: middle;
+}
+
+.action-btn-list {
+  background-color: white;
+  width: 150px;
+  position: absolute;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /*display:none;*/
+}
+
+  .action-btn-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+    .action-btn-list ul li {
+      padding: 2px 11px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+.fa-edit, .fa-trash {
+  color: #ff3b30;
+}
+
+ .action-btn-list ul li i {
+   padding-right: 10px; 
+ }
+
+ 
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-3 {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+    .col-md-3:last-child {
+      margin-bottom: 0;
+    }
+
+  .table td {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,154 @@
+
+
+<div class="container mt-3">
+  <!-- Header Section -->
+  <h6> Students List</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">View student list </p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a href="/registration/enquiry" class="btn btn-outline-primary btn-sm" *ngIf="permissions?.canCreate">Add Student(Quick)</a>
+      <a href="/student/add" class="btn btn-outline-primary btn-sm" *ngIf="permissions?.canCreate">Add Student(Detail)</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                              [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                              (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <!-- Filters Section -->
+  <div class="maindiv">
+    <div class="filters-container">
+      <div class="filter-group">
+        <label for="status">Status</label>
+        <select id="status" name="status" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+          <option value="Pending">Pending</option>
+          <option value="Registered">Registered</option>
+        </select>
+      </div>
+
+
+      <!-- Academic Year Filter -->
+      <div class="filter-group">
+        <label for="academicFilter">Academic Year:</label>
+        <select id="academicFilter" [(ngModel)]="selectedAcademicYear" (change)="onFilterChange()">
+          <option value="">-Select Academic Year-</option>
+          <option *ngFor="let s of sessionList" value="{{s.session_name}}">{{s.session_name}}</option>
+          <!--<option value="2024 - 2025">2024 - 2025</option>
+        <option value="2025 - 2026">2025 - 2026</option>-->
+        </select>
+      </div>
+      <!-- Class Filter -->
+      <div class="filter-group">
+        <label for="classFilter">Class:</label>
+        <select id="classFilter" [(ngModel)]="selectedClassid" (change)="onFilterChange()">
+          <option value="0">Select Class</option>
+          <option *ngFor="let cls of classList" [value]="cls.class_id">
+            {{ cls.class_name }}
+          </option>
+        </select>
+      </div>
+
+
+      <div class="filter-group">
+        <label for="section"> Section <span></span></label>
+        <select id="section" name="section" [(ngModel)]="selectedSecid" required (change)="applyFilters()">
+
+          <option value="0" disabled> Section</option>
+          <option *ngFor="let sec of secList" value="{{sec.sec_id}}">{{sec.sec_dis_name}}</option>
+        </select>
+      </div>
+
+      <!-- Admission Number Filter -->
+      <div class="filter-group">
+        <label for="admNoFilter">Adm. No:</label>
+        <input type="text" id="admNoFilter" [(ngModel)]="selectedAdmNo" placeholder="Search by Adm. No" (input)="onFilterChange()">
+      </div>
+    </div>
+
+    <!-- Student Table Section -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Father's Name</th>
+            <th>Class</th>
+            <th>Adm. No.</th>
+            <th>DOB</th>
+            <th>Session</th>
+            <th>UserID</th>
+            <th>Password</th>
+            <th>Report</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let s of filteredStudentList; index as i">
+            <tr *ngIf="s.studentMaster == null || s.studentMaster.status == 'Registered'"
+                [ngClass]="{'enable-disable': s.studentMaster != null && s.studentMaster.isActive === false}">
+              <td>{{s.student.uid}}</td>
+              <td *ngIf="s.stuImage">
+                <img [src]="s.stuImage" alt="Student Photo" width="50" height="50">
+              </td>
+              <td *ngIf="!s.stuImage">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Student Photo" width="50" height="50">
+              </td>
+              <td>{{s.student.first_name}}</td>
+              <td>{{s.student.father_name}}</td>
+              <td>{{s.registration.class_name}}</td>
+              <td>{{s.student.reg_no}}</td>
+              <td>{{s.student.dob | date: 'dd MMM yyyy'}}</td>
+              <td>{{s.registration.session}}</td>
+              <td>{{s.student.userid}}</td>
+              <td>{{s.student.password}}</td>
+              <td class="reportTD">
+                <a [routerLink]="['/student/view-report', s.student.uid]">Report</a>
+              </td>
+              <td class="optionListTD">
+                <button class="actionbtn" (click)="toggleBtn(i)">Action</button>
+                <ul *ngIf="showOptions === i" class="action-button optionList">
+                  <li [routerLink]="['/student/add', s.student.uid, s.registration.status]" *ngIf="permissions?.canEdit"><i class="fa fa-edit"></i> <a> Edit</a></li>
+                  <li (click)="deleteStudent(s.student.uid)" *ngIf="permissions?.canDelete"><i class="fa fa-trash"></i> <a> Delete</a></li>
+                  <li (click)="changepswd(s.student.uid,s.student.first_name,s.student.password,s.student.userid)"><i class="fa fa-key"></i> Change Password</li>
+                  <li *ngIf="selectedStatus == 'Registered'" (click)="enableDisable(s.student.uid)"><i class="fa fa-ban"></i>{{ s.studentMaster.isActive == false ? 'Enable' : 'Disable' }}  </li>
+                  <li (click)="opensettingPopup(i, s)" *ngIf="selectedStatus == 'Registered'"><i class="fa fa-cogs"></i> Settings</li>
+                </ul>
+              </td>
+            </tr>
+          </ng-container>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Student Settings Popup -->
+
+  <app-view-student-setting *ngIf="settingPopup !== null" class="setting-popup" [handleData]="singleStu" (click)="removeSettingPopup(settingPopup)">
+  </app-view-student-setting>
+
+  <!-- <app-view-student-setting *ngIf="settingPopup"></app-view-student-setting>-->
+</div>
+<div class="container password-div" *ngIf="showPasswordPopup">
+  <div class="row password-header">
+    <h6 class="col-md-11">Change Password of Mr. {{student_name}}</h6>
+    <button class="col-md-1 closebtn" (click)="hidePopup()"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="row">
+    <label class="col-md-4">Username: </label>
+    <input type="text" [(ngModel)]="user_id" disabled class="col-md-5" />
+  </div>
+  <div class="row">
+    <label class="col-md-4">New Password: </label>
+    <input type="password" [(ngModel)]="password" class="col-md-5" />
+  </div>
+  <div class="row changepsw">
+    <button class="col-md-3" (click)="submitPswd()">Submit Password</button>
+  </div>
+</div>
+

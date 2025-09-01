@@ -1,0 +1,28 @@
+<div class="container">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Class Name</th>
+          <th>Section</th>
+          <th>Transport</th>
+          <th>Total Students</th>
+          <th>Class Teacher</th>
+        </tr>
+      </thead>
+      <tbody>
+   
+        <tr *ngFor="let cls of classList">
+          <ng-container *ngIf="cls.status == true">
+            <td>{{cls.dis_name}}</td>
+            <td>{{cls.secCount}}</td>
+            <td>No</td>
+            <td>{{cls.stuCount}}</td>
+            <td>xyz</td>
+          </ng-container>
+        </tr>
+      
+      </tbody>
+    </table>
+
+</div>

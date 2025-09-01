@@ -1,0 +1,66 @@
+<div class="container mt-2">
+  <h6>Add/Edit Programs</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span class="text-danger">*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/notice-board/important-lists-dates" class="btn btn-outline-primary btn-sm mx-2">View Programs</a>
+    </div>
+  </div>
+
+  <div class="row program-form">
+    <div class="col-md-8">
+      <form [formGroup]="program" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title <span class="text-danger">*</span></label>
+          <div class="col-sm-10">
+            <input type="text" formControlName="title" class="form-control" id="title" placeholder="Enter Program Title" required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <textarea formControlName="description" class="form-control" id="description" placeholder="Enter Description"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="programFor" class="col-sm-2 col-form-label">Program For</label>
+          <div class="col-sm-10">
+            <select class="form-control" formControlName="program_For" id="programFor">
+              <option value="All">All</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Student">Student</option>
+              <option value="Class">Class</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="createdOn" class="col-sm-2 col-form-label">Created On</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" formControlName="created_On" id="createdOn">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="images" class="col-sm-2 col-form-label">Image/File</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control" (change)="onFileChange($event)" id="images">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color':themeSetting?.button_color}">Add/Update Program</button>
+            <button type="button" class="btn btn-secondary" routerLink="/important-programs">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr>
+</div>

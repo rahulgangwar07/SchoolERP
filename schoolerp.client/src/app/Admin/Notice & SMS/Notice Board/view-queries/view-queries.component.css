@@ -1,0 +1,54 @@
+.ask-question,
+.reply-question {
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; /* Allows text to break naturally */
+}
+
+  .ask-question p,
+  .reply-question p {
+    margin-bottom: 0.5rem; /* Adds better spacing */
+  }
+
+.reply-question {
+  color: #61ac18;
+}
+
+  .reply-question p {
+    font-size: 16px;
+    color: #61ac18;
+  }
+
+.ask-question strong,
+.classes {
+  color: #df3400;
+}
+
+td {
+  vertical-align: top;
+}
+
+thead th {
+  vertical-align: middle;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+}
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.isClose td {
+  background-color: antiquewhite;
+}

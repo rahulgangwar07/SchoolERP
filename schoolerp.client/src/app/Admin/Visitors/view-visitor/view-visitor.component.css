@@ -1,0 +1,76 @@
+
+/* General Layout */
+.layout-header h4 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.layout-header .btn {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 25px;
+}
+
+ 
+
+/* Table Styling */
+.table th, .table td {
+  padding: 7px 11px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.table td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Button Styling */
+.table .btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+  .table .btn-info:hover {
+    background-color: #138496;
+  }
+
+.table .btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+ 
+
+#searchInput{
+    width:400px;
+    padding:20px;
+    margin:0px 5px;
+}
+
+.image-td img {
+  max-height: 80px;
+  max-width: 80px;
+}
+
+.leave_approved{
+    font-size:13px;
+}
+
+.purpose_div {
+  height: 15px;
+  font-size: 12px;
+}
+
+
+  .purpose_div td {
+    background: #cfeecf;
+  }
+
+    .purpose_div td:hover {
+      background: #f3f7f8;
+    }
+

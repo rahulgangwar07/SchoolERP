@@ -1,0 +1,133 @@
+
+.routine-ul {
+  padding: 0px;
+}
+
+.routine-li .print, .class-btn {
+  display: flex;
+  font-weight: 600
+}
+
+.routine-li .class-btn {
+  justify-content: start;
+  font-size: 16px;
+}
+
+.routine-li .print {
+  justify-content: end;
+  font-size: 12px;
+  color: #e12;
+}
+
+.routine-li .classes {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ccc;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.routine-li button {
+  border: none;
+  background-color: #ccc;
+}
+
+  .routine-li button:hover {
+    color: #33e;
+  }
+
+.routine-div {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.routine-details {
+  display: flex;
+  /*justify-content: space-between;*/
+  align-items: center;
+  border: 1px solid #ddd;
+}
+
+
+  .routine-details .col-md-2.day {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  .routine-details .col-md-2.time-slot {
+    font-size: 13px;
+    color: #454c4c;
+    padding: 3px;
+    border-right: 1px solid #dbd4d4;
+    border-left: 1px solid #dbd4d4;
+  }
+
+.time-slot label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.time-slot .priod {
+  display: flex;
+  justify-content: end;
+  font-size: 15px;
+}
+
+.cls_name{
+    color:black;
+}
+
+.routine-details .col-md-2 .actionsbtn {
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  display: flex; /* Flexbox to align buttons */
+  gap: 5px;
+  padding-left: 30px;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Add smooth transitions */
+}
+
+.routine-details .col-md-2:hover .actionsbtn {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.routine-details .col-md-4 button {
+  padding: 5px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.routine-details .day {
+  margin-right: 10px;
+  width: 100px;
+}
+
+.routine-details .edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.routine-details .delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.routine-details .edit-btn:hover {
+  background-color: #45a049;
+}
+
+.routine-details .delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.routine-details .col-md-4 p,
+.routine-details .col-md-4 label {
+  margin: 0;
+  padding: 2px 0;
+}

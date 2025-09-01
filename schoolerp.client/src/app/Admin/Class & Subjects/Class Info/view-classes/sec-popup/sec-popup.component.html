@@ -1,0 +1,83 @@
+
+<div class="container overlay">
+  <div class="header-div row">
+    <div class="col-md-11">
+    <h5 *ngIf="canCreate">Add Section To Class I</h5>
+    <p *ngIf="!canCreate">View Class Section</p></div>
+    <div class="col-md-1"><i class="fa fa-close close-icon" (click)="closePopup()"></i></div>
+  </div>
+
+  <!-- Form Section -->
+  <ng-container *ngIf="canCreate">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Name</label>
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="sec_name" [(ngModel)]="sectionData.sec_name" placeholder="Name" />
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="des_name" [(ngModel)]="sectionData.sec_dis_name" placeholder="Nick Name" />
+      </div>
+    </div>
+
+    <!--<div class="row">
+    <div class="col-md-4">
+      <label>Nick Name</label>
+    </div>
+    <div class="col-md-8">
+      <input type="text" name="des_name" [(ngModel)]="sectionData.des_name" placeholder="Nick Name" />
+    </div>
+  </div>-->
+
+    <div class="row">
+      <div class="col-md-4">
+        <label>Teacher</label>
+      </div>
+      <div class="col-md-8">
+        <select class="class-teacher-select">
+          <option value="0">Class Teacher</option>
+          <option *ngFor="let teacher of teacherList" [value]="teacher.faculty_id">{{teacher.first_name}}</option>
+          <!--<option value="2">Amit Kumar</option>
+        <option value="3">Anu Tripathi</option>
+        <option value="4">Sanjeet Singh</option>-->
+        </select>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="col-md-4 save-btn">
+      <button (click)="saveSection()">Save All</button>
+    </div>
+  </ng-container>
+  <!-- Section Table -->
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Alias</th>
+          <th>Class Teacher</th>
+          <th>Total Students</th>
+          <th>Status</th>
+          <th>ID</th>
+          <th>#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sec of sectionList;index as i">
+          <td>{{sec.sec_name}}</td>
+          <td>{{sec.sec_dis_name}}</td>
+          <td>Mr. Alok Jha</td>
+          <td>0</td>
+          <td><input type="checkbox" [checked]="sec.status" (change)="onStatusChange(sec, $event)" /></td>
+          <td>{{sec.sec_id}}</td>
+          <td>
+            <i class="fa fa-edit" *ngIf="permissions.canEdit" (click)="editSection(sec)"></i>
+            <i class="fa fa-trash" *ngIf="permissions.canDelete" (click)="deleteSection(sec.sec_id,sec.class_id)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

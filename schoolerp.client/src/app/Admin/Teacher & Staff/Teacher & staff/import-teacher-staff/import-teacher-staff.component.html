@@ -1,0 +1,72 @@
+
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Add Bulk Teacher</h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Add Bulk Teacher</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a class="action-btn">Blank csv file</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <label for="excelFile">Select Excel File</label>
+    <input type="file" id="excelFile" accept=".xls, .xlsx">
+  </div>
+
+  <div class="section">
+    <label for="sheetName">Available Titles For Sheet</label>
+    <select id="sheetName">
+      <option value="aadhaarNumber">AADHAAR NUMBER</option>
+      <option value="address">ADDRESS</option>
+      <option value="bankAccountNo">BANK ACCOUNT NO</option>
+      <option value="bankName">BANK NAME</option>
+      <option value="bloodGroup">BLOOD GROUP</option>
+      <option value="branchId">BRANCH ID</option>
+      <option value="city">CITY</option>
+      <option value="country">COUNTRY</option>
+      <option value="designationId">DESIGNATION ID</option>
+      <option value="dob">DOB</option>
+      <option value="email">EMAIL</option>
+      <option value="father">FATHER</option>
+      <option value="fatherContact">FATHER CONTACT</option>
+      <option value="fileNo">FILE NO</option>
+      <option value="gender">GENDER</option>
+      <option value="ifscCode">IFSC CODE</option>
+      <option value="joiningDate">JOINING DATE</option>
+      <option value="lastInstitution">LAST INSTITUTION</option>
+      <option value="lastInstitutionAddress">LAST INSTITUTION ADDRESS</option>
+      <option value="password">PASSWORD</option>
+      <option value="phone">PHONE</option>
+      <option value="pincode">PINCODE</option>
+      <option value="post">POST</option>
+      <option value="qualification">QUALIFICATION</option>
+      <option value="rfid1">RFID1</option>
+      <option value="rfid2">RFID2</option>
+      <option value="routeId">ROUTE ID</option>
+      <option value="speciality">SPECIALITY</option>
+      <option value="staffRole">STAFF ROLE</option>
+      <option value="state">STATE</option>
+      <option value="teacherImage">TEACHER IMAGE</option>
+      <option value="teacherName">TEACHER NAME</option>
+      <option value="teacherPancard">TEACHER PANCARD</option>
+      <option value="userRole">USER ROLE</option>
+      <option value="username">USERNAME</option>
+      <option value="village">VILLAGE</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <button type="submit">Submit File</button>
+  </div>
+
+  <div class="instruction">
+    <h3>Instructions for Excel File</h3>
+    <p>1. Please make sure the Excel file is in the correct format with the mentioned titles.</p>
+    <p>2. The first column of the file should include mandatory fields like AADHAAR NUMBER, NAME, etc.</p>
+    <p>3. After selecting the file and sheet, click the "Submit File" button to add teachers in bulk.</p>
+  </div>
+</div>

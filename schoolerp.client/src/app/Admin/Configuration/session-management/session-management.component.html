@@ -1,0 +1,86 @@
+ 
+<div class="container m-t-2">
+  <h3>All Session list</h3>
+  <div class="row layout-header">
+    <div class="col-md-6">All Session list</div>
+    <div class="col-md-6 text-right"> 
+    </div>
+  </div>
+
+  <div class="row session-div">
+    <div class="col-md-7 session-list">
+      <div class="session-filter">
+        <label>Start Month:</label>
+        <select id="month" name="month"> 
+          <option *ngFor="let month of months" [value]="month.key">{{ month.value }}</option>  
+        </select>
+        <label>End Month:</label>
+        <select id="month" name="month">
+          <option *ngFor="let month of months" [value]="month.key">{{ month.value }}</option>
+          <!--<option *ngFor="let month of months | keyvalue" [value]="month.key">{{ month.value }}</option>-->
+        </select>
+      </div>
+
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID.</th>
+              <th>SESSION YEAR</th>
+              <th>SESSION MONTH</th>
+              <th>ONGOING</th> 
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody class="sessionlist-body">
+            <tr *ngFor="let session of sessionList;let i = index">
+              <td>{{session.session_id}}</td>
+              <td>{{session.session_name}}</td>
+              <td>{{session.start_month}} to {{session.end_month}}</td>
+              <td><input type="checkbox" name="checkbox" [checked]="session.status" (click)="checkedUpdate(session)"/></td>
+              <td><button (click)="sendForEdit(session.session_id)">Edit</button>
+                  <button (click)="deleteSession(session.session_id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <div class="session-head">
+        <label>Add / Update New Sessions</label> 
+      </div>
+      <div class="session-insert">
+        <form #sessionForm="ngForm" (ngSubmit)="submitSession()">
+          <div>
+            <label>Start Year<span>*</span></label> 
+            <select id="startmonth" name="startMonth" [(ngModel)]="d.startMonth" #startMonth="ngModel" 
+            [ngClass]="{ 'valid': startMonth.invalid && startMonth.touched }" required>
+              <option value="">--Month--</option>
+              <option *ngFor="let month of months" [value]="month.value">{{ month.value }}</option>
+            </select>
+           <select id="startyear" name="startYear" [(ngModel)]="d.startYear" #startYear="ngModel" [disabled]="checkEdit" [ngClass]="{ 'valid': startYear.invalid && startYear.touched }" required>
+              <option value="">Start Year</option>
+              <option *ngFor="let year of calenderYear">{{year}}</option>
+            </select>
+          </div>
+          <div>
+            <label>End Year<span>*</span></label>
+            <select id="endmonth" name="endMonth" [(ngModel)]="d.endMonth"  [ngClass]="{ 'valid': endMonth.invalid && endMonth.touched }" #endMonth="ngModel" required>
+              <option value="">--Month--</option>
+              <option *ngFor="let month of months" [value]="month.value">{{ month.value }}</option>
+            </select>
+            <select id="endyear" name="endYear" [(ngModel)]="d.endYear" class="valid" [disabled]="checkEdit" [ngClass]="{ 'valid': endYear.invalid && endYear.touched }" #endYear="ngModel" required>
+              <option  value="">End Year</option>
+              <option *ngFor="let year of calenderYear">{{year}}</option>
+            </select>
+          </div>
+          <div><button [disabled]="sessionForm.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">Save All</button></div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>

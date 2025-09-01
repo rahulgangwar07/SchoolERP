@@ -1,0 +1,116 @@
+
+<div class="container">
+  <!-- Page Header -->
+  <h6>Compose Voice Call SMS</h6>
+  <p class="ra-blinking">I am reseaching on it</p>
+  <div class="row layout-header" style="background-color: #f8f9fa; padding: 10px 0; border-radius: 8px;">
+    <div class="col-md-7">
+
+      <p style="color: #333; font-weight: 500;">Voice Call SMS</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <button class="btn btn-outline-primary btn-sm mx-2" [routerLink]="'/sms-board/sms-outbox'">OutBox</button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <!-- Voice Call SMS Form -->
+    <div class="col-md-6 template-form">
+      <form>
+        <!-- Template Selection for Voice Call -->
+        <div class="form-group row">
+          <label for="voiceTemplate" class="col-sm-2 col-form-label">Select Template</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="voiceTemplate" required>
+              <option value="">--Select--</option>
+              <option value="template1">Voice Call Template 1</option>
+              <option value="template2">Voice Call Template 2</option>
+              <option value="template3">Voice Call Template 3</option>
+              <!-- Add more templates as required -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Template ID Field for Voice Call -->
+        <div class="form-group row">
+          <label for="templateId" class="col-sm-2 col-form-label">Template ID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="templateId" placeholder="Enter Template ID" required>
+          </div>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="form-group row">
+          <label for="language" class="col-sm-2 col-form-label">Language</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="language" required>
+              <option value="english">English</option>
+              <option value="hindi">Hindi</option>
+              <option value="other">Other</option>
+              <!-- Add more languages as needed -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Message Field (Voice Call Script) -->
+        <div class="form-group row">
+          <label for="message" class="col-sm-2 col-form-label">Message</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="message" rows="5" style="height: 150px;" placeholder="Enter the message/script for voice call" required></textarea>
+            <small class="form-text text-muted">Max 300 characters for voice call script</small>
+          </div>
+        </div>
+
+        <!-- Message To Field -->
+        <div class="form-group row">
+          <label for="messageTo" class="col-sm-2 col-form-label">Message To</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="messageTo" required>
+              <option value="">--Select--</option>
+              <option value="students">Students</option>
+              <option value="teachers">Teachers</option>
+              <option value="parents">Parents</option>
+              <!-- Add more options for recipients -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Send Voice Call Button -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Send Voice Call</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Voice Call Settings -->
+    <div class="col-md-6 voice-call">
+      <h5 style="color: #007bff;">Voice Call Settings</h5>
+      <div class="form-group row">
+        <label for="charCount" class="col-sm-2 col-form-label">Char Count</label>
+        <div class="col-sm-10">
+          <ul class="list-inline">
+            <li class="list-inline-item">Up to 300 Char</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Verify Template Content -->
+      <div class="form-group row">
+        <label for="verifyTemplate" class="col-sm-2 col-form-label">Verify Template</label>
+        <div class="col-sm-10">
+          <button class="btn btn-info btn-sm" id="verifyTemplate">Check Template Content</button>
+        </div>
+      </div>
+
+      <!-- Check Voice Call Balance -->
+      <div class="form-group row">
+        <label for="checkBalance" class="col-sm-2 col-form-label">Check Balance</label>
+        <div class="col-sm-10">
+          <button class="btn btn-secondary btn-sm" id="checkBalance">Click Here</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

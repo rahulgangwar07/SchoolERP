@@ -1,0 +1,131 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/transport/view-route" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">
+        View Routes
+      </a>
+    </div>
+  </div>
+
+  <!-- Route Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form (ngSubmit)="onSubmit()">
+        <!-- Route Code -->
+        <div class="form-group row">
+          <label for="routeCode" class="col-sm-3 col-form-label">Route Code *</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="routeCode" placeholder="Enter Route Code"
+                   required [(ngModel)]="transportRoute.route_Code" name="routeCode">
+          </div>
+        </div>
+
+        <!-- Route Name -->
+        <div class="form-group row">
+          <label for="routeName" class="col-sm-3 col-form-label">Route Name *</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="routeName" placeholder="Enter Route Name"
+                   required [(ngModel)]="transportRoute.route_name" name="routeName">
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group row">
+          <label for="description" class="col-sm-3 col-form-label">Description *</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="description" placeholder="Enter Description"
+                      required [(ngModel)]="transportRoute.description" name="description"></textarea>
+          </div>
+        </div>
+
+        <!-- Route Fare Type -->
+        <!--<div class="form-group row">
+          <label for="routeFareType" class="col-sm-2 col-form-label">Route Fare Type *</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="routeFareType" name="routeFareType" required [(ngModel)]="transportRoute.fare_type">
+              <option value="">-Select Fare Type-</option>
+              <option value="fixed">Fixed Fare</option>
+              <option value="variable">Variable Fare</option>
+            </select>
+          </div>
+        </div>-->
+
+        <!-- Stop-wise Route Fare -->
+        <!--<div class="form-group row">
+          <label for="stopWiseFare" class="col-sm-3 col-form-label">Stop-wise Route Fare</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="stopWiseFare" rows="3" placeholder="Enter stop-wise fare details" name="stopWiseFare" [(ngModel)]="stopWiseFare"></textarea>
+          </div>
+        </div>-->
+
+        <!-- Fee Applied Month -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Fee Applied Month *</label>
+          <div class="col-sm-9">
+            <div class="dropdown-container">
+              <div class="dropdown-header" (click)="toggleMonthDropdown()">
+                {{ getSelectedMonthsText() }}
+                <span class="arrow" [class.open]="monthDropdownOpen">&#9662;</span>
+              </div>
+              <div class="dropdown-list" *ngIf="monthDropdownOpen">
+                <label *ngFor="let month of months" class="dropdown-item">
+                  <input type="checkbox" [value]="month" (change)="onMonthCheckboxChange($event)"
+                         [checked]="selectedMonths.includes(month)" />
+                  {{ month }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maximum Stop Fare -->
+        <div class="form-group row">
+          <label for="maxStopFare" class="col-sm-3 col-form-label">Maximum Stop Fare</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" id="maxStopFare" placeholder="Enter Maximum Stop Fare" name="maxStopFare"
+                   [(ngModel)]="transportRoute.maximum_stop_fare">
+          </div>
+        </div>
+
+        <!-- Stop & Fare Section -->
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <p><strong>Stop & Fare</strong></p>
+            <div class="stop-container">
+              <div class="stop-list">
+                <div class="stop-item row" *ngFor="let stop of stops; let i = index">
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Enter Stop Name" name="stopName{{i}}"
+                           [(ngModel)]="stop.stop_name">
+                  </div>
+                  <div class="col-md-5">
+                    <input type="number" class="form-control" placeholder="Enter Stop Fare" name="stopFare{{i}}"
+                           [(ngModel)]="stop.amount">
+                  </div>
+                  <div class="col-md-2">
+                    <button *ngIf="i==0" type="button" class="stop-btns mt-2" (click)="addStop()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="i!=0" type="button" class="stop-btns mt-2" (click)="removeStop(i)"><i class="fa fa-remove"></i></button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Route Button -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Add Route</button>
+            <button type="button" class="btn btn-secondary ml-2" (click)="clear()">Clear</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="popup-container" *ngIf="popupStatus">
+  <div class="popup-header row m-0">
+    <h6 class="col-md-11">Report of Message ID : {{data.sender_id}}</h6>
+    <label class="col-md-1 d-flex align-items-center" (click)="closePopup()"><i class="fa fa-close"></i></label>
+  </div>
+
+  <div class="popup-body row">
+    <div class="col-md-6 message-preview">
+      <p><strong>Message:</strong></p>
+      <p>
+        {{data.message}}
+      </p>
+    </div>
+
+    <div class="col-md-6 failed-section">
+      <p><strong>Failed Phone Numbers</strong></p>
+      <textarea placeholder="Enter mobile numbers separated by commas"></textarea>
+      <button class="send-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">Send SMS</button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr class="totalCount">
+          <th>Total Sent:</th>
+          <th>0</th>
+          <th>Total Failed:</th>
+          <th>0</th>
+        </tr>
+        <tr class="theader">
+          <th>Sr. No.</th>
+          <th>Mobile</th>
+          <th>Status</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of data.template;index as i">
+          <td>{{i+1}}</td>
+          <td>{{d.sent_to}}</td>
+          <td>{{d.status}}</td>
+          <td>{{d.message}}</td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

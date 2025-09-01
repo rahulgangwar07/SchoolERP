@@ -1,0 +1,161 @@
+ <div class="container">
+   <h4>PROMOTE CLASS</h4>
+  <div class="row layout-header">
+    <div class="col-md-6 p-2">Promote Student Class</div>
+    <div class="col-md-6">
+       
+    </div>
+  </div>
+
+  <div class="instruction-box d-flex justify-content-between flex-wrap mb-4">
+    <div style="flex: 1;">
+      <h4 style="color: #0d6efd;">"Experience the hassle free performance"</h4>
+      <ol>
+        <li>Step 1. Create a <strong>New session</strong></li>
+        <li>Step 2. Update fee structure for new session.</li>
+        <li>Step 3. <span class="text-danger">Promote class from Higher to lower</span> (e.g., 10 ➜ 11 then 9 ➜ 10)</li>
+        <li>Step 4. Promote Dues from <strong>Account setting</strong>.</li>
+        <li>Step 5. Activate new session to default.</li>
+      </ol>
+    </div>
+    <div style="flex: 1;">
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/your-video-id" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Action Type Selector -->
+  <div class="form-group mb-4">
+    <label for="actionType"><strong>Action</strong></label>
+    <select id="actionType" class="form-control w-50" [(ngModel)]="actionType" (change)="updateLabels()">
+      <option value="promote">Promote Students</option>
+      <option value="demote">Demote Students</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <!-- FROM Info -->
+    <div class="col-md-6">
+      <h5>{{ fromLabel }}</h5>
+
+      <div class="form-group mb-3">
+        <label>Session</label>
+        <select class="form-control" [(ngModel)]="selectedSession1" (change)="onFromClassChange()">
+          <option value="">Select Session</option>
+          <option *ngFor="let s of session1" [value]="s.session_name">{{ s.session_name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Class <span class="text-danger">*</span></label>
+        <select class="form-control" [(ngModel)]="selectedClass1" (change)="onFromClassChange()">
+          <option value="0">Select Class</option>
+          <option *ngFor="let c of classList1" [value]="c.class_id">{{ c.dis_name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Student</label>
+        <div (mouseleave)="showDropDown = true">
+          <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown">
+            <span>Select</span>
+            <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="drop-show" *ngIf="showDropDown">
+            <label *ngFor="let s of studentList1;index as i">
+              <input type="checkbox" name="stu_name_{{i}}" [(ngModel)]="s.checked"
+                     (change)="getSelectedValue(s.checked,s.registration_no,s.name)" />
+              <span>{{s.name}}<strong>( regno: {{s.registration_no}})</strong></span>
+            </label>
+          </div>
+        </div>
+        <!--<select class="form-control" [(ngModel)]="selectedStudent1" [disabled]="selectedClass1 == 0">
+          <option value="0">Select Student</option>
+          <option *ngFor="let s of studentList1" [value]="s.id">{{ s.name }}</option>
+        </select>-->
+      </div>
+    </div>
+
+    <!-- TO Info -->
+    <div class="col-md-6">
+      <h5>{{ toLabel }}</h5>
+
+      <div class="form-group mb-3">
+        <label>Session</label>
+        <select class="form-control" [(ngModel)]="selectedSession2">
+          <option value="">Select Session</option>
+          <option *ngFor="let s of session2" [value]="s.session_name">{{ s.session_name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Class <span class="text-danger">*</span></label>
+        <select class="form-control" [(ngModel)]="selectedClass2">
+          <option value="0">Select Class</option>
+          <option *ngFor="let c of classList2" [value]="c.class_id">{{ c.class_name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group text-end mt-4">
+        <button class="btn"
+                [ngClass]="actionType === 'promote' ? 'btn-primary' : 'btn-danger'"
+                [disabled]="!formIsValid()"
+                (click)="processClass()">
+          {{ actionType === 'promote' ? 'Promote Class' : 'Demote Class' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--<div class="table-section">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><input type="checkbox" /></th>
+        <th>#</th>
+        <th>NAME</th>
+        <th>ROLL ADM.</th>
+        <th>FATHER NAME</th>
+        <th>CLASS</th>
+        <th>SECTION</th>
+        <th>BRANCH</th>
+        <th>SESSION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>1</td>
+        <td>Munish Kumar</td>
+        <td>1001</td>
+        <td>Ramesh Kumar</td>
+        <td>Class 10</td>
+        <td>A</td>
+        <td>Main Branch</td>
+        <td>2024-25</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>2</td>
+        <td>Satendra Pal</td>
+        <td>1002</td>
+        <td>Mahesh Pal</td>
+        <td>Class 10</td>
+        <td>B</td>
+        <td>Main Branch</td>
+        <td>2024-25</td>
+      </tr>
+    </tbody>
+  </table>-->
+<!-- Warning Section -->
+<!--<div class="warning">
+  <p><input type="checkbox" /> Make Sure You Read The Instructions Above</p>
+  <p>Warning: Download Your Accounts Reports for Current Session and students list before Promoting Class</p>
+</div>-->
+<!-- Final Button -->
+<!--<div class="footer-action">
+    <button class="btn">PROMOTE CLASS</button>
+  </div>
+
+</div>-->

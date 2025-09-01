@@ -1,0 +1,312 @@
+
+
+<div class="container mt-3">
+  <!-- Dashboard Stats Section -->
+  <div *ngIf="userRole == '' || userRole == 'SuperAdmin'" class="form-group">
+    <label for="schoolId">School Id: &nbsp;</label>
+    <select id="schoolId" name="schoolId" [ngModel]="school_id" (change)="schoolChange($event)">
+      <option value="" disabled>Select School</option>
+      <option *ngFor="let sch of schoolList;let i=index" value="{{sch.schoolId}}">{{sch.schoolName}}</option>
+    </select>
+  </div>
+  <div class="row">
+    <!-- Teachers Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Teachers</h6>
+            <h3>{{header.faculties?.present}}/{{header.faculties?.total}}</h3>
+          </div>
+          <!--<div><p>{{header.faculties.inActive}}</p></div>-->
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>{{header.faculties?.present}}</label></div>
+          <div><label>Absent</label><label>{{header.faculties?.absent}}</label></div>
+          <div><label>Leave</label><label>{{header.faculties?.leave}}</label></div>
+          <!--<div class="row attendance-btn">
+            <div class="col-lg-12"><i class="fa-eye fas"></i><label routerLink="/teacher-staff/take-attendance" routerLinkActive="active">Take Attendace</label></div>
+            <div class="col-lg-12"><i class="fa-check-circle fas"></i><label routerLink="/teacher-staff/view-attendance" routerLinkActive="active">View Attendace</label></div>
+          </div>-->
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Students Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Total Students</h6>
+            <h3>{{header.students?.present}}/{{header.students?.total}}</h3>
+          </div>
+          <!--<div> <p>{{header.students?.inActive}}</p></div>-->
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>{{header.students?.present}}</label></div>
+          <div><label>Absent</label><label>{{header.students?.absent}}</label></div>
+          <div><label>Leave</label><label>{{header.students?.leave}}</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Courses Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-02.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Total Courses</h6>
+            <h3>{{header.courses?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Online Courses</label><label>{{header.courses?.online}}</label></div>
+          <div><label>Offline Courses</label><label>{{header.courses?.offline}}</label></div>
+          <div><label>Upcoming Courses</label><label>{{header.courses?.upcoming}}</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMS Report Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-03.svg" alt="SMS Icon">
+          </div>
+          <div class="db-info">
+            <h6>SMS Report</h6>
+            <h3>{{header.smsreport?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Sent</label><label>{{header.smsreport?.sent}}</label></div>
+          <div><label>Failed</label><label>{{header.smsreport?.failed}}</label></div>
+          <div><label>Pending</label><label>{{header.smsreport?.pending}}</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/ruppes.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Daily Report</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/collect-fee.jpg" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Collect Fee</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/monthly-fee-report.jpg" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label style="font-size:14px;">Monthly Report</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/day-book.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Day Book</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/cash-book.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Cash Book</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/fee-overdue.jpg" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Fee Overdue</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/student-registration.jpg" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Student's Registration</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/student-list.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Student's List</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/statistics.png" alt="Dashboard Icon"> </div> 
+        </div>
+        <div class="stats">
+          <div>
+            <label>Statistic</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/alumni-student.png" alt="Dashboard Icon"> </div> 
+        </div>
+        <div class="stats">
+          <div>
+            <label>Alumni</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/view-attendance.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>View Attendance</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card bg-common collectiondiv">
+        <div class="card-body">
+          <div class="db-icon"> <img src="assets/img/dashboardIcons/mark-attendance.png" alt="Dashboard Icon"> </div>
+
+        </div>
+        <div class="stats">
+          <div>
+            <label>Mark Attendance</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="row mt-4"> 
+    <div class="col-8">
+      <div id="chart-container" style="height: 400px;">
+        <canvas id="MyChart"></canvas>
+      </div>
+    </div> 
+       
+    <div class="col-md-4">
+      <div class="card p-3 h-100">
+        <h6 class="text-center mb-3">🎂 Upcoming Birthdays</h6>
+        <div id="birthdayCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item"
+                 *ngFor="let birthday of upComingbirthday; let i = index"
+                 [class.active]="i === 0">
+              <div class="p-2 border rounded">
+                <h5>{{ birthday.name }}</h5>
+                <p><strong>Class:</strong> {{ birthday.class_name }}</p>
+                <p><strong>Roll No.:</strong> {{ birthday.stu_id }}</p>
+                <p><strong>Father's Name:</strong> {{ birthday.father_name }}</p>
+                <p><strong>DOB:</strong> {{ birthday.dob | date: 'd MMM y' }}</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#birthdayCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#birthdayCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div> 
+  </div>
+
+
+<script>
+  $(document).ready(function () {
+    $('.birthday-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      dots: true,
+      arrows: true,
+      infinite: true
+    });
+  });
+
+</script>
+
+ 
+

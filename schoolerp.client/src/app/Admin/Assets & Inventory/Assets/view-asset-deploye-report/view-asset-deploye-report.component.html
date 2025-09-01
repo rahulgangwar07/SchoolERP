@@ -1,0 +1,62 @@
+  <div class="container popup">
+    <div class="popup-header d-flex justify-content-between">
+      <div class="left">
+        <h5>Sales Report</h5>
+      </div>
+      <div class="right">
+        <button class="btn-close" routerLink="/assets-inventory/assets/view">X</button>
+      </div>
+    </div>
+
+    <div class="popup-content">
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <div>
+          <label for="deploymentArea">Deployment Area</label>
+          <select id="deploymentArea">
+            <option value="all">All</option>
+            <option value="office">Office</option>
+            <option value="musicRoom">Music Room</option>
+            <option value="lab">Lab</option>
+            <option value="gym">Gym</option>
+            <option value="library">Library</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="sellDate">Sell Date</label>
+          <select id="sellDate">
+            <option value="all">All Dates</option>
+            <option value="2025-04-09">2025-04-09</option>
+            <option value="2025-04-10">2025-04-10</option>
+            <option value="2025-04-11">2025-04-11</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Sales Report Table -->
+      <div class="table-container">
+        <table class="mat-table table-striped">
+          <thead>
+            <tr>
+              <th>Sell ID</th>
+              <th>Item</th>
+              <th>Deployment Area</th>
+              <th>Sell Date</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fsd of filteredSalesData; index as i;">
+              <td>{{fsd.sell_id}}</td>
+              <td>{{fsd.item_name}}</td>
+              <td>{{fsd.deployment_area_id}}</td>
+              <td>{{fsd.sell_date || 'date : dd MMM yyyy'}}</td>
+              <td>{{fsd.quantity}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     
+    </div>
+  </div>

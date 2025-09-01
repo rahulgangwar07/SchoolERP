@@ -1,0 +1,81 @@
+
+/* General page styling */
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px; 
+}
+
+/* Header Styling */
+.page-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.header-text {
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Filter Section Styling */
+.filter-section select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.filter-section .col-md-2, .filter-section .col-md-3 {
+  margin-bottom: 15px;
+}
+
+/* Layout for filter section and other inputs */
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Styling for the table headers */
+.table-header {
+  font-weight: bold;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+  .table-header label {
+    margin: 0;
+  }
+
+/* Styling for no record message */
+.no-record {
+  font-size: 16px;
+  color: #dc3545;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Action buttons styling */
+.action-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+  .action-btn:hover {
+    background-color: #0056b3;
+  }

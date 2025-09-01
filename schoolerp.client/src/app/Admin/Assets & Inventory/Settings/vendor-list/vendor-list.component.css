@@ -1,0 +1,14 @@
+
+table {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+ 
+ 
+
+
+.form-group span{
+    color:red;
+    font-weight:bold;
+}

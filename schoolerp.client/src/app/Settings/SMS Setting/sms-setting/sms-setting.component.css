@@ -1,0 +1,147 @@
+
+.sms-settings-container {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  /*background: #f9f9f9;*/
+  color: #333;
+  position:relative;
+}
+
+h2, h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.toggle-section, .api-settings, .faq-section, .template-list, .default-templates, .macro-templates {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #e0e0e0; 
+}
+ 
+  .template-row label {
+    margin-bottom: 0px;
+  }
+
+  .template-row p {
+    font-size: 13px;
+    color: #ff4400;
+  }
+
+.setting-toggle {
+  margin-bottom: 10px;
+}
+
+  .setting-toggle label {
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+.api-settings .form-row {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+  .api-settings .form-row label {
+    width: 200px;
+    font-weight: bold;
+  }
+
+  .api-settings .form-row input {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+.api-status.enabled {
+  color: green;
+  font-weight: bold;
+}
+
+.check-balance-section {
+  margin-top: 25px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.check-balance-btn {
+  padding: 8px 15px;
+  background-color: #008cba;
+  border: none;
+  color: white; 
+  cursor: pointer;
+}
+
+  .check-balance-btn:hover {
+    background-color: #007399;
+  }
+
+.faq-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.faq-section li {
+  margin: 5px 0;
+}
+
+.faq-section a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+  table thead {
+    background: #eee;
+  }
+
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+    table td button {
+      padding: 5px 10px;
+      background: #ffc107;
+      border: none;
+      color: #000;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+      table td button:hover {
+        background: #e0a800;
+      }
+
+.macro-templates th {
+  display: flex;
+}
+
+.macro-templates th span:first-child {
+  font-size: 15px;
+  color: #446d95;
+}
+
+.macro-templates th span:nth-child(2n) {
+  font-size: 14px;
+  color: #ff4400;
+}
+
+table td button.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+  table td button.delete-btn:hover {
+    background-color: #c82333;
+  }

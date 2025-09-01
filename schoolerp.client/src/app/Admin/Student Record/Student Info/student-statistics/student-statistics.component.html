@@ -1,0 +1,56 @@
+
+<div class="container">
+  <h6 id="stuCount">Student Count Report</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">Student Statistic Report </p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/student/statistics" class="btn btn-outline-primary btn-sm">Export Excel</a>-->
+      <a class="btn btn-outline-primary btn-sm" (click)="printReport()">Print Record</a> 
+    </div>
+  </div> 
+  <div id="staticsReport">
+    <table>
+      <thead>
+        <tr>
+          <th>Class Name</th>
+          <th *ngFor="let gender of getCategories(); index as i" colspan="3">
+            {{ gender | uppercase }}
+          </th>
+          <th>Total Students</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th *ngFor="let category of getCategoriesgender(); index as i">
+            <span>{{ category | uppercase }}</span>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let classData of studentReportData; index as i">
+          <td>{{ classData.className }}</td>
+          <td *ngFor="let value of getdata()[i]; index as i" [ngClass]="{'total-row': (i + 1) % 3 === 0}">
+            {{ value }}
+          </td>
+          <td class="total-row">{{ classData.totalStudents }}</td>  
+        </tr>
+         
+        <tr>
+          <td> </td>
+          <td *ngFor="let final of this.finalRow" [ngClass]="{'total-row': true}">
+             {{ final }} 
+          </td>
+          <td [ngClass]="{'total-row': true}">{{finalTotal}}</td> 
+        </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+  <div class="footer">
+    <p>Student Count Report | Year 2024-2025</p>
+  </div>
+</div>

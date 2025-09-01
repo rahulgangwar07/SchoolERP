@@ -1,0 +1,171 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Student Full Information</div>
+    <div class="col-md-6 text-right">
+      <!--<a routerLink="/students/acedemics/curriculum" routerLinkActive="active">View Subjects</a>
+      <a routerLink="/students/acedemics/home-work" routerLinkActive="active">Home Work</a>-->
+    </div>
+  </div>
+  <div>
+    <ul class="main-area">
+      <li (click)="setActiveTab('feesReport')">Fees Report</li>
+      <li (click)="setActiveTab('attendance')">Student Attendance</li>
+      <li (click)="setActiveTab('communication')">Communication</li>
+    </ul>
+  </div>
+</div>
+
+<div class="feereport_maindiv" *ngIf="activeTab === 'feesReport'">
+  <div class="under-construction">
+    <i class="fas fa-cogs"></i>
+    <h3>Fees Report is Under Construction</h3>
+  </div>
+  <!--<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Recp.</th>
+        <th>Name</th>
+        <th>Roll no</th>
+        <th>Father Name</th>
+        <th>Mobile No.</th>
+        <th>Class</th>
+        <th>Month</th>
+        <th>Payment Date</th>
+        <th>Total Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="10" style="padding:20px;"></td>
+      </tr>
+      <tr>
+        <td colspan="10" class="text-center">2024 - 2025</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>122</td>
+        <td>Jatin Sharma</td>
+        <td>8</td>
+        <td>Mr. Ashutosh Sharma</td>
+        <td>7004680810</td>
+        <td>I A</td>
+        <td>Nov</td>
+        <td>26 Nov 2024</td>
+        <td>1,500</td>
+      </tr>
+    </tbody>
+  </table>-->
+</div>
+
+<div class="attendance_maindiv" *ngIf="activeTab === 'attendance'">
+  <div class="row">
+    <div class="col-md-3"> 
+      <select name="months" [(ngModel)]="selectedMonth" id="months" class="form-control">
+        <option *ngFor="let month of calenderMonth | keyvalue" [value]="month.key">{{ month.value }}</option>
+      </select>
+    </div>
+    <div class="col-md-3"> 
+      <select name="year" [(ngModel)]="selectedYear" id="year" class="form-control">
+        <option *ngFor="let year of calenderYear" [value]="year">{{ year }}</option>
+      </select>
+
+    </div>
+    <div class="col-md-2">
+      <button class="show_att_detail form-control">Show Details</button>
+    </div>
+  </div>
+
+  <div class="attendance_div">
+    <table class="table table-striped attendance_table">
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Status</td>
+          <td>In</td>
+          <td>Out</td>
+          <td>SMS</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let att of attendanceData?.data;index as i">
+          <td>{{att.date}}</td>
+          <td [ngClass]="att.status == 'P' ? 'Present' : att.status == 'A' ? 'Absent' : att.status == 'L' ? 'Leave' : ''">{{att.status == 'P' ? 'Present' : att.status == 'A' ? 'Absent' : att.status == 'L' ? 'Leave' : '' }}</td>
+          <td>{{att.in === '00:00:00' ? '' : att.in}}</td>
+          <td>{{att.out === '00:00:00' ? '' : att.out}}</td>
+          <td><i class="fa fa-close"></i></td>
+        </tr> 
+        <tr>
+          <td style="background-color: #94d1f3;">Total Present</td>
+          <td>{{attendanceData?.total.present}}</td>
+          <td>-</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td style="background-color: #f3a3ca;">Total Absent</td>
+          <td>{{attendanceData?.total.absent}}</td>
+          <td>-</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="background-color: #f1f177;">Total Leave</td>
+          <td>{{attendanceData?.total.leave}}</td>
+          <td>-</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+</div>
+
+
+<div class="communication_maindiv" *ngIf="activeTab === 'communication'">
+  <div class="under-construction">
+  <i class="fas fa-cogs"></i>
+  <h3>Communication in Under Construction</h3>
+</div>
+  <!--<table class="table table-striped">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Type</td>
+        <td>Notice</td>
+        <td>By</td>
+        <td>Date</td> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>absentsms</td>
+        <td>
+          Absent SMS
+          Dear Jatin Sharma, on 19/02/2024 :Absent Visit the school office if not. will accordingly update Thanks Principal Campus Cover ERP Software
+        </td>
+        <td>Campus Cover</td>
+        <td>
+          19 Feb 2024
+          12:26 AM
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>notice</td>
+        <td>
+          injh. ih i
+          jhi kkjg
+        </td>
+        <td>Campus Cover</td>
+        <td>
+          27 Mar 2024
+          01:58 PM
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
+</div>
+

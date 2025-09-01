@@ -1,0 +1,126 @@
+ 
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>List of all DEPARTMENT</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/payroll/department/add" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Department</a>
+      <a routerLink="/payroll/department" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Print Report</a>
+    </div>
+  </div>
+</div>
+
+  <!-- Department Table -->
+  <div class="mt-4">
+    <!-- Management Department -->
+    <h6>Management Department</h6>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>ID</th>
+          <th>Designations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Management Department Row 1 -->
+        <tr>
+          <td>1</td>
+          <td>1971</td>
+          <td>HOD</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+        <!-- Management Department Row 2 -->
+        <tr>
+          <td>2</td>
+          <td>1973</td>
+          <td>Admin</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Accounts Department -->
+    <h6>Accounts Department</h6>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>ID</th>
+          <th>Designations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Accounts Department Row 1 -->
+        <tr>
+          <td>1</td>
+          <td>3010</td>
+          <td>Accountant</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+        <!-- Accounts Department Row 2 -->
+        <tr>
+          <td>2</td>
+          <td>3012</td>
+          <td>Cashier</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Transport Department -->
+    <h6>Transport Department</h6>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>ID</th>
+          <th>Designations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Transport Department Row 1 -->
+        <tr>
+          <td>1</td>
+          <td>4150</td>
+          <td>Transport Manager</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+        <!-- Transport Department Row 2 -->
+        <tr>
+          <td>2</td>
+          <td>4152</td>
+          <td>Driver</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Edit</button>
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="mt-4">
+    <p><strong>Total Departments:</strong> 3 (Management, Accounts, Transport)</p>
+  </div> 

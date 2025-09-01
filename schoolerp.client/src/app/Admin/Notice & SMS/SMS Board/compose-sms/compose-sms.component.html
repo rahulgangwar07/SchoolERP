@@ -1,0 +1,195 @@
+<div class="container mt-2 compose-sms-container">
+  <h5>Send SMS</h5>
+
+  <!-- Header -->
+  <div class="row layout-header align-items-center mb-3">
+    <div class="col-md-6">
+      <p>📨 Compose SMS</p>
+    </div>
+    <div class="col-md-6 text-end">
+      <a routerLink="/sms-board/sms-outbox" routerLinkActive="active" class="action-btn">View Outbox</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Compose Form -->
+    <div class="col-md-7">
+      <form class="sms-form">
+
+        <!-- Template Dropdown -->
+        <div class="form-group">
+          <label>Select Template</label>
+          <select class="form-control" name="tempate_id" [(ngModel)]="smsLogDTO.id" (change)="onTemplateChange($event)" required>
+            <option value="0">--Select--</option>
+            <option *ngFor="let template of smsTemplates" [value]="template.id">
+              {{ template.template_Name }} ({{ template.template_id }})
+            </option>
+          </select>
+        </div>
+
+        <!-- Template ID -->
+        <div class="form-group">
+          <label>Template ID <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" name="templateId"
+                 [(ngModel)]="smsLogDTO.template_id" placeholder="Enter Template ID" required disabled />
+        </div>
+
+        <!-- Language -->
+        <div class="form-group">
+          <label>Language</label>
+          <select class="form-control">
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label>Message <span class="text-danger">*</span></label>
+          <textarea class="form-control form-textarea" name="templateContent" [(ngModel)]="smsLogDTO.orignal_Message"
+                    rows="5" placeholder="Enter your message" required disabled></textarea>
+          <small class="form-text text-muted">Max 155 characters</small>
+        </div>
+
+        <!-- Message To -->
+        <div class="form-group">
+          <label>Message To <span class="text-danger">*</span></label>
+          <select class="form-control" name="messageTo" #name="ngModel" [(ngModel)]="smsLogDTO.messageTo"
+                  (change)="onMessageToChange()" required>
+            <option value="">--Select--</option>
+            <option value="teachers">Teacher</option>
+            <option value="students">Student</option>
+            <option value="singleClass">Single Class</option>
+            <option value="multipleClass">Multiple Class</option>
+            <option value="todayBirthday">Today's Birthday</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+
+        <!-- Class and Section Selectors -->
+        <ng-container *ngIf="smsLogDTO.messageTo === 'singleClass'">
+          <div class="form-group">
+            <label>Select Class <span class="text-danger">*</span></label>
+            <select class="form-control"
+                    [(ngModel)]="selectedClassId"
+                    name="selectedClassId"
+                    (change)="onClassChange()">
+              <option value="0">--Select Class--</option>
+              <option *ngFor="let c of classList" [value]="c.class_id">
+                {{ c.class_name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Section</label>
+            <select class="form-control"
+                    [(ngModel)]="selectedSectionId"
+                    name="selectedSectionId"
+                    (change)="onSectionChange()">
+              <option value="0">--Select Section--</option>
+              <option *ngFor="let s of sectionList" [value]="s.sec_id">
+                {{ s.sec_dis_name }}
+              </option>
+            </select>
+          </div>
+        </ng-container>
+
+
+        <!-- Class and Section Selectors -->
+        <ng-container *ngIf="smsLogDTO.messageTo === 'custom'">
+          <div class="form-group">
+            <label>Paste Numbers </label>
+            <textarea class="form-control mobilenos" name="mobileNos" [(ngModel)]="mobileNos" placeholder="Enter mobile numbers seprated by comma"></textarea>
+          </div>
+           
+        </ng-container>
+
+        <!-- Submit Button -->
+        <div class="form-group text-end mt-3">
+          <button type="submit" class="btn btn-primary" [disabled]="name.invalid" (click)="sendSMS()" [ngStyle]="{'background-color':themeSetting?.button_color}">📤 Send SMS</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Settings Sidebar -->
+    <div class="col-md-5">
+      <div class="sms-settings p-3 shadow-sm">
+        <h5 class="mb-3">🛠️ SMS Settings</h5>
+
+        <!-- Student Selection -->
+        <ng-container *ngIf="studentList.length > 0 && smsLogDTO.messageTo === 'singleClass'">
+          <div class="stu-div">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="selectAllStudents"
+                     (change)="onStudentSelectAll($event)" checked />
+              <label class="form-check-label" for="selectAllStudents">Select All Students</label>
+            </div>
+
+            <div *ngFor="let student of studentList" class="form-check">
+              <input class="form-check-input" type="checkbox" [checked]="student.checked"
+                     [id]="student.stu_name" (change)="onStudentSelect($event,student)" />
+              <label class="form-check-label" [for]="student.stu_name">
+                {{ student.stu_name }}
+                <span *ngIf="student.father_name" class="text-warning">({{ student.father_name }})</span>
+              </label>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Class Selection for Multiple Classes -->
+        <ng-container *ngIf="classList.length > 0 && smsLogDTO.messageTo === 'multipleClass'">
+          <div class="stu-div">
+            <div class="form-check mb-2">
+              <input class="form-check-input"
+                     type="checkbox" id="selectAllClasses" (change)="onClassSelectAll($event)" checked />
+              <label class="form-check-label" for="selectAllClasses">Select All Classes</label>
+            </div>
+
+            <div *ngFor="let c of classList" class="form-check">
+              <input class="form-check-input" type="checkbox" [checked]="c.checked" (change)="onClassSelect($event,c)" [id]="c.class_id" />
+              <label class="form-check-label" [for]="c.class_id">{{ c.class_name }}</label>
+            </div>
+          </div>
+        </ng-container>
+        <!-- Class Selection for Multiple Classes -->
+        <ng-container *ngIf="teacherList.length > 0 && smsLogDTO.messageTo === 'teachers'">
+          <div class="stu-div">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="selectAllTeachers"
+                     (change)="onTeachersSelectAll($event)" checked />
+              <label class="form-check-label" for="Teachers">Select All Teachers</label>
+            </div>
+
+            <div *ngFor="let t of teacherList" class="form-check">
+              <input class="form-check-input" type="checkbox" [checked]="t.checked" [value]="t.faculty_id"
+                     (change)="onTeachersSelect($event, t)" [id]="t.first_name" />
+              <label class="form-check-label" [for]="t.first_name">{{ t.first_name }}</label>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Info Cards -->
+        <div class="mb-3">
+          <label><strong>Character Count</strong></label>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item badge bg-info text-white">155 Char</li>
+            <li class="list-inline-item badge bg-warning text-dark">310 Char</li>
+            <li class="list-inline-item badge bg-success text-white">465 Char</li>
+          </ul>
+        </div>
+
+        <div class="mb-3">
+          <label><strong>Verify Template</strong></label><br />
+          <button class="btn btn-info btn-sm mt-1">Check Template Content</button>
+        </div>
+
+        <div>
+          <label><strong>Check Balance</strong></label><br />
+          <button class="btn btn-secondary btn-sm mt-1">Click Here</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

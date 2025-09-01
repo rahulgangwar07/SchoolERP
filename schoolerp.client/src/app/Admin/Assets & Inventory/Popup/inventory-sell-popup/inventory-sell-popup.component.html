@@ -1,0 +1,157 @@
+<div *ngIf="popupOpen" class="container popup">
+  <ng-container *ngIf="requestType; else errorTemplate">
+
+    <!-- Header -->
+    <div class="row layout-header p-2">
+      <div class="col-md-6">
+        <p>Sell Counter</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <button class="btn-close" (click)="closePopup()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="popup-content">
+      <form class="row">
+        <!-- Left Form Section -->
+        <div class="col-md-4 popup-form d-inline">
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Select Item(s)</mat-label>
+            <mat-select [(ngModel)]="sC.item_id" name="itemType" multiple (selectionChange)="itemChange($event)">
+              <mat-option value="0" disabled>Select Item</mat-option>
+              <mat-option *ngFor="let inv of inventoryList" [value]="inv.inventory_id">
+                {{ inv.item_name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Select Class</mat-label>
+            <mat-select [(ngModel)]="sC.deployment_area_id" name="classid" (selectionChange)="classChange($event.value)">
+              <mat-option value="0" disabled>Select Class</mat-option>
+              <mat-option *ngFor="let cls of classList" [value]="cls.class_id">
+                {{ cls.class_name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Session</mat-label>
+            <mat-select [(ngModel)]="activeSession" name="session">
+              <mat-option *ngFor="let s of sessionList" [value]="s.session_name">
+                {{ s.session_name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Student Input Section -->
+          <ng-container *ngIf="sC.deployment_area_id !== '0'">
+            <mat-form-field appearance="fill" class="w-100 mb-2">
+              <mat-label>Student Name</mat-label>
+              <mat-select [(ngModel)]="sC.student_id" name="student_id">
+                <mat-option *ngFor="let stu of studentList" [value]="stu.roll_no">
+                  {{ stu.stu_name }} (<span style="color:#ff6a00">{{stu.father_name}}</span>)
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+
+          <mat-form-field appearance="fill" class="w-100 mb-2">
+            <mat-label>Payment Mode</mat-label>
+            <mat-select name="payment_mode">
+              <mat-option value="cash">Cash</mat-option>
+              <mat-option value="cheque">Cheque</mat-option>
+              <mat-option value="card">Card</mat-option>
+              <mat-option value="net_banking">Net Banking</mat-option>
+              <mat-option value="demand_draft">Demand Draft</mat-option>
+              <mat-option value="caution_money">Caution Money</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Right Inventory Section -->
+        <div class="col-md-7" *ngIf="sC.item_id != 0 && variantDataList.length > 0">
+          <div class="side-popup d-inline">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Item ID</th>
+                  <th>Variant</th>
+                  <th>Available</th>
+                  <th>Quantity</th>
+                  <th>Amount</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let grp of variantDataList; index as i">
+                  <tr *ngIf="grp.value.length > 0">
+
+                    <!-- Accessing the first variant from value array -->
+                    <td>{{ grp.value[0].inventory_id }}</td>
+
+                    <!-- Bind selected variant using grp.key -->
+                    <td>
+                      <mat-select name="variant" [(ngModel)]="grp.selectedVariantId" (selectionChange)="onVariantChange(grp, $event.value)">
+                        <mat-option *ngFor="let v of selectVariant(grp.inventory_id)" [value]="v.variant_id">
+                          {{ v.variant_name }}
+                        </mat-option>
+                      </mat-select>
+                    </td>
+
+                    <td>{{ getSelectedVariant(grp)?.quantity }}</td>
+                    <td><input type="number" name="newquantity" [(ngModel)]="grp.newQuantity" (ngModelChange)="onQuantityChange(grp)" /></td>
+                    <td>{{ getSelectedVariant(grp)?.newAmount }}</td>
+                    <td><button class="btn"><i class="fa fa-close text-danger fw-bold"></i></button></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+
+            <!-- Payment Section -->
+            <div class="item-define d-inline">
+              <mat-form-field appearance="fill" class="w-100 mb-2">
+                <mat-label>Total Payment</mat-label>
+                <input matInput type="number" name="total_amount" [(ngModel)]="sC.total_amount" (ngModelChange)="changeAmount()" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="w-100 mb-2">
+                <mat-label>Discount</mat-label>
+                <input matInput type="number" name="discount" [(ngModel)]="sC.discount" (ngModelChange)="changeAmount()" />
+              </mat-form-field>
+
+              <div class="form-group d-flex align-items-center mb-2">
+                <label class="me-2">Balance</label>
+                <input matInput type="number" name="balance" [(ngModel)]="sC.balance" (ngModelChange)="changeBalance()" />
+                <ng-container *ngIf="dues > 0">
+                  <input matInput type="number" [value]="dues" disabled class="ms-2" />
+                </ng-container>
+              </div>
+
+              <mat-form-field appearance="fill" class="w-100 mb-2">
+                <mat-label>Remarks</mat-label>
+                <input matInput type="text" name="remarks" [(ngModel)]="sC.remark" />
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" type="button" (click)="deployInventory()">
+                Pay Now (Rs {{ mainAmount }})
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+
+  <!-- Error Template -->
+  <ng-template #errorTemplate>
+    <div class="d-flex justify-content-between error-div">
+      <h4>Something Went Wrong!</h4>
+      <button class="btn-close" (click)="closePopup()"></button>
+    </div>
+    <p class="text-danger">Sell counter not working properly</p>
+  </ng-template>
+</div>

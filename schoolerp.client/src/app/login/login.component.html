@@ -1,0 +1,67 @@
+<div class="login-wrapper">
+  <div class="login-background">
+    <div class="background-cube"></div>
+    <div class="background-cube"></div>
+  </div>
+
+  <div class="login-container">
+    <div class="row"> 
+      <!-- Login Form Section -->
+      <div class="form-section">
+        <div class="form-content">
+          <div class="logo">
+            <img src="/assets/img/logo.jpg" alt="Logo" class="logourl">
+          </div>
+          <h3>Sign Into ERP</h3> 
+          <!-- Login Form -->
+          <form (ngSubmit)="login()">
+            <div class="form-group">
+              <input name="email" type="email" class="form-control" placeholder="User Id/Email:" [(ngModel)]="username" required>
+            </div>
+
+            <div class="form-group">
+              <input name="password" type="password" class="form-control" placeholder="Password:" [(ngModel)]="password" required>
+            </div>
+            <div class="form-group">
+              <label for="role">Select Role:</label>
+              <div>
+                <!--<label class="radio-inline">
+                  <input type="radio" name="role" value="Admin" [(ngModel)]="role" required> Admin
+                </label>-->
+                <label class="radio-inline">
+                  <input type="radio" name="role" value="Faculty" [(ngModel)]="role" required> Faculty
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="role" value="Student" [(ngModel)]="role" required> Student
+                </label>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="form-group">
+              <a routerLink="/forget-password"   class="forgot-password-link">Forget Password?</a> 
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Background Section -->
+      <div class="col-lg-6 col-md-4 bg-img">
+        <div class="info">
+          <div class="overlay-box">
+            <span></span><span></span><span></span><span></span>
+            <div class="content">
+              <div class="logo">
+                <img src="assets/img/img33.png" alt="Background Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

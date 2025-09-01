@@ -1,0 +1,26 @@
+
+.add-info {
+  color: #aa1b3f;
+  font-weight: 500;
+}
+
+span.add-info {
+  font-size: 13px;
+}
+
+.stops-para p {
+  font-weight: 500;
+  color: #ad2828;
+}
+
+.stops-cls input {
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+
+.stops-cls div{
+    margin-bottom:15px;
+    margin-right:10px;
+}
+

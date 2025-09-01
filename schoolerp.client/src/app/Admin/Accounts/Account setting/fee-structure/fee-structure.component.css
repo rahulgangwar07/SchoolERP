@@ -1,0 +1,140 @@
+
+
+.acedmic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px; 
+}
+
+select {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  width: 100%;  
+  box-sizing: border-box;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.table-container {
+  margin: 30px auto;  
+}
+
+.row-container {
+  width: 80%;
+  display: inline-table;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 0;
+}
+
+  .student-table th, .student-table td {
+    padding: 1px 5px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .student-table th {
+    background-color: #f4f4f4; 
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .student-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  .student-table tbody tr:nth-child(even) {
+    background-color: #fff;
+  }
+  .student-table td {
+    margin-bottom: 60px;
+    font-size: 12px;
+  }
+
+.month-item {
+  width: 7%;
+  margin-right: 10px;
+}
+
+  .month-item .month-input {
+    width: 100%;
+  }
+
+.bg-danger-dark {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 2px 30px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+  .bg-danger-dark:hover {
+    background-color: #c82333;
+  }
+
+.student-table th, .student-table td {
+  padding: 8px 12px;
+}
+
+.layout-header {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.lock-inst{
+    background-color:#0b1a42;
+    color:white;
+}
+
+.ledger-btn {
+  background-color: #868082;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .student-table th, .student-table td {
+    padding: 8px 10px; 
+  }
+
+  .student-table {
+    font-size: 14px; 
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .acedmic {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px;
+  }
+
+  .student-table {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .bg-danger-dark {
+    width: 100%;
+    padding: 8px 0;
+  }
+}

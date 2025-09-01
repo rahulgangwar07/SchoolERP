@@ -1,0 +1,125 @@
+<div class="container mt-2">
+  <h4 class="page-title">Create a New Test</h4>
+
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Fields marked with (<span>*</span>) are mandatory</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/online-exam/view-test" routerLinkActive="active" class="action-btn">View Exam</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Test Form -->
+  <div class="examDiv">
+    <form [formGroup]="examform" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-md-9">
+          <label for="type" class="col-md-3">Exam Type <span>*</span></label>
+          <select id="type" name="type" class="form-control" formControlName="type" required>
+            <option value="" disabled>User Type</option>
+            <option value="private">Private</option>
+            <option value="public">Public</option>
+          </select>
+          <select id="examName" name="examName" class="form-control" formControlName="exam_name" required>
+            <option value="">Exam Type</option>
+            <option value="online-examination">Online Examination</option>
+            <option value="pre-board">Pre-board</option>
+            <option value="online">Online</option>
+          </select>
+        </div>
+
+        <div *ngIf="examform.get('type')?.value === 'private'" class="form-group col-md-9">
+          <label for="class" class="col-md-3">Class </label>
+          <select id="class" name="class" class="form-control" formControlName="class_id" (change)="changeClass()">
+            <option value="">Select Class</option>
+            <option *ngFor="let cls of classList;index as i" [value]="cls.class_id">{{cls.class_name}}</option>
+          </select>
+          <select id="section" name="section" class="form-control" formControlName="sec_id">
+            <option value="">Select Section</option>
+            <option *ngFor="let sec of secList" [value]="sec.sec_id">{{sec.sec_dis_name}}</option>
+            <!--<option value="2">Section B</option>
+          <option value="3">Section C</option>-->
+          </select>
+        </div>
+
+
+        <div class="form-group col-md-9">
+          <label for="academicYear" class="col-md-3">Academic Year <span>*</span></label>
+          <select id="academicYear" name="academicYear" class="form-control" [(ngModel)]="academicYear" formControlName="session" required>
+
+            <!--<option value="2024-2025" selected="selected">2024 - 2025</option>-->
+            <option *ngFor="let session of sessionList" [value]="session.session_name">{{session.session_name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="subjects" class="col-md-3">Subjects </label>
+          <select id="subjects" name="subjects" class="form-control" formControlName="subject_id">
+            <option value="">Select Subject</option>
+            <option *ngFor="let subj of subjectList" [value]="subj.subject_id">{{subj.subject_name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="examTitle" class="col-md-3">Exam Title <span>*</span></label>
+          <input type="text" id="examTitle" name="examTitle" class="form-control" formControlName="exam_title"
+                 placeholder="Mention Chapter or Topic Name" required>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="teacher" class="col-md-3">Teacher <span>*</span></label>
+          <select id="teacher" name="teacher" class="form-control" formControlName="faculty_id">
+            <option value="">Select Teacher</option>
+            <option *ngFor="let t of teacherList;index as i" [value]="t.faculty_id">{{t.first_name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="testStartDate" class="col-md-3">Date <span>*</span></label>
+          <input type="date" id="testStartDate" name="testStartDate" class="form-control" formControlName="exam_start_date" required>
+          <input type="date" id="testEndDate" name="testEndDate" class="form-control" formControlName="exam_end_date" required>
+        </div>
+
+
+        <div class="form-group col-md-9">
+          <label for="durationType" class="col-md-3">Duration Type <span>*</span></label>
+          <select id="durationType" name="durationType" formControlName="duration_type" class="form-control" required>
+            <option value="fullDay">Full Day</option>
+            <option value="fixed">Fixed</option>
+            <option value="selectedTime">During Selected Time</option>
+          </select>
+        </div>
+
+        <div *ngIf="examform.get('duration_type')?.value === 'selectedTime'" class="form-group col-md-9">
+          <label for="testStartDate" class="col-md-3">Date <span>*</span></label>
+          <input type="time" id="startTime" name="startTime" formControlName="start_time" class="form-control" required>
+          <input type="time" id="endTime" name="endTime" formControlName="end_time" class="form-control" required>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="duration" class="col-md-3">Duration (In Minutes) <span>*</span></label>
+          <input type="number" id="duration" name="duration" formControlName="duration" class="form-control" placeholder="Enter Exam Duration" required>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="instructions" class="col-md-3">Instructions to Candidate <span>*</span></label>
+          <textarea id="instructions" name="instructions" class="form-control" formControlName="instruction_to_condidate" rows="4" placeholder="Enter Instructions" required></textarea>
+        </div>
+
+        <div class="form-group col-md-9">
+          <label for="description" class="col-md-3">Description About the Test <span>*</span></label>
+          <textarea id="description" name="description" class="form-control" formControlName="description" rows="4" placeholder="Enter Description" required></textarea>
+        </div>
+
+        <div class="form-group col-md-9">
+          <button type="submit" class="btn btn-primary submit-btn" [disabled]="examform.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">{{buttonText}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

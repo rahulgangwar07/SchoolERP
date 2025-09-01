@@ -1,0 +1,57 @@
+
+/* Container styling */
+.container {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 75px;
+  width: 45%;
+  margin-left: 15%;
+}
+
+.header-div {
+  display: flex;
+  justify-content: space-between;
+} 
+ 
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+  .table th, .table td {
+    text-align: center;
+    padding: 10px;
+  }
+
+.edit-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+  .edit-form input, .edit-form select {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+.btns {
+  border: none;
+  margin-left: 5px;
+}
+
+  .btns .fa-edit,.fa-trash {
+    color: red; 
+  }
+
+
+@media (max-width:768px) { 
+    .container 
+          {
+            width: 76%;
+            margin-left: 0px;
+          }
+     
+  }

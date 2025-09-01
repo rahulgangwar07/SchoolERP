@@ -1,0 +1,125 @@
+<div class="container mt-1">
+  <h6 class="font-weight-bold">GATE PASS/APPOINTMENT FORM</h6>
+  <div class="row layout-header mb-4">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/visitors/view-visitor" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Appointments</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 visitor-div">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="visitorName">Visitor Name<span>*</span></label>
+          <input type="text" id="visitorName" class="form-control" placeholder="Enter Visitor Name" [(ngModel)]="visitorForm.visitor_name" name="visitorName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNo">Phone No.<span>*</span></label>
+          <input type="tel" id="phoneNo" class="form-control" placeholder="Enter Phone No." [(ngModel)]="visitorForm.visitor_contact" name="phoneNo" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNo">Email.<span>*</span></label>
+          <input type="email" id="email" class="form-control" placeholder="Enter Email " [(ngModel)]="visitorForm.visitor_email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="appointmentDate">Appointment Date</label>
+          <input type="date" id="appointmentDate" class="form-control" [(ngModel)]="visitorForm.appointment_date" name="appointmentDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="meetingWith">Meeting With</label>
+          <input type="text" id="meetingWith" class="form-control" placeholder="Enter Name of the person" [(ngModel)]="visitorForm.meeting_with" name="meetingWith" required>
+        </div>
+
+        <div class="form-group">
+          <label for="meetingPurpose">Meeting Purpose</label>
+          <input type="text" id="meetingPurpose" class="form-control" placeholder="Enter Meeting Purpose" [(ngModel)]="visitorForm.purpose_of_visit" name="meetingPurpose" required>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="inTime">In Time</label>
+              <input type="time" id="inTime" class="form-control" [(ngModel)]="visitorForm.check_in_time" name="inTime" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="outTime">Out Time</label>
+              <input type="time" id="outTime" class="form-control" [(ngModel)]="visitorForm.check_out_time" name="outTime" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="address">Address</label>
+          <textarea id="address" class="form-control" rows="3" placeholder="Enter Address" [(ngModel)]="visitorForm.addres" name="address"></textarea>
+        </div>
+
+        <div class="form-group mt-3 image-div">
+          <label for="liveImage">Live Image</label>
+          <input type="file" id="liveImage" class="form-control" (change)="onImageChange($event)" accept="image/*">
+          <img [src]="vImage" />
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary btn-lg" [ngStyle]="{'background-color':themeSetting?.button_color}">Save Appointment</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 stu_detail" style="display:none;">
+      <h5 class="font-weight-bold">Student Details</h5>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td rowspan="3"></td>
+            <td>Roll No</td>
+          </tr>
+          <tr>
+            <td style="background-color: #f4f4f4;">Contact No</td>
+          </tr>
+          <tr>
+            <td>Adm. No.:</td>
+          </tr>
+          <tr>
+            <td>Fee Group</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Class</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Father's Name</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Mother's Name</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Date of Birth</td>
+            <td>XYZ</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>XYZ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

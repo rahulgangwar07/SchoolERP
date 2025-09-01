@@ -1,0 +1,137 @@
+
+.container {
+  font-family: Arial, sans-serif;
+  background-color: white; 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+h6 {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Filters Section Styling */
+.filters-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+  .filters-section select, .filters-section input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .filters-section button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+    .filters-section button:hover {
+      background-color: #45a049;
+    }
+
+/* Status Section Styling */
+.status {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+  .status h3 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  .status p {
+    font-size: 16px;
+    color: #666;
+  }
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th, td {
+  padding: 12px;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+td {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Action Buttons Styling */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+  .action-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+    .action-buttons button:hover {
+      background-color: #45a049;
+    }
+
+.copy-btn {
+  background-color: #2196F3;
+}
+
+  .copy-btn:hover {
+    background-color: #0b7dda;
+  }
+
+.csv-btn {
+  background-color: #FF9800;
+}
+
+  .csv-btn:hover {
+    background-color: #f57c00;
+  }
+
+/* Print Styling */
+@media print {
+  body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+  }
+
+  .action-buttons {
+    display: none;
+  }
+}
+

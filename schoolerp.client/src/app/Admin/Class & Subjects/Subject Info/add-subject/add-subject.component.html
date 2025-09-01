@@ -1,0 +1,58 @@
+<div class="container mt-3">
+  <div class="main-wrapper">
+
+    <!-- Top Section with Mandatory Fields Info and Buttons -->
+    <div class="top-section layout-header">
+      <div class="mandatory-fields">
+        <p>Fields marked with (*) are mandatory</p>
+      </div>
+      <div class="button-section">
+        <a routerLink="/subject/view" routerLinkActive="active" class="action-btn">View Subject</a>
+      </div>
+    </div>
+
+    <app-success-message-popup *ngFor="let message of messages; let i = index"
+                               [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                               (closePopup)="closeMessagePopup(i)">
+    </app-success-message-popup>
+
+
+    <!-- Form to Add Subject -->
+    <div class="form-container">
+      <h3>Add Subject</h3>
+      <form #formdata="ngForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="subjectName">Subject Name<span>*</span></label>
+          <input type="text" id="subjectName" name="subjectName" [(ngModel)]="sForm.subject_name" required
+                 #subjectName="ngModel" [ngClass]="{'valid': subjectName.touched && subjectName.invalid}" placeholder="Enter subject name">
+        </div>
+
+        <div class="form-group">
+          <label for="subjectCode">Subject Code<span>*</span></label>
+          <input type="text" id="subjectCode" name="subjectCode" [(ngModel)]="sForm.subjectCode" required
+                 #subjectCode="ngModel" [ngClass]="{'valid': subjectCode.touched && subjectCode.invalid}" placeholder="Enter Subject Code">
+        </div>
+
+        <div class="form-group">
+          <label for="sequence">Sequence Number</label>
+          <input id="sequence" type="number" name="sequence" [(ngModel)]="sForm.priority" />
+        </div>
+
+        <div class="form-group">
+          <label for="subjectType">Subject Type</label>
+          <select id="subjectType" name="subjectType" [(ngModel)]="sForm.optional" #subjectType="ngModel">
+            <option [ngValue]="false">Primary</option>
+            <option [ngValue]="true">Optional</option>
+          </select>
+        </div>
+        <div class="form-group button-div">
+
+          <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color':themeSetting?.button_color}" [disabled]="formdata.invalid">Add Subject</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div> 

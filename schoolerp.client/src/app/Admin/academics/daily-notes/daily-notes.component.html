@@ -1,0 +1,85 @@
+
+<div class="container">
+  <h6><u>View Dailynotes</u></h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>List of all dailynotes</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/academics/copy-correction" routerLinkActive="active" class="action-btn">Copy Correction</a>
+      <a routerLink="/academics/video-tutorial" routerLinkActive="active" class="action-btn">Videos</a>
+      <a routerLink="/academics/add-work" routerLinkActive="active" class="action-btn">Add New</a>
+
+    </div>
+  </div>
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <select id="class-select">
+      <option value="select">Select Class</option>
+      <option value="I A">I A</option>
+      <option value="II B">II B</option>
+      <option value="III C">III C</option>
+    </select>
+
+    <select id="teacher-select">
+      <option value="select">Select Teacher</option>
+      <option value="Mr. Alok">Mr. Alok</option>
+      <option value="Ms. Sapna">Ms. Sapna</option>
+    </select>
+
+    <input type="text" id="search-daily-notes" placeholder="Search by subject or description">
+
+    <button id="btngo">GO</button>
+  </div>
+
+  <!-- Daily Notes Entries -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="daily-note-entry">
+        <div class="row">
+          <div class="col-md-3">
+            <p>25 Feb 2024 at 19:54 PM</p>
+            <h6>Daily Notes for</h6>
+          </div>
+          <div class="col-md-1">I A</div>
+          <div class="col-md-8">
+            <div class="description">
+              <label><strong>Description:</strong><br>Notes: KINDLY COMPLETE YOUR TEST WRITTEN WORK<br>Hindi: LEARN<br>English: FUN AND LEARN</label>
+            </div>
+            <div class="second-ps">
+              <label>Notes By: Administrator</label>
+              <button><i class="fas fa-flag"></i> Report</button>
+              <button><i class="fas fa-edit"></i> Edit</button>
+              <button><i class="fas fa-trash-alt"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Another Daily Note Entry -->
+      <div class="daily-note-entry">
+        <div class="row">
+          <div class="col-md-3">
+            <p>24 Feb 2024 at 18:50 PM</p>
+            <h6>Daily Notes for</h6>
+          </div>
+          <div class="col-md-1">II B</div>
+          <div class="col-md-8">
+            <div class="description">
+              <label><strong>Description:</strong><br>Maths: Complete Exercises</label>
+            </div>
+            <div class="second-ps">
+              <label>Notes By: Mr. Alok</label>
+              <button><i class="fas fa-flag"></i> Report</button>
+              <button><i class="fas fa-edit"></i> Edit</button>
+              <button><i class="fas fa-trash-alt"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more daily notes here -->
+    </div>
+  </div>
+
+</div>

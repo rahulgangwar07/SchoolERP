@@ -1,0 +1,95 @@
+<!-- Main Table -->
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">
+      Student Test Result
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/online-examination/exams-result" routerLinkActive="active">Exam Schedule</a>
+      <a routerLink="/students/online-examination/exams-result" routerLinkActive="active">Marksheet</a>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Sr. No.</td>
+          <td>Exam Title</td>
+          <td>Subject</td>
+          <td>Attempt</td>
+          <td>Subjective</td>
+          <td>Marks</td>
+          <td>Submitted</td>
+          <td>Answer</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ result.exam_title }}</td>
+          <td>{{ result.subject_name }}</td>
+          <td>{{ result.attempted }}</td>
+          <td>{{ result.correct }}</td>
+          <td>{{ result.correct + result.wrong }}</td>
+          <td>
+            <div class="submitted">
+              <p>{{ result.attempt_date | date: 'dd MMM yyyy' }}</p>
+              <p>{{ result.attempt_date | date: 'hh:mm a' }}</p>
+            </div>
+          </td>
+          <td class="answer">
+            <ng-container *ngIf="result.ans_sheet_status; else notAllowed">
+              <button (click)="viewAnswer(result.exam_id, result.student_exam_id)">View Answer</button>
+            </ng-container>
+            <ng-template #notAllowed>
+              Not Allowed
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Popup Modal -->
+<div *ngIf="popupVisible" class="popup-container" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closePopup()">×</button>
+    <table>
+      <thead>
+        <tr>
+          <th>SR.NO.</th>
+          <th>QUESTION</th>
+          <th>CORRECT ANSWER</th>
+          <th>YOUR ANSWER</th>
+          <th>ANSWER</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ques of questions; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <div>
+              <p>{{ ques.question_text }}</p>
+              <p>{{ ques.question_type }}</p>
+            </div>
+          </td>
+          <td>
+            <div>
+              <p>{{ ques.correct_option }}</p>
+              <p>Marks: {{ ques.marks }}</p>
+            </div>
+          </td>
+          <td>
+            <div>
+              <p *ngIf="ques.answer_text !== ''">{{ ques.answer_text }}</p>
+              <p *ngIf="ques.answer_text == ''">{{ ques.selected_option }}</p>
+            </div>
+          </td>
+          <td>NA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

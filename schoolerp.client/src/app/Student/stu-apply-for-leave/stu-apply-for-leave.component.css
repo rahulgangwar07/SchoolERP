@@ -1,0 +1,28 @@
+
+
+.apply-leave-form {
+  border: 1px solid #ccc; 
+}
+
+  .apply-leave-form p {
+    font-weight: bold;
+  }
+
+  .apply-leave-form .form-group {
+    display: inline-flex;
+  }
+  .apply-leave-form input,textarea {
+    width:50%;
+  }
+
+.leave-application-table{
+    font-size:13px;
+}
+.applicationsec{
+    background-color:#a79738;
+}
+.leave-application-table tr {
+    margin:4px;
+}
+
+

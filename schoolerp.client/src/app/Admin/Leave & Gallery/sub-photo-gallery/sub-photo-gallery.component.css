@@ -1,0 +1,22 @@
+
+.gallery-image {
+  max-height: 200px;
+  max-width: 250px;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+/* Gallery Item Button */
+.gallery-item button {
+  font-weight: 500;
+  border-radius: 0px;
+  background-color: #c9d8e6;
+  margin-top: 10px;
+  width: 80%;
+  font-size: 14px;
+}
+.fa-trash{
+    color:red;
+}
+

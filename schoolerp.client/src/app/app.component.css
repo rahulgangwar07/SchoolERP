@@ -1,0 +1,168 @@
+
+:host {
+  max-width: 1280px;
+  padding: 2rem;
+  text-align: center;
+}
+
+th, td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+table {
+  margin: 0 auto;
+}
+
+/* Basic Container Styles */
+.container {
+  margin-top: 33px;
+  width: 100%;
+}
+
+/* Style for Main Layout */
+.main-layout-container {
+  border-radius: 4px;
+}
+
+/* Style for Router Outlet */
+.router-outlet-container {
+  flex: 1 1; /* This allows the router-outlet to take 65% of space */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1px;
+  height: -webkit-fill-available;
+}
+
+.mini-sidebar {
+  margin-left: 160px;
+  width: 95%;
+}
+
+/* Footer Styles */
+app-footer {
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+}
+
+  app-footer p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+  }
+
+/* Container holding all settings/help blocks */
+.setting-container-1 {
+  position: fixed;
+  bottom: 5px;
+  left: 285px;
+  z-index: 9999;
+  width: 200px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.setting-container-2 {
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+  z-index: 9999;
+  width: 200px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Each settings/help section */
+.setting-section {
+  background-color: #ffffff;
+  overflow: hidden;
+  min-width: 156px;
+  max-width: 240px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Header with icon and title */
+.setting-header {
+  background-color: #066fec;
+  color: #fff;
+  padding: 7px 5px;
+  font-weight: 600;
+  font-size: 15px;
+  align-items: center;
+}
+
+/* List items inside each setting block */
+.setting-list {
+  list-style: none;
+  padding: 10px 15px;
+  margin: 0;
+  background-color: #f1f5ff;
+}
+
+  .setting-list li {
+    padding: 8px 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+    .setting-list li:last-child {
+      border-bottom: none;
+    }
+
+    .setting-list li:hover {
+      background-color: #e6efff;
+    }
+
+    /* Icon style */
+    .setting-list li i {
+      width: 18px;
+      text-align: center;
+      color: #066fec;
+    }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .setting-container {
+    flex-direction: column;
+    bottom: 10px;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .setting-section {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack the sections vertically on smaller screens */
+  }
+
+  .main-layout-container, .router-outlet-container {
+    flex: 1 1 100%; /* Both sections will take 100% of available width */
+    margin: 0 0 20px 0; /* Margin below each section */
+  }
+
+  .main-layout-container {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px; /* Reduce padding on very small screens */
+  }
+}

@@ -1,0 +1,136 @@
+/* Center the popup on screen */
+
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 60%;
+  width: 100%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 999; /* Ensure the overlay is above the content */
+}
+
+.container {
+  background-color: #fff;
+  width: 60%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+  overflow-x:auto;
+}
+
+
+
+/* Header Style */
+.header-div {
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 5px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 20px;
+  color: #000;
+  padding-top: 12px;
+}
+
+  .close-icon:hover {
+    color: #f00;
+  }
+
+/* Styling for form labels and inputs */
+.row {
+  margin-bottom: 15px;
+}
+
+.col-md-4 {
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+  input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+  }
+
+/* Button Styling */
+.save-btn {
+  margin-left: 40%;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 110px;
+  position: center;
+}
+
+
+
+  button:hover {
+    background-color: #218838;
+  }
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+  table thead {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table td {
+    font-size: 14px;
+  }
+
+    table td i {
+      cursor: pointer;
+      margin-right: 10px;
+      color: #007bff;
+    }
+
+      table td i:hover {
+        color: #0056b3;
+      }

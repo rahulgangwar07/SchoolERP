@@ -1,0 +1,45 @@
+
+ 
+
+.maindiv {
+  margin-top: 40px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+  table td, table th {
+    padding: 10px;
+    text-align: left;
+  }
+
+  table td {
+    border-top: 1px solid #ddd;
+  }
+
+  table tr:first-child td {
+    background-color: #44323e;
+    color: white;  
+  }
+
+.table-striped tr:first-child td strong {
+  background-color: #44323e;
+  color: white;
+}
+
+
+.btnschedule {
+  background-color: #50bbea;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+  .btnschedule:hover {
+    background-color: #379ed9;
+  }
+
+

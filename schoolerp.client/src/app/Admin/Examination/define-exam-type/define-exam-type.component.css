@@ -1,0 +1,16 @@
+
+.modal-body {
+  display: block;
+}
+
+tbody tr td {
+  font-size: 13px;
+}
+
+thead td {
+  background-color: #ddd;
+}
+
+.actionbtn {
+  border: none;
+}

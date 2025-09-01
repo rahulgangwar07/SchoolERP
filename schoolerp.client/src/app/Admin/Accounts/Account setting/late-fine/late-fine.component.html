@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Monthly Late Fine Setting</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/account-settings/fee-headings" routerLinkActive="active" class="action-btn">Fee Heading</a>
+    </div>
+  </div>
+
+  <div class="table-container mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th> <!-- Added header for serial number -->
+          <th>Class</th> <!-- Added header for class -->
+          <th>Applied</th> <!-- Added header for applied status -->
+          <th>Amount</th> <!-- Added header for amount -->
+          <th>Date After</th> <!-- Added header for date after -->
+        </tr>
+        <tr>
+          <td colspan="5" style="float:right;">
+            <select>
+              <option>Select Branch</option>
+              <option>B Block</option>
+              <!-- Add other branches here -->
+            </select>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <select class="form-control">
+              <option>I</option>
+              <option>II</option>
+              <option>III</option>
+              <!-- Add other classes here -->
+            </select>
+          </td>
+          <td>
+            Current Month
+          </td>
+          <td><input type="number" class="form-control" placeholder="Enter Amount"></td>
+          <td><input type="date" class="form-control"></td>
+        </tr>
+        <!-- Repeat rows for other fine settings -->
+        <tr>
+          <td>
+            <button>Update Late Fine</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

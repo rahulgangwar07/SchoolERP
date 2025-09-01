@@ -1,0 +1,34 @@
+<div class="container overlay">
+  <div class="header-div row">
+    <div class="col-md-9"><h6>View Subjects</h6></div>
+    <div class="col-md-2" *ngIf="permissions.canCreate"> <p [routerLink]="['/class/add', class_id]">Add Subjects</p></div>
+    <div class="col-md-1"><i class="fa fa-close close-icon" (click)="closePopup()"></i></div>
+  </div>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Subject Code</th>
+          <th>Subject Name</th>
+          <th>Optional</th>
+          <th>Priority</th>
+          <th *ngIf="permissions.canDelete">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjectList; let i=index;">
+          <td>{{i+1}}</td>
+          <td>{{subject.subjectCode}}</td>
+          <td>
+            {{subject.subject_name}}
+          </td>
+          <td>{{subject.optional ? "true" : "false"}}</td>
+          <td>{{subject.priority}}</td>
+          <td *ngIf="permissions.canDelete"><p (click)="deleteSubject(subject.subject_id)">Delete</p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

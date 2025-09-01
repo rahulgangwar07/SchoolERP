@@ -1,0 +1,117 @@
+<div class="container mt-3"> 
+  <div *ngIf="userRole == 'Faculty'" class="row"> 
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Faculty Attendance</h6>
+            <h3>12/20</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>12</label></div>
+          <div><label>Absent</label><label>5</label></div>
+          <div><label>Leave</label><label>3</label></div>
+        </div>
+      </div>
+    </div>
+     
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Total Students</h6>
+            <h3>150/200</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>150</label></div>
+          <div><label>Absent</label><label>30</label></div>
+          <div><label>Leave</label><label>20</label></div>
+        </div>
+      </div>
+    </div>
+     
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-02.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Courses Assigned</h6>
+            <h3>5</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Online Courses</label><label>3</label></div>
+          <div><label>Offline Courses</label><label>2</label></div>
+        </div>
+      </div>
+    </div>
+     
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-03.svg" alt="Notifications Icon">
+          </div>
+          <div class="db-info">
+            <h6>Notifications</h6>
+            <h3>5</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Unread</label><label>2</label></div>
+          <div><label>Read</label><label>3</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div class="row mt-4">
+    <div class="col-8 attendanceChart">
+      <div id="chart-container" style="height: 400px;">
+        <canvas id="FacultyAttendanceChart"></canvas>
+      </div>
+    </div>
+
+
+    <div class="col-4 upcomingBirthday">
+      <div id="upcomingEventsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <h6>Upcoming Events</h6>
+        <div class="carousel-inner">
+          <!-- Loop through the events (You can make this dynamic if required) -->
+          <div class="carousel-item active">
+            <div class="event-card">
+              <h5>Math Department Seminar</h5>
+              <div class="form-control">
+                <label>Date:</label>
+                <label>1st March 2025</label>
+              </div>
+              <div class="form-control">
+                <label>Location:</label>
+                <label>Main Auditorium</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

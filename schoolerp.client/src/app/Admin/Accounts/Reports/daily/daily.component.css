@@ -1,0 +1,83 @@
+
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width:15%;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  select:last-child {
+    margin-right: 0; /* No margin after the last select */
+  }
+
+.row button {
+    margin-top:10px;
+  width: 20%;
+}
+
+input[type="date"] {
+  width: 20%;
+  margin-top:10px;
+  float:left;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  font-size: 14px;
+}
+
+  input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+/* Styling for the tables */
+.daily-fee-table, .collection-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  .daily-fee-table th, .daily-fee-table td,
+  .collection-summary-table th, .collection-summary-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .daily-fee-table th, .collection-summary-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+/* Style for "No record found" */
+.no-records p {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+}
+
+/* Styling for Collection Summary Section */
+.collection-summary {
+  margin-top: 20px;
+}
+
+  .collection-summary h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+.grand-total h4 {
+  font-size: 22px;
+  font-weight: bold;
+  color: green;
+  margin-top: 20px;
+}
+
+

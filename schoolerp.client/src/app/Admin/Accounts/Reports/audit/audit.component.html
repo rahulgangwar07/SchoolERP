@@ -1,0 +1,138 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Daily Fees Report</div>
+    <div class="col-md-6">
+      <a routerLink="/reports/audit" routerLinkActive="active">Details Report</a>
+      <a routerLink="/reports/daily" routerLinkActive="active">Student Report</a>
+      <a routerLink="/reports/monthly" routerLinkActive="active">Print Record</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Filter Section -->
+    <div>
+      <select id="class">
+        <option>All Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+      </select>
+
+      <select id="section">
+        <option>Section</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+
+      <select id="mode">
+        <option>All Mode</option>
+        <option>Cash</option>
+        <option>Cheque</option>
+        <option>Card</option>
+      </select>
+
+      <select id="academicyear">
+        <option>Academic Years</option>
+        <option>2024-2025</option>
+        <option>2023-2024</option>
+      </select>
+
+      <div>
+        <input type="date" id="startdate" />
+        <input type="date" id="enddate" />
+        <button>GO</button>
+      </div>
+    </div>
+
+    <!-- Audit Report Table -->
+    <table class="audit-report-table">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Apr</th>
+          <th>May</th>
+          <th>June</th>
+          <th>July</th>
+          <th>Aug</th>
+          <th>Sep</th>
+          <th>Oct</th>
+          <th>Nov</th>
+          <th>Dec</th>
+          <th>Jan</th>
+          <th>Feb</th>
+          <th>Mar</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, dynamically fill it using Angular or other templating systems -->
+        <tr>
+          <td>1</td>
+          <td>₹500</td>
+          <td>₹600</td>
+          <td>₹700</td>
+          <td>₹800</td>
+          <td>₹900</td>
+          <td>₹1000</td>
+          <td>₹1100</td>
+          <td>₹1200</td>
+          <td>₹1300</td>
+          <td>₹1400</td>
+          <td>₹1500</td>
+          <td>₹1600</td>
+          <td>₹12000</td>
+        </tr>
+        <!-- Additional rows can be added dynamically -->
+      </tbody>
+    </table>
+
+    <!-- If no records are found -->
+    <div class="no-records">
+      <p>No record found !!</p>
+    </div>
+
+    <!-- Audit Summary Section -->
+    <div class="audit-summary">
+      <h3>Audit Summary</h3>
+      <table class="audit-summary-table">
+        <thead>
+          <tr>
+            <th>Students</th>
+            <th>Amount</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row for students -->
+          <tr>
+            <td>0</td>
+            <td>-</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Students who availed concession -->
+      <h3>Students Who Availed Concession</h3>
+      <table class="audit-summary-table">
+        <thead>
+          <tr>
+            <th>Students</th>
+            <th>Amount</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row for concession -->
+          <tr>
+            <td>0</td>
+            <td>-</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

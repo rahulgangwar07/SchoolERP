@@ -1,0 +1,77 @@
+
+<app-success-message-popup *ngFor="let message of messages; let i=index" [messages]="message" [showSuccessPopup]="showSuccessPopup" (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+<div class="calendar-container"> 
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
+
+
+<!-- Popup for displaying events below the selected date -->
+<div *ngIf="popupVisible" class="popupDiv">
+  <div class="row popupDiv-header">
+    <p>{{ this.newEvent.start_date }}</p>
+    <i class="fa fa-close" (click)="closePopup()"></i>
+  </div>
+
+  <!-- Display events for the selected date -->
+  <div *ngIf="!popupVisibleInsertion">
+    <table>
+      <thead>
+        <tr>
+          <th>SR. No</th>
+          <th>TITLE</th>
+          <th>TYPE</th>
+          <th>DATE</th>
+          <th *ngIf="permission.canEdit || permission.canDelete">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of tempPopupCalendar; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ event.title || 'No event title' }}</td>
+          <td>{{ event.event_type || 'Event' }}</td>
+          <td>{{ event.start_date }}</td>
+          <td *ngIf="permission.canEdit || permission.canDelete">
+            <button (click)="editEvent(event)" *ngIf="permission.canEdit">Edit</button>
+            <button (click)="deleteEvent(event)" *ngIf="permission.canDelete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <i class="fa fa-plus" (click)="addNewEvent()" *ngIf="permission.canCreate"></i>
+  </div>
+
+  <!-- Event creation form -->
+  <div *ngIf="popupVisibleInsertion">
+    <form>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" name="title" [(ngModel)]="newEvent.title" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" name="description" [(ngModel)]="newEvent.description" />
+      </div>
+      <div class="form-group">
+        <label>StartDate</label>
+        <input type="date" name="startDate" [(ngModel)]="newEvent.start_date" readonly />
+        <label>EndDate</label>
+        <input type="date" name="endDate" [(ngModel)]="newEvent.end_date" />
+      </div>
+      <div class="form-group">
+        <label>User Type</label>
+        <select [(ngModel)]="newEvent.user_type" name="user_type">
+          <option value="All">All</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Students">Students</option>
+        </select>
+        <label>Event Type</label>
+        <select [(ngModel)]="newEvent.event_type" name="event_type">
+          <option value="Holiday">Holiday</option>
+          <option value="Event">Event</option>
+        </select>
+      </div>
+    </form>
+    <button (click)="saveEvent()" [ngStyle]="{'background-color':themeSetting?.button_color}">Save Event</button>
+    <button (click)="showEvent()"><i class="fa fa-list"></i></button>
+  </div>
+</div>

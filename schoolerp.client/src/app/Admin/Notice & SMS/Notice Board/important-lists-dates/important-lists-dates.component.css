@@ -1,0 +1,22 @@
+
+table {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.table-title{
+    font-weight:600;
+}
+
+table th {
+  color: #202e9b;
+  font-weight: 700;
+}
+
+.download-btn {
+  text-decoration: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #f8f7f7;
+  background-color: #fe5112db;
+}
+

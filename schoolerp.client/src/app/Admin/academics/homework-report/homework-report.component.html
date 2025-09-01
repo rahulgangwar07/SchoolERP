@@ -1,0 +1,128 @@
+<div class="container">
+  <!-- Header Section -->
+  <h6 class="assignment-header">Assignment Submission</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p class="section-title">Assignment Submission</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/academics/homework" routerLinkActive="active" class="action-btn">Homework</a>
+    </div>
+  </div>
+
+  <!-- Video Tutorial Section -->
+  <div class="video-list row">
+    <div *ngIf="videoTutorial" class="col-md-5 video-item-container">
+      <div class="video-item">
+        <div class="video-head">
+          <h6 class="video-title"><marquee>HomeWork for | {{ showSubjects(videoTutorial.subjects) }}</marquee></h6>
+        </div>
+        <div class="video-section">
+          <ng-container *ngIf="videoTutorial.videoLink; else thumbnail">
+            <iframe width="100%" height="315" [src]="videoTutorial.videoLink" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+          </ng-container>
+
+          <!-- Thumbnail for invalid URL -->
+          <ng-template #thumbnail>
+            <img [src]="'https://via.placeholder.com/560x315?text=Video+Not+Available'" alt="Thumbnail" class="video-thumbnail">
+          </ng-template>
+
+          <div class="video-description">
+            <p *ngFor="let des of videoTutorial.subjects"><strong>{{subjectName(des.subject_id)}}: &nbsp; </strong> {{ des.description || 'No description available' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Table Section -->
+    <div class="col-md-7">
+      <div class="table-container">
+        <ng-container *ngIf="userRole !='Student'">
+          <table *ngIf="studentList.length > 0">
+            <thead>
+              <tr>
+                <th>Roll No</th>
+                <th>Student</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let stu of studentList; index as i">
+                <tr>
+                  <td>{{ stu.stu_id }}</td>
+                  <td>
+                    <label>{{ stu.stu_name }}</label><br>
+                    <label class="father_name">{{ stu.father_name }}</label>
+                  </td>
+                  <!-- Action Column: Showing different content based on assignment_id -->
+                  <td *ngIf="stu.assignment_id === 0" class="no-assignment">
+                        
+                  </td>
+                  <td *ngIf="stu.assignment_id !== 0">
+                    <button class="btn btn-primary" (click)="toggleAssignment(i,stu.reply_id)">
+                      View
+                      <i *ngIf="stu.stu_permission == 'edit'" class="fa fa-edit"></i>
+                      <i *ngIf="stu.stu_permission == 'check'" class="fa fa-check"></i>
+                      <i *ngIf="stu.stu_permission == 'lock'" class="fa fa-lock"></i>
+                    </button>
+                  </td>
+                  <td>
+                  </td>
+                  <!-- Assignment Details Row: Show if the toggleIndex matches the current student's index -->
+                </tr>
+
+                <tr *ngIf="toggleIndex === i">
+                  <td colspan="3">
+                    <div class="assignment-details">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <p>Student's Note</p>
+                          <p>{{stuReply.stu_reply}}</p>
+                        </div>
+                        <div class="col-md-4">
+                          <p>Teacher's Note</p>
+                          <textarea [(ngModel)]="stuReply.faculty_reply"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                          <label>Student's Permission</label>
+                          <select id="permission" name="permission" [(ngModel)]="stuReply.stu_permission">
+                            <option value="edit">Edit</option>
+                            <option value="check">Done</option>
+                            <option value="lock">Lock</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4">
+                          <button id="btnSubmit" (click)="submitData('Faculty')">SUBMIT</button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </ng-container>
+            </tbody>
+          </table>
+
+
+        </ng-container>
+
+        <ng-container *ngIf="userRole == 'Student'">
+          <div class="assignment-submit-section">
+            <label>Submit Your Assignment/ Homework</label>
+            <textarea id="stu_reply" name="stu_reply" [(ngModel)]="stuReply.stu_reply" class="stu-reply"></textarea>
+            <button id="btnSubmit" (click)="submitData('Student')" class="submit-btn" [disabled]="stuReply.stu_permission == 'lock'">Submit</button>
+            <div>
+              <label>2025-03-17</label>&nbsp;<label><strong>Status:</strong> {{stuReply.stu_permission}}</label>
+            </div>
+          </div>
+        </ng-container>
+
+        <div *ngIf="studentList?.length === 0" class="no-students">
+          <p>No students found.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

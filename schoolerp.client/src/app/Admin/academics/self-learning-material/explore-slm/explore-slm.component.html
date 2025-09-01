@@ -1,0 +1,53 @@
+<div class="container">
+  <!--academics/slm-->
+  <h4>S.L.M for Class 12</h4>
+  <div class="row layout-header mb-3">
+
+    <div class="col-md-7">
+      <p class="font-weight-bold">S.L.M for Class 12 </p>
+    </div>
+    <div class="col-md-3 text-right">
+      <select id="slclass" name="class" [(ngModel)]="classid" (change)="bindSubjectsClasswise()">
+        <option *ngFor="let cls of classList; let i=index" value="{{cls.class_id}}">{{cls.class_name}}</option>
+      </select>
+      <a href="/academics/slm" class="btn btn-outline-primary btn-sm">Go Back</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <div class="subject-list-container">
+    <div class="subject-list">
+      <!-- Subject 1 -->
+      <div class="row">
+        <!--*ngFor="let item of arr"-->
+        <div class="col-md-4 col-sm-6 main-item" *ngFor="let subj of subjectList;let i = index;">
+          <div class="subject-item">
+            <div class="subject-info d-flex">
+              <div><img src="/assets/img/dashboardIcons/cash-book.png" class="add-image" /></div>
+              <div>
+                <h6 [routerLink]="['/academics/explore-slm-content',classid,clsname,subj.subject_name,subj.subject_id]" routerLinkActive="active" class="subject-name"><strong>{{subj.subject_name}}</strong></h6>
+                <p><span class="text-success">Order:</span>{{subj.priority}} | <span class="text-success">ID:</span>{{subj.subject_id}} | {{subj.optional ? 'Optional' : 'Primary' }}</p>
+              </div>
+            </div>
+            <div class="subject-actions">
+              <!--<div class="row">
+                <div class="col-md-6"><a routerLinkActive="active" class="text-primary">Syllabus</a></div>
+                <div class="col-md-6"><a routerLinkActive="active" class="text-success">Study Material</a></div>
+                <div class="col-md-6"><a routerLinkActive="active" class="text-success">Lesson<span class="item-count">2</span></a></div>
+                <div class="col-md-6"><a routerLinkActive="active" class="text-primary">Ques. Bank</a></div>
+              </div>-->
+              <button class="action-btn-toggle" [routerLink]="['/academics/explore-slm-content',classid,clsname,subj.subject_name,subj.subject_id]" routerLinkActive="active">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> 
+
+

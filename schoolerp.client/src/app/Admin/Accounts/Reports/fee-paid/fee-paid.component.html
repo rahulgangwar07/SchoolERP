@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Fee Paid Report</div>
+    <div class="col-md-6">
+      <a routerLink="/reports/fee-paid" routerLinkActive="active">Export Excel</a>
+      <a routerLink="/accounts/fee-list" routerLinkActive="active">Fee List</a>
+      <a routerLink="/reports/summary" routerLinkActive="active">Summary Report</a>
+      <a routerLink="/reports/print" routerLinkActive="active">Print</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Filter Section -->
+    <div>
+      <select id="class">
+        <option>All Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+      </select>
+
+      <select id="section">
+        <option>All Section</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+
+      <select id="mode">
+        <option>All Mode</option>
+        <option>Cash</option>
+        <option>Cheque</option>
+        <option>Card</option>
+      </select>
+
+      <select id="session">
+        <option>All Session</option>
+        <option>2024-2025</option>
+        <option>2023-2024</option>
+      </select>
+
+      <select id="feegroup">
+        <option>All Fee Group</option>
+        <option>Transport</option>
+        <option>Hostel</option>
+        <option>Concession</option>
+      </select>
+
+      <div>
+        <input type="date" id="startdate" />
+        <input type="date" id="enddate" />
+        <button>Search</button>
+      </div>
+    </div>
+
+    <!-- Fee Paid Report Table -->
+    <table class="fee-paid-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Roll</th>
+          <th>Class</th>
+          <th>Phone</th>
+          <th>Fee Paid Months</th>
+          <th>Concession</th>
+          <th>Transport</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, dynamically fill it using Angular or other templating systems -->
+        <tr>
+          <td>1</td>
+          <td>Jatin Sharma</td>
+          <td>60001</td>
+          <td>I</td>
+          <td>9876543210</td>
+          <td>Nov 2024</td>
+          <td>₹500</td>
+          <td>₹200</td>
+          <td>₹700</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Rohit Verma</td>
+          <td>60002</td>
+          <td>II</td>
+          <td>9876543211</td>
+          <td>Nov 2024</td>
+          <td>₹400</td>
+          <td>₹150</td>
+          <td>₹550</td>
+        </tr>
+        <!-- Additional rows can be added dynamically -->
+      </tbody>
+    </table>
+
+    <!-- If no records are found -->
+    <div class="no-records">
+      <p>No record found !!</p>
+    </div>
+
+    <!-- Grand Total -->
+    <div class="grand-total">
+      <h4>Grand Total: ₹1250</h4>
+    </div>
+  </div>
+</div>

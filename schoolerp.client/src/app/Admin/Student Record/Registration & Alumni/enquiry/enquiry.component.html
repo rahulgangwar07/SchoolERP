@@ -1,0 +1,237 @@
+<div class="container">
+  <h6>Enquiry Form</h6>
+  <div class="layout-header">
+    <div class="col-md-8">
+      <p>Fields marked with (<span>*</span>) are Mandatory.</p>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/registration" routerLinkActive="active">Registration</a>
+    </div>
+  </div>
+   
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <form id="enquiryForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Select Class -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="class">Select Class <span>*</span></label>
+
+      </div>
+      <div class="col-md-7 row">
+        <div class="col-md-4">
+          <input type="hidden" formControlName="uid" />
+          <select class="year" name="academicyear" formControlName="academic_year">
+            <option>Academic year</option>
+            <option *ngFor="let session of sessionList" [value]="session.session_name" [selected]="session.status === true">{{session.session_name}}</option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <select id="class" name="class" formControlName="class_id">
+            <option value="0" disabled>Select Class</option>
+            <option *ngFor="let cls of classList" value="{{cls.class_id}}">{{cls.class_name}}</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Reference -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="reference">Reference <span>*</span></label>
+      </div>
+
+      <div class="col-md-7 row">
+        <div class="col-md-4">
+          <select class="year" name="counsellor" formControlName="counsellor">
+            <option>Select Counsellor</option>
+            <option>Mr. Shakti</option>
+            <option>Suraj Kumar</option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <select id="reference" name="reference" formControlName="reference">
+            <option>select Reference</option>
+            <option>Call</option>
+            <option>Advertisement</option>
+            <option>Parents</option>
+            <option>Student</option>
+            <option>Staff</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Student Name -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="studentName">Student Name <span>*</span></label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="studentName" formControlName="first_name" name="studentName" placeholder="Enter student name" required>
+      </div>
+    </div>
+
+    <!-- Father's Name -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="fatherName">Father's Name</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="fatherName" formControlName="father_name" name="fatherName" placeholder="Enter father's name">
+      </div>
+    </div>
+
+    <!-- Mother's Name -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="motherName">Mother's Name</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="motherName" formControlName="mother_name" name="motherName" placeholder="Enter mother's name">
+      </div>
+    </div>
+
+    <!-- Gender -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="gender">Gender <span>*</span></label>
+      </div>
+      <div class="col-md-7">
+        <!--<input type="text" id="gender" formControlName="gender" name="gender" placeholder="Enter gender">-->
+        <select id="gender" formControlName="gender" name="gender">
+          <option value="" disabled>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- Branch -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="branch">Branch</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="branch" formControlName="branch" name="branch" placeholder="Enter branch">
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="description">Any Description</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="description" formControlName="description" name="description" placeholder="Enter any description">
+      </div>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="dob">DOB</label>
+      </div>
+      <div class="col-md-7">
+        <input type="date" id="dob" name="dob" formControlName="dob">
+      </div>
+    </div>
+
+    <!-- State -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="state">State</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="state" name="state" formControlName="state" placeholder="Enter state">
+      </div>
+    </div>
+
+    <!-- Pin Code -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="pinCode">Pin Code</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="pinCode" name="pinCode" formControlName="pin_code" placeholder="Enter pin code">
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="city">City</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="city" name="city" formControlName="city" placeholder="Enter city">
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="address">Address</label>
+      </div>
+      <div class="col-md-7">
+        <input type="text" id="address" name="address" formControlName="address" placeholder="Enter address">
+      </div>
+    </div>
+
+    <!-- Contact No -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="contactNo">Contact No</label>
+      </div>
+      <div class="col-md-7">
+        <input type="tel" id="contactNo" name="contactNo" formControlName="contact_no" placeholder="Enter contact number">
+      </div>
+    </div>
+
+    <!-- Alternative Contact -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="altContact">Alternative Contact</label>
+      </div>
+      <div class="col-md-7">
+        <input type="tel" id="altContact" name="altContact" formControlName="alt_contact" placeholder="Enter alternative contact number">
+      </div>
+    </div>
+
+    <!-- E-mail -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="email">E-mail</label>
+      </div>
+      <div class="col-md-7">
+        <input type="email" id="email" name="email" formControlName="email" placeholder="Enter your email">
+      </div>
+    </div>
+
+    <!-- Date -->
+    <div class="row formfields">
+      <div class="col-md-4 col4">
+        <label for="date">Enquiry Date</label>
+      </div>
+      <div class="col-md-7">
+        <input type="date" id="date" name="date" formControlName="enquiry_date">
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row formfields">
+      <div class="col-md-12">
+        <button type="submit" class="submit-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">Submit Enquiry</button>
+      </div>
+    </div>
+
+  </form>
+</div>

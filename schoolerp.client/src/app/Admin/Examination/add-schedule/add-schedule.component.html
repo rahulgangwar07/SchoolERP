@@ -1,0 +1,80 @@
+<div class="container">
+  <h5>Add Exam Schedule</h5>
+
+  <form>
+    <!-- Academic and Exam Details -->
+    <label for="session">Academic Session *</label>
+    <input type="text" id="session" name="session" value="2024-2025" readonly>
+
+    <label for="exam-type">Exam Type</label>
+    <select id="exam-type" name="exam-type">
+      <option value="">Select Exam Type</option>
+      <option value="FA">FA</option>
+      <option value="SA">SA</option>
+      <option value="Final">Final</option>
+    </select>
+
+    <label for="branch">Select Branch *</label>
+    <select id="branch" name="branch">
+      <option value="">Select Branch</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Mechanical">Mechanical</option>
+      <option value="Electrical">Electrical</option>
+    </select>
+
+    <label for="title">Title *</label>
+    <input type="text" id="title" name="title" placeholder="Eg. FA1 2019-20">
+
+    <label for="result-date">Result Date</label>
+    <input type="date" id="result-date" name="result-date">
+
+    <label for="result-lock">Result Lock</label>
+    <input type="checkbox" id="result-lock" name="result-lock"> Lock Result
+
+    <label for="class">Class *</label>
+    <select id="class" name="class">
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+      <option value="V">V</option>
+    </select>
+
+    <label for="section">All Section</label>
+    <select id="section" name="section">
+      <option value="All">All</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+
+    <label for="exam-seq">Exam Seq. No.</label>
+    <input type="text" id="exam-seq" name="exam-seq">
+
+    <label for="per-room-student">Per Room Student</label>
+    <input type="number" id="per-room-student" name="per-room-student">
+
+    <label for="admit-card-comment">Admit card Comment</label>
+    <textarea id="admit-card-comment" name="admit-card-comment" placeholder="Comment will show in Admit Card while Download"></textarea>
+
+    <label for="marksheet-comment">Marksheet Comment</label>
+    <textarea id="marksheet-comment" name="marksheet-comment" placeholder="Comment will show in Marksheet while Download"></textarea>
+
+    <!-- Subject Fields -->
+    <div class="subject-fields" id="subject-fields">
+      <div class="subject-row">
+        <input type="date" name="subject-date[]" required>
+        <input type="text" name="subject[]" placeholder="Subject" required>
+        <input type="time" name="start-time[]" required>
+        <input type="time" name="end-time[]" required>
+        <button type="button" class="remove-btn" onclick="removeSubject(this)">Remove</button>
+      </div>
+    </div>
+
+    <!-- Add More Button -->
+    <button type="button" class="add-more-btn" onclick="addSubject()">Add More Subjects</button>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn">Submit Schedule</button>
+  </form>
+</div>

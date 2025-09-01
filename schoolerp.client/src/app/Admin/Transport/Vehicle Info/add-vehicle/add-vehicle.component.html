@@ -1,0 +1,189 @@
+<div class="container mt-1">
+  <h6>Vehicle Information</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/transport/vehicle-list" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Vehicle</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <form>
+        <!--<div class="row formfields">
+    <div class="col-md-4 col4">
+      <label for="studentName">Student Name <span>*</span></label>
+    </div>
+    <div class="col-md-7">
+      <input type="text" id="studentName" formControlName="first_name" name="studentName" placeholder="Enter student name" required>
+    </div>
+  </div>-->
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="vehicleNo">Vehicle No *</label>
+          </div>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="vehicleNo" name="vehicleNo" [(ngModel)]="VehicleData.vehicle_number" placeholder="Enter Vehicle Number" required />
+          </div>
+        </div>
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="insuranceNo">Insurance No. / Expiry</label>
+          </div>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="insuranceNo" name="insuranceNo" [(ngModel)]="VehicleData.insurance_no" placeholder="Enter Insurance Number / Expiry Date" />
+            <input type="date" class="form-control" name="insurance_expiry" [(ngModel)]="VehicleData.insurance_expiry" />
+          </div>
+        </div>
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="pollutionNo">Pollution No. / Expiry</label>
+          </div>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="pollutionNo" name="pollutionNo" [(ngModel)]="VehicleData.pollution_no" placeholder="Enter Pollution Certificate No. / Expiry" />
+            <input type="date" class="form-control" name="pollution_expiry" [(ngModel)]="VehicleData.pollution_expiry" />
+          </div>
+        </div>
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="vehicleOwner">Vehicle Owner</label>
+          </div>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="vehicleOwner" name="vehicleOwner" [(ngModel)]="VehicleData.vehicle_owner" placeholder="Enter Vehicle Owner's Name" />
+          </div>
+        </div>
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="vehicleModel">Vehicle Model<br /><span routerLink="/transport/vehicle-model" class="add-info">Add New</span></label>
+
+          </div>
+          <div class="col-sm-7">
+            <select id="vehicleModel" name="vehicleModel" [(ngModel)]="VehicleData.vehicle_model" class="form-control">
+              <option value="">Select Vehicle Model</option>
+              <option *ngFor="let vm of vehicleTypeData" [value]="vm.vehicle_type_id">{{vm.model_name}}</option>
+            </select>
+            <!--<input type="text" class="form-control" id="vehicleModel" name="vehicleModel" [(ngModel)]="VehicleData.vehicleModel" placeholder="Enter Vehicle Model" />-->
+          </div>
+        </div>
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="driverName">Driver Name<br /><span routerLink="/transport/add-driver" class="add-info">Add New</span></label>
+          </div>
+          <div class="col-sm-7">
+            <select class="form-control" id="driverName" name="driverName" [(ngModel)]="VehicleData.assigned_driverID">
+              <option value="0">Select Driver Name</option>
+              <option *ngFor="let d of driverData" [value]="d.driver_id">{{d.name}}</option>
+            </select>
+            <!--<input type="text" class="form-control" id="driverName" name="driverName" placeholder="Enter Driver's Name" />-->
+          </div>
+        </div>
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label><strong>Route Mapping</strong></label>
+            </div>
+            <div class="col-sm-8">
+
+              <div class="row formfields">
+                <div *ngFor="let r of routesWithStops" class="d-inline-block">
+                  <div class="stops-para justify-content-center">
+                    <p>
+                      {{ r.route.route_name }}
+                    </p>
+                  </div>
+                  <div class="stops-cls">
+                    <div *ngFor="let stop of r.stops">
+                      <input type="checkbox"
+                             [value]="stop.stop_id"
+                             [checked]="isStopChecked(r.route.route_id,stop.stop_id)"
+                             (change)="onStopToggle($event,r.route.route_id,stop.stop_id)" class="m-r-5" />
+                      {{ stop.stop_name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+    
+
+        <div class="row formfields">
+          <div class="col-md-4 col4">
+            <label for="gpsSetting" class="add-info" (click)="toggleGPSSetting()">GPS Setting</label>
+          </div>
+
+        </div>
+
+        <ng-container *ngIf="gpsSettings">
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label for="imei">IMEI</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="imei" name="imei" [(ngModel)]="VehicleData.imeI_no" placeholder="IMEI No." />
+              <!--<input type="text" class="form-control" id="driverName" name="driverName" placeholder="Enter Driver's Name" />-->
+            </div>
+          </div>
+
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label for="gpsUsername">GPS Username</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="gpsUsername" name="gpsUsername" [(ngModel)]="VehicleData.gpS_Username" placeholder="GPS Username" />
+            </div>
+          </div>
+
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label for="apiurl">API URL</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="apiurl" name="apiurl" [(ngModel)]="VehicleData.apI_URL" />
+            </div>
+          </div>
+
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label for="status">Status</label>
+            </div>
+            <div class="col-sm-7">
+              <select class="form-control" id="status" name="status" [(ngModel)]="VehicleData.status">
+                <option value="0">De-Active</option>
+                <option value="1">Active</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="row formfields">
+            <div class="col-md-4 col4">
+              <label for="dataKey">Data Key</label>
+            </div>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="dataKey" name="dataKey" [(ngModel)]="VehicleData.data_Key" placeholder="API Data Key" />
+            </div>
+          </div>
+
+
+        </ng-container>
+
+        <div class="text-center mt-3">
+          <button type="submit" (click)="addVehicle()" class="btn btn-primary">Add Vehicle</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

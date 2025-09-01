@@ -1,0 +1,30 @@
+
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Video Tutorial</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/lesson-plan" routerLinkActive="active">Lesson Plan</a>
+      <a routerLink="/students/acedemics/stu-lms" routerLinkActive="active">View Subject</a>
+      <a routerLink="/students/acedemics/hme-work" routerLinkActive="active">Print Report</a>
+    </div>
+  </div>
+
+  <div class="tutorials-grid">
+    <div class="row">
+      <!-- Loop through tutorials to display 4 per row -->
+      <div class="col-md-3" *ngFor="let tutorial of tutorials">
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img [src]="tutorial.thumbnail" alt="{{tutorial.name}}">
+          </div>
+          <div class="tutorial-content">
+            <h4>{{ tutorial.name }}</h4>
+            <p class="tutorial-description">{{ tutorial.description }}</p>
+            <button (click)="viewTutorial(tutorial)" class="btn btn-primary">View Tutorial</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

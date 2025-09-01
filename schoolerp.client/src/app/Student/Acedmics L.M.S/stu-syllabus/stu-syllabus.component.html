@@ -1,0 +1,29 @@
+<div class="container">
+  <h5 class="text-center syllabus-title">Syllabus for Class {{ subject_name }}</h5>
+
+  <!-- Mandatory Fields Section -->
+  <div class="top-section layout-header mb-4">
+    <div class="mandatory-fields">
+      <p class="text-muted">Exam Syllabus</p>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center syllabus-section">
+    <!-- Loop through grouped syllabus by chapter -->
+    <div *ngFor="let syl of groupedSyllabus | keyvalue; index as i" class="col-md-8 chapter-card">
+      <div class="chapter-header">
+        <h6 class="chapter-title">
+          {{ syl.value.chapter_name }}
+        </h6>
+      </div>
+      <div class="chapter-content">
+        <ul class="syllabus-list">
+          <!-- Loop through topics for the specific chapter -->
+          <ng-container *ngFor="let chp of syl.value.topics; let i = index">
+            <li>{{ i + 1 }}. {{ chp.topic_name }}</li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

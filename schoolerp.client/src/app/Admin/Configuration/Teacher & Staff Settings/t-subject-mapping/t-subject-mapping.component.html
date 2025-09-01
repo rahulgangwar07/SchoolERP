@@ -1,0 +1,55 @@
+
+<div class="container mt-2">
+  <h3>Subject & Class Mapping</h3>
+  <div class="row layout-header">
+    <div class="col-md-6">Subject & Class Mapping</div>
+    <div class="col-md-6 text-right"></div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+   
+  <div class="row">
+    <div class="col-md-7 subject-list">
+      <div class="subject-filter">
+        <label>Teacher:</label>&nbsp;
+        <select id="teacher" name="teacher" [(ngModel)]="selectedTeacher" (change)="facultyChange()">
+          <option value="0" disabled selected>Select Teacher</option>
+          <option *ngFor="let t of teacherList" [value]="t.faculty_id">{{ t.first_name }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label><strong>Subject List</strong></label>
+        <div class="subject-checkboxes">
+          <div class="row">
+            <div class="col-md-5" *ngFor="let s of subjectList; let i = index">
+              <input id="subject_chk_{{i}}" type="checkbox" name="subject_chk_{{i}}" [checked]="s.checked" value="{{s.subject_id}}" (change)="onSubjectChange(s.subject_id,$event)" />
+              {{s.subject_name}}
+            </div>
+          </div>
+          <div class="submitdiv" *ngIf="subjectSubmitted"><p>Subject has been successfully submitted</p></div>
+          <button id="submitsubject" class="btn btn-primary" (click)="subjectSubmit()" [ngStyle]="{'background-color':themeSetting?.button_color}">Submit</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Class Mapping Section -->
+    <div class="col-md-5 class-list">
+      <div class="class-insert">
+        <label><strong>Class Mapping</strong></label>
+        <div class="row">
+          <div class="col-md-5" *ngFor="let cl of classList; let i = index">
+            <input id="class_chk_{{i}}" type="checkbox" name="class_chk_{{i}}" value="{{cl.class_id}}" [checked]="cl.checked" (change)="onClassChange(cl.class_id,$event)" />
+            {{cl.class_name}}
+          </div>
+        </div>
+        <div class="submitdiv" *ngIf="classSubmitted"><p>Class has been successfully submitted.</p></div>
+        <button id="submitclass" class="btn btn-primary" (click)="classSubmit()" [ngStyle]="{'background-color':themeSetting?.button_color}">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Daily Fees Report </div>
+    <div class="col-md-6">
+      <a routerLink="/reports/daily" routerLinkActive="active">Export Excel</a>
+      <a routerLink="/reports/monthly" routerLinkActive="active">Monthly Report</a>
+      <a routerLink="/accounts/create-demand-slip" routerLinkActive="active">Yearly Report</a>
+    </div>
+  </div>
+  <div class="row">
+
+    <select id="branch">
+      <option>B Block</option>
+    </select>
+
+
+    <select id="class">
+      <option>All Class</option>
+      <option>I</option>
+      <option>II</option>
+      <option>III</option>
+    </select>
+
+    <!-- Section Select Dropdown -->
+    <select id="mode">
+      <option>Mode</option>
+      <option>Cash</option>
+      <option>Cheque</option>
+      <option>Card</option>
+    </select>
+
+    <!-- Branch Select Dropdown -->
+    <select id="paymenttype">
+      <option>Payment Type</option>
+      <option>Consession</option>
+      <option>Transport</option>
+      <option>Hostal</option>
+    </select>
+    <select id="allrecord">
+      <option>Computer Campus</option>
+      <option>Rakesh Shrama</option>
+      <option>deepak</option>
+    </select>
+    <div>
+      <input type="date" id="fromdate" />
+      <input type="date" id="todate" />
+      <button>Search</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="daily-fee-table">
+      <thead>
+        <tr>
+          <th>Receipt</th>
+          <th>Reg. No</th>
+          <th>Student Name</th>
+          <th>Father's Name</th>
+          <th>Class</th>
+          <th>Month</th>
+          <th>Received</th>
+          <th>Mode</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, you can dynamically fill this using Angular or other templating systems -->
+        <tr>
+          <td>001</td>
+          <td>60001</td>
+          <td>Jatin Sharma</td>
+          <td>Mr. Ashutosh Sharma</td>
+          <td>I</td>
+          <td>Nov 2024</td>
+          <td>₹1500</td>
+          <td>Cash</td>
+          <td>₹1500</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>60002</td>
+          <td>Rohit Verma</td>
+          <td>Mr. Ramesh Verma</td>
+          <td>II</td>
+          <td>Nov 2024</td>
+          <td>₹1200</td>
+          <td>Cheque</td>
+          <td>₹1200</td>
+        </tr>
+        <!-- Additional rows can be added dynamically -->
+      </tbody>
+    </table>
+
+    <!-- If no records are found -->
+    <div class="no-records">
+      <p>No record found !!</p>
+    </div>
+
+    <!-- Collection Summary Section -->
+    <div class="collection-summary">
+      <h3>Collection by User</h3>
+      <table class="collection-summary-table">
+        <thead>
+          <tr>
+            <th>Collected By</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row -->
+          <tr>
+            <td>Rakesh Singh</td>
+            <td>₹2700</td>
+          </tr>
+          <!-- More rows can be added dynamically -->
+        </tbody>
+      </table>
+
+      <!-- Grand Total -->
+      <div class="grand-total">
+        <h4>Grand Total: ₹2700</h4>
+      </div>
+    </div>
+  </div>

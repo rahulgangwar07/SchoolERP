@@ -1,0 +1,70 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6 class="font-weight-bold">Image Gallery</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">List of all Images</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a *ngIf="userRole != 'Student'" class="btn btn-outline-primary btn-sm" (click)="togglePopup()">Gallery Category</a>
+    </div>
+  </div>
+
+  <div class="gallery-container">
+    <div *ngIf="userRole != 'Student'" class="gallery-header">
+      <input type="file" name="image" id="upload-img" (change)="onFileChange($event)" alt="Image Preview" />
+      <select id="category" name="category" [(ngModel)]="imageG.category_id">
+        <option value="0">-Category-</option>
+        <option *ngFor="let cat of categories" [value]="cat.category_id">{{ cat.category_name }}</option>
+      </select>
+      <button (click)="uploadImage()" class="btn upload-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">Start Upload</button>
+    </div>
+
+    <div class="row gallery-div mt-2">
+      <ng-container *ngFor="let cat of images">
+        <ng-container *ngIf="cat.imageGalleries.length>0"> 
+          <div class="gallery-item col-md-3 mb-3"> 
+            <img class="gallery-image"  [src]="cat.imageGalleries[0].img_url" />
+            <p>{{cat.category_name}}</p>
+            <button class="btn" [routerLink]="['/leave-gallery/photo-gallery',cat.category_id]" routerLinkActive="active"><i class="fa fa-eye"></i> View All</button>
+          </div>
+        </ng-container>
+      </ng-container>
+      
+    </div>
+  </div>
+
+</div>
+
+<!-- Gallery Category Management Popup (Static) -->
+<div class="container container-popup" *ngIf="showPopup">
+  <div class="row">
+    <h4 class="col-md-11">Gallery Category</h4>
+    <p class="col-md-1" (click)="togglePopup()"><i class="fa fa-close"></i></p>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>SL.No.</th>
+        <th>Title</th>
+        <th class="action-btn">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categories; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ cat.category_name }}</td>
+        <td class="action-btn">
+          <button (click)="editCategory(cat)"><i class="fa fa-edit"></i> Edit</button>
+          <button (click)="deleteCategory(cat.category_id)"><i class="fa fa-trash"></i> Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <label>Gallery Name</label>
+    <input type="text" name="category_name" [(ngModel)]="category.category_name" placeholder="Gallery Name" />
+  </div>
+  <div><button class="" (click)="uploadCategory()">UPLOAD CATEGORY</button></div>
+</div>

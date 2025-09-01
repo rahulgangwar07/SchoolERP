@@ -1,0 +1,51 @@
+
+.compose-sms-container {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fafafa;
+  border-radius: 8px; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
+}
+ 
+.sms-form .form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+ 
+.sms-form .form-control,
+.sms-form textarea { 
+  padding: 8px 12px; 
+}
+
+ 
+.sms-settings {
+  background-color: #fff;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+}
+
+  .sms-settings label {
+    font-weight: 500;
+  }
+
+  .sms-settings .btn {
+    min-width: 140px;
+  }
+
+.stu-div {
+  padding: 5px 15px;
+  border: 3px solid #b8df96;
+}
+
+.mobilenos {
+  margin-left: 15px;
+} 
+
+.form-textarea, .mobilenos {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.badge {
+  padding: 6px 12px;
+  font-size: 13px;
+}

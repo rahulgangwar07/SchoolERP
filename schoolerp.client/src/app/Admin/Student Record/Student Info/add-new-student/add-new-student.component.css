@@ -1,0 +1,107 @@
+/* General Styles */
+/*body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}*/
+
+.detail-selection{
+    display:flex;
+    justify-content:center;
+}
+
+  .detail-selection label {
+    color: #267c11;
+  }
+  .detail-selection label:hover {
+    color: black;
+  }
+
+.is-invalid{
+    border : 1px solid red !important;
+}
+
+/* Form Container */
+.form-container {
+  width: 100%;
+  margin: 35px auto;
+  background-color: #fff; 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Step Content */
+.form-step {
+  display: none;
+}
+
+  .form-step h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+  .form-group label {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 90%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    /*border-radius: 5px;*/
+  }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #007bff;
+    }
+
+button {
+  padding: 10px 20px;
+  /*background-color: #007bff;*/
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+ 
+
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+
+/* Button Styles */
+.next-btn {
+  margin-top: 20px;
+  /*background-color: #007bff;*/
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  .next-btn:hover {
+    background-color: #0056b3;
+  }
+
+span {
+  color: red;
+  font-weight: 800;
+}
+
+

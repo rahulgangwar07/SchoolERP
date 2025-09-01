@@ -1,0 +1,114 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>ISSUED BOOK</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/library/view-book" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Books</a>-->
+    </div>
+  </div>
+
+  <!-- Book Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form (ngSubmit)="searchIssuedBooks()">
+        <!-- User Type -->
+        <div class="form-group row">
+          <label for="userType" class="col-sm-2 col-form-label">User Type</label>
+          <div class="col-sm-4">
+            <div>
+              <input type="radio" id="student" name="userType" [(ngModel)]="userType" value="student" (change)="changeUserType()" /> Student
+              <input type="radio" id="staff" name="userType" [(ngModel)]="userType" value="staff" (change)="changeUserType()" /> Staff
+            </div>
+          </div>
+
+          <label *ngIf="userType == 'student'" for="class" class="col-sm-2 col-form-label">Class</label>
+          <div *ngIf="userType == 'student'" class="col-sm-4">
+            <select class="form-control" id="class" name="class" [(ngModel)]="class">
+              <option value="">-Select Class-</option>
+              <option *ngFor="let cls of classList" [value]="cls.class_id">{{cls.dis_name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group row">
+          <label for="fullName" class="col-sm-2 col-form-label">Full Name *</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="fullName" name="fullName" [(ngModel)]="fullName" placeholder="Enter Full Name" required>
+          </div>
+
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Issued Book Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Book Name</th>
+            <th *ngIf="userType == 'student'">class</th>
+            <th *ngIf="userType == 'staff'">Department</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Submit Date</th>
+            <th>Days Exceed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let issue of issueList; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{issue.fullName}}</td>
+            <td>{{issue.title}}</td>
+            <td *ngIf="userType == 'student'">{{className(issue.classId)}}</td>
+            <td *ngIf="userType == 'staff'">{{issue.department}}</td>
+            <td>{{issue.issueDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{issue.returnDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{issue.submitted_date ? (issue.submitted_date | date:'dd-MM-yyyy') : '-'}}</td>
+            <td>{{issue.daysExceed == 0 ? '' : issue.daysExceed }}</td>
+            <td>
+              <div class="action-container">
+                <button class="actionbtn" (click)="toggleActions(i)">Action</button>
+                <ul class="action-list" *ngIf="toggleIndex === i">
+                  <li (click)="showSubmitPopup(issue)"> <i class="fas fa-check-circle"></i> Submit Book </li>
+                  <li (click)="deleteIssue(issue)"> <i class="fas fa-trash-alt"></i> Delete </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Popup for Submit Book -->
+<div class="popup-overlay" *ngIf="isPopupVisible && currentIssue" id="popup-overlay">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h6>Submit Book</h6>
+    </div>
+    <div class="popup-body">
+      <label for="submitDate">Submit Date: </label>
+      <input id="submitDate"
+             name="submitDate"
+             type="date"
+             [(ngModel)]="currentIssue.submitted_date" />
+    </div>
+    <div class="popup-footer">
+      <button id="submitbook" name="submitbook" class="submit-btn" (click)="submitBook()">Submit Book</button>
+      <button id="closePopup" class="close-btn" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>

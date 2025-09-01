@@ -1,0 +1,110 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Attendance Raw Data</h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Attendance Raw Data</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/academics/-correction" routerLinkActive="active" class="action-btn">Export Excel</a>
+      <a routerLink="/teacher-staff/take-attendance" routerLinkActive="active" class="action-btn">Teacher Atten.</a>
+      <a routerLink="/attendance/view" routerLinkActive="active" class="action-btn">Student Atten.</a>
+      <a (click)="print()" class="action-btn">Print</a>
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="filters">
+    <div class="filter-group">
+      <label for="deviceSelect">Select Device:</label>
+      <select id="deviceSelect">
+        <option value="all">- Select Device -</option>
+        <option value="device1">Device 1</option>
+        <option value="device2">Device 2</option>
+        <option value="device3">Device 3</option>
+        <option value="device4">Device 4</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="monthSelect">Select Month:</label>
+      <select id="monthSelect">
+        <option value="nov">November</option>
+        <option value="dec">December</option>
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+      </select>
+    </div>
+
+
+
+    <div class="filter-group">
+      <label for="yearSelect">Select Year:</label>
+      <select id="yearSelect">
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="searchInput">Search CARD NO. / Name:</label>
+      <input type="text" id="searchInput" placeholder="Enter Card No. or Name">
+    </div>
+  </div>
+
+  <!-- Attendance Table Section -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Card No.</th>
+          <th>Name</th>
+          <th>Device</th>
+          <th>Attendance Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>12345</td>
+          <td>John Doe</td>
+          <td>Device 1</td>
+          <td>01/11/2024</td>
+          <td>Present</td>
+          <td><button class="action-btn">View</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>12346</td>
+          <td>Jane Smith</td>
+          <td>Device 2</td>
+          <td>01/11/2024</td>
+          <td>Absent</td>
+          <td><button class="action-btn">View</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>12347</td>
+          <td>Michael Johnson</td>
+          <td>Device 3</td>
+          <td>02/11/2024</td>
+          <td>Present</td>
+          <td><button class="action-btn">View</button></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>12348</td>
+          <td>Sarah Lee</td>
+          <td>Device 4</td>
+          <td>02/11/2024</td>
+          <td>Absent</td>
+          <td><button class="action-btn">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

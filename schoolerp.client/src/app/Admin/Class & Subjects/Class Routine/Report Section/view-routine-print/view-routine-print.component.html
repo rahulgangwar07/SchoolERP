@@ -1,0 +1,22 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <td></td>   
+        <td *ngFor="let p of routineData.periods; let i=index">Period {{p}}</td> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of routineData.days"> 
+        <td>{{day.name}}</td>  
+        <td *ngFor="let period of day.schedule; let i = index">
+          <div *ngIf="period.subject">
+            <strong>{{period.subject}}</strong>  
+            <span>{{period.time.start_time}} - {{period.time.end_time}}</span>
+            <strong>{{period.faculty_name}}</strong>  
+          </div> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+
+
+.table-container {
+  margin-top: 20px;
+}
+
+tr td, tr th {
+  font-size: 13px;
+}
+.badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.6em;
+}

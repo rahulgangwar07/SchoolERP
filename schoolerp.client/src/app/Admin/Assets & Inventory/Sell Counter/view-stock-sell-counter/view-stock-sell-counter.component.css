@@ -1,0 +1,45 @@
+
+.container {
+  position: relative;
+}
+ 
+button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  /* Add More Button styling (link style) */
+  button.btn-link {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+
+  /* Close Button styling (red background) */
+  button.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+    /* Hover effect for Close button */
+    button.btn-danger:hover {
+      background-color: #c82333;
+    }
+
+tr td {
+  font-family: revert-layer;
+}
+     
+#paybtn{
+    border:0px;
+    color:white;
+    background-color:lightblue;
+}
+

@@ -1,0 +1,81 @@
+
+.container {
+  position: absolute;
+  top: 62px;
+  left: 196px;
+  width: 80%; 
+  background-color:white;
+}
+.main-wrapper {
+  margin: 60px;
+  margin-top: 3px;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+  .page-header li {
+    margin-right: 20px;
+    font-size: 23px;
+    font-weight: 800;
+  }
+
+  .page-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.teacher-card {
+  width: calc(50% - 10px); /* Each card takes up 50% of the container width */
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+  .teacher-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .teacher-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+  }
+
+  .teacher-card p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .teacher-card .branch {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  @media (max-width:768px){
+      .container{
+          left:0px;
+      }
+  }
+

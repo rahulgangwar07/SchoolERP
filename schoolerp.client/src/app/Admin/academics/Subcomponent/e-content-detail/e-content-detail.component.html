@@ -1,0 +1,25 @@
+<div class="container">
+  <h6>eLibrary for {{className}}</h6>
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="top-section layout-header">
+        <div class="mandatory-fields">
+          <p>Fields marked with (*) are mandatory</p>
+        </div>
+        <div class="button-section">
+          <!--<a class="action-btn">Class</a>-->
+          <select id="slclass" name="class" [(ngModel)]="classId" (change)="bindSubjectsClasswise($event)">
+            <option value="0">Class</option>
+            <option *ngFor="let cls of classList; let i=index" value="{{cls.class_id}}">{{cls.class_name}}</option>
+          </select>
+          <a routerLink="/academics/e-content" routerLinkActive="active" class="action-btn">Back</a>
+        </div>
+      </div>
+
+      <!-- New message to be displayed on the page -->
+      <div class="message-section">
+        <p class="e-content-message">e-Contents will be available soon! <br> We are on research</p>
+      </div>
+    </div>
+  </div>
+</div>

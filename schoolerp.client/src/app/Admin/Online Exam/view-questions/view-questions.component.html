@@ -1,0 +1,70 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h4>Questions List</h4>
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <p>Question List : <label class="exam_title">{{ exam_title }}</label></p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/online-exam/view-test-result" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Result</a>
+      <a routerLink="/online-exam/add-test" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Test</a>
+      <a [routerLink]="['/online-exam/add-test',examId]" routerlinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Edit Test</a>
+      <a  class="btn btn-outline-primary btn-sm mx-2" (click)="addQuestion()">Add Question</a>
+      <!--<a routerLink="/online-exam/add-test" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Question</a>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <input type="search" id="srQuestion" name="question" class="form-control" placeholder="Search Question" />
+    </div>
+    <div class="col-md-6 buttons-all">
+      <button class="btn">Go</button>
+      <button class="btn ques_gen">Question Generator</button>
+    </div>  
+  </div>
+  <div class="mt-5 tableDiv">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td colspan="7"><p>Campus Cover ERP Software , Online Examination : Online</p></td>
+          <td colspan="2"><button class="btn">Print Questions</button></td>
+        </tr>
+        <tr>
+          <td colspan="9"><p>Subject : Exam Starts On : {{exam_start | date}} for Class I</p></td>
+        </tr>
+        <tr>
+          <td>SR. NO.</td>
+          <td>QUESTION</td>
+          <td>MARKS</td>
+          <td>TYPE</td>
+          <td>OPTION 1</td>
+          <td>OPTION 2</td>
+          <td>OPTION 3</td>
+          <td>OPTION 4</td>
+          <td>OPTION 5</td>
+        </tr>
+        <tr *ngFor="let question of questionList;index as i">
+          <td>{{i+1}}</td>
+          <td class="question-td">
+            <p> {{question.question_text}} </p>
+            <button (click)="editQuestion(question.question_id)">Edit</button>
+            <button (click)="deleteQuestion(question.question_id)">Delete</button>
+          </td>
+          <td>{{question.marks}}</td>
+          <td class="objective"><p>{{question.question_type}}</p>
+          <!--<span class="objectiveType">Single</span>-->
+          </td>
+          <td [ngClass]="{'optTrue': question.correct_option == 1}">{{question.option_1}}</td>
+          <td [ngClass]="{'optTrue': question.correct_option == 2}">{{question.option_2}}</td>
+          <td [ngClass]="{'optTrue': question.correct_option == 3}">{{question.option_3}}</td>
+          <td [ngClass]="{'optTrue': question.correct_option == 4}">{{question.option_4}}</td>
+          <td [ngClass]="{'optTrue': question.correct_option == 5}">{{question.option_5}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   
+</div> 
+<app-add-questions *ngIf="addQuestionPopup" [question_Id]="questionId" [exam_Id]="examId" (closePopupval)="closePopup($event)"></app-add-questions>

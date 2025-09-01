@@ -1,0 +1,148 @@
+
+<div class="sidebar" id="sidebar" [class.mini-sidebar]="isSidebarFull">
+  <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+      <ul>
+        <li class="menu-title studentimg"> <img *ngIf="profile.stuImage" src="{{this.profile.stuImage}}" alt="Profile Picture" /> <img *ngIf="!profile.stuImage" src="/assets/img/img-01.jpg" alt="Profile Picture" /> </li> 
+        <li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-calendar-day"></i> <span> Profile </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <!--<li><a routerLink="/students/class-routine" routerLinkActive="active">View Routine</a></li>-->
+            <li style="margin: 5px 0; cursor: pointer;"><a routerLink="/student/profile">My Profile</a></li>
+            <li style="margin: 5px 0; cursor: pointer;"><a routerLink="/login">Logout</a></li>
+          </ul>
+        </li>
+
+        <!-- Dashboard Menu Item -->
+        <li class="submenu">
+          <a routerLink="/student-dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i> <span> Dashboard </span> </a>
+        </li>
+
+        <!-- Live Classes Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-chalkboard-teacher"></i> <span> Live Classes </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/live-classes" routerLinkActive="active">View Live Classes</a></li>
+            <li><a routerLink="/students/lesson-plan" routerLinkActive="active">Lesson Plan</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Class Routine Menu -->
+        <li class="submenu">
+          <a routerLink="/students/class-routine" routerLinkActive="active"><i class="fas fa-calendar-day"></i> <span> Class Routine </span></a>
+          <!--<ul>
+            <li><a routerLink="/students/class-routine" routerLinkActive="active">View Routine</a></li>
+          </ul>-->
+        </li>
+
+        <!-- Subject Teachers Menu -->
+        <li class="submenu">
+          <a routerLink="/students/subject-teachers" routerLinkActive="active"><i class="fas fa-users"></i> <span> Subject Teachers </span> </a>
+          <!--<ul>
+            <li><a routerlink="/students/subject-teachers" routerlinkactive="active">view subject teachers</a></li>
+          </ul>-->
+        </li>
+
+        <!-- Profile Report Menu -->
+        <li class="submenu">
+          <a routerLink="/students/profile-report" routerLinkActive="active"><i class="fas fa-id-card"></i> <span> Profile Report </span> </a> 
+        </li>
+
+        <!-- Apply for Leave Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-calendar-times"></i> <span> Apply for Leave </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/apply-for-leave" routerLinkActive="active">Apply for Leave</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Video Tutorial Menu -->
+        <li class="submenu">
+          <a routerLink="/students/video-tutorial" routerLinkActive="active"><i class="fas fa-video"></i> <span> Video Tutorials </span></a> 
+        </li>
+
+        <!-- Academic Resources Menu -->
+        <li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-book"></i> <span> Academic Resources </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/acedemics/stu-lms" routerLinkActive="active">Self Learning Materials</a></li>
+            <li><a routerLink="/students/acedemics/homework" routerLinkActive="active">Home Work</a></li>
+            <li><a routerLink="/students/acedemics/dailynotes" routerLinkActive="active">Daily Notes</a></li>
+            <li><a routerLink="/students/acedemics/classwork" routerLinkActive="active">Class Work</a></li>
+            <li><a routerLink="/students/acedemics/study-material" routerLinkActive="active">Study Material</a></li>
+            <li><a routerLink="/students/acedemics/curriculum" routerLinkActive="active">Curriculum</a></li>
+            <li><a routerLink="/students/acedemics/e-content" routerLinkActive="active">E-Content</a></li>
+          </ul>
+        </li>
+
+        <!-- Monthly Calendar Menu -->
+        <li class="submenu">
+          <a routerLink="/students/monthly-calendar" routerLinkActive="active"><i class="fas fa-calendar-alt"></i> <span> Monthly Calendar </span></a>
+        
+        </li>
+
+        <!-- Exam Schedule Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-clipboard-list"></i> <span> Exam Schedule </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/exam-schedule" routerLinkActive="active">View Exam Schedule</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Marksheet Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-file-alt"></i> <span> View Marksheet </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/view-marksheet" routerLinkActive="active">View Marksheet</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Online Exams Menu -->
+        <li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-pencil-alt"></i> <span> Online Exams </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/online-examination/my-exams" routerLinkActive="active">My Exams</a></li>
+            <li><a routerLink="/students/online-examination/exams-result" routerLinkActive="active">Exam Results</a></li>
+          </ul>
+        </li>
+
+        <!-- Fee Management Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-credit-card"></i> <span> Fee Management </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/fee-history" routerLinkActive="active">Fee History</a></li>
+            <li><a routerLink="/students/pay-online" routerLinkActive="active">Pay Online</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Library Menu -->
+        <!--<li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-book-reader"></i> <span> Library </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/library-book" routerLinkActive="active">Library Books</a></li>
+            <li><a routerLink="/students/return-book" routerLinkActive="active">Return Books</a></li>
+          </ul>
+        </li>-->
+
+        <!-- Notice Board Menu -->
+        <li class="submenu">
+          <a class="submenu-toggle" (click)="toggleSubMenu($event)"><i class="fas fa-bullhorn"></i> <span> Notice Board </span> <span class="menu-arrow"></span></a>
+          <ul>
+            <li><a routerLink="/students/notice-board/view-notices" routerLinkActive="active">View Notices</a></li>
+            <li><a routerLink="/students/notice-board/imp-list-dates" routerLinkActive="active">Important Dates</a></li>
+          </ul>
+        </li>
+
+        <!-- Photo Gallery Menu -->
+        <li class="submenu">
+          <a routerLink="/students/photo-gallery" routerLinkActive="active"><i class="fas fa-image"></i> <span> Photo Gallery </span></a>
+          <!--<ul>
+            <li><a routerLink="/students/photo-gallery" routerLinkActive="active">View Gallery</a></li>
+          </ul>-->
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+

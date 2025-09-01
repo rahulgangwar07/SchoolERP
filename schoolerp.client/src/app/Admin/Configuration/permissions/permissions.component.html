@@ -1,0 +1,73 @@
+<div class="container mt-3">
+  <div class="page-header">
+    <div class="row">
+      <div class="col">
+        <h5 class="page-title">Permissions</h5>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="/configuration" routerLinkActive="inActive">Permission</a></li>
+          <li class="breadcrumb-item active" routerLink="/configuration/role-configuration" routerLinkActive="active">Role Configuration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="overflow">
+    <!-- Table for designations and modules -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Designation</th>
+          <!-- Dynamically generate module names as table headers -->
+          <th *ngFor="let module of designations[0]?.modules">{{ module.module_name }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through each designation -->
+        <tr *ngFor="let designation of designations; index as i">
+          <!-- Designation Title -->
+          <td>
+            <div class="more">
+              <div class="d-flex">
+                <label>{{ designation.des_title }}</label>
+                <button (click)="togglePermissions(i)">More</button>
+              </div>
+              <!-- Permissions Section below the title -->
+              <div *ngIf="togglePermission === i" class="permissionddl">
+                <div class="submitdiv" *ngIf="permissionSubmitted">
+                  <p>Permission has been assigned.</p>
+                </div>
+                <p>View:</p>
+                <p>Create:</p>
+                <p>Edit:</p>
+                <p>Delete:</p>
+                <label class="per_submit" (click)="assignPermission(designation.modules,designation.des_id)">Submit</label>
+              </div>
+            </div>
+          </td>
+
+          <!-- Loop through modules for each designation -->
+          <td *ngFor="let module of designation.modules">
+            <div>
+              <!-- Checkbox for module assignment -->
+              <input type="checkbox" [(ngModel)]="module.assigned" [checked]="module.assigned" (change)="onModuleAssignedChange(designation, module,$event)" />
+            </div>
+
+            <!-- Show Permissions when module is assigned and "More" button is clicked -->
+            <div *ngIf="togglePermission === i" class="permissionbtns">
+              <div *ngIf="showPermissions(module)" class="permissionddl">
+                <p><input id="radio_{{i}}" type="checkbox" name="radio" [(ngModel)]="module.permissions.view" [checked]="module.permissions.view" (change)="onPermissionChange(module)" /></p>
+                <p><input id="radio_{{i}}" type="checkbox" name="radio" [(ngModel)]="module.permissions.create" [checked]="module.permissions.create" (change)="onPermissionChange(module)" /></p>
+                <p><input id="radio_{{i}}" type="checkbox" name="radio" [(ngModel)]="module.permissions.edit" [checked]="module.permissions.edit" (change)="onPermissionChange(module)" /></p>
+                <p><input id="radio_{{i}}" type="checkbox" name="radio" [(ngModel)]="module.permissions.delete" [checked]="module.permissions.delete" (change)="onPermissionChange(module)" /></p>
+
+              </div>
+            </div>
+            <!-- Show permission submission message -->
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

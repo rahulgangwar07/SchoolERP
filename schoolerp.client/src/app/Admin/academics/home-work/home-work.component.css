@@ -1,0 +1,198 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+.container {
+  margin-top: 10px;
+  padding: 20px;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f7f7f7;  
+  color: #333;
+  position:relative;
+}
+
+.homework-date{
+    font-size:12px;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50; /* Darker shade for heading */
+  margin-bottom: 15px;
+}
+
+.layout-header p {
+  font-size: 14px;
+  color: #7f8c8d;  
+}
+
+.layout-header .action-btn {
+  padding: 10px 20px;
+  background-color: #3498db; /* Blue for action buttons */
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+  .layout-header .action-btn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
+  gap: 15px;
+}
+
+  .filter-section select,
+  .filter-section input {
+    padding: 10px;
+    border: 1px solid #bdc3c7; /* Light border */
+    border-radius: 5px;
+    width: 200px;
+  }
+
+#btngo {
+  background-color: #3498db;
+  font-weight: bold;
+  color: white;
+  width: 125px;
+  height: 44px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+  #btngo:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+
+.homework-entry {
+  background-color: #ffffff;  
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #cabebe;
+}
+
+  .homework-entry .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .homework-entry .col-md-3,
+  .homework-entry .col-md-1,
+  .homework-entry .col-md-8 {
+    padding: 10px;
+  }
+
+  .homework-entry label {
+    font-size: 16px;
+    color: #34495e; /* Darker shade for text */
+    margin-bottom: 10px;
+  }
+
+  .homework-entry button {
+    padding: 6px 8px;
+    margin:5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+.homework-class strong{
+  color: #feb521;
+}
+
+/* Icon styling */
+button i {
+  font-size: 18px;
+  color: white;
+}
+
+/* Specific styles for the Report button */
+.report-btn {
+  background-color: #938063; /* Yellow for 'Report' */
+  color: white;
+}
+
+  .report-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+  }
+
+/* Specific styles for the Edit button */
+.edit-btn {
+  background-color: #c9dcd1; /* Green for 'Edit' */
+  color: white;
+}
+
+  .edit-btn:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+  }
+
+/* Specific styles for the Delete button */
+.delete-btn {
+  background-color: #e74c3c; /* Red for 'Delete' */
+  color: white;
+}
+
+  .delete-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+  }
+
+.second-ps div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.second-ps2 {
+  margin-top: 5px;
+}
+
+  .second-ps2 strong {
+    color: #59366dc9;
+  }
+
+.video-link {
+  text-decoration: none;
+  color: #3498db;  
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: #ecf0f1;  
+  transition: background-color 0.3s ease;
+}
+
+
+  .video-link:hover {
+    background-color: #d5dbdb;  
+  }
+
+.subject-description{
+    font-size:12px;
+}
+
+.documnet-link {
+  font-family: auto;
+  background-color: azure;
+  padding: 10px;
+  text-decoration: none; 
+}
+
+
+
+
+

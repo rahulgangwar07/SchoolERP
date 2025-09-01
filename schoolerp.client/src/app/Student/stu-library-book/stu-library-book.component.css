@@ -1,0 +1,107 @@
+
+/* Filter section */
+.filtersection div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Slightly increased space for better visual separation */
+}
+
+  .filtersection div label {
+    font-weight: bold; /* Make labels more prominent */
+    margin-bottom: 5px;
+  }
+
+  .filtersection div select,
+  .filtersection div input {
+    padding: 8px; /* Add padding inside inputs and selects for better accessibility */
+    font-size: 14px; /* Slightly increased font size */
+  }
+
+  .filtersection div select {
+    width: 100%; /* Ensure select boxes span the full width */
+  }
+
+  .filtersection div button {
+    margin-top: 10px;
+    height: 40px; /* Increased button height for better accessibility */
+    background-color: #007bff; /* Slightly refined button background */
+    color: white; /* Ensuring white text on button */
+    border: none;
+    border-radius: 5px;
+  }
+
+    .filtersection div button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+      cursor: pointer;
+    }
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+  table td, table th {
+    padding: 12px;
+    text-align: left;
+  }
+
+  table tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Light gray for odd rows */
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f4f4f4; /* Even rows slightly darker */
+  }
+
+  table tr:hover {
+    background-color: #e1e1e1; /* Slight highlight on hover */
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd; /* Adding border between rows for clarity */
+  }
+
+  table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: bold;
+    text-align: center; /* Center-aligning header text */
+  }
+
+.table-fc td {
+  padding: 15px 12px; /* Added padding for better cell spacing */
+}
+
+.table-fc {
+  font-size: 16px; /* Slightly larger font for the table's first row */
+  background-color: #f1f1f1; /* Background color for the first row */
+}
+
+  .table-fc strong {
+    font-size: 18px;
+    color: #2c3e50;
+  }
+
+/* Styling the Action button in the table */
+table td:last-child {
+  text-align: center; /* Center-aligning action buttons */
+}
+
+table button {
+  padding: 6px 12px;
+  background-color: #28a745; /* Green button for actions */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  table button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+
+.childdiv{
+    font-size:13px;
+}

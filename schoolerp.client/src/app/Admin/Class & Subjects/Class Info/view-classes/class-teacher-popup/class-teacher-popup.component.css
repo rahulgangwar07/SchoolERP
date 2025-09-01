@@ -1,0 +1,40 @@
+/* class-teacher-popup.component.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container {
+  background: white;
+  padding: 20px;  
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  width: 300px;  
+  max-width: 90%;  
+}
+
+.close-btn {
+  font-size: 22px;
+  cursor: pointer;
+  color: #fffefe;
+  background-color: #22cac2;
+  padding: 11px;
+}
+
+  .close-btn:hover {
+    color: #7bd9d5;  
+  }
+
+.popup-container p {
+  font-size: 16px;  
+  color: #555;  
+  margin-top: 10px;
+}

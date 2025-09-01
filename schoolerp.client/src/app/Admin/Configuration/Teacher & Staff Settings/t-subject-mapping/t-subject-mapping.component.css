@@ -1,0 +1,113 @@
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Layout Header */
+.layout-header {
+  margin-bottom: 15px;
+}
+
+  .layout-header .col-md-6 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+/* Subject & Class Mapping Sections */
+.subject-list, .class-list {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/*.subject-filter, .class-head {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}*/
+
+.submitdiv {
+  color: red;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+select, input[type="checkbox"] {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
+
+/* Subject List Styling */
+.subject-checkboxes {
+  margin-top: 10px;
+  font-family: ui-rounded;
+  font-weight: 700;
+}
+
+  .subject-checkboxes .row {
+    margin-bottom: 8px;
+  }
+
+/* Class Mapping Styling */
+.class-insert {
+  padding: 15px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+  .class-insert .row {
+    margin-bottom: 10px;
+  }
+
+  .class-insert input[type="checkbox"] {
+    margin-top: 8px;
+  }
+
+  .class-insert button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .subject-list, .class-list {
+    padding: 10px;
+  }
+}

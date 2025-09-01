@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Refunadable Information</div>
+    <div class="col-md-6">
+      <a routerLink="/accounts/collect-fees" routerLinkActive="active">Take Fee</a> 
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="row">
+    <div>
+      <select id="class">
+        <option>All Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+        <!-- Add more class options if needed -->
+      </select>
+
+      <select id="refundtype">
+        <option>All Refund Types</option>
+        <option>ET Money</option>
+        <option>Pocket Money</option>
+        <!-- Add more refund types if needed -->
+      </select>
+
+      <div>
+        <button>Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refundable Amount Table -->
+  <div class="row">
+    <table class="refundable-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Student Name</th>
+          <th>Father's Name</th>
+          <th>Class</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, you can dynamically fill this with actual data -->
+        <tr>
+          <td>1</td>
+          <td>Rahul Kumar</td>
+          <td>Mr. Arun Kumar</td>
+          <td>I</td>
+          <td>₹260</td>
+          <td><button>Action</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Deepak Kumar</td>
+          <td>Mr. Varun Kumar</td>
+          <td>I</td>
+          <td>₹2080</td>
+          <td><button>Action</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Kunal Kumar</td>
+          <td>Mr. Praveen Kumar</td>
+          <td>I</td>
+          <td>₹130</td>
+          <td><button>Action</button></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Dev Aryan</td>
+          <td>Abhay Kumar</td>
+          <td>I</td>
+          <td>₹3250</td>
+          <td><button>Action</button></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Amir Khan</td>
+          <td>Sameer Khan</td>
+          <td>I</td>
+          <td>₹2990</td>
+          <td><button>Action</button></td>
+        </tr>
+        <!-- Add more rows dynamically as per the data -->
+      </tbody>
+    </table>
+
+    <!-- If no records are found -->
+    <div class="no-records">
+      <p>No record found !!</p>
+    </div>
+  </div>
+</div>

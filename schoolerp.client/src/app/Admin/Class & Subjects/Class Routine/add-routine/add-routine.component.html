@@ -1,0 +1,119 @@
+<div class="container mt-3">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/routine/Offline" routerLinkActive="active" class="action-btn">View Routine</a>
+    </div>
+  </div>
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <form #formdata="ngForm" (ngSubmit)="formSubmit()">
+    <!-- Faculty Personal Information -->
+    <div class="form-section row">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="classId">Class <span class="mandatory">*</span></label>
+          <select id="classId" name="classId" required [(ngModel)]="form.class_id" (change)="classChange()" #classId="ngModel" [ngClass]="{ 'valid': classId.touched && classId.invalid }">
+            <option [value]="null" disabled selected>Select Class</option>
+            <!-- Dynamic Class List Here -->
+            <option *ngFor="let cls of classList" [value]="cls.class_id">{{cls.class_name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-3">
+          <select id="section" name="section" [(ngModel)]="form.sec_id" required #section="ngModel" [ngClass]="{ 'valid': section.touched && section.invalid }">
+            <option *ngFor="let sec of sectionList" value="{{sec.sec_id}}">{{sec.sec_dis_name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="subject">Subject <span class="mandatory">*</span></label>
+          <select id="subject" name="subject" required [(ngModel)]="form.subject_id" #subject="ngModel" [ngClass]="{ 'valid': subject.touched && subject.invalid }">
+            <option [value]="null" disabled selected>Select Subject</option>
+            <option *ngFor="let subj of subjectList;let i=index" value="{{subj.subject_id}}">{{subj.subject_name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-3">
+          <select id="routine" name="routine" required [(ngModel)]="form.routine" #routine="ngModel">
+            <option value="Offline">Offline</option>
+            <option value="Online">Online</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="teacher">Teacher <span class="mandatory">*</span></label>
+        </div>
+        <div class="form-group col-md-7">
+          <select id="teacher" name="teacher" required [(ngModel)]="form.teacher" #teacher="ngModel" [ngClass]="{ 'valid': teacher.touched && teacher.invalid }">
+            <option [value]="null" disabled selected>Select Teacher</option>
+            <option *ngFor="let teacher of facultyList;index as i" value="{{teacher.faculty_id}}">{{teacher.first_name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="day">Day <span class="mandatory">*</span></label>
+        </div>
+        <div class="form-group col-md-7">
+          <select id="day" name="day" required [(ngModel)]="form.day" #day="ngModel" [ngClass]="{ 'valid': day.touched && day.invalid }">
+            <option [value]="null" disabled selected>Select Day</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-9">
+          <label for="priod">Period <span class="mandatory">*</span></label>
+          <select id="priod" name="priod" required [(ngModel)]="form.priod" #period="ngModel" [ngClass]="{ 'valid': period.touched && period.invalid }">
+            <option *ngFor="let p of priodList;let i=index" [value]="p.period_number">{{p.period_number}}</option>
+          </select>
+          <button type="button" id="addpriod" name="addpriod" (click)="addPriod()" *ngIf="permissions.canCreate">
+            <i class="fa fa-plus"></i> Add Period
+          </button>&nbsp;&nbsp;
+          <button type="button" id="viewpriod" name="viewpriod" (click)="viewPriod()" *ngIf="permissions.canView"><i class="fa fa-eye"></i> View Period</button>
+
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="metting">Meeting Link </label>
+        </div>
+        <div class="form-group col-md-7">
+          <textarea id="metting" name="metting" [(ngModel)]="form.metting_link"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="form-group col-md-3">
+          <button type="submit" class="submit-btn" [disabled]="formdata.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">Add Class Routine</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <app-add-priod *ngIf="priodDiv === true" [ppriodDiv]="priodDiv" (pclosePopup)="closepriopdiv($event)" [ppriodList]="priodList" (rpriod)="periodFrompopup($event)"></app-add-priod>
+  <app-view-priod *ngIf="priodView === true" (ppriodView)="vpriod($event)" [permissions]="permissions"></app-view-priod>
+</div>

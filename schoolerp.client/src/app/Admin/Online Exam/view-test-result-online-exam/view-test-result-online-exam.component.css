@@ -1,0 +1,70 @@
+.container{
+    position:relative;
+}
+
+.layout-header h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.header-div {
+  background-color: aliceblue;
+  padding: 10px 5px
+}
+
+/* Styling for Results */
+.results-container {
+  margin-top: 20px;
+}
+
+.result-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-row {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.result-col {
+  flex: 1 1 7%;
+  padding: 8px;
+  text-align: center;
+}
+
+.result-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.result-row:hover {
+  background-color: #f1f1f1;
+}
+
+.badge {
+  font-size: 1rem;
+}
+
+.go-btn {
+  height: 40px;
+}
+
+.btn-outline-primary {
+  border-radius: 5px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+  .name span {
+    color: #ef5d07;
+  }
+
+/* Footer Section */
+.footer {
+  padding-top: 10px;
+  font-size: 1rem;
+}

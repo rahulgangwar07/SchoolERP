@@ -1,0 +1,123 @@
+<div class="main-wrapper">
+  <div class="container">
+    <!-- Header Section -->
+    <div class="header-section">
+      <div class="header-left">
+        <p>Fields marked with (*) are mandatory</p>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-primary" id="addUnitPlanBtn">Add Unit Plan</button>
+      </div>
+    </div>
+
+    <!-- Unit Plan Form -->
+    <div class="unit-plan-form">
+      <h3>Create or Edit Unit Plan</h3>
+      <form>
+        <div class="form-group">
+          <label for="unitTitle">Unit Title *</label>
+          <input type="text" class="form-control" id="unitTitle" required>
+        </div>
+
+        <div class="form-group">
+          <label for="classSelect">Class *</label>
+          <select class="form-control" id="classSelect" required>
+            <option value="">--- Select Class ---</option>
+            <option value="Class 10">Class 10</option>
+            <option value="Class 11">Class 11</option>
+            <option value="Class 12">Class 12</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subjectSelect">Subject *</label>
+          <select class="form-control" id="subjectSelect" required>
+            <option value="">--- Select Subject ---</option>
+            <option value="Math">Math</option>
+            <option value="English">English</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">Start Date *</label>
+          <input type="date" class="form-control" id="startDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">End Date *</label>
+          <input type="date" class="form-control" id="endDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="unitObjectives">Unit Objectives *</label>
+          <textarea class="form-control" id="unitObjectives" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Unit Description *</label>
+          <textarea class="form-control" id="description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status *</label>
+          <select class="form-control" id="status" required>
+            <option value="">--- Select Status ---</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success" id="saveUnitPlanBtn">Save Unit Plan</button>
+      </form>
+    </div>
+
+    <!-- Unit Plan List Table -->
+    <div class="unit-plan-list">
+      <h3>Existing Unit Plans</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Unit Title</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Algebra Basics</td>
+            <td>Class 10</td>
+            <td>Math</td>
+            <td>2024-01-01</td>
+            <td>2024-01-15</td>
+            <td>Active</td>
+            <td>
+              <button class="btn btn-warning">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-info">View</button>
+            </td>
+          </tr>
+          <tr>
+            <td>English Literature</td>
+            <td>Class 11</td>
+            <td>English</td>
+            <td>2024-02-01</td>
+            <td>2024-02-20</td>
+            <td>Inactive</td>
+            <td>
+              <button class="btn btn-warning">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-info">View</button>
+            </td>
+          </tr>
+          <!-- More rows can be added dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

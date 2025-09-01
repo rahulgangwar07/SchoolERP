@@ -1,0 +1,52 @@
+<div class="container">
+  <h1 class="text-center my-4">e-Contents</h1>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Early Childhood Education Level -->
+  <div class="content-section">
+    <h3>Early Childhood Education Level</h3>
+    <div class="row">
+      <ng-container *ngFor="let classItem of classList">
+        <div *ngIf="classItem.class_id <= 4" class="col-md-3">
+          <div class="content-item">
+            <h5>{{ classItem.class_name }}</h5>
+            <a [routerLink]="['/academics/e-content',classItem.class_id]" routerLinkActive="active" class="btn">View Content</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Primary Education Level -->
+  <div class="content-section">
+    <h3>Primary Education Level</h3>
+    <div class="row">
+      <ng-container *ngFor="let classItem of classList">
+        <div *ngIf="classItem.class_id > 4 && classItem.class_id <= 8" class="col-md-3">
+          <div class="content-item">
+            <h5>{{ classItem.class_name }}</h5>
+            <a [routerLink]="['/academics/e-content',classItem.class_id]" routerLinkActive="active" class="btn">View Content</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Secondary Education Level -->
+  <div class="content-section">
+    <h3>Secondary Education Level</h3>
+    <div class="row">
+      <ng-container *ngFor="let classItem of classList">
+        <div *ngIf="classItem.class_id > 8" class="col-md-3">
+          <div class="content-item">
+            <h5>{{ classItem.class_name }}</h5>
+            <a [routerLink]="['/academics/e-content',classItem.class_id]" routerLinkActive="active" class="btn">View Content</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

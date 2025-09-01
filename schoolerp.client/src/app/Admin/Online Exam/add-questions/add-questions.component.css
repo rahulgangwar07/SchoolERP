@@ -1,0 +1,129 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+  /*background-color: #f9f9f9;*/
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 70px;
+  background-color: rgb(246 228 228);
+}
+
+.addmore {
+  background-color: #ccc;
+  padding: 10px 20px;
+  color: #4374e9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+  .addmore i {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+    .addmore i:hover {
+      color: #0056b3;
+    }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom:20px;
+}
+
+.saveans {
+  padding: 10px 20px;
+  display: inline-flex;
+}
+
+.fa-close{
+    color:red;
+}
+
+.col-md-3, .col-md-4, .col-md-7 {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+select, input[type="number"], textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+  select:focus, input[type="number"]:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+textarea {
+  resize: none;
+}
+
+input[type="number"] {
+  width: 100%;
+}
+
+span {
+  color: red;
+}
+
+table {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+  table thead tr td {
+    background-color: #ccd;
+  }
+
+.removeBtn{
+    color:#ff6a00;
+}
+
+.addQuestion {
+  display: flex;
+  justify-content: end;
+}
+
+  .addQuestion button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 0;
+    color: #fff;
+  }
+    .addQuestion button:nth-child(2n+1) {
+      background-color: #ff6a00;
+    }
+    .addQuestion button:nth-child(2n) {
+      background-color: #4374e9;
+    }
+
+input[type=radio][name=correctans] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-3, .col-md-4, .col-md-7 {
+    width: 100%;
+  }
+}

@@ -1,0 +1,74 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Lesson Plan</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/acedemics/curriculum" routerLinkActive="active">Curriculum</a> 
+      <a routerLink="/account-settings/expense-category" routerLinkActive="active">Print Report</a>
+    </div>
+  </div>
+
+  <div class="row filtersection">
+    <div class="col-md-2">
+      <label>Start Date</label>
+      <input type="date" />
+    </div>
+    <div class="col-md-2">
+      <label>End Date</label>
+      <input type="date" />
+    </div> 
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+
+  <div class="row table-container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Plan Date</th>
+          <th>Lesson</th>
+          <th>Topics</th>
+          <th>Amount Taught</th>
+          <th>Assignment for Students</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <!-- First Row of Data -->
+        <tr>
+          <td colspan="5">
+            <div class="d-flex justify-content-between">
+              <label>English | 1</label>
+              <label>By: Mr. Sudhir Anand</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>28 Aug 2024 - to - 30 Aug 2024</td>
+          <td>Lesson 1</td>
+          <td>Topic 1, Topic 2</td>
+          <td>2 hours</td>
+          <td>Assignment 1</td> 
+        </tr>
+
+        <!-- Second Row of Data -->
+        <tr>
+          <td colspan="5">
+            <div class="d-flex justify-content-between">
+              <label>English | I</label>
+              <label>By: Mr. Sudhir Anand</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>19 Jul 2024 - to - 25 Jul 2024</td>
+          <td>Part of Speech</td>
+          <td>Noun, Pronoun, Verb</td>
+          <td>1.5 hours</td>
+          <td>Assignment 2</td> 
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

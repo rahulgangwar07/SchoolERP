@@ -1,0 +1,51 @@
+<div class="app-container">
+  <!-- Header (Not on login page) -->
+  <div *ngIf="!isLoginPage()">
+    <app-header></app-header>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="container">
+    <div *ngIf="!isLoginPage()">
+      <app-main-layout></app-main-layout>
+    </div>
+
+    <!-- Router Outlet with Sidebar Responsive Support -->
+    <div class="router-outlet-container" [class.mini-sidebar]="!isSidebarFull">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- Settings Fixed Button -->
+  <div *ngIf="!isLoginPage()" class="">
+    <div class="setting-section setting-container-1">
+      <ul *ngIf="settingToggle" class="setting-list">
+        <li><i class="fa fa-user-cog"></i> Profile Setting</li>
+        <li><i class="fa fa-file-alt"></i> Document Setting</li>
+        <li routerLink="/admin/smssetting/setting" routerLinkActive="active"><i class="fa fa-envelope"></i> SMS Setting</li>
+        <li><i class="fa fa-cogs"></i> System Setting</li>
+        <li><i class="fa fa-desktop"></i> Device Setting</li>
+        <li routerLink="/configuration/permissions" routerLinkActive="active"><i class="fa fa-lock"></i> Permission Setting</li>
+      </ul>
+      <div (click)="setting()" class="setting-header">
+        <i class="fa fa-cog"></i> Settings <i class="fa fa-arrow-alt-circle-up"></i>
+      </div>
+
+    </div>
+
+    <div class="setting-section setting-container-2">
+      <ul *ngIf="helpSupportToggle" class="setting-list">
+        <li><i class="fa fa-phone"></i> 9027965481</li>
+        <li><i class="fa fa-phone"></i> 7055575456</li>
+        <li><i class="fa fa-comments"></i> Chat</li>
+        <li><i class="fa fa-desktop"></i> AnyDesk</li>
+        <li><i class="fa fa-youtube"></i> YouTube</li>
+      </ul>
+      <div (click)="helpSupport()" class="setting-header">
+        <i class="fa fa-question-circle"></i> Help/Support <i class="fa fa-arrow-alt-circle-up"></i>
+      </div>
+
+    </div>
+  </div>
+
+</div>

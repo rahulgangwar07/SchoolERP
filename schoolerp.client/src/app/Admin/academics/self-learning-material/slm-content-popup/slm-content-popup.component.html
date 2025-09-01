@@ -1,0 +1,30 @@
+<!-- slm-content-popup.component.html -->
+<div *ngIf="popupStatus" class="container">
+  <div class="content-header">
+    <h4>{{clsNsub.subjectname}}</h4>
+    <i (click)="closePopup()" class="fas fa-close"></i>
+  </div>
+
+  <div class="content-title">
+    <h5>Syllabus for {{clsNsub.clsname}} ({{clsNsub.subjectname}})</h5>
+  </div>
+
+  <div class="form-group">
+    <label for="syllabus-textarea">Syllabus Description</label>
+    <textarea name="syllabus" id="syllabus-textarea" rows="6" placeholder="Enter syllabus details here..." [(ngModel)]="formData.content_title"></textarea>
+  </div>
+
+  <div class="form-group row">
+    <label for="syllabus-file" class="col-md-4">Upload Syllabus (PDF/Word)</label>
+    <input type="file" id="syllabus-file" (change)="selectFile($event)" name="syllabus-file" class="col-md-8" />
+  </div>
+
+  <div class="form-group row">
+    <label for="video-link" class="col-md-4">Video Link</label>
+    <input type="text" id="video-link" name="video-link" placeholder="Enter video URL" class="col-md-8" [(ngModel)]="formData.content_url" />
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-submit" (click)="contentSubmit()" [ngStyle]="{'background-color':themeSetting?.button_color}">Submit</button>
+  </div>
+</div>

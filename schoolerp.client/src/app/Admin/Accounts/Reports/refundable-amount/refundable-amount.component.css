@@ -1,0 +1,62 @@
+/* Styling for select dropdowns */
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width: 15%;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  select:last-child {
+    margin-right: 0; /* No margin after the last select */
+  }
+
+/* Button styling */
+.row button {
+  margin-top: 10px;
+  width: 15%;
+}
+
+/* Styling for tables */
+.refundable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  .refundable-table th, .refundable-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .refundable-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+/* Style for "No record found" */
+.no-records p {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+}
+
+/* Action button styling */
+button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }

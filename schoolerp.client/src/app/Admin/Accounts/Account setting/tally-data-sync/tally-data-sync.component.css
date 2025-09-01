@@ -1,0 +1,17 @@
+
+ 
+.layout-header-second {
+  margin-bottom: 5px;
+  height: 35px;
+  display:flex;
+  justify-content:center;
+  align-items:center;color:white;
+  font-size:20px;
+  font-weight:550;
+}
+
+form {
+  background-color: #cba;
+  padding: 8px;
+}
+

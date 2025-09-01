@@ -1,0 +1,65 @@
+
+<div class="result-container"> 
+  <div class="student-info"> 
+    <table class="table table-striped">
+      <tr>
+        <td><strong>Student's Name:</strong><span> {{profile?.first_name}}</span></td>
+        <td><strong>Roll No:</strong><span> {{profile?.stu_id}}</span></td>
+      </tr>
+      <tr>
+        <td><strong>Father's Name:</strong><span> Mr. {{profile?.father_name}}</span></td>
+        <td><strong>Mother's Name:</strong><span> Mrs. {{profile?.mother_name}}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="test-summary">
+    <h3>Congratulations! You have completed your test.</h3>
+    <div class="summary-card">
+      <table>
+        <tr>
+          <td><strong>Total Questions:</strong></td>
+          <td>{{result?.question_count}}</td>
+        </tr>
+        <tr>
+          <td><strong>Total Attempted:</strong></td>
+          <td>{{result?.attempted}}</td>
+        </tr>
+        <ng-container *ngIf="!result?.answer_sheet">
+          <tr>
+            <td><strong>Total Correct:</strong></td>
+            <td>{{result?.correct}}</td>
+          </tr>
+          <tr>
+            <td><strong>Total Wrong:</strong></td>
+            <td>{{result?.wrong}}</td>
+          </tr>
+          <tr>
+            <td><strong>Strike Rate:</strong></td>
+            <td>{{result?.string_rate}}%</td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="result?.answer_sheet">
+          <tr class="result-status">
+            <td colspan="2">Wait for your result to be checked and published..</td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+
+  <div class="signatures">
+    <div class="signature">
+      <p><strong>Class Teacher's Signature</strong></p>
+      <div class="line"></div>
+    </div>
+    <div class="signature">
+      <p><strong>Parent's Signature</strong></p>
+      <div class="line"></div>
+    </div>
+    <div class="signature">
+      <p><strong>Principal's Signature</strong></p>
+      <div class="line"></div>
+    </div>
+  </div>
+</div>

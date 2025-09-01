@@ -1,0 +1,64 @@
+
+/* Basic styling for Day Book */
+.daybook-header {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.daybook-record {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+  .daybook-record .row {
+    margin-bottom: 5px;
+  }
+
+.filter-section {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  .filter-section select, .filter-section input {
+    padding: 8px;
+    margin-right: 10px;
+  }
+
+
+.action-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+  .action-btn:hover {
+    background-color: #0056b3;
+  }
+
+.daybook-summary {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.no-records {
+  margin-top: 20px;
+  color: #f44336;
+  font-size: 16px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.col-md-3 button{
+    margin:5px;
+}
+
+

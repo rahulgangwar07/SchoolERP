@@ -1,0 +1,189 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Monthly Detail Report Sheet  </div>
+    <div class="col-md-6">
+      <a routerLink="/accounts/create-demand-slip" routerLinkActive="active">Export Excel</a>
+      <a routerLink="/reports/monthly" routerLinkActive="active">Monthly Report</a>
+      <a routerLink="/reports/yearly" routerLinkActive="active">Yearly Report</a>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div>
+      <label for="branch">Select Branch:</label>
+      <select id="branch">
+        <option value="all">All</option>
+        <option value="branch1">Branch 1</option>
+        <option value="branch2">Branch 2</option>
+        <!-- Add more branches if needed -->
+      </select>
+    </div>
+
+    <div>
+      <label for="month">Month:</label>
+      <select id="month">
+        <option value="november">November</option>
+        <option value="december">December</option>
+        <option value="january">January</option>
+        <!-- Add more months if needed -->
+      </select>
+    </div>
+
+    <div>
+      <label for="year">Year:</label>
+      <select id="year">
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <!-- Add more years if needed -->
+      </select>
+    </div>
+  </div>
+
+  <!-- Data Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Registration</th>
+        <th>Fee Collection</th>
+        <th>Electricity</th>
+        <th>Omni</th>
+        <th>Petrol</th>
+        <th>Salary</th>
+        <th>Snacks</th>
+        <th>Transport</th>
+        <th>Expense</th>
+        <th>Handover Cash</th>
+        <th>Total</th>
+        <th>Cash Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 November 2024</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2 November 2024</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- Repeat this pattern for each day of the month -->
+      <tr>
+        <td>4 November 2024</td>
+        <td></td>
+        <td>60</td>
+        <td>60</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>12 November 2024</td>
+        <td></td>
+        <td>7,860</td>
+        <td>7,860</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>7,860</td>
+      </tr>
+      <tr>
+        <td>20 November 2024</td>
+        <td></td>
+        <td>69,140</td>
+        <td>69,140</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>69,140</td>
+      </tr>
+      <tr>
+        <td>22 November 2024</td>
+        <td>80</td>
+        <td>80</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>80</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>23 November 2024</td>
+        <td>2,500</td>
+        <td>2,500</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>2,500</td>
+        <td>2,500</td>
+      </tr>
+      <tr>
+        <td>26 November 2024</td>
+        <td>1,500</td>
+        <td>1,500</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1,500</td>
+        <td>1,500</td>
+      </tr>
+      <!-- Add totals row -->
+      <tr class="total-row">
+        <td colspan="2">Total</td>
+        <td>81,060</td>
+        <td>81,060</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>81,060</td>
+        <td>81,060</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

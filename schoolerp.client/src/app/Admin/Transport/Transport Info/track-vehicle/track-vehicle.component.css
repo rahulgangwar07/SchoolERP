@@ -1,0 +1,60 @@
+.container {
+  margin-top: 50px;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.vehicle-status {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+  .vehicle-status h4 {
+    margin-bottom: 20px;
+  }
+
+  .vehicle-status p {
+    margin: 5px 0;
+  }
+
+.vehicle-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+  .vehicle-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+    .vehicle-list table th, .vehicle-list table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .vehicle-list table th {
+      background-color: #f2f2f2;
+    }
+
+.status-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+  .status-icon.active {
+    background-color: green;
+  }
+
+  .status-icon.inactive {
+    background-color: red;
+  } 

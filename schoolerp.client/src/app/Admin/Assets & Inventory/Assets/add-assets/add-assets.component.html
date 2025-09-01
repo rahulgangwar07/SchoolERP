@@ -1,0 +1,109 @@
+
+<div class="container mt-2">
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Fields marked with (*) are mandatory</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/assets-inventory/settings/stock-item-list" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Stock Category</a>
+      <a routerLink="/assets-inventory/assets/view" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Stock</a>
+    </div>
+  </div>
+
+  <!-- Add New Asset Form -->
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+      <div class="card shadow-sm" style="border-radius: 10px;">
+        <div class="card-body">
+          <h5 class="card-title">Asset Information</h5>
+          <form #assetForm="ngForm" (ngSubmit)="submitForm(assetForm)">
+            <!-- Item Type -->
+            <div class="form-group row">
+              <label for="assetType" class="col-sm-3 col-form-label">Item Type <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <select class="form-control" id="assetType" name="assetType" [(ngModel)]="pEntry.asset_id" required>
+                  <option value="0">--Select Asset--</option>
+                  <option *ngFor="let ass of assetList;index as i;" [value]="ass.asset_id">{{ass.asset_name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Vendor -->
+            <div class="form-group row">
+              <label for="vendor" class="col-sm-3 col-form-label">Vendor <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <select class="form-control" id="vendor" name="vendor" [(ngModel)]="pEntry.vendor_id" required>
+                  <option value="">--Select Vendor--</option>
+                  <option *ngFor="let vnd of vendorList;index as i;" [value]="vnd.vendor_id">{{vnd.vendor_name}}</option>
+                </select>
+                <div *ngIf="assetForm.controls['vendor']?.invalid && assetForm.controls['vendor']?.touched" class="text-danger">Vendor is required.</div>
+              </div>
+            </div>
+
+            <!-- Purchase Date -->
+            <div class="form-group row">
+              <label for="purchaseDate" class="col-sm-3 col-form-label">Purchase Date <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="purchaseDate" name="purchaseDate" [(ngModel)]="pEntry.purchase_date" required>
+                <div *ngIf="assetForm.controls['purchaseDate']?.invalid && assetForm.controls['purchaseDate']?.touched" class="text-danger">Purchase Date is required.</div>
+              </div>
+            </div>
+
+            <!-- Quantity -->
+            <div class="form-group row">
+              <label for="quantity" class="col-sm-3 col-form-label">Quantity <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" [(ngModel)]="pEntry.quantity" (ngModelChange)="calculateTotalAmount()" required>
+                <div *ngIf="assetForm.controls['quantity']?.invalid && assetForm.controls['quantity']?.touched" class="text-danger">Quantity is required.</div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="unitPrice" class="col-sm-3 col-form-label">Unit Price <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" id="unitPrice" name="unitPrice" placeholder="Enter Unit Price" step="0.01" [(ngModel)]="pEntry.unit_price" (ngModelChange)="calculateTotalAmount()" required>
+                <div *ngIf="assetForm.controls['unitPrice']?.invalid && assetForm.controls['unitPrice']?.touched" class="text-danger">Unit Price is required.</div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="totalAmount" class="col-sm-3 col-form-label">Total Amount <span class="text-danger fw-bold">*</span></label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" id="totalAmount" name="totalAmount" placeholder="Enter Total Amount" step="0.01" [(ngModel)]="pEntry.total_amount" readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="weight" class="col-sm-3 col-form-label">Weight</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="weight" name="weight" placeholder="Enter Location" [(ngModel)]="pEntry.weight">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="location" class="col-sm-3 col-form-label">Location</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location" [(ngModel)]="pEntry.location" required>
+              </div>
+            </div>
+
+            <!-- Warranty Expiry Date (Only for Assets) -->
+            <div class="form-group row">
+              <label for="warrantyExpiryDate" class="col-sm-3 col-form-label">Warranty Expiry Date</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="warrantyExpiryDate" name="warrantyExpiryDate" [(ngModel)]="pEntry.warranty_ExpiryDate">
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group row">
+              <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary" [disabled]="assetForm.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">Add Asset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

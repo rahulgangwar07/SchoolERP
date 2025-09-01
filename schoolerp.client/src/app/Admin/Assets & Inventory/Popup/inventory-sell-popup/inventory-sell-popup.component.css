@@ -1,0 +1,326 @@
+/* Overall Popup Container */
+.popup {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    background-color: white;
+    height: 80%;
+    width: 75%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+    /* Header Styling */
+    .popup .row.layout-header {
+        padding: 20px;
+        background-color: #f1f1f1;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .popup .row.layout-header p {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .popup .row.layout-header .text-right button {
+            background-color: transparent;
+            border: none;
+            color: #dc3545;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+            .popup .row.layout-header .text-right button:hover {
+                color: #c82333;
+            }
+
+/* Popup Content Styling */
+.popup-content {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.popup-form select,
+.popup-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.popup-form select {
+    height: 40px;
+}
+
+.item-define label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.item-define input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+    table th,
+    table td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    button.btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+        button.btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    button#paybtn {
+        background-color: #007bff;
+        color: white;
+        width: 100%;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+        button#paybtn:hover {
+            background-color: #0056b3;
+        }
+
+/* Error Message Styling */
+.error-div {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f8d7da;
+    padding: 15px;
+    border-radius: 5px;
+    color: #721c24;
+    font-size: 16px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .popup {
+        width: 90%;
+        top: 5%;
+    }
+
+        .popup .row.layout-header {
+            padding: 15px;
+            font-size: 18px;
+        }
+
+    .popup-form select,
+    .popup-form input,
+    .item-define input {
+        width: 100%;
+    }
+}
+/* Overall Popup Container */
+.popup {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  background-color: white;
+  height: 80%;
+  width: 75%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+  /* Header Styling */
+  .popup .row.layout-header {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+    .popup .row.layout-header p {
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .popup .row.layout-header .text-right button {
+      background-color: transparent;
+      border: none;
+      color: #dc3545;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+      .popup .row.layout-header .text-right button:hover {
+        color: #c82333;
+      }
+
+/* Popup Content Styling */
+.popup-content {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.popup-form select,
+.popup-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.popup-form select {
+  height: 40px;
+}
+
+.item-define label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.item-define input {
+  width: 70%;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+  table th,
+  table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+  button.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+
+    button.btn-danger:hover {
+      background-color: #c82333;
+    }
+
+  button#paybtn {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+    button#paybtn:hover {
+      background-color: #0056b3;
+    }
+
+/* Error Message Styling */
+.error-div {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f8d7da;
+  padding: 15px;
+  border-radius: 5px;
+  color: #721c24;
+  font-size: 16px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .popup {
+    width: 90%;
+    top: 5%;
+  }
+
+    .popup .row.layout-header {
+      padding: 15px;
+      font-size: 18px;
+    }
+
+  .popup-form select,
+  .popup-form input,
+  .item-define input {
+    width: 100%;
+  }
+}

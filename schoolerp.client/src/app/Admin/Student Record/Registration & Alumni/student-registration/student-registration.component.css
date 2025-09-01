@@ -1,0 +1,183 @@
+.container {
+  font-family: Arial, sans-serif;
+  /*background-color: #f4f4f4;*/
+  margin: 0;
+  padding: 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.pageheader {
+  background-color: #dbe1e1;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/*.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+*/
+label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+select, input[type="date"], input[type="text"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-top: 5px;
+  border: 1px solid #ddd; 
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+td {
+  background-color: #fff;
+}
+
+.action-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  .action-btn:hover {
+    background-color: #45a049;
+  }
+
+@media print {
+  body {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 10px;
+  }
+
+  .print-btn {
+    display: none;
+  }
+
+  .table-container, .filters, .layout-header, .action-button {
+    display: none; /* Hide unnecessary UI elements while printing */
+  }
+
+  #printableArea {
+    padding: 20px;
+    border: 1px solid #000;
+  }
+}
+
+
+.print-btn {
+ /* background-color: #2196F3;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;*/
+  font-size: 12px;
+  background-color: #e0aede;
+}
+
+  .print-btn:hover {
+    background-color: #0b7dda;
+  }
+
+
+
+/* Styling the action button */
+.action-btn {
+  background-color: #007bff; 
+  color: white;  
+  border: none;  
+  padding: 8px 12px; 
+  font-size: 14px;  
+  cursor: pointer;  
+  border-radius: 5px; 
+  transition: background-color 0.3s ease;  
+}
+
+  .action-btn:hover {
+    background-color: #0056b3;  
+  }
+
+/* Styling for the options dropdown */
+.action-button {
+  list-style-type: none;  
+  padding: 0;            
+  margin: 5px 0 0 0;  
+  position: absolute; 
+  background-color: #ffffff;  
+  border: 1px solid #ddd;     
+  border-radius: 5px;  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+  width: 120px;  
+}
+
+  .action-button li {
+    padding: 4px 6px; 
+    font-size: 14px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+
+    .action-button li:hover {
+      background-color: #f1f1f1; /* Light gray background on hover */
+    }
+
+    .action-button li i {
+      margin-right: 5px; /* Space between icon and text */
+    }
+
+
+
+
+
+

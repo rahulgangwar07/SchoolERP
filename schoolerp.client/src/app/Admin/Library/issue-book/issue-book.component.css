@@ -1,0 +1,17 @@
+
+.student-list span:first-child{
+    font-size:14px;
+    font-weight:500;
+}
+
+.student-list span:nth-child(2n){
+    font-size:13px;
+    color:#ff6a00;
+    font-weight:500;
+}
+
+.member-label {
+  text-align: start;
+  padding-left: 15px;
+}
+

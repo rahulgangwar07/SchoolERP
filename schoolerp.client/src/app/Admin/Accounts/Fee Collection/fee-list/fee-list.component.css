@@ -1,0 +1,168 @@
+/* Basic layout adjustments */
+.container {
+  margin-top: 20px;
+}
+ 
+
+/* Styling the dropdown selects */
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none; /* Removes the default dropdown arrow in modern browsers */
+  -webkit-appearance: none; /* Removes arrow in Safari */
+  -moz-appearance: none; /* Removes arrow in Firefox */
+}
+
+  select::-ms-expand {
+    display: none; /* Removes the dropdown arrow in IE */
+  }
+
+/* Custom arrow for select dropdown */
+select {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 14 14%22%3E%3Cpath fill=%22%23000000%22 d=%22M7 10l-4-4h8z%22/%3E%3C/svg%3E');
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+}
+
+/* Adjust the button */
+button.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  button.btn-danger:hover {
+    background-color: #c82333;
+  }
+
+/* Styling the Search and GO button */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.go-btn {
+  width: 43%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  .go-btn:hover {
+    background-color: #0056b3;
+  }
+
+.row.mt-3 .col-md-8, .row.mt-3 .col-md-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row.mt-3 {
+  margin-top: 10px;
+}
+
+/* Table Styling */
+/* Table Styling */
+.student-fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  .student-fees-table th, .student-fees-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .student-fees-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .student-fees-table td {
+    background-color: #fff;
+  }
+
+    .student-fees-table td a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+      .student-fees-table td a:hover {
+        text-decoration: underline;
+      }
+
+/* Action Button */
+button.action-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  button.action-btn:hover {
+    background-color: #0056b3;
+  }
+
+/* Action Modal Styling (Inline Below Button) */
+.action-modal {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+  .action-modal button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+    .action-modal button:hover {
+      background-color: #218838;
+    }
+
+    /* Styling for Delete Button */
+    .action-modal button:nth-child(3) {
+      background-color: #dc3545;
+    }
+
+      .action-modal button:nth-child(3):hover {
+        background-color: #c82333;
+      }
+
+
+
+
+
+@media (max-width: 768px) {
+  .row.mt-3 .col-md-8, .row.mt-3 .col-md-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

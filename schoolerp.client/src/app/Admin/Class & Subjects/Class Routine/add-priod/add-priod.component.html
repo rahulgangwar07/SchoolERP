@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="header-div">
+    <h6>Add Period</h6>
+    <p (click)="ppclosePopup()"><i class="fa fa-times-circle close-icon"></i></p>
+  </div>
+  <form #formdata="ngForm">
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label>Period: </label>
+      </div>
+      <div class="form-group col-md-6">
+        <input id="priodno" type="number" name="priodno" [(ngModel)]="priodForm.period_no" #period="ngModel" (change)="priodChange(priodForm.period_no)" [ngClass]="{'valid' : (period.invalid && period.touched) || priodForm.period_no == 0 || priodForm.period_no == null }" max="15" min="1" style="width: 65%;" />
+ 
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Starting Time -->
+      <div class="form-group col-md-3">
+        <label for="startTime">Starting Time <span class="mandatory">*</span></label>
+      </div>
+      <div class="form-group col-md-3">
+        <div class="select-container">
+          <select id="starthour" name="starthour" required [(ngModel)]="priodForm.shour" #startHour="ngModel" [ngClass]="{'valid': startHour.invalid && startHour.touched}">
+            <option value="0" disabled selected>Hour</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+          </select>
+        </div> 
+      </div>
+      <div class="form-group col-md-2">
+        <div class="select-container">
+          <select id="startmin" name="startmin" [(ngModel)]="priodForm.sminute" required>
+            <option value="0">00</option>
+            <option value="05">05</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+            <option value="55">55</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <div class="select-container">
+          <select id="startperiod" name="startperiod" [(ngModel)]="priodForm.sClock" required>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Ending Time -->
+      <div class="form-group col-md-3">
+        <label for="endTime">Ending Time <span class="mandatory">*</span></label>
+      </div>
+
+      <div class="form-group col-md-3">
+        <div class="select-container">
+          <select id="endTime" name="endTime" [(ngModel)]="priodForm.ehour" #endTime="ngModel" required [ngClass]="{'valid': endTime.invalid && endTime.touched}">
+            <option value="0" disabled selected>Hour</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+          </select>
+        </div> 
+      </div>
+
+      <div class="form-group col-md-2">
+        <div class="select-container">
+          <select id="endmin" name="endmin" [(ngModel)]="priodForm.eminute" required>
+            <option value="0">00</option>
+            <option value="05">05</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+            <option value="55">55</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <div class="select-container">
+          <select id="endperiod" name="endperiod" [(ngModel)]="priodForm.eClock" required>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="priod" (click)="submitPriod()" [disabled]="formdata.invalid">
+        Submit Period
+      </button>
+    </div>
+  </form>
+</div>

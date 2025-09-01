@@ -1,0 +1,74 @@
+<div class="container">
+  <h2>Student Identity Card Report</h2>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <select id="classSelect">
+      <option value="">Select Class</option>
+      <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+      <option value="12">Class 12</option>
+    </select>
+
+    <select id="groupSelect">
+      <option value="">Select Group</option>
+      <option value="A">Group A</option>
+      <option value="B">Group B</option>
+      <option value="C">Group C</option>
+    </select>
+
+    <select id="branchSelect">
+      <option value="">Select Branch</option>
+      <option value="Science">Science</option>
+      <option value="Commerce">Commerce</option>
+      <option value="Arts">Arts</option>
+    </select>
+
+    <button onclick="filterReport()">Generate Report</button>
+  </div>
+
+  <!-- Student Identity Card Report Table -->
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Reg No</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Branch Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sample Data -->
+      <tr>
+        <td>1</td>
+        <td><img src="student1.jpg" alt="Student 1" class="student-photo"></td>
+        <td>John Doe</td>
+        <td>12345</td>
+        <td>9876543210</td>
+        <td>123 Main St, City, India</td>
+        <td>Science</td>
+        <td class="action-btns">
+          <button>Print</button>
+          <button>Download</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><img src="student2.jpg" alt="Student 2" class="student-photo"></td>
+        <td>Jane Smith</td>
+        <td>12346</td>
+        <td>9876543211</td>
+        <td>456 Park Ave, City, India</td>
+        <td>Commerce</td>
+        <td class="action-btns">
+          <button>Print</button>
+          <button>Download</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

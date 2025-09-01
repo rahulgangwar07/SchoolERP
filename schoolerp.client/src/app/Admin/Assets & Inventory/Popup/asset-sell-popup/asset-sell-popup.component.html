@@ -1,0 +1,88 @@
+<div *ngIf="popupOpen" class="container popup">
+  <ng-container *ngIf="requestType">
+    <div class="row layout-header p-2">
+      <div class="col-md-6">
+        <p>Sell Counter</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <button class="btn-close" (click)="closePopup()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="popup-content">
+      <form class="row">
+        <div class="col-md-4 popup-form d-inline">
+          <select id="asset" name="asset" [(ngModel)]="sC.item_id" (change)="itemChange($event)">
+            <option value="0">Select Item</option>
+            <option *ngFor="let ass of assetList;" [value]="ass.asset_id">{{ ass.asset_name }}</option>
+          </select>
+
+          <select id="deploy" name="deploy" [(ngModel)]="sC.deployment_area_id">
+            <option value="office">Office</option>
+            <option value="sportRoom">Sports Room</option>
+            <option value="musicRoom">Music Room</option>
+            <option value="library">Library</option>
+          </select>
+
+          <select id="session" name="session" [(ngModel)]="activeSession">
+            <option *ngFor="let s of sessionList" [value]="s.session_name">{{ s.session_name }}</option>
+          </select>
+
+          <select>
+            <option value="cash">Cash</option>
+            <option value="cheque">Cheque</option>
+            <option value="card">Card</option>
+            <option value="netBanking">Net Banking</option>
+            <option value="demandDraft">Demand Draft</option>
+            <option value="cautionMoney">Caution Money</option>
+          </select>
+        </div>
+
+        <ng-container *ngIf="sC.item_id != 0 && purchaseData.length > 0">
+          <div class="col-md-6">
+            <div class="side-popup d-inline">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Item Name</th>
+                    <th>Variant</th>
+                    <th>Available</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pd of purchaseData;index as i">
+                    <td>{{assetName(pd.asset_id)}}</td>
+                    <td>
+                      <input id="area_id" name="area_id" class="form-control" [(ngModel)]="sC.deployment_area_id" disabled />
+                    </td>
+                    <td><label>{{pd.quantity}}</label></td>
+                    <td><input id="quantity" name="quantity" type="number" class="form-control" [(ngModel)]="pd.newQuantity" (ngModelChange)="calculateAmount()" /></td>
+                    <td><label>{{pd.newQuantity * (pd.unit_price ?? 0)}}</label></td>
+                    <td><button class="btn btn-danger" (click)="closeAsset(i)">Close</button></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="item-define">
+                <button id="deployeebtn" (click)="deployAsset()" [ngStyle]="{'background-color':themeSetting?.button_color}">Deploy Asset</button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </form>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!requestType">
+    <div class="d-flex justify-content-between error-div">
+      <h4>Something Went Wrong!</h4>
+      <button class="btn-close" (click)="closePopup()"></button>
+    </div>
+    <p class="text-danger">Sell counter not working properly</p>
+  </ng-container>
+</div>

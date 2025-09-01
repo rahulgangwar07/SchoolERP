@@ -1,0 +1,25 @@
+
+<div class="container">
+  <h6 class="font-weight-bold">Image Gallery</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">List of all Images</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/leave-gallery/photo-gallery" class="btn btn-outline-primary btn-sm">view Category</a>
+    </div>
+  </div>
+
+  <div class="gallery-container">
+    <div class="row gallery-div mt-2">
+      <ng-container *ngFor="let img of imageGallery;index as i;"> 
+          <div class="gallery-item col-md-3 mb-3">
+            <img class="gallery-image" [src]="img.img_url" /> 
+            <button *ngIf="userRole != 'Student'" class="btn" (click)="deleteImage(img.img_id,i)"><i class="fa fa-trash"></i> Delete</button>
+          </div> 
+      </ng-container>
+
+    </div>
+  </div>
+
+</div>

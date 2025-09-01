@@ -1,0 +1,102 @@
+
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center addmore">
+    <h6>Add More Question</h6>
+    <i class="fa fa-close" (click)="closePopup()"></i>
+  </div>
+
+  <form [formGroup]="questionForm">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="exam-type">Question Type<span>*</span></label>
+      </div>
+      <div class="col-md-4">
+        <select id="exam-type" name="exam-type" formControlName="question_type" (change)="ExamTypeChange($event)">
+          <option value="objective">Objective</option>
+          <option value="subjective">Subjective</option>
+          <option value="subjectiveupload">Subjective(Upload)</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <input type="number" placeholder="Marks" formControlName="marks" />
+      </div>
+
+      <div class="col-md-3">
+        <label for="question">Question<span>*</span></label>
+      </div>
+      <div class="col-md-7">
+        <textarea id="question" rows="3" placeholder="Enter your question here..." formControlName="question_text"></textarea>
+      </div>
+
+      <div class="col-md-3">
+        <label for="choice">Duration<span>*</span></label>
+        <!--<label for="choice">Answer Choice<span>*</span></label>-->
+      </div>
+      <!--<div class="col-md-4">
+      <select id="choice" name="choice">
+        <option>Single</option>
+        <option>Multiple</option>
+      </select>
+    </div>-->
+      <!--<div class="col-md-4">
+        <select id="choice" name="choice" formControlName="duration">
+          <option>No Limit</option>
+          <option value="20">20 Sec</option>
+          <option value="20">30 Sec</option>
+          <option value="20">40 Sec</option>
+          <option value="20">1 Min</option>
+          <option value="20">1.5 Min</option>
+          <option value="20">2 Min</option>
+          <option value="20">3 Min</option>
+          <option value="20">5 Min</option>
+          <option value="20">7 Min</option>
+          <option value="20">10 Min</option>
+          <option value="20">15 Min</option>
+          <option value="30">20 Min</option>
+        </select>
+      </div>-->
+
+    </div>
+    <ng-container *ngIf="examTypeVal == 'objective'">
+      <div class="row"><p class="saveans"><strong>Save all the answers</strong></p></div>
+      <div class="row">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <td>Sr.No.</td>
+              <td>Options</td>
+              <td>Correct?</td>
+              <td>Image</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let option of options;index as i">
+              <td>{{i+1}}</td>
+              <td><textarea placeholder="Option {{i+1}}" [formControlName]="'option_'+(i+1)"></textarea></td>
+              <td><input id="correctans1" type="radio" name="correctans" [value]="i+1" [checked]="questionForm.value.correct_option == (i + 1)" (change)="radioChange($event)" /></td>
+              <td>
+                <div class="d-grid">
+                  <img src="" />
+                  <input type="file" id="uploadImg" name="uploadImg" />Select Image
+                </div>
+              </td>
+              <td>
+                <input type="checkbox" />
+                <button class="btn removeBtn">Remove</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+    <div class="addQuestion">
+      <button (click)="saveQuestion()">Save Question</button>
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </form>
+</div>
+
+ 
+

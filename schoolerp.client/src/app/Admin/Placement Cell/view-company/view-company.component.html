@@ -1,0 +1,63 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/placement-cell/add-company" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Company</a>
+    </div>
+  </div>
+
+  <!-- Companies Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Company Code</th>
+            <th>Company Name</th>
+            <th>Company Type</th>
+            <th>Industry</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row 1 -->
+          <tr>
+            <td>001</td>
+            <td>ABC Corp</td>
+            <td>Startup</td>
+            <td>Software</td>
+            <td>New York</td>
+            <td>(123) 456-7890</td>
+            <td>abccorp.com</td>
+            <td>
+              <a href="/placement-cell/edit-company/001" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/placement-cell/view-placements/001" class="btn btn-info btn-sm">View Placements</a>
+            </td>
+          </tr>
+          <!-- Example Row 2 -->
+          <tr>
+            <td>002</td>
+            <td>XYZ Ltd.</td>
+            <td>Established</td>
+            <td>Manufacturing</td>
+            <td>Los Angeles</td>
+            <td>(987) 654-3210</td>
+            <td>xyzltd.com</td>
+            <td>
+              <a href="/placement-cell/edit-company/002" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/placement-cell/view-placements/002" class="btn btn-info btn-sm">View Placements</a>
+            </td>
+          </tr>
+          <!-- Add more company rows dynamically if needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

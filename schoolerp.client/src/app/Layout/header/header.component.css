@@ -1,0 +1,16 @@
+
+
+
+.top-nav-search form { 
+  width: 428px;
+}
+
+.show {
+  display: block; /* Display the select element */
+}
+
+.hide {
+  display: none; /* Hide the select element */
+}
+
+

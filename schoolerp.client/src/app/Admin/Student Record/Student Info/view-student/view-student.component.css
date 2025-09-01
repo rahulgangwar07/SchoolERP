@@ -1,0 +1,181 @@
+/* Center align the content */
+.fc-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Filter Group Layout */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select, input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Filters Container for the main filter section */
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color:aliceblue;
+  padding:5px 2px;
+}
+
+/* Table Section */
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+  background-color: aliceblue;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #f2f2f2;
+  }
+
+
+.password-div {
+  /*height: 30%;*/
+  width: 59%;
+  background-color: white;
+  top: 59px;
+  left: 411px;
+  position: fixed;
+  border: 1px solid #ddd;
+}
+
+  .password-div .row {
+    padding: 5px 0px;
+  }
+
+/* Action Button Styling */
+.actionbtn {
+  padding: 5px 25px;
+  color: #c65050;
+  border: 1px solid #c65050;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.action-btn:hover {
+  background-color: #45a049;
+}
+
+/* Report Link Styling */
+.reportTD a {
+  text-decoration: none;
+  color: #34801a;
+}
+
+/* Option List Styling for actions */
+.optionListTD ul {
+  padding-left: 5px;
+}
+
+.optionList {
+  position: absolute;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  list-style: none;
+  font-size: 12px;
+  width: 10%;
+  background-color: white;
+  border: 1px solid #cfbbbb;
+}
+
+  .optionList li {
+    position: relative;
+    border-bottom: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+  }
+
+  .optionList a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .optionList li:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Styling for Icons in Option List */
+  .optionList i.fa-edit, i.fa-trash {
+    color: red;
+  }
+
+.enable-disable {
+  background-color: #c9a8a8;
+}
+
+
+
+.student-info h4 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+  .button-group .btn {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+.student-details {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+  .student-details div {
+    margin-bottom: 10px;
+  }
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+    .button-group .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+  .student-details {
+    font-size: 14px;
+  }
+}

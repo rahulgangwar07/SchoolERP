@@ -1,0 +1,113 @@
+
+/* Container styling */
+.container { 
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 75px;
+  width: 45%;
+  margin-left: 15%;
+}
+
+.header-div{
+    display:flex;justify-content:space-between;
+}
+
+h6 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+p i.close-icon {
+  font-size: 18px;
+  color: #ff0000;
+  cursor: pointer;
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #554c4c;
+  border: 1px solid red;
+  color: white;
+}
+ 
+/* Label styling */
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  color: #555;
+}
+
+/* Mandatory field styling */
+.mandatory {
+  color: red;
+  font-size: 16px;
+}
+
+/* Select dropdown container styling */
+.select-container {
+  width: 100%;
+}
+
+/* Styling for select elements */
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+/* Add padding between select elements */
+.form-group select {
+  margin-right: 15px;
+}
+
+.form-group:last-child select {
+  margin-right: 0;
+}
+
+/* Responsive Layout: Align the form elements properly on smaller screens */
+@media (max-width: 768px) {
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .col-md-2, .col-md-3 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  /* Improve spacing for labels and inputs on mobile */
+  label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  select {
+    font-size: 16px;
+  }
+  .container {
+    width: 76%;
+    margin-left:0px;
+  }
+
+}

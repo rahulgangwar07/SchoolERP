@@ -1,0 +1,47 @@
+<div class="container">
+  <!--academics/slm-->
+  <h4 class="section-title">{{subjectName}}</h4>
+  <div class="row layout-header mb-3">
+
+    <div class="col-md-7">
+      <p class="font-weight-bold">{{subjectName}}</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a class="btn btn-sm">Add Lesson</a>
+      <a [routerLink]="['/academics/explore-slm',classId,className]" routerLinkActive="active" class="btn btn-sm">Go Back</a>
+      <a routerLink="/academics/slm" routerLinkActive="active" class="btn btn-sm">S.L.M.</a>
+    </div>
+  </div>
+
+  <div class="row syllabus-section">
+    <div *ngIf="userRole !== 'Student'" class="col-md-3">
+      <div (click)="popupStatus()" class="add-syllabus">
+        <label>Add Syllabus</label>
+        <span class="subject">{{subjectName}}</span>
+      </div>
+    </div>
+    <div *ngIf="syllabus.length>0" class="col-md-9 syllabus-details">
+      <p><strong>Syllabus:</strong> {{syllabus[0].content_title}} </p>
+      <p>
+        <strong>Video Resource: &nbsp;</strong>
+        <a href="{{syllabus[0].content_url}}" target="_blank">Watch Video</a>
+      </p>
+
+      <ng-container *ngIf="syllabus[0].fileType == 'image'">
+        <a href="{{syllabus[0].fileName}}" target="_blank"><img src="{{syllabus[0].fileName}}" alt="Syllabus Image" /></a>
+      </ng-container>
+      <ng-container *ngIf="syllabus[0].fileType == 'pdf'">
+        <a [href]="syllabus[0].fileName" target="_blank">View PDF</a>
+      </ng-container>
+      <ng-container *ngIf="syllabus[0].fileType === 'text/plain'">
+        <a [href]="syllabus[0].fileName" target="_blank">Download Text File</a>
+      </ng-container>
+
+      <a [href]="syllabus[0].fileName" class="btn btn-outline-success btn-sm" target="_blank" download>Download</a>
+    </div>
+  </div>
+</div>
+<app-slm-content-popup [popupStatus]="showPopup" [clsNsub]="values" (popupStatusChange)="handlePopupClose($event)"
+                       (syllabusUpdated)="handleSyllabusUpdate($event)">
+</app-slm-content-popup>
+

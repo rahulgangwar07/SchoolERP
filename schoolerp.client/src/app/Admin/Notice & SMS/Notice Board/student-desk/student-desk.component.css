@@ -1,0 +1,41 @@
+
+.layout-header {
+  width: 95%;
+}
+
+.container {
+  position: absolute;
+}
+
+.card-img-top {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden; 
+  padding-top: 10px;
+}
+
+.teacher-image {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.open-notification {
+  position: absolute;
+  top: 10px;
+  right: 82px;
+  background-color: #eba517;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.desig_name {
+  color: #ff4400;
+}
+

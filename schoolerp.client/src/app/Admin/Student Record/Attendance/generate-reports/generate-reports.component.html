@@ -1,0 +1,126 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Mark Attendance</h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Record attendance</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a class="action-btn" (click)="clearRecord()" [ngStyle]="{'background-color':themeSetting?.button_color}">Clear Record</a>
+      <a routerLink="/att/monthly-report" routerLinkActive="active" class="action-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">Monthly View</a>
+      <a routerLink="/attendance/view" routerLinkActive="active" class="action-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">View Attendance</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+  <!-- Report Filters Section -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Filter Attendance Report</h5>
+        </div>
+        <div class="card-body">
+          <form id="attendanceReportForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select name="days" [(ngModel)]="selectedDay">
+                    <option *ngFor="let day of calenderDay" [value]="day">{{ day }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select name="month" [(ngModel)]="selectedMonth" id="select-month">
+                    <option *ngFor="let month of calenderMonth | keyvalue" [value]="month.key">{{ month.value }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select name="year" [(ngModel)]="selectedYear" id="select-year">
+                    <option *ngFor="let year of calenderYear" [value]="year">{{ year }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select name="class" [(ngModel)]="selectedClassId" id="select-class" (change)="changeClass()">
+                    <option value="0" selected>Select Class</option>
+                    <option *ngFor="let cls of classList" [value]="cls.class_id">{{ cls.class_name }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select id="select-section" name="select-section" [(ngModel)]="selectedSecId">
+                    <option value="0">Section</option>
+                    <option *ngFor="let sec of secList" value="{{sec.sec_id}}"> {{sec.sec_name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color':themeSetting?.button_color}">Search</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attendance Report Table Section -->
+  <div class="row" id="attendanceReportSection">
+    <div class="col-lg-12">
+      <h6>Mark Attendance for {{ formatDate(getSelectedDate()) }}</h6>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Attendance</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; index as C">
+            <td>
+              <strong>{{ student.first_name }} <em class="rollno">(Roll: {{ student.stu_id }}) (Adm_no: {{ student.registration_no }})</em></strong><br>
+              <em class="guardianname">{{ student.father_name }}</em>
+            </td>
+            <td class="attlabels">
+              <label [ngClass]="{ 'present': student.attstatus === 'P' }">
+                <input type="radio" [(ngModel)]="student.attstatus" name="{{ student.attstatus }}_status_{{student.stu_id}}" value="P">
+                Present
+              </label>
+              <label [ngClass]="{ 'absent': student.attstatus === 'A' }">
+                <input type="radio" [(ngModel)]="student.attstatus" name="{{ student.attstatus }}_status_{{student.stu_id}}" value="A">
+                Absent
+              </label>
+              <label [ngClass]="{ 'leave': student.attstatus === 'L' }">
+                <input type="radio" [(ngModel)]="student.attstatus" name="{{ student.attstatus }}_status_{{student.stu_id}}" value="L">
+                Leave
+              </label>
+            </td>
+            <td>
+              <input type="text" [(ngModel)]="student.remark" placeholder="Remark" class="form-control">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="takeAttendance()" [ngStyle]="{'background-color':themeSetting?.button_color}">Take Attendance</button>
+      </div>
+    </div>
+  </div>
+
+</div>

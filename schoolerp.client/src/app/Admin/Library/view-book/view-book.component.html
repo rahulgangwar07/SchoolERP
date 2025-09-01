@@ -1,0 +1,109 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>list of all books</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a class="btn btn-outline-primary btn-sm mx-2">Export CSV</a>
+      <a class="btn btn-outline-primary btn-sm mx-2">Print</a>
+      <a routerLink="/library/add-book" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Book</a>
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="row my-4">
+    <div class="col-md-2">
+      <select id="classSelect" class="form-control">
+        <option>Select Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+        <option>IV</option>
+        <option>V</option>
+        <option>VI</option>
+        <option>VII</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select id="group" class="form-control">
+        <option>Select Group</option>
+        <option>Book</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select id="subjectSelect" class="form-control">
+        <option>Subject</option>
+        <option>ATT</option>
+        <option>Chemistry</option>
+        <option>Computer</option>
+        <option>English</option>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <input type="text" class="form-control" placeholder="TITLE | PUBLICATION | AUTHOR | ACCESSION NO. | SERIAL NO." />
+    </div>
+
+    <div class="col-md-1">
+      <button class="btn btn-primary go-btn w-100">GO</button>
+    </div>
+  </div>
+
+  <!-- Book List Section -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Accession</th>
+            <th>Class</th>
+            <th>Publisher</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let llist of bookList;index as i;" class="styling">
+ 
+            <tr class="first-row">
+              <td>{{i+1}}</td>
+              <td>{{llist.title}}</td>
+              <td>{{llist.author}}</td>
+              <td>{{llist.accession_no}}</td>
+              <td>{{className(llist.class_id)}}</td>
+              <td>{{llist.publisher}}</td>
+              <td>
+           
+                <button class="btn btn-info btn-sm btn-action" (click)="toggleAction(i)">Action</button>
+                <ul *ngIf="currentIndex == i" class="action-list">
+                  <li (click)="editLibraryBook(llist.book_id)">
+                    <i class="fas fa-edit"></i> Edit
+                  </li>
+                  <li (click)="deleteLibraryBook(llist.book_id,i)">
+                    <i class="fas fa-trash-alt"></i> Delete
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <!-- Book Additional Info Row -->
+            <tr>
+              <td colspan="7">
+                <ul class="second-row">
+                  <li><span>Quantity:</span> {{llist.no_of_copies}}</li>
+                  <li><span>Barcode No.:</span> {{llist.isbn_no}}</li>
+                  <!--<li><span>Sr. No.:</span> {{llist.title}}</li>-->
+                  <li><span>Almeria No.:</span> {{llist.accession_no}}</li>
+                  <li><span>Rack No.:</span> {{llist.rack_no}}</li>
+                  <li><span>Position:</span> {{llist.position}}</li>
+                </ul>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

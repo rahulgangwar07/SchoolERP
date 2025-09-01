@@ -1,0 +1,48 @@
+
+.searching {
+  margin-top: 50px;
+}
+
+  .searching select, .searching input, .searching button {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  .searching button {
+    width: 100%;
+  }
+
+.maindiv {
+  margin-top: 40px;
+}
+
+  .maindiv .datepara {
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .maindiv p {
+    font-size: 16px;
+  }
+
+  .maindiv label {
+    font-weight: bold;
+    text-align: left;
+  }
+
+.col-md-5 p {
+  font-size: 14px;
+}
+
+.col-md-2 {
+  display: inline-block;
+}
+
+#btnreport {
+  border: 0;
+  margin-top: 10px;
+}
+
+.row.note-entry:hover {
+  background-color: #f0f0f0;
+}

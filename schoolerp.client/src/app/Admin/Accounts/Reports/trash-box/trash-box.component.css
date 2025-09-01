@@ -1,0 +1,106 @@
+/* General container and spacing */
+.container {
+  margin-top: 20px;
+}
+
+/* Header Section Styling */
+.layout-header .col-md-6 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.text-right a {
+  font-size: 16px;
+  color: #007bff;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+  .text-right a:hover {
+    background-color: #007bff;
+    color: white;
+  }
+
+/* Styling for individual Trash Box Cards */
+.trash-box-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+  .trash-box-card .row {
+    margin-bottom: 10px;
+  }
+
+  /* Styling for individual columns inside the card */
+  .trash-box-card .col-md-1, .trash-box-card .col-md-2, .trash-box-card .col-md-3,
+  .trash-box-card .col-md-4 {
+    padding: 5px 15px;
+    font-size: 14px;
+    border-right: 1px solid #ddd;
+  }
+
+  .trash-box-card .col-md-4 {
+    border-right: none;
+  }
+
+  .trash-box-card .col-md-2 {
+    font-weight: bold;
+  }
+
+  .trash-box-card .trash-box-comment {
+    font-size: 12px;
+    color: #888;
+    padding-top: 10px;
+  }
+
+  /* Hover effect for trash box cards */
+  .trash-box-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+  }
+
+/* Styling for "No record found" */
+.no-records p {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+}
+
+/* Table layout for the rows inside cards */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+  .row > div {
+    flex: 1;
+    text-align: center;
+  }
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .trash-box-card .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trash-box-card .col-md-1, .trash-box-card .col-md-2, .trash-box-card .col-md-3,
+  .trash-box-card .col-md-4 {
+    text-align: left;
+    width: 100%;
+    padding: 5px 10px;
+  }
+
+  .text-right a {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}

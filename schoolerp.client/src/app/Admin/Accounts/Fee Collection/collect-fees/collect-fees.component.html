@@ -1,0 +1,163 @@
+<div class="container">
+  <h3>COLLECT FEES</h3>
+  <div class="row layout-header">
+    <div class="col-md-6">Take Student Fees</div>
+    <div class="col-md-6">
+      <a routerLink="/registration/add_lateral_entry" routerLinkActive="active">Lateral Entry</a>
+      <a routerLink="/reports/yearly" routerLinkActive="active">Yearly Report</a>
+      <a routerLink="/accounts/fee-list" routerLinkActive="active">Fee List</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Left Side: Fee Collection Form -->
+    <div class="col-md-6">
+      <form class="collect-fees-form">
+        <div class="form-group demand">
+          <label for="demandNo">Demand No.</label>
+          <select class="form-control" id="demandNo" [(ngModel)]="demandNo" name="demandNo" (change)="onDemandNoChange()">
+            <option value="registration_no">Registration No.</option>
+            <option value="student_id">Student ID</option>
+            <option value="all-search">All Search</option>
+          </select>
+          <input type="text" id="demandValue" name="demandValue" [(ngModel)]="demandValue" class="form-control" placeholder="Student ID/Reg No./ADM No./Pay Slip No." (input)="onDemandNoChange()">
+        </div>
+        <div class="form-group">
+          <label for="academicYear">Academic Year <span>*</span></label>
+          <input type="text" id="academicYear" name="academicYear" [(ngModel)]="activeSession" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+          <label for="class">Class</label>
+          <select id="class" name="class_id" [(ngModel)]="class_id" class="form-control" (change)="classChange()">
+            <option value="0">Select Class</option>
+            <option *ngFor="let cls of classList; index as i;" [value]="cls.class_id">{{ cls.class_name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="paymentDate">Payment Date</label>
+          <input type="date" id="paymentDate" class="form-control" [(ngModel)]="paymentDate">
+        </div>
+
+        <div class="form-group mb-0">
+          <label for="studentName">Student Name</label>
+          <input type="text" id="studentName" class="form-control"
+                 name="studentName" [(ngModel)]="studentName" (input)="stuNameChange()" placeholder="Enter Student Name" />
+        </div>
+
+        <!-- Student List Suggestions -->
+        <div *ngIf="classload && filteredStudentList.length > 0" class="form-group">
+          <label class="invisible">Matching Students</label>
+          <div class="student-list-wrapper">
+            <ul class="student-list">
+              <li *ngFor="let stu of filteredStudentList" (click)="loadSingleStudentData(stu.registration_no)">
+                <strong>{{ stu.first_name }}</strong>
+                <small>({{ stu.father_name }})</small>
+                <span class="reg-no">Reg No: {{ stu.registration_no }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Month Checkboxes -->
+        <div class="form-group row uncheckdiv">
+          <div class="d-flex mb-2">
+            <label class="col-md-3 uncheck">
+              <input type="checkbox" [checked]="toggleAll" (change)="onToggleAllMonths()" />
+              {{ toggleAll ? 'Uncheck All' : 'Check All' }}
+            </label>
+          </div>
+
+          <div class="row">
+            <div *ngFor="let m of months" class="col-md-3">
+              <label>
+                <input type="checkbox"
+                       [value]="m.key"
+                       [checked]="selectedMonths.includes(m.key)"
+                       (change)="onMonthCheckboxChange(m.key, $event)" />
+                {{ m.name }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Right Side: Student Details and Payment History -->
+    <div class="col-md-6">
+      <h4 class="bg-primary d-flex p-2">Edit Student Detail <i class="fa-pen-alt fas" style="padding:10px 0px 0px 4px;"></i></h4>
+      <form class="student-details-form">
+        <div class="row d-flex">
+          <div class="col-md-6 rollnosection">
+            <img [src]="stuImage" class="image-size" />
+          </div>
+          <div class="col-md-6 rollnosection">
+            <div class="col-md-12">
+              <label for="rollNo">Roll No</label>
+              <label>{{ rollNo }}</label>
+            </div>
+
+            <div class="col-md-12">
+              <label for="contactNo">Contact No</label>
+              <label>{{ contactNo }}</label>
+            </div>
+
+            <div class="col-md-12">
+              <label for="admNo">Adm. No.</label>
+              <label>{{ admNo }}</label>
+            </div>
+
+            <div class="col-md-12">
+              <label for="regNo">Reg. No.</label>
+              <label>{{ regNo }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feeGroup">Fee Group</label>
+          <label>{{ feeGroup || 'N/A' }}</label>
+        </div>
+        <div class="form-group">
+          <label for="class">Class</label>
+          <label>{{ clsName(class_id) }}</label>
+        </div>
+        <div class="form-group">
+          <label for="studentName">Student Name</label>
+          <label>{{ studentName || 'N/A' }}</label>
+        </div>
+        <div class="form-group">
+          <label for="fatherName">Father's Name</label>
+          <label>{{ fatherName || 'N/A' }}</label>
+        </div>
+        <div class="form-group">
+          <label for="motherName">Mother's Name</label>
+          <label>{{ motherName || 'N/A' }}</label>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <label>{{ dob || 'N/A' }}</label>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" rows="3" name="address">{{ address }}</textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toggleable Sections: Payment History, Special Command, Expected Payment -->
+  <div class="col-md-12 tabsection">
+    <div class="tabs">
+      <button class="tab-btn" (click)="showTab('paymentHistory')">Payment History</button>
+      <button class="tab-btn" (click)="showTab('specialCommand')">Special Command</button>
+      <button class="tab-btn" (click)="showTab('expectedPayment')">Expected Payment</button>
+    </div>
+
+    <div class="tab-content">
+      <app-payment-history *ngIf="activeTab === 'paymentHistory'"></app-payment-history>
+      <app-special-command *ngIf="activeTab === 'specialCommand'"></app-special-command>
+      <app-expected-payment *ngIf="activeTab === 'expectedPayment'" [classId]="class_id" [session]="activeSession" [selectedMonths]="selectedMonths"></app-expected-payment>
+    </div>
+  </div>
+</div>

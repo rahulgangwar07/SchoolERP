@@ -1,0 +1,135 @@
+<div class="container mt-2">
+  <!-- Page Header -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <h6 class="">Assets and Item List</h6>
+    </div>
+    <div class="col-md-5 text-right">
+      <button class="btn btn-outline-primary btn-sm mx-2" routerLink="/assets-inventory/settings/vendor-list">Add Vendor</button>
+    </div>
+  </div>
+
+  <!-- Assets and Item List Table -->
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <div class="card shadow-sm rounded-lg">
+        <h6 class="mt-2">Assets and Item List</h6>
+        <div class="card-body">
+          <!-- Table for Assets -->
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ass of assetList; index as i;">
+                <td>{{ i + 1 }}</td>
+                <td>{{ ass.asset_id }}</td>
+                <td>{{ ass.asset_name }}</td>
+                <td>
+                  <button class="btn btn-info btn-sm" (click)="editAsset(ass)">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteAssets(ass.asset_id, i)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card shadow-sm rounded-lg mt-4">
+        <h6 class="mt-2">Sell Counter Item List</h6>
+        <div class="card-body">
+          <!-- Table for Inventory -->
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Variant</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let inv of inventoryList; index as i;">
+                <td>{{ i + 1 }}</td>
+                <td>{{ inv.inventory_id }}</td>
+                <td>{{ inv.item_name }}</td>
+                <td><button class="variant-btn" (click)="variantPopup(inv.inventory_id, inv.item_name)"><i class="fa fa-plus"></i> Variant</button></td>
+                <td>
+                  <button class="btn btn-info btn-sm" (click)="editInventory(inv)">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteInventory(inv.inventory_id, i)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Add/Edit Form -->
+    <div class="col-md-4">
+      <div class="card shadow-sm rounded-lg">
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <h5 class="text-primary">Add/Edit Category</h5>
+            <div class="mb-3 mt-2">
+              <label for="categoryType">Type</label>
+              <select class="form-control" id="categoryType" name="categoryType" [(ngModel)]="selectedCategory">
+                <option value="Asset">Asset</option>
+                <option value="Inventory">Inventory</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="categoryName">Name <span class="text-danger fw-bold">*</span></label>
+              <input type="text" class="form-control" id="categoryName" name="categoryName" #name="ngModel" [(ngModel)]="txtname" placeholder="Enter category name" required
+                     [ngClass]="{'is-invalid': name.invalid && name.touched}">
+              <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
+                Name is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="description">Description</label>
+              <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="description"></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <div class="form-row mt-3">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-lg btn-block" [disabled]="name.invalid" type="submit" [ngStyle]="{'background-color':themeSetting?.button_color}">Save All</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Variant Modal -->
+<div *ngIf="variantpPopup" class="variant-container">
+  <div class="row">
+    <h4 class="col-md-10 text-primary">Add {{ inventory_name }} Variants</h4>
+    <div class="col-md-2 text-right"><button class="btn btn-danger" (click)="closePopupbtn()"><i class="fa fa-close"></i></button></div>
+  </div>
+
+  <div *ngFor="let v of variantList; index as i; trackBy: trackByIndex" class="variant-row">
+    <input type="text" id="variant_name_{{ i }}" name="variant_name_{{ i }}" [(ngModel)]="v.variant_name" placeholder="Title" class="form-control" />
+    <input type="number" id="quantity_{{ i }}" name="quantity_{{ i }}" [(ngModel)]="v.quantity" placeholder="Quantity" class="form-control" />
+    <input type="number" id="unit_price_{{ i }}" name="unit_price_{{ i }}" [(ngModel)]="v.unit_price" placeholder="Cost" class="form-control" />
+
+    <button *ngIf="i === 0" class="btn btn-success add-row" (click)="addVariant()">+</button>
+    <button *ngIf="i > 0" class="btn btn-danger remove-row" (click)="removeVariant(v.variant_id, i)">-</button>
+  </div>
+
+  <div class="variant-actions text-right">
+    <button class="btn btn-primary submit" (click)="insertVariant()">Add Variant</button>
+  </div>
+</div>

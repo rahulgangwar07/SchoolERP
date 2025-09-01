@@ -1,0 +1,20 @@
+<div class="container">
+  <h6><u>Self Learning Material</u></h6>
+  <h6 class="d-flex justify-content-start">Early Childhood Education Level</h6>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                                 [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                                 (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+  <div class="row">
+    <!-- Class 12th Level -->
+    <div *ngFor="let cls of classList; index as i;" class="level-section col-md-4">
+      <div class="d-flex align-items-center">
+        <img src="../assets/img/book.jpg" alt="book-img" class="book-img" />
+        <input id="class_id" type="hidden" [value]="cls.class_id" />
+        <h2>{{ cls.class_name }}</h2>
+      </div>
+      <p>Explore materials for Class {{ cls.class_name }} students to understand key concepts easily.</p>
+      <div class="explore"><a [routerLink]="['/academics/explore-slm',cls.class_id,cls.dis_name]" routerLinkActive="active">Explore</a></div>
+    </div>
+  </div>
+</div>

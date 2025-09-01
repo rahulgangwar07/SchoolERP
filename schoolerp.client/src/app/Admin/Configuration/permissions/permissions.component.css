@@ -1,0 +1,75 @@
+
+.page-header{
+    margin-bottom:0px;
+}
+ 
+.more button {
+  color: #ff6a00;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+  .more button:hover {
+    background-color: #ff6a00;
+    color: #fff;
+  }
+   
+.permissionbtns {
+  margin-top: 15px;
+}
+
+.overflow{
+    overflow-x:auto;
+}
+
+.submitdiv {
+  color: red;
+}
+
+.table td, .table th {
+  text-align: center;
+  padding: 10px;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+/* Striped table rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Button margin styling */
+button {
+  margin-top: 5px;
+}
+
+.per_submit{
+    color:#0f488e;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* Styling for the permission dropdown section */
+.permissionddl {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  font-size: 12px;
+  padding: 10px;
+  margin: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .more div:first-child {
+    display: flex;
+    align-items: flex-end;
+  }
+}

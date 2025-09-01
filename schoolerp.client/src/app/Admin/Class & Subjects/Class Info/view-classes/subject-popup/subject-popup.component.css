@@ -1,0 +1,76 @@
+/* Overlay background */
+.overlay {
+  position: fixed;
+  top: 10%;
+  left: 28%;
+  width: 60%;
+  height: 70%;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+/* Header Style */
+.header-div {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+  .header-div h6 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+
+.close-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+}
+
+  .close-icon:hover {
+    color: #f00;
+  }
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+  table thead {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  table th, table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table td {
+    font-size: 14px;
+  }
+
+.header-div p{
+    color:red;
+}
+
+
+/* Action column - styling for delete action */
+p {
+  cursor: pointer;
+  color: #007bff;
+}
+
+       p:hover {
+        text-decoration: underline;
+      }
+
+/* Remove unnecessary form styling, buttons, and other redundant styles */

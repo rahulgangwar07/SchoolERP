@@ -1,0 +1,52 @@
+<div class="container mt-2">
+  <!-- Header Section -->
+  <h6 class="font-weight-bold text-center">S3 Bucket Object</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">List of all Images in Folder: <strong></strong></p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a href="/leave/aply" class="btn btn-primary">Gallery Category</a>
+    </div>
+  </div>
+
+  <!-- S3 Bucket Object List -->
+  <div class="gallery-container">
+    <div class="gallery-header text-center mb-4">
+      <h4>Images List</h4>
+    </div>
+
+    <table class="table table-striped">
+      <ng-container *ngFor="let img of allImages; index as i;">
+        <tr *ngIf="img.images.length > 0" class="d-flex align-items-start">
+          <td class="d-flex row">
+            <div class="col-md-2 folder-name" (click)="toggleList(i)">
+              <h5 class="folder-heading">{{img.folder_name}}</h5>
+            </div>
+            <ul class="col-md-10 image-list" *ngIf="toggleIndex === i">
+              <ng-container *ngFor="let image of img.images; index as j;">
+                <li class="image-item d-flex">
+                  <div class="image-number col-md-1">{{j+1}}</div>
+                  <div class="image-url col-md-8">{{image.url_name}}</div>
+                  <div class="image-display col-md-3">
+                    <!-- Check if the file is an image or PDF -->
+                    <ng-container *ngIf="isImage(image.url_name)">
+                      <img [src]="image.url" alt="Image" />
+                    </ng-container>
+
+                    <!-- Check if the file is a PDF -->
+                    <!--<ng-container *ngIf="isPDF(image.url_name)">
+                      <a [href]="image.url" target="_blank">
+                        <button class="btn btn-primary">View PDF</button>
+                      </a>
+                    </ng-container>-->
+                  </div>
+                </li>
+              </ng-container>
+            </ul>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>

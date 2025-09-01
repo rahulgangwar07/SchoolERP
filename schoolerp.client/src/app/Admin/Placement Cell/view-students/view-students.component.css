@@ -1,0 +1,59 @@
+
+/* Container styling */
+.container {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+ 
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  .table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+
+  .table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  .table td {
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  /* Action Buttons Styling */
+  .table .btn {
+    margin-right: 5px;
+    font-size: 0.85em;
+  }
+
+  .table .btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+  }
+
+  .table .btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+
+  .table .btn-sm {
+    padding: 5px 10px;
+  }
+
+  .table .btn:hover {
+    opacity: 0.9;
+  }
+
+/* Responsive table adjustments */
+@media (max-width: 767px) {
+  .table th, .table td {
+    padding: 8px 10px;
+  }
+}

@@ -1,0 +1,84 @@
+ 
+table {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #333;
+} 
+
+/* Styling the table */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+  .table th,
+  .table td {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+
+  .table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+/* Button Styling */
+button.mat-raised-button {
+  margin: 5px 0;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card styling */
+.card {
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 25px;
+  background-color: #fff;
+}
+
+/* Add some spacing for headings and paragraphs */
+h5 {
+  font-size: 1.4rem;
+  color: #007bff;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.layout-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}

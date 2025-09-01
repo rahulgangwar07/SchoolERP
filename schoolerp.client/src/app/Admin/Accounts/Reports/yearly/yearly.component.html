@@ -1,0 +1,115 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Student Fees Yearly Report </div>
+    <div class="col-md-6">
+      <a routerLink="/accounts/create-demand-slip" routerLinkActive="active">Excel Report</a>
+      <a routerLink="/accounts/fee-overdue" routerLinkActive="active">Fee Overdues</a>
+      <a routerLink="/accounts/print-demand-slip" routerLinkActive="active">Print Report</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 month-checkboxes">
+      <label><input type="checkbox" id="april"> Apr</label>
+      <label><input type="checkbox" id="may"> May</label>
+      <label><input type="checkbox" id="june"> June</label>
+      <label><input type="checkbox" id="july"> July</label>
+      <label><input type="checkbox" id="august"> Aug</label>
+      <label><input type="checkbox" id="september"> Sep</label>
+      <label><input type="checkbox" id="october"> Oct</label>
+      <label><input type="checkbox" id="november"> Nov</label>
+      <label><input type="checkbox" id="december"> Dec </label>
+      <label><input type="checkbox" id="january"> Jan</label>
+      <label><input type="checkbox" id="february"> Feb</label>
+      <label><input type="checkbox" id="march"> Mar </label>
+    </div>
+
+    <div class="col-md-7">
+      <form>
+        <!-- Class Select Dropdown -->
+        <div>
+          <label>Class</label>
+          <select id="class">
+            <option>All Class</option>
+            <option>I</option>
+            <option>II</option>
+            <option>III</option>
+          </select>
+        </div>
+
+        <!-- Section Select Dropdown -->
+        <div>
+          <label>Section</label>
+          <select id="section">
+            <option>Section</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
+
+        <!-- Session Select Dropdown -->
+        <div>
+          <label>Academic Year</label>
+          <select id="session">
+            <option>2024 - 2025</option>
+            <option>2025 - 2026</option>
+          </select>
+        </div>
+
+        <!-- Branch Select Dropdown -->
+
+        <button>Go</button>
+      </form>
+    </div>
+
+  </div>
+  <div class="row">
+    <table class="student-fee-table">
+      <thead>
+        <tr>
+          <th>Adm No.</th>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Apr</th>
+          <th>May</th>
+          <th>June</th>
+          <th>July</th>
+          <th>Aug</th>
+          <th>Sep</th>
+          <th>Oct</th>
+          <th>Nov</th>
+          <th>Dec</th>
+          <th>Jan</th>
+          <th>Feb</th>
+          <th>Mar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, you can dynamically fill this using Angular or other templating systems -->
+        <tr>
+          <td>60001</td>
+          <td>Jatin Sharma</td>
+          <td>I</td>
+          <td>1500</td> <!-- Apr -->
+          <td>1000</td> <!-- May -->
+          <td>1500</td> <!-- June -->
+          <td>1200</td> <!-- July -->
+          <td>1000</td> <!-- Aug -->
+          <td>1200</td> <!-- Sep -->
+          <td>1300</td> <!-- Oct -->
+          <td>1500</td> <!-- Nov -->
+          <td>1300</td> <!-- Dec -->
+          <td>1400</td> <!-- Jan -->
+          <td>1200</td> <!-- Feb -->
+          <td>1500</td> <!-- Mar -->
+        </tr>
+        <!-- Additional rows can be added dynamically -->
+      </tbody>
+    </table>
+     
+  </div>
+
+
+
+</div>

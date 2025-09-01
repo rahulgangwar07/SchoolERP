@@ -1,0 +1,47 @@
+
+<div class="container">
+  <h6>Generate teacher identity card</h6>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Generate teacher identity card</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <!--<a routerLink="/online-exam/view-test" routerLinkActive="active" class="action-btn">View Tests</a>-->
+
+    </div>
+  </div>
+  <table class="faculty-table">
+    <thead>
+      <tr>
+          <th><input type="checkbox" id="mainckbox" (click)="mainCheckbox()" [checked]="isAllSelected" /></th>
+        <th>Photo</th>
+        <th>Name</th>
+        <!--<th>Course</th>-->
+        <!--<th>Shift</th>-->
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Branch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of facultyList; index as i" [ngClass]="{'disabled-account':f.status == 'Suspended'}">
+        <td><input type="checkbox" [checked]="selectedFaculties[i]" (click)="toggleCheckbox(i)" /></td>
+        <td class="imgdiv"><img src="{{f.image}}" /></td>
+        <td>
+          <p style="font-size:15px;margin:0;">{{f.first_name}}</p>
+        </td>
+        <!--<td>3rd Shift</td>-->
+        <td *ngIf="f.phone != null">{{f.phone}}</td>
+        <td *ngIf="f.phone == null">{{f.whatsapp_no}}</td>
+        <td style="font-size:15px;">{{f.dob | date:'dd-MMM-YYYY'}}</td>
+        <td>xyz</td>
+      </tr>
+      <tr>
+        <td colspan="6"><button class="btn" style="margin:10px;background-color:#ffe2ff" (click)="generateIdCard()">Generate ID Card</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-icard-popup *ngIf="icard_visible" [faculties]="selectedFacultiesData"></app-icard-popup>
+  <!--<app-icard-popup *ngIf="icard_visible" [faculties]="selectedFacultiesData"></app-icard-popup>-->
+</div>

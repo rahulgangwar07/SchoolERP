@@ -1,0 +1,103 @@
+
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <h6>Take Student Fees</h6>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/online-exam/view-test-result" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Exam Result</a>
+      <a routerLink="/online-exam/add-test" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add New Exam</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Filter Section -->
+  <div class="row my-4">
+    <div class="col-md-3">
+      <label for="classSelect">Select Class</label>
+      <select id="classSelect" class="form-control" (change)="changefun()">
+        <option>Select Class</option>
+        <option *ngFor="let cls of classList;index as i" [value]="cls.class_id">{{cls.class_name}}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="examTypeSelect">Exam Type</label>
+      <select id="examTypeSelect" class="form-control" (change)="changefun()">
+        <option value="">Exam Type</option>
+        <option value="online-examination">Online Examination</option>
+        <option value="pre-board">Pre-board</option>
+        <option value="online">Online</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="facultySelect">Faculty</label>
+      <select id="facultySelect" class="form-control" (change)="changefun()">
+        <option value="">Faculty</option>
+        <option *ngFor="let t of teacherList;index as i" [value]="t.faculty_id">{{t.first_name}}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="academicYearSelect">Academic Year</label>
+      <select id="academicYearSelect" name="academicYear" [(ngModel)]="academicYear" class="form-control" (change)="changefun()">
+        <option *ngFor="let session of sessionList" [value]="session.session_name">{{session.session_name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <table class="table table-striped">
+    <tbody>
+      <ng-container *ngFor="let exam of filteredonlineExams;index as i;">
+        <tr>
+          <td colspan="3">
+            <p>{{i+1}} <strong>{{subjectName(exam.ex.subject_id)}}</strong></p>
+            <!--<p>1 <strong>Hindi Language</strong></p>-->
+            <p class="exam-class"><strong>{{exam.ex.exam_name}} for {{className(exam.ex.class_id)}}</strong></p>
+          </td>
+          <td colspan="2">
+            <p>
+              {{ exam.ex.exam_start_date | date:'dd MMM yyyy' }} - {{ exam.ex.exam_end_date | date:'dd MMM yyyy' }}
+            </p>
+            <p class="exam-class"><strong>Timing:</strong> {{exam.ex.duration_type == 'fullDay' ? exam.ex.duration_type : (setTime(exam.ex.start_time)) + ' - ' + (setTime(exam.ex.end_time)) }}</p>
+          </td>
+          <td>
+            <label [routerLink]="['/online-exam/question/view',exam.ex.exam_id,'success']" routerLinkactive="active" class="QMbutton">Add Q./M. <span *ngIf="exam.question_count > 0" class="questionCount">{{exam.question_count}}</span></label>
+          </td>
+          <td>
+            <label class="resultBtn" routerLink="/online-exam/view-test-result" routerLinkActive="active" (click)="showResult(exam.ex.class_id)">Result <span *ngIf="i > 0" class="resultCount">{{exam.result_count}}</span></label>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td colspan="5" class="created-div">
+            <p>{{exam.ex.exam_title}}</p>
+            <p>
+              <span>Dur.:</span> <span class="duration">{{exam.ex.duration}} Min</span> | <span>Result:</span> {{exam.ex.result_date == null ? 'Not Assigned' : exam.ex.result_date | date}} | <span>Lock Date:</span>
+              {{exam.ex.lock_date == null ? 'Not Assigned' : exam.ex.lock_date | date}} | <span>Answersheet:</span> {{exam.ex.ans_sheet_status == false ? 'N' : 'Y'}} | <span>Created: </span>{{exam.ex.created_date | date}}
+            </p>
+          </td>
+          <td>
+            <p>By: {{facultyName(exam.ex.faculty_id)}}</p>
+          </td>
+          <td>
+            <button class="action-btn" (click)="togglebtn(i)">Action</button>
+            <div class="action-btn-list">
+              <ul *ngIf="toggleIndex == i">
+                <li [routerLink]="['/online-exam/add-test',exam.ex.exam_id]" routerlinkActive="active"><i class="fa fa-edit"></i>Edit </li>
+                <li (click)="deleteExam(exam.ex.exam_id)"><i class="fa fa-trash"></i>Delete </li>
+                <li (click)="examPermission(exam.ex.exam_id)"><i class="fa fa-check"></i>Permission </li>
+                <li style="display:none;"><i class="fa fa-plus"></i>Copy Questions </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<app-question-permission *ngIf="permissionPopup" [examId]="examId" (closePopup)="close($event)"></app-question-permission>

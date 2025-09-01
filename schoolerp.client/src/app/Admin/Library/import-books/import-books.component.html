@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <h6>Add Bulk Library</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Available Titles For EXCEL / CSV Sheet</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/payroll/pfstatement/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Export Excel</a>-->
+      <!--<a routerLink="library/view-book" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Books</a>-->
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <h6>Excel Column Fields Required for Upload</h6>
+          <ul class="record-list">
+            <li><strong>1. book_type</strong> – Type of book (e.g., Textbook, Reference)</li>
+            <li><strong>2. title</strong> – Title of the book</li>
+            <li><strong>3. isbn_no</strong> – ISBN number (optional)</li>
+            <li><strong>4. author</strong> – Author name</li>
+            <li><strong>5. edition</strong> – Edition info (e.g., 1st, Revised)</li>
+            <li><strong>6. volume</strong> – Volume number (if any)</li>
+            <li><strong>7. publisher</strong> – Publisher name</li>
+            <li><strong>8. price</strong> – Price of the book (e.g., 299.99)</li>
+            <li><strong>9. no_of_copies</strong> – Total number of copies</li>
+            <li><strong>10. no_of_pages</strong> – Total pages in the book</li>
+            <li><strong>11. almeria_no</strong> – Almirah number for storage</li>
+            <li><strong>12. rack_no</strong> – Rack number</li>
+            <li><strong>13. position</strong> – Position on the rack (optional)</li>
+            <li><strong>14. accession_no</strong> – Unique accession number (e.g., ACC12345)</li>
+            <li><strong>15. book_language</strong> – Language of the book (e.g., English, Hindi)</li>
+            <li><strong>16. class_id</strong> – ID of the class (numeric)</li>
+            <li><strong>17. subject_id</strong> – ID of the subject (numeric)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+
+
+  <!-- Book Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+        <!-- User Type -->
+        <div class="form-group row">
+          <label for="userType" class="col-sm-3 col-form-label">Select Excel File</label>
+          <div class="col-sm-9">
+            <input #fileInput type="file" (change)="onFileChange($event)" class="form-control" accept=".xlsx" />
+          </div>
+        </div>
+
+        <!-- Class -->
+        <div class="form-group row d-none">
+          <label for="class" class="col-sm-2 col-form-label">Upload By</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="class">
+              <option value="">Item Code</option>
+              <option>Bar Code No.</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary go-btn" (click)="upload()">Upload Data</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

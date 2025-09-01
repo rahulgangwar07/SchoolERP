@@ -1,0 +1,60 @@
+<div class="main-wrapper">
+  <div class="page-wrapper">
+    <div class="content container-fluid">
+      <div class="page-header">
+        <div class="row">
+          <div class="col">
+            <h3 class="page-title">Manage Roles</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="#">Roles</a></li>
+              <li class="breadcrumb-item active">Manage Roles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Assign Roles to Users</h5>
+            </div>
+            <div class="card-body">
+              <form id="manageRolesForm" (ngSubmit)="onSubmit($event)">
+                <div class="form-group">
+                  <label for="userSelect">Select User : </label>
+                  <select class="form-control" id="userSelect" name="Faculty List" [(ngModel)]="facultyId" (change)="facultyChange()">
+                    <option value="0">Select user</option>
+                    <option *ngFor="let faculty of facultyData" value="{{faculty.faculty_id}}">{{faculty.username}}</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="roleSelect">Assign Role : </label>
+                  <div class="d-flex justify-content-center">
+                    <ul class="row">
+                      <li *ngFor="let desig of designationData" class="col-md-6">
+                        <input type="checkbox"
+                               name="desigcheck"
+                               value="{{desig.designation_id}}"
+                               (change)="changeSelection($event)"
+                               [checked]="desig.designation_id === selectedDesignationId" />
+                        {{desig.designation_name}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Display Error Message -->
+                <div><p class="text-danger">{{ErrorText}}</p></div>
+
+                <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color':themeSetting?.button_color}">Assign Role</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

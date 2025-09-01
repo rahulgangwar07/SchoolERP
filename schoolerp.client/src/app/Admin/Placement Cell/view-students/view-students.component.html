@@ -1,0 +1,63 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/placement-cell/add-student" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Student</a>
+    </div>
+  </div>
+
+  <!-- Students Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Roll Number</th>
+            <th>Student Name</th>
+            <th>Department</th>
+            <th>Batch</th>
+            <th>Placement Status</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row 1 -->
+          <tr>
+            <td>101</td>
+            <td>John Doe</td>
+            <td>Computer Science</td>
+            <td>2024</td>
+            <td>Placed</td>
+            <td>(123) 456-7890</td>
+            <td>john.doe  example.com</td>
+            <td>
+              <a href="/placement-cell/edit-student/101" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/placement-cell/view-student/101" class="btn btn-info btn-sm">View Details</a>
+            </td>
+          </tr>
+          <!-- Example Row 2 -->
+          <tr>
+            <td>102</td>
+            <td>Jane Smith</td>
+            <td>Electrical</td>
+            <td>2024</td>
+            <td>Not Placed</td>
+            <td>(987) 654-3210</td>
+            <td>jane.smithexample.com</td>
+            <td>
+              <a href="/placement-cell/edit-student/102" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/placement-cell/view-student/102" class="btn btn-info btn-sm">View Details</a>
+            </td>
+          </tr>
+          <!-- Add more student rows dynamically if needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

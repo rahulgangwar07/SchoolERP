@@ -1,0 +1,33 @@
+
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">list of all subjects </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/lesson-plan" routerLinkActive="active">Lesson Plan</a>
+    </div>
+  </div>
+
+  <table>
+    <tr *ngFor="let subj of subjectList;index as i">
+      <td style="display:none">{{subj.subject_id}}</td>
+      <td>{{subj.subject_name}}</td>
+      <td><button [routerLink]="['/students/acedemics/stu-syllabus',subj.subject_id,subj.subject_name]" routerLinkActive="active">Syllabus</button></td>
+      <td><button routerLink="/students/acedemics/study-material" routerLinkActive="active">Study Material</button></td>
+      <td><button>Lesson</button></td>
+    </tr>
+    <!--<tr>
+      <td>English</td>
+      <td><button>Syllabus</button></td>
+      <td><button>Study Material</button></td>
+      <td><button>Lesson</button></td>
+    </tr>
+    <tr>
+      <td>Math</td>
+      <td><button>Syllabus</button></td>
+      <td><button>Study Material</button></td>
+      <td><button>Lesson</button></td>
+    </tr>-->
+  </table>
+
+</div>

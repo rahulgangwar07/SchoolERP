@@ -1,0 +1,210 @@
+.container {
+  font-family: Arial, sans-serif;
+  /*background-color: #f4f4f4;*/
+  margin: 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.pageheader {
+  background-color: #dbe1e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 6px 8px;
+  background-color: #f2e9e9;
+}
+
+  .filters div {
+    display: flex;
+    align-items: center;
+  }
+
+  .filters select, .filters input {
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc; /* Soft border for inputs */
+  }
+
+  .filters label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd; /* Light border for table */
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+}
+
+th {
+  background-color: #e0e0e0; /* Light gray for table header */
+  color: #153364;
+}
+
+td {
+  background-color: #ffffff; /* White background for table rows */
+  font-family: monospace;
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+input[type="time"], input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  width: 100px;
+}
+
+.designation {
+  color: #c28009;
+  font-weight: 600;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  width: 150px;
+}
+
+.status-btn {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+  .status-btn.present {
+    background-color: #85c185; /* Soft green for present */
+    color: white;
+  }
+
+  .status-btn.absent {
+    background-color: #ff8a80; /* Soft red for absent */
+    color: white;
+  }
+
+  .status-btn.leave {
+    background-color: #ffcc80; /* Soft orange for leave */
+    color: white;
+  }
+
+  .status-btn:hover {
+    background-color: #d6d6d6; /* Light gray on hover */
+  }
+
+a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+  a:hover {
+    color: #007bff; /* Blue on hover for links */
+  }
+
+.attendance-radio-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+  .attendance-radio-list label {
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding-left: 8px;
+    font-weight: normal;
+  }
+
+  .attendance-radio-list input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+    .attendance-radio-list input[type="radio"]:checked {
+      background-color: #5bc0de;
+    }
+
+.statusdiv {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  justify-items: center;
+}
+
+  .statusdiv div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .statusdiv .status-btn {
+    margin-bottom: 5px;
+  }
+  .statusdiv button {
+    width: 87px;
+  }
+
+  .statusdiv input[type="time"] {
+    width: 90%;
+    margin-top: 5px;
+  }
+
+th, td {
+  word-wrap: break-word;
+  padding: 12px;
+}
+
+.label-present{
+    background-color:aqua;
+}
+
+.label-absent{
+    background-color:brown;
+}
+.label-leave {
+  background-color: orangered;
+}
+
+.attendance-btn{
+    color:white;
+    background-color:#143cac;
+    border:1px solid #333;
+}
+
+

@@ -1,0 +1,108 @@
+ 
+  /* Close button styling */
+  .popup-header .btn-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+    .popup-header .btn-close:hover {
+      color: red;
+    }
+
+  /* Title in the header */
+  .popup-header h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* Flex layout for header sections */
+  .popup-header .header-left, .popup-header .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+/* Styling the filter section */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+  .filter-section div {
+    margin-bottom: 15px;
+  }
+
+  .filter-section label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .filter-section select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+  }
+
+/* Table styling */
+.table-container {
+  margin-bottom: 20px;
+}
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  .mat-table th, .mat-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .mat-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .mat-table td {
+    color: #555;
+  }
+
+  .mat-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+/* Button styling */
+.sell-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+  .sell-btn-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+    .sell-btn-container button:hover {
+      background-color: #45a049;
+    }

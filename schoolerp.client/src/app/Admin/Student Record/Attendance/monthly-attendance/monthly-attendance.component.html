@@ -1,0 +1,96 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Student Monthly Attendance</h6>
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <p>Attendance Report</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/attendance/view" routerLinkActive="active" class="action-btn">View Attendance</a>
+      <a class="action-btn" (click)="printReport()">Print Report</a>
+    </div>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="row filtersec">
+    <!-- Attendance Type Dropdown -->
+    <div class="col-md-3">
+      <select id="select-att-type" name="atttype" [(ngModel)]="selectAttType" (change)="filter()" class="form-control">
+        <option value="All">-All-</option>
+        <option value="Present">Only Present</option>
+        <option value="Absent">Only Absent</option>
+      </select>
+    </div>
+
+    <!-- Class Dropdown -->
+    <div class="col-md-2">
+      <select name="class_id" [(ngModel)]="class_id" class="form-control" (change)="onSubmit()">
+        <option value="0">Select</option>
+        <ng-container *ngFor="let cls of classList">
+          <option *ngIf="cls.status == true" [value]="cls.class_id">
+            {{ cls.class_name }}
+          </option>
+        </ng-container>
+      </select>
+    </div>
+
+    <!-- Section Dropdown -->
+    <div class="col-md-2">
+      <select id="sec_id" name="sec_id" [(ngModel)]="sec_id" class="form-control" (change)="secChange()"> 
+          <option value="0">Section</option>
+          <option *ngFor="let sec of secList" value="{{sec.sec_id}}"> {{sec.sec_name}}</option> 
+      </select>
+    </div>
+
+    <!-- Start Date Input -->
+    <div class="col-md-3">
+      <input type="date" id="startDate" name="startDate" [(ngModel)]="formattedStartDate" (change)="sDate($event)" class="form-control" />
+    </div>
+
+    <!-- End Date Input -->
+    <div class="col-md-3">
+      <input type="date" id="endDate" name="endDate" [(ngModel)]="formattedEndDate" (change)="eDate($event)" class="form-control" />
+    </div>
+
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">GO</button>
+    </div>
+
+    <!-- Table Section -->
+    <div class="row" id="reportData">
+      <div class="table-container">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Father's Name</th>
+              <th>Registration No</th>
+              <th>Class</th>
+              <th>Phone</th>
+              <th>DOB</th>
+              <th *ngIf="showPresentColumn">Present</th>
+              <th *ngIf="showAbsentColumn">Absent</th>
+              <th *ngIf="showLeaveColumn">Leave</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of filteredData; let i = index">
+              <td>{{i + 1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.father_name}}</td>
+              <td>{{data.registration_no}}</td>
+              <td>{{getClassName(data.class_id)}}</td>
+              <td>{{data.phone || ''}}</td> <!-- Added a fallback for Phone -->
+              <td>{{data.dob || ''}}</td> <!-- Added a fallback for DOB -->
+              <td *ngIf="showPresentColumn" class="totalrow">{{data.present_count}}</td>
+              <td *ngIf="showAbsentColumn">{{data.absent_count}}</td>
+              <td *ngIf="showLeaveColumn">{{data.leave_count}}</td>
+              <td class="totalrow">{{data.ratio || '0'}}%</td> <!-- Display attendance percentage -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

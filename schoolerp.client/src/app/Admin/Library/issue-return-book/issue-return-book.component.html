@@ -1,0 +1,98 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/payroll/pfstatement/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Export Excel</a>-->
+      <!--<a routerLink="library/view-book" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Books</a>-->
+    </div>
+  </div>
+
+  <!-- Book Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+
+        <div class="form-group row">
+          <label for="class" class="col-sm-2 col-form-label">Date</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="date" name="date" [(ngModel)]="date" />
+          </div>
+        </div>
+
+        <!-- Item Type -->
+        <div class="form-group row">
+          <label for="itemType" class="col-sm-2 col-form-label">Item Type</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="itemType" name="itemType" [(ngModel)]="itemType" (change)="onItemTypeChange()">
+              <option value="issueDate">Issued Book</option>
+              <option value="returnDate">Return Book</option>
+            </select>
+          </div>
+        </div>
+
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary go-btn" (click)="search()">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-12 col-md-10 text-center text-md-start">
+      <div id="activeFilters" class="d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
+        <button type="button" class="btn btn-sm btn-outline-primary active-filter-chip" *ngIf="date">
+          Date *: <strong>{{date}}</strong>
+          <span class="ms-1" aria-hidden="true" (click)="removeDate()">×</span>
+        </button>
+        <span class="me-2"></span>
+        <button type="button" class="btn btn-sm btn-outline-primary active-filter-chip" for="itemType">
+          Item Type *:
+          <strong>{{itemTypeDis}}</strong> <span class="ms-1" aria-hidden="true">×</span>
+        </button>
+        <button type="button" class="btn btn-sm btn-link text-danger ms-1" (click)="removeDate()">Clear all</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12" *ngIf="bookList.length > 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <!--<th>Item Code</th>-->
+            <th>Item Type</th>
+            <th>Item Title</th>
+            <th>User Type</th>
+            <th>Username</th>
+            <th *ngIf="itemType == 'issueDate'">Issue Date</th>
+            <th *ngIf="itemType == 'returnDate'">Return Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bk of bookList;index as i;">
+            <td>{{i+1}}</td>
+            <!--<td>ABC123</td>-->
+            <td>{{bk.book.book_type}}</td>
+            <td>{{bk.book.title}}</td>
+            <td>{{bk.issuebook.userType}}</td>
+            <td>{{bk.user.full_name}}</td>
+            <td *ngIf="itemType == 'issueDate'">{{bk.issuebook.issue_date}}</td>
+            <td *ngIf="itemType == 'returnDate'">{{bk.issuebook.submitted_date | date:'dd MMM yyyy'}}</td>
+            <td>{{bk.issuebook.status}}</td>
+          </tr>
+ 
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>

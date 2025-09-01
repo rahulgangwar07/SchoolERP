@@ -1,0 +1,138 @@
+
+
+.mini-sidebar {
+  transition: all 0.3s ease;
+  width: 60px;
+}
+
+  .mini-sidebar:hover {
+    width: 250px;
+  }
+
+  .mini-sidebar.expand-menu .sidebar {
+    width: 60px;
+  }
+
+  .mini-sidebar.expand-menu .sidebar-menu ul ul {
+    display: block;
+  }
+
+  .mini-sidebar.expand-menu .sidebar-menu i {
+    font-size: 20px;
+  }
+
+
+
+
+  /* Visibility toggle for menu text */
+  .mini-sidebar .menu-title span {
+    visibility: hidden;
+  }
+
+  /* Visibility toggle for menu text */
+  .mini-sidebar:hover .menu-title span {
+    visibility: visible;
+  }
+  /* Show menu item text when sidebar is expanded */
+  .mini-sidebar:hover .sidebar-menu ul > li > a span {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+
+
+  .mini-sidebar.expand-menu .menu-title span {
+    visibility: visible;
+  }
+
+  .mini-sidebar .sidebar-menu ul > li > a span {
+    display: none;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+  }
+
+  .mini-sidebar:hover .sidebar-menu ul > li > a span {
+    display: block;
+  }
+
+  .mini-sidebar.expand-menu .sidebar-menu ul > li > a span {
+    display: inline;
+    opacity: 1;
+  }
+
+
+
+/* Sidebar Styling */
+.sidebar-menu {
+  overflow-y: auto;
+  height: 100%;
+}
+/* Default styles for main menu items */
+.nosubmenu {
+  border-radius: 0 60px 60px 0;
+  background: linear-gradient(to bottom right, #0384bb 0%, #48b3e9 100%);
+  color: white;
+}
+
+/* Show submenu when parent is active */
+.sidebar-menu .submenu.active > ul {
+  display: block;
+}
+
+.submenu > a {
+  cursor: pointer;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+/* Ensure nested submenus (grandchildren) also toggle visibility */
+.submenu .newsubmenu.active > ul {
+  display: block;
+}
+
+.newsubmenu > a {
+  cursor: pointer;
+}
+
+.sidebar {
+  /* Optional: define any additional sidebar styles */
+}
+
+.sidebar-menu ul ul {
+  display: none; /* Hide all nested submenus by default */
+  margin-left: 15px; /* Indentation for nested menus */
+}
+
+  .sidebar-menu ul ul ul {
+    display: none; /* Hide grandchild submenus by default */
+    margin-left: 15px;
+  }
+
+
+.newclass {
+  display: block !important;
+}
+
+/*.setting-div {
+  display: inline-flex;
+  padding-left: 163px; 
+  position: relative;
+}
+
+  .setting-div label {
+    top: 93%;
+    position: fixed;
+    background-color: #066fec;
+    color: white;
+    padding: 5px 67px;
+  }*/
+
+@media (max-width: 991.98px) {
+  .mini-sidebar.sidebar {
+    margin-left: 0px;
+  }
+}

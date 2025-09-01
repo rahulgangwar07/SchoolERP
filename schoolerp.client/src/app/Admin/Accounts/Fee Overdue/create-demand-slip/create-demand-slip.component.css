@@ -1,0 +1,36 @@
+.container{
+    margin-top:20px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-right:10px;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  select:last-child {
+    margin-right: 0; /* No margin after the last select */
+  }
+
+.row button {
+  width: 20%;
+}
+
+/* Responsive adjustment for select dropdowns */
+@media (max-width: 767px) {
+  select {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
+

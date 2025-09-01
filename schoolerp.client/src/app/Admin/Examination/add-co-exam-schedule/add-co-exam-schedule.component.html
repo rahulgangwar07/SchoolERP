@@ -1,0 +1,71 @@
+<div class="container">
+  <h5>Add Co-Scholastic Exam Schedule</h5>
+  <form action="#" method="POST">
+    <div class="form-container">
+      <div class="half-width">
+        <div class="form-group">
+          <label for="title">Title <span style="color: red;">*</span></label>
+          <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label for="class">Class <span style="color: red;">*</span></label>
+          <select id="class" name="class" required>
+            <option value="">Select Class</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+          </select>
+        </div>
+      </div>
+      <div class="half-width">
+        <div class="form-group">
+          <label for="sequenceNo">Sequence No.</label>
+          <input type="text" id="sequenceNo" name="sequenceNo">
+        </div>
+        <div class="form-group">
+          <label for="academicYear">Academic Year</label>
+          <input type="text" id="academicYear" name="academicYear" value="2024-2025" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="half-width">
+        <div class="form-group">
+          <label for="gradingSystem">Grading System</label>
+          <select id="gradingSystem" name="gradingSystem">
+            <option value="">Select Grading System</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="coScholastic">Co-Scholastic Activities</label>
+          <textarea id="coScholastic" name="coScholastic" rows="4" placeholder="Describe co-scholastic activities..."></textarea>
+        </div>
+      </div>
+      <div class="half-width">
+        <div class="form-group">
+          <label for="extraActivities1">Extra Activities 1</label>
+          <input type="text" id="extraActivities1" name="extraActivities1">
+        </div>
+        <div class="form-group">
+          <label for="extraActivities2">Extra Activities 2</label>
+          <input type="text" id="extraActivities2" name="extraActivities2">
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>

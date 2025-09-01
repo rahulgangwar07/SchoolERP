@@ -1,0 +1,97 @@
+<div class="container my-5">
+  <!-- Header -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <h6 class="font-weight-bold text-primary">List of Fee Heads</h6>
+    </div>
+    <div class="col-md-6 text-right">
+      <button routerLink="/account-settings/fee-types" class="btn btn-primary btn-sm">
+        Add New Fee Type
+      </button>
+    </div>
+  </div>
+   
+    <!-- Form Column -->
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card shadow-sm p-4 rounded border">
+        <h5 class="mb-4 text-primary font-weight-bold">Add Fee Head Mapping</h5>
+
+        <div class="form-group-1">
+          <label for="feeHeadSelect">Fee Head</label>
+          <select id="feeHeadSelect" [(ngModel)]="selectedFeeHead" class="form-control" (change)="feeHeadChange()">
+            <option value="" disabled selected>Select Fee Head</option>
+            <option *ngFor="let head of feeHeads" [value]="head.fee_head_id">{{ head.fee_head_name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group-1">
+          <label for="feeTypeSelect">Fee Type</label>
+          <select id="feeTypeSelect" [(ngModel)]="selectedFeeType" class="form-control">
+            <option value="" disabled selected>Select Fee Type</option>
+            <option *ngFor="let type of feeTypes" [value]="type.fee_type_id">{{ type.fee_type_name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group-1">
+          <label for="sessionSelect">Session</label>
+          <select id="sessionSelect" [(ngModel)]="selectedSession" class="form-control" (change)="feeHeadChange()">
+            <option value="" disabled selected>Select Session</option>
+            <option *ngFor="let s of sessions" [value]="s.session_name">{{ s.session_name }}</option>
+          </select>
+        </div>
+        <div class="form-group-1-btn">
+          <button (click)="mapFeeHead()" class="btn btn-primary">
+            Save All
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <h4 class="mb-3 text-secondary">Existing Mappings</h4>
+      <div class="col-md-6">
+        <div class="form-group-1">
+          <label for="sessionSelect">Session</label>
+          <select id="sessionSelect" [(ngModel)]="filteredSession" class="form-control" (change)="filterSession()">
+            <option value="" disabled selected>Select Session</option>
+            <option *ngFor="let s of sessions" [value]="s.session_name">{{ s.session_name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Sr.No.</th>
+              <th>Fee Type</th>
+              <th>Fee Head</th>
+              <th>Session</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mapping of feeHeadMappings;index as i;">
+              <td>{{i+1}}</td>
+              <td>{{ fee_type_name(mapping.fee_type_id) }}</td>
+              <td>{{ fee_head_name(mapping.fee_head_id) }}</td>
+              <td>{{ mapping.session }}</td>
+              <td>
+                <button (click)="editMapping(mapping)" class="btn btn-link btn-sm text-primary p-0 mr-2">Edit</button>&nbsp;
+                <button (click)="deleteMapping(mapping.fee_head_mapping_id)" class="btn btn-link btn-sm text-danger p-0">Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="feeHeadMappings.length === 0">
+              <td colspan="5" class="text-center py-4 text-muted">No mappings found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<!-- view-document.component.html -->
+<div class="view-documents-container"> 
+
+  <!-- Display Documents if available -->
+  <div *ngIf="documentUrls.length > 0">
+    <h3>Attached Documents:</h3>
+    <ul>
+      <li *ngFor="let url of documentUrls; index as i">
+        <a [href]="url" target="_blank" download>Download Document {{i + 1}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Show message if no documents available -->
+  <div *ngIf="documentUrls.length === 0">
+    <p>No documents available to download.</p>
+  </div>
+</div>

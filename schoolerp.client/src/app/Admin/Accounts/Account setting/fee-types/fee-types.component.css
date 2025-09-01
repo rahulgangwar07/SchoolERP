@@ -1,0 +1,37 @@
+.action-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+  .action-btn:hover {
+    background-color: #0056b3;
+  }
+
+.table th, .table td {
+  text-align: center;
+}
+
+table thead td {
+  color: #0f2865;
+}
+
+
+table tbody td {
+  font-size: 12px;
+}
+
+.layout-header {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.modal-content {
+  padding: 20px;
+}

@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Search By: Name | DL No. | Phone</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/driver/add-driver" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Driver</a>
+    </div>
+  </div>
+
+  <!-- Search Form -->
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search by Name, DL No., or Phone">
+          </div>
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">GO</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Driver List Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>DL No.</th>
+            <th>Joining Date</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr *ngFor="let dList of driverList;index as i;">
+            <td>{{i+1}}</td>
+            <td>{{dList.name}}</td>
+            <td>{{dList.phoneNumber}}</td>
+            <td>{{dList.license_no}}</td>
+            <td>{{ dList.joiningDate | date: 'dd-MM-yyyy' }}</td>
+            <td>
+              <a class="btn btn-sm btn-warning" (click)="editDriverDetail(dList.driver_id)">Edit</a>
+              <a class="btn btn-sm btn-danger" (click)="deleteDriverDetail(dList.driver_id,i)">Delete</a>
+            </td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

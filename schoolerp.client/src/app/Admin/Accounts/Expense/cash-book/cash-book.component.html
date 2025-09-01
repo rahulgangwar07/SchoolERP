@@ -1,0 +1,159 @@
+
+<div class="container">
+
+  <div class="row layout-header">
+    <div class="col-md-6">View Cash Book Transactions</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/cashbook/summary" routerLinkActive="active" class="action-btn">Summary</a>
+      <a routerLink="/cashbook/print" routerLinkActive="active" class="action-btn">Print</a>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div>
+      <select id="category">
+        <option value="all">Select Category</option>
+        <option value="sales">Sales</option>
+        <option value="purchase">Purchase</option>
+        <option value="payment">Payment</option>
+        <option value="receipt">Receipt</option>
+        <!-- Add more categories if needed -->
+      </select>
+    </div>
+
+    <div>
+      <select id="branch">
+        <option value="all">All Branch</option>
+        <option value="branch1">B Block</option>
+        <option value="branch2">Branch 2</option>
+        <!-- Add more branches if needed -->
+      </select>
+    </div>
+
+    <div>
+      <input type="date" id="fromdate" />
+    </div>
+    <div>
+      <input type="date" id="todate" />
+    </div>
+
+    <div>
+      <select id="payment-mode">
+        <option value="cash">Cash</option>
+        <option value="bank">Bank</option>
+        <option value="credit">Credit</option>
+        <!-- Add more payment modes if needed -->
+      </select>
+    </div>
+
+    <div>
+      <button type="button">GO</button>
+    </div>
+    <!-- Added Buttons for New Transaction and Update -->
+  </div>
+  <button type="button" class="action-btn" style="background-color: #826212; color: #ffe;">Add New Transaction</button>
+  <button type="button" class="action-btn" style="background-color:#f6cd0c;color:#ffe;">Update</button>
+
+  <div class="row layout-header">
+    <div class="col-md-6">Cash Book Transactions</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/cashbook/export-excel" routerLinkActive="active" class="action-btn">Export Excel</a>
+    </div>
+  </div>
+
+  <!-- Opening Balance Section -->
+  <div class="row">
+    <div class="col-md-6"><strong>Opening Balance:</strong></div>
+    <div class="col-md-6 text-right">₹45,237</div>
+  </div>
+
+  <!-- Cash Book Table Header -->
+  <div class="row daybook-header">
+    <div class="col-md-1"><strong>#</strong></div>
+    <div class="col-md-2"><strong>Date</strong></div>
+    <div class="col-md-2"><strong>Particulars</strong></div>
+    <div class="col-md-1"><strong>Debit</strong></div>
+    <div class="col-md-1"><strong>Credit</strong></div>
+    <div class="col-md-2"><strong>Mode</strong></div>
+    <div class="col-md-1"><strong>Branch</strong></div>
+    <div class="col-md-1"><strong>Option</strong></div>
+  </div>
+
+  <!-- Cash Book Records -->
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Example Record 1 -->
+      <div class="daybook-record">
+        <div class="row">
+          <div class="col-md-1">1</div>
+          <div class="col-md-2">28/08/2024</div>
+          <div class="col-md-2">Sales</div>
+          <div class="col-md-1">₹2000</div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">Cash</div>
+          <div class="col-md-1">B Block</div>
+          <div class="col-md-1">
+            <button class="action-btn">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Record 2 -->
+      <div class="daybook-record">
+        <div class="row">
+          <div class="col-md-1">2</div>
+          <div class="col-md-2">20/08/2024</div>
+          <div class="col-md-2">Purchase</div>
+          <div class="col-md-1"></div>
+          <div class="col-md-1">₹5000</div>
+          <div class="col-md-2">Bank</div>
+          <div class="col-md-1">Branch 2</div>
+          <div class="col-md-1">
+            <button class="action-btn">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Record 3 -->
+      <div class="daybook-record">
+        <div class="row">
+          <div class="col-md-1">3</div>
+          <div class="col-md-2">15/08/2024</div>
+          <div class="col-md-2">Payment</div>
+          <div class="col-md-1">₹1000</div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">Credit</div>
+          <div class="col-md-1">B Block</div>
+          <div class="col-md-1">
+            <button class="action-btn">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- If no records are found -->
+  <div class="no-records">
+    <p>No records found!</p>
+  </div>
+
+  <!-- Cash Book Summary -->
+  <div class="row daybook-summary">
+    <div class="col-md-6"><strong>Grand Total</strong></div>
+    <div class="col-md-3 text-right"><strong>₹45,237</strong> Cr</div>
+    <div class="col-md-3 text-right"><strong>₹5,000</strong> Dr</div>
+  </div>
+
+  <!-- Current Balance Section -->
+  <div class="row">
+    <div class="col-md-6"><strong>Current Balance:</strong></div>
+    <div class="col-md-6 text-right"><strong>₹40,237</strong></div>
+  </div>
+
+  <!-- Closing Balance Section -->
+  <div class="row">
+    <div class="col-md-6"><strong>Closing Balance:</strong></div>
+    <div class="col-md-6 text-right"><strong>₹40,237</strong></div>
+  </div>
+</div>
+ 

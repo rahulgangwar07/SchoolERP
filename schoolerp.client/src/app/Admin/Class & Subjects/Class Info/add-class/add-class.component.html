@@ -1,0 +1,68 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Fields marked with (*) are mandatory.</div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/class/view" class="view-classes-link">View Classes</a>
+    </div>
+  </div> 
+
+  <!-- Form Section -->
+  <div class="form-section formdtl" *ngIf="showUpdatediv">
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+      <div class="form-group">
+        <label for="class_name">Class Name *</label>
+        <input type="text" id="class_name" name="class_name" [(ngModel)]="classdetail.class_name" #classname="ngModel"
+               [class.is-invalid]="classname.touched && classname.invalid" placeholder="Class Name" required readonly>
+      </div>
+      <div class="form-group">
+        <label for="dis_name">Display Name *</label>
+        <input type="text" id="dis_name" name="dis_name" [(ngModel)]="classdetail.dis_name" #disname="ngModel"
+               [class.is-invalid]="disname.touched && disname.invalid" placeholder="Display Name" required>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="subject" class="subject">Primary Subject</label>
+        </div>
+        <div class="subjects-checkbox col-md-8">
+          <label *ngFor="let subject of classdetail.subject;let i= index;"><input type="checkbox" [(ngModel)]="subject.check" name="subject_{{i}}" value="{{subject.sub_id}}"> {{subject.subject_name}}</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="subject" class="subject">Optional Subject</label>
+        </div>
+        <div class="subjects-checkbox col-md-8">
+          <label *ngFor="let subject of classdetail.opt_subject;let i=index;"><input type="checkbox" [(ngModel)]="subject.check" name="opt_subject_{{i}}" value="{{subject.sub_id}}"> {{subject.subject_name}}</label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Update Class</button>
+        <button type="reset" class="btn-reset">Reset</button>
+      </div>
+    </form>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <!--<th>#</th>-->
+          <th>Class Name</th>
+          <th>Display Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cls of classList; index as i">
+          <ng-container *ngIf="cls.status === false">
+            <!--<td>{{i}}</td>-->
+            <td>{{cls.class_name}}</td>
+            <td>{{cls.dis_name}}</td>
+            <td><input type="checkbox" [checked]="cls.status" (change)="deleteClass(cls.class_id,$event)" /></td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

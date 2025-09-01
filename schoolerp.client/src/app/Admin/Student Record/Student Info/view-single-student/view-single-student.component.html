@@ -1,0 +1,134 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Alumni Student</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p class="font-weight-bold">{{ childData.first_name }}</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a class="btn btn-outline-primary btn-sm">Admission Cert.</a>
+      <a class="btn btn-outline-primary btn-sm">Character Cert. (2)</a>
+      <a class="btn btn-outline-primary btn-sm">Character Cert. (1)</a>
+      <a routerLink="/alumni/view" class="btn btn-outline-primary btn-sm" (click)="redirectPage()">View Alumni</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <label>{{ childData.first_name }}</label>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Father's Name and Phone -->
+          <div class="form-group">
+            <label><strong>F. Name:</strong></label>
+            <p>{{ childData.father_name }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Phone:</strong></label>
+            <p>{{ childData.phone }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Mother's Name and Gender -->
+          <div class="form-group">
+            <label><strong>M. Name:</strong></label>
+            <p>{{ childData.motherName }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Gender:</strong></label>
+            <p>{{ childData.gender }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Roll:</strong></label>
+            <p>{{ childData.stu_id }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Adm. No:</strong></label>
+            <p>{{ childData.registration_no }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Admission Date:</strong></label>
+            <!--<p>{{ admissionDate | date: 'dd MMM yyyy' }}</p>-->
+          </div>
+          <div class="form-group">
+            <label><strong>DOB:</strong></label>
+            <p>{{ childData.dob | date: 'dd MMM yyyy' }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Result Issued:</strong></label>
+            <!--<p>{{ resultIssued }}</p>-->
+          </div>
+          <div class="form-group">
+            <label><strong>Religion:</strong></label>
+            <!--<p>{{ religion }}</p>-->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Category:</strong></label>
+            <!--<p>{{ category }}</p>-->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Caste:</strong></label>
+            <!--<p>{{ caste }}</p>-->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Blood Group:</strong></label>
+            <p>B+</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>TC No:</strong></label>
+            <!--<p>{{ studentMaster.tcNo }}</p>-->
+            <p>123</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><strong>Transfer Certificate:</strong></label>
+            <!--<p>{{ studentMaster.transferCertificate }}</p>-->
+            <p>XyZ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

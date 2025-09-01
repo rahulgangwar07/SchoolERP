@@ -1,0 +1,102 @@
+<div class="container">
+  <h4 class="report-header">Student Admission Report</h4>
+  <div class="row">
+    <!-- Left Column -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="studentName">Student Name:</label>
+        <span id="studentName">{{ student.student.first_name }} {{ student.student.last_name }}</span>
+      </div>
+      <div class="form-group">
+        <label for="studentName">Session:</label>
+        <span id="studentName">{{ student.registration.session }}</span>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <span id="gender">{{ student.student.gender || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="pinCode">PIN Code:</label>
+        <span id="pinCode">{{ student.student.pin_code }}</span>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <span id="address">{{ student.student.address || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="contactNo">Contact No:</label>
+        <span id="contactNo">{{ student.student.contact_no }}</span>
+      </div>
+      <div class="form-group">
+        <label for="aadharCard">Aadhar Card:</label>
+        <span id="aadharCard">{{ student.student.aadhar_card || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="fatherName">Father's Name:</label>
+        <span id="fatherName">{{ student.student.father_name || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="fatherEmail">Father's Email:</label>
+        <span id="fatherEmail">{{ student.student.father_email || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="village">Village:</label>
+        <span id="village">{{ student.student.village || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <span id="state">{{ student.student.state_id }}</span>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="class">Class:</label>
+        <span id="class">{{ student.student.class_name || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="dob">DOB:</label>
+        <span id="dob">{{ student.student.dob | date:'yyyy-MM-dd' }}</span> <!-- Format date -->
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <span id="city">{{ student.student.city }}</span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <span id="email">{{ student.student.email }}</span>
+      </div>
+      <div class="form-group">
+        <label for="penCard">Pen Card:</label>
+        <span id="penCard">{{ student.student.pen_card || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="motherName">Mother's Name:</label>
+        <span id="motherName">{{ student.student.mother_name || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="fatherOccupation">Father's Occupation:</label>
+        <span id="fatherOccupation">{{ student.student.father_occupation || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="post">Post:</label>
+        <span id="post">{{ student.student.post || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="tcNo">TC No:</label>
+        <span id="tcNo">{{ student.student.tc_no || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="bankAccount">Bank Account:</label>
+        <span id="bankAccount">{{ student.student.bank_account || 'Not Provided' }}</span>
+      </div>
+      <div class="form-group">
+        <label for="ifscCode">IFSC Code:</label>
+        <span id="ifscCode">{{ student.student.ifsc_code || 'Not Provided' }}</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>

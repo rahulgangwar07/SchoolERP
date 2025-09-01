@@ -1,0 +1,146 @@
+/* General styling for the container */
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+  max-width: 100%;
+}
+
+/* Header styling */
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.header-text {
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Form Section Styling */
+.form-section .form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+  .form-section .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+/* Textarea Styling */
+.video-link.form-input, .assignment-detail {
+  height: 120px;
+  resize: vertical;
+}
+
+.assignment-detail {
+  height: 90px;
+}
+
+/* Label and Select Inputs */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Select Dropdown Styling */
+select.form-input {
+  background-color: #fff;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* File Input and Button Styling */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="file"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.fas.fa-plus, .fas.fa-minus {
+  cursor: pointer;
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* Button Styling */
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+
+/* Action Button Styling (View Homework) */
+.action-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+  .action-btn:hover {
+    background-color: #218838;
+  }
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .col-md-8 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-section .form-input, .video-link.form-input {
+    width: 100%;
+  }
+
+  .file-input-wrapper {
+    flex-direction: row;
+    align-items: center; 
+    display: flex;
+  }
+
+    .file-input-wrapper input[type="file"] {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+  #fileInput {
+    width: 100%;
+  }
+}

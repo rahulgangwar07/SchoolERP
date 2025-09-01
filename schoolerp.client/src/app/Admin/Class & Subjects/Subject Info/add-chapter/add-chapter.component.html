@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="top-section layout-header">
+    <div class="mandatory-fields">
+      <p>Fields marked with (*) are mandatory</p>
+    </div>
+    <div class="button-section">
+      <a routerLink="/subject/add-syllabus" routerLinkActive="active" class="action-btn">Add Syllabus</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Class</td>
+              <td>Subject</td>
+              <td>Chapter Name</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let chapter of filteredChapters; index as i">
+              <td>{{i + 1}}</td> 
+              <td>{{ClassName(chapter.class_id)}}</td>
+              <td>{{SubjectName(chapter.subject_id)}}</td>
+              <td>{{chapter.chapter_name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <h6>Add Chapter</h6>
+      <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
+        <div class="form-group">
+          <label for="class">Select Class</label>
+          <select id="class" class="form-control" [(ngModel)]="chapter.class_id" name="class_id" (change)="changeClass()" required>
+            <option value="0">Select Class</option>
+            <option *ngFor="let cls of classes" [value]="cls.class_id">
+              {{ cls.class_name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Select Subject</label>
+          <select id="subject" class="form-control" [(ngModel)]="chapter.subject_id" name="subject_id" (change)="changeSubject()" required>
+            <option value="0">Select Subject</option>
+            <option *ngFor="let subject of subjects" [value]="subject.subject_id">
+              {{ subject.subject_name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="chapter_name">Chapter Name</label>
+          <input id="chapter_name"
+                 type="text"
+                 class="form-control"
+                 [(ngModel)]="chapter.chapter_name"
+                 name="chapter_name"
+                 required />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!chapterForm.form.valid">
+            Add Chapter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

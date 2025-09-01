@@ -1,0 +1,71 @@
+<div class="container" *ngIf="open" #popup>
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 class="mb-4">Edit Homework</h4>
+    <label class="fas fa-close" (click)="close()"></label>
+  </div>
+
+  <!-- Date Field -->
+  <div class="form-group row">
+    <label class="col-md-3">Date</label>
+    <input type="date" class="form-control col-md-3 Class" [(ngModel)]="data[0].date" />
+  </div> 
+  <!-- Type Field -->
+  <div class="form-group row">
+    <label class="col-md-3">Type</label>
+    <select class="form-control col-md-3 Class" name="type" [(ngModel)]="data[0].type">
+      <option value="dailynotes">Daily Work</option>
+      <option value="homework">Home Work</option>
+      <option value="classwork">Class Work</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <!-- Subjects Fields -->
+  <div class="form-group row">
+    <div class="col-md-3">
+      <label>Subjects:</label>
+    </div>
+    <div class="col-md-9">
+      <div *ngFor="let subject of data[0].subjects; let i = index" class="row">
+        <label class="col-md-3">{{subject.subject_name}}</label>
+        <input type="text" class="form-control col-md-9" [(ngModel)]="subject.description" placeholder="Enter Subject {{i + 1}}" />
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Video Link Field -->
+  <div class="form-group row">
+    <label class="col-md-3">Video Link</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="data[0].videoLink" />
+  </div>
+
+  <!-- Class Field -->
+  <div class="form-group row">
+    <label class="col-md-3">Class</label>
+    <select id="classId" class="form-control col-md-3 Class" [(ngModel)]="data[0].class_id">
+      <option *ngFor="let cls of classList;index as i;" [value]="cls.class_id">{{cls.class_name}}</option>
+      <!--<option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>-->
+    </select>
+    <select id="secId" class="form-control col-md-3 Class" [(ngModel)]="data[0].sec_id">
+      <option *ngFor="let sec of secList;index as i;" [value]="sec.sec_id">{{sec.sec_dis_name}}</option>
+      <!--<option value="2">B</option>
+      <option value="3">C</option>
+      <option value="4">D</option>-->
+    </select>
+  </div>
+
+  <!-- Status Field -->
+  <div class="form-group row">
+    <label class="col-md-3">Status</label>
+    <select id="active" class="form-control col-md-6" [(ngModel)]="data[0].status">
+      <option value="true">Enable</option>
+      <option value="false">Disable</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" (click)="submitEdits()">Submit</button>
+</div>

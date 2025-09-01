@@ -1,0 +1,148 @@
+
+/* Container Styling */
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Top Row Styling */
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mandatory-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.view-classes-link {
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+  .view-classes-link:hover {
+    text-decoration: underline;
+  }
+
+/* Form Section Styling */
+.form-section {
+  margin-top: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input and Select Field Styling */
+input[type="text"],
+select,
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  outline: none;
+}
+
+  input[type="text"]:focus,
+  select:focus,
+  input[type="date"]:focus {
+    border-color: #0056b3;
+  }
+
+/* Checkbox Styling */
+/* Subject Checkbox Styling */
+.form-group .subject {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.subjects-checkbox {
+  display: flex;
+  flex-wrap: wrap; /* Allows checkboxes to wrap to the next line */
+  gap: 10px; /* Adds space between each checkbox */
+}
+
+  .subjects-checkbox label {
+    font-size: 14px;
+    color: #555;
+    /*display: flex;*/
+    align-items: center;
+    width: 48%; /* Ensures labels take up only a portion of the available space (can adjust this percentage) */
+  }
+
+  .subjects-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+  }
+/* Button Styling */
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit,
+.btn-reset {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin:0px 10px;
+  cursor: pointer;
+  width: 15%; /* Ensures buttons are evenly spaced */
+}
+
+.is-invalid {
+  border: 1px solid red !important;
+}
+
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+  table thead {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table td {
+    font-size: 14px;
+  }
+
+    table td i {
+      cursor: pointer;
+      margin-right: 10px;
+      color: #007bff;
+    }
+
+      table td i:hover {
+        color: #0056b3;
+      }
+
+ 
+
+
+ 

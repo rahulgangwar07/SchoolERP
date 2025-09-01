@@ -1,0 +1,161 @@
+<div class="container mt-3">
+  <!-- Dashboard Stats Section for SuperAdmin -->
+  <div *ngIf="userRole == '' || userRole == 'SuperAdmin'" class="form-group">
+    <label for="schoolId">School Id: &nbsp;</label>
+    <select id="schoolId" name="schoolId" [ngModel]="school_id" (change)="schoolChange($event)">
+      <option value="" disabled>Select School</option>
+      <option *ngFor="let sch of schoolList;let i=index" value="{{sch.schoolId}}">{{sch.schoolName}}</option>
+    </select>
+  </div>
+  <!-- Stats for Total Schools -->
+  <div class="row">
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-info">
+            <h6>Total Active Schools</h6>
+            <h3>{{activeSchools}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-info">
+            <h6>Total Inactive Schools</h6>
+            <h3>{{inactiveSchools}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-info">
+            <h6>Total Students</h6>
+            <h3>{{totalStudents}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-info">
+            <h6>Total Faculties</h6>
+            <h3>{{totalFaculties}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats for the Selected School -->
+  <div class="row">
+    <!-- Teachers Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Teachers</h6>
+            <h3>{{header.faculties?.present}}/{{header.faculties?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>{{header.faculties?.present}}</label></div>
+          <div><label>Absent</label><label>{{header.faculties?.absent}}</label></div>
+          <div><label>Leave</label><label>{{header.faculties?.leave}}</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Students Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Total Students</h6>
+            <h3>{{header.students?.present}}/{{header.students?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Present</label><label>{{header.students?.present}}</label></div>
+          <div><label>Absent</label><label>{{header.students?.absent}}</label></div>
+          <div><label>Leave</label><label>{{header.students?.leave}}</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Courses Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-02.svg" alt="Dashboard Icon">
+          </div>
+          <div class="db-info">
+            <h6>Total Courses</h6>
+            <h3>{{header.courses?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Online Courses</label><label>{{header.courses?.online}}</label></div>
+          <div><label>Offline Courses</label><label>{{header.courses?.offline}}</label></div>
+          <div><label>Upcoming Courses</label><label>{{header.courses?.upcoming}}</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMS Report Stats Card -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card bg-common odd">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div class="db-icon">
+            <img src="assets/img/icons/teacher-icon-03.svg" alt="SMS Icon">
+          </div>
+          <div class="db-info">
+            <h6>SMS Report</h6>
+            <h3>{{header.smsreport?.total}}</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div><label>Sent</label><label>{{header.smsreport?.sent}}</label></div>
+          <div><label>Failed</label><label>{{header.smsreport?.failed}}</label></div>
+          <div><label>Pending</label><label>{{header.smsreport?.pending}}</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="container mt-3">
+    <div class="row mt-4">
+      <div class="col-12">
+        <div id="chart-container">
+          <canvas id="MyChart"></canvas> <!-- Bar Chart -->
+        </div>
+      </div>
+
+      <!--<div class="row">
+        <div class="col-6 mt-4">
+          <div id="line-chart-container">
+            <canvas id="MyLineChart"></canvas>--> <!-- Line Chart -->
+          <!--</div>
+        </div>
+
+        <div class="col-6 mt-4">
+          <div id="pie-chart-container">
+            <canvas id="MyPieChart"></canvas>--> <!-- Pie Chart -->
+          <!--</div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+</div>

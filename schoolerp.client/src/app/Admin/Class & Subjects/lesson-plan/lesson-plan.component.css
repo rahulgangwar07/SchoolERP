@@ -1,0 +1,117 @@
+
+.filtersection div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Increased space for better visual separation */
+}
+
+  .filtersection div label {
+    font-weight: bold; /* Make labels more prominent */
+    margin-bottom: 5px;
+  }
+
+  .filtersection div button {
+    margin-top: 10px;
+    height: 35px; /* Increase button height for better accessibility */
+  }
+
+.table-container {
+  margin-top: 40px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+  .table thead {
+    background-color: #f8f9fa; /* Lighter background for table header */
+    font-weight: bold;
+  }
+
+  .table tbody tr:nth-child(2n) td {
+    background-color: #f1f3f5; /* Light gray background for even rows */
+  }
+
+  .table tbody tr:nth-child(2n+1) td {
+    background-color: white;
+  }
+
+  .table tbody td {
+    padding: 10px;
+    vertical-align: middle;
+  }
+
+  .table tbody tr td:first-child {
+    font-weight: bold; /* Emphasize the plan date column */
+  }
+
+  .table tbody tr td:last-child {
+    text-align: center; /* Center align action buttons */
+  }
+
+.actionbtn {
+  position: absolute;
+  background-color: white;
+  width: 120px; /* Slightly wider for better appearance */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for better visibility */
+  border-radius: 4px;
+}
+
+  .actionbtn ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+    .actionbtn ul li {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+      .actionbtn ul li:hover {
+        background-color: #e9ecef; /* Slightly darker hover effect */
+      }
+
+  .actionbtn i {
+    margin-right: 10px; /* More space between icon and text */
+  } 
+
+.btn {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+.fa-edit {
+  color: blue;
+}
+.fa-trash-alt {
+  color: red;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+ 

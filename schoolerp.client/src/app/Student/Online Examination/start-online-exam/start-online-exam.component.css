@@ -1,0 +1,304 @@
+.container {
+  margin: 0px 20px 20px 20px auto;
+  padding: 0px 15px 15px 15px;
+  position: relative;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: white;
+  padding: 23px;
+  width: 40%;
+  max-width: 500px;
+  box-sizing: border-box;
+  z-index: 9999;
+  box-shadow: 0 0 34px rgba(20, 20, 10, 38.4);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+  position: relative; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.popup button:nth-child(2n) {
+  margin: 2px;
+  background-color: aquamarine;
+}
+
+  /* Time Heading and List Question Styling */
+  .time-heading {
+    background-color: #f4f4f4;
+    text-align: right;
+    padding: 10px;
+  }
+
+.list-question {
+  background-color: #4084e2;
+  color: white;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.col-md-8, .col-md-4 {
+  padding: 15px 5px;
+}
+
+.exam-title {
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  padding-left: 18px;
+  margin-bottom: 20px;
+}
+
+.question-div {
+  border: 2px solid #d5cece;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.question-header {
+  text-align: left;
+  padding-left: 10px;
+  padding: 20px 15px;
+}
+
+  .question-header label {
+    font-size: 22px;
+    color: #333;
+  }
+
+.question-name {
+  padding: 15px 0px;
+  background-color: #dadaed;
+  font-size: 21px;
+}
+
+  .question-name p {
+    font-family: sans-serif;
+    font-weight: 600;
+  }
+
+  .question-name .marks {
+    color: red;
+  }
+
+/* Subjective Question Style */
+.single-subj-questions {
+  margin: 10px;
+}
+
+  .single-subj-questions textarea {
+    width: 100%;
+    height: 40%;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+.write-question {
+  text-align: justify;
+  padding: 0px 10px;
+}
+
+  .write-question label {
+    background-color: #0d75dd;
+    color: white;
+    padding: 5px;
+  }
+
+/* Objective Question Style */
+.single-questions .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.single-questions tr:nth-child(2n+1) td {
+  background-color: #fff8f8;
+}
+
+.single-questions td {
+  padding: 8px;
+  border: 1px solid #dfd8d8;
+}
+
+.single-questions input[type="radio"] {
+  margin-right: 10px;
+}
+
+.single-questions .text {
+  font-size: 18px;
+  display: flex;
+}
+
+.single-questions input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+
+/* Buttons and Navigation */
+.move-buttons button {
+  color: white;
+  border: 0px;
+  padding: 11px;
+  margin-bottom: 5px;
+}
+
+.move-buttons .first button {
+  background-color: #6172a8;
+}
+
+.move-buttons .second button {
+  background-color: #a11;
+}
+
+.move-buttons .first, .move-buttons .second {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 25px;
+}
+
+.move-buttons .second {
+  padding-right: 25px;
+  justify-content: end;
+}
+
+  .move-buttons .second button {
+    background-color: #a11;
+  }
+
+.fa-forward {
+  padding-left: 5px;
+}
+
+/* Question Status Colors */
+.question-colors {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* List of Questions Styling */
+.list-group {
+  display: ruby;
+}
+
+.list-group-item {
+  margin: 6px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+  .list-group-item:hover {
+    background-color: #d1e7f4;
+  }
+
+  .list-group-item span {
+    color: red;
+  }
+
+/* Submit Exam Button */
+.submit-exam-btn {
+  border: 0px;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  width: 80%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Active Question Styling */
+.activeQues {
+  background-color: #20ede0;
+}
+
+.markedQuestion {
+  background-color: #db8dac;
+}
+
+.counter{
+  color:red; 
+}
+.time-over {
+  color: #f21111;
+  font-size: larger;
+  font-weight: 500;
+}
+
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .popup {
+    width: 80%;
+    top: 150px;
+  }
+
+  .exam-section {
+    width: 100%;
+  }
+
+  .move-buttons .first, .move-buttons .second {
+    padding: 10px 0;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .submit-exam-btn {
+    width: 100%;
+  }
+
+  .list-group-item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup {
+    width: 90%;
+    top: 100px;
+  }
+
+  .exam-title {
+    font-size: 24px;
+  }
+
+  .question-name p {
+    font-size: 18px;
+  }
+
+  .move-buttons button {
+    padding: 8px;
+  }
+
+  .submit-exam-btn {
+    width: 100%;
+  }
+
+  .list-group-item {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,156 @@
+/* General layout for large screens */
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mandatory-fields p {
+  font-size: 14px;
+}
+
+.button-section .action-btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+  thead td {
+    font-weight: bold;
+    padding: 10px;
+  }
+
+tbody td {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+button[disabled] {
+  background-color: #ccc;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-7, .col-md-5 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .layout-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button-section {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5px;
+  }
+
+  table td {
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+  }
+
+  /* Adjust the order of form and table on mobile */
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-md-7 {
+    order: 2; /* Move the table below the form on mobile */
+  }
+
+  .col-md-5 {
+    order: 1; /* Show the form first */
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 5px;
+  }
+
+  .layout-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button-section {
+    margin-top: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  table td {
+    font-size: 12px;
+  }
+}

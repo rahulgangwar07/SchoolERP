@@ -1,0 +1,89 @@
+/* General Card and Form Styling */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+  float:left;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+ul {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Make the list a flex container */
+  justify-content: space-around; /* Optional: Distribute items with equal space between them */
+}
+
+  ul li {
+    flex: 1; /* Makes each item take up equal width (if you want them to be evenly spaced) */
+    font-weight: 600;
+    text-align: center;
+    font-size: 16px; /* Set the font size */
+    padding: 5px 10px; /* Optional: Add padding to each list item */
+  }
+
+  ul li:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+  }
+
+@media (max-width:767px) {
+  .page-title {
+    font-size: 25px;
+  }
+  ul li {
+    
+    font-size: 13px; /* Set the font size */
+    padding: 0px; /* Optional: Add padding to each list item */
+  }
+}
+

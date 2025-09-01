@@ -1,0 +1,75 @@
+<div class="container">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-8">
+      <h6>Student Answer Sheet for Jatin Sharma</h6>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="btn btn-secondary btn-sm" (click)="closeSheet()">Close</button>
+    </div>
+  </div>
+
+  <!-- Answer Sheet Section -->
+  <div class="answer-sheet">
+    <!-- Question Table Header -->
+    <div class="row question-header mb-3">
+      <div class="col-1">#</div>
+      <div class="col-4">Question</div>
+      <div class="col">Correct Answer</div>
+      <div class="col">Student's Answer</div>
+      <div class="col">Marks</div>
+      <div class="col">Actions</div>
+    </div>
+
+    <!-- Loop through static data and display it -->
+    <div class="row answer-row" *ngFor="let question of questions; let i = index">
+      <div class="col-1">{{ i + 1 }}</div>
+      <div class="col-4 question-text">
+        <p>{{ question.question_text }}</p>
+        <p>{{ question.question_type }}</p>
+      </div>
+
+      <div class="col answer-div">
+        <ng-container *ngIf="question.question_type === 'objective'">
+          <p> Option: {{ question.correct_option }}</p>
+        </ng-container>
+        <p class="marks-question">Marks: {{ question.marks }}</p>
+      </div>
+
+      <div class="col">
+        <ng-container *ngIf="question.question_type !== 'objective'">
+    <input type="text" [(ngModel)]="question.answer_text" class="form-control" [readonly]="!isEditing" />
+  </ng-container>
+
+        <ng-container *ngIf="question.question_type === 'objective'">
+          <select id="options" name="selected_option" [(ngModel)]="question.selected_option" class="form-control" [disabled]="!isEditing">
+            <option *ngIf="question.option_1 !== ''" [value]="1">{{ question.option_1 }}</option>
+            <option *ngIf="question.option_2 !== ''" [value]="2">{{ question.option_2 }}</option>
+            <option *ngIf="question.option_3 !== ''" [value]="3">{{ question.option_3 }}</option>
+            <option *ngIf="question.option_4 !== ''" [value]="4">{{ question.option_4 }}</option>
+          </select>
+        </ng-container>
+      </div>
+
+      <div class="col"> 
+        <ng-container *ngIf="question.question_type !== 'objective'">
+          <input type="number" [(ngModel)]="question.marks_awarded" class="form-control" [min]="0" [max]="question.marks"  [readonly]="!isEditing" />
+        </ng-container>
+         
+        <ng-container *ngIf="question.question_type === 'objective'">
+          <input type="checkbox" [checked]="question.correct_option === question.selected_option" [disabled]="true" />
+        </ng-container>
+      </div>
+
+      <div class="col"> 
+        <button *ngIf="isEditing" class="btn btn-success btn-sm " [ngClass]="{'updatemarks-btn':question.question_type=='objective'}" (click)="editAnswer(question,question.marks_awarded)">Update Marks</button>
+        <button *ngIf="isEditing" class="btn btn-info btn-sm" (click)="editAnswer(question,question.marks_awarded)">Edit Answer</button>
+        <button *ngIf="!isEditing" class="btn btn-warning btn-sm" (click)="toggleEdit()">Edit</button>
+      </div>
+    </div>
+     
+    <div class="footer mt-3">
+      <button class="btn btn-primary" (click)="submitSheet()">Submit</button>
+    </div>
+  </div>
+</div>

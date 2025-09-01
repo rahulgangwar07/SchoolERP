@@ -1,0 +1,235 @@
+/* General Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.top-div {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+  .top-div .first-para {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+.erp-link {
+  font-size: 16px;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+  .erp-link:hover {
+    text-decoration: underline;
+  }
+
+/* Profile Section */
+.profile-section {
+  padding: 0px 20px 20px 20px;
+  border-right: 2px solid #ddd;
+}
+
+.profile-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile-header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.faculty-id {
+  font-size: 18px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Read-only Information Design */
+.info-section {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.info-item {
+  margin-bottom: 15px;
+  display:flex;
+}
+
+  .info-item label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .info-item p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    padding-left:20px;
+    flex:2;
+  }
+
+.first-para span:first-child {
+  color: #28a745;
+}
+.first-para span:nth-child(2) {
+  color: #c33232;
+}
+
+/* Second Form: Editable Details (unchanged) */
+.form-section {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #deedf5;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+input:disabled {
+  background-color: #e9ecef;
+}
+
+/* Button Style */
+button.update-btn {
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  button.update-btn:hover {
+    background-color: #218838;
+  }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+/*.profile-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  text-align: left;
+}
+
+.profile-detail {
+  margin-bottom: 10px;
+}
+
+  .profile-detail strong {
+    color: #333;
+  }
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.faculty-id {
+  font-style: italic;
+  color: #666;
+}*/
+
+/* Styles for edit mode */
+/*.edit-input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+#editButton {
+  background-color: #ffa500;
+}
+
+  #editButton:hover {
+    background-color: #e68900;
+  }*/

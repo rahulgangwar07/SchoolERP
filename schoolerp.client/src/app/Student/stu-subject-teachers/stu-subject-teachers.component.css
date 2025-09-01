@@ -1,0 +1,20 @@
+
+#searchInput
+{
+    width:100%;
+    float:right;
+}
+
+/*.teachercontent div {
+  background-color: aliceblue;
+}*/
+
+.teachercontent {
+  height: 50vh;
+  padding-top:30px;
+}
+.teachercontent div { 
+  width: 30%;
+  background-color: aliceblue;
+  margin:10px;
+}

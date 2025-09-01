@@ -1,0 +1,127 @@
+
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">
+      FEE PAY STATUS
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/fee-history" routerLinkActive="active">Fee History</a>
+      <!--<a routerLink="/students/online-examination/exams-result" routerLinkActive="active">Marksheet</a>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 firstdiv">
+      <h6><strong>Payment by Bank Transfer</strong></h6>
+      <div class="firstchild">
+        <div>
+          <label>Name on Account</label>
+          <label>Infoniti Group</label>
+        </div>
+        <div>
+          <label>Bank Name</label>
+          <label>State bank of india</label>
+        </div>
+        <div>
+          <label>Account Number</label>
+          <label>xxxx xxxx xxxx</label>
+        </div>
+        <div>
+          <label>IFSC Code</label>
+          <label>SBIN0000174</label>
+        </div>
+        <div>
+          <label>Branch and Address</label>
+          <label>Samastipur</label>
+        </div>
+      </div>
+
+      <div class="slipdiv">
+        Note:- In case of payment by bank transfer , kindly upload your payment slip.
+      </div>
+      <div>
+        <input type="text" placeholder="Amount" />
+      </div>
+      <div>
+        <textarea placeholder="Any Message for Us! Mention the month of payment"></textarea>
+      </div>
+      <div>
+        <label>Payment Slip:</label>
+        <input type="file" />
+      </div>
+      <div>
+        <button>Upload Payment Slip</button>
+      </div>
+    </div>
+
+    <div class="col-md-7 seconddiv">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>Month</td>
+              <td>Tr.</td>
+              <td>Dues</td>
+              <td>Total</td>
+              <td>#</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apr</td>
+              <td>500.33</td>
+              <td></td>
+              <td>1120</td>
+              <td>#</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>May</td>
+              <td>500.33</td>
+              <td></td>
+              <td>1020</td>
+              <td>#</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>June</td>
+              <td>500.33</td>
+              <td></td>
+              <td>1220</td>
+              <td>#</td>
+              <td><input id="submitcheck" type="checkbox" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-12">
+        <label><strong>Online Payment details</strong></label>
+        <textarea placeholder="Any Message for Us ?"></textarea>
+      </div>
+      <div class="col-md-12 paymentamt">
+        <div class="col-md-4">
+          <label>Total Fee</label>
+          <input type="number" />
+        </div>
+        <div class="col-md-4">
+          <label>Late Fine</label>
+          <input type="number" disabled />
+        </div>
+        <div class="col-md-4">
+          <label>Tax Amount</label>
+          <input type="number" disabled />
+        </div>
+      </div>
+      <div class="col-md-12 paymentbtn">
+        <button>Online Payment (Rs)<br />for months</button>
+      </div>
+
+    </div>
+  </div>
+
+  
+
+</div>

@@ -1,0 +1,97 @@
+<div *ngIf="!examSubmitStatus">
+  <div class="container row">
+    <div class="exam-section col-md-8">
+      <h6 class="time-heading">Time Left: <span *ngIf="counter>0" [ngClass]="{counter : counter<=30}">{{ timeLeft }}</span>  </h6>
+      <label class="exam-title">Exam Title</label>
+      <div class="question-div">
+
+        <ng-container *ngFor="let ques of questions;index as j;">
+          <ng-container *ngIf="j+1 == i">
+            <div class="question-header">
+              <label><strong>Question {{j+1}}</strong></label>
+              <p>Question Type: <strong>{{ques.question_type}}</strong></p>
+            </div>
+            <div class="question-name">
+              <p>{{ques.question_text}}</p>
+              <p class="marks">({{ques.marks}} Marks)</p>
+            </div>
+            <div *ngIf="ques.question_type == 'subjective'" class="single-subj-questions">
+              <p class="write-question"><label>Write your Answer here</label></p>
+              <textarea id="answer{{j}}" class="question-textarea" rows="10" name="student_answer" [(ngModel)]="ques.student_answer" (mouseleave)="saveTextArea(ques,$event)" placeholder="Text your Answer here"></textarea>
+            </div>
+            <div *ngIf="ques.question_type == 'objective'" class="single-questions">
+              <table class="table">
+                <tr>
+                  <td>A</td>
+                  <td><input type="radio" [name]="'question'+ (j+1)" [(ngModel)]="ques.selected_option" [value]="1" (change)="saveAnswer(ques,'',1)" /></td>
+                  <td class="text"><label>{{ques.option_1}}</label></td>
+                </tr>
+                <tr>
+                  <td>B</td>
+                  <td><input type="radio" [name]="'question'+ (j+2)" [(ngModel)]="ques.selected_option" [value]="2" (change)="saveAnswer(ques,'',2)" /></td>
+                  <td class="text"><label>{{ques.option_2}}</label></td>
+                </tr>
+                <tr>
+                  <td>C</td>
+                  <td><input type="radio" [name]="'question'+ (j+3)" [(ngModel)]="ques.selected_option" [value]="3" (change)="saveAnswer(ques,'',3)" /></td>
+                  <td class="text"><label>{{ques.option_3}}</label></td>
+                </tr>
+                <tr>
+                  <td>D</td>
+                  <td><input type="radio" [name]="'question'+ (j+4)" [(ngModel)]="ques.selected_option" [value]="4" (change)="saveAnswer(ques,'',4)" /></td>
+                  <td class="text"><label>{{ques.option_4}}</label></td>
+                </tr>
+              </table>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <div class="move-buttons row">
+          <div class="col-md-6 first">
+            <button *ngIf="i!=1" (click)="backword()"><i class="fa fa-backward"></i> Previous</button>
+          </div>
+          <div class="col-md-6 second">
+            <button *ngIf="i!=questions.length" (click)="moveForword()">Next <i class="fa fa-forward"></i></button>
+          </div>
+        </div>
+
+        <div class="question-colors">
+          <label><input type="checkbox" class="custom-checkbox" /> Active</label>
+          <label><input type="checkbox" class="custom-checkbox" /> Not Attempted</label>
+          <label><input type="checkbox" class="custom-checkbox" /> Attempted</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- List of Questions Sidebar -->
+    <div class="col-md-4">
+      <h5 class="list-question">List of Questions</h5>
+      <div>
+        <ul *ngFor="let q of questions;index as j;" class="list-group">
+          <li class="list-group-item" [ngClass]="{activeQues: i == j + 1,markedQuestion: checkColor(q.question_id)}" (click)="moveQuestion(j+1)">{{j+1}} <span>{{q.question_type.substring(0,3)}}</span></li>
+        </ul>
+      </div>
+      <button class="submit-exam-btn" (click)="Submit()">Submit Text & Exit</button>
+    </div>
+  </div>
+
+  <div *ngIf="popupShow" class="popup-container">
+    <div class="popup">
+      <h6>Are You Sure?</h6>
+      <p>You can not restart your test..!</p>
+      <button (click)="cancelShow()">Cancel</button>
+      <button (click)="confirmSubmit()">Yes, Submit my answer!</button>
+    </div>
+  </div>
+  <div *ngIf="timeOver" class="popup-container">
+    <div class="popup">
+      <h6> </h6>
+      <p class="time-over">Time Over!</p>
+      <button (click)="confirmSubmit()">Yes, Submit my answer!</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="examSubmitStatus">
+  <app-check-result></app-check-result>
+</div>

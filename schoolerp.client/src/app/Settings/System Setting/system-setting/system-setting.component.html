@@ -1,0 +1,617 @@
+<div class="settings-container">
+  <h2>System Settings</h2>
+
+  <div class="row">
+    <!-- Left Column -->
+    <div class="col-md-6">
+      <table class="table">
+        <tbody>
+
+          <!-- Global Header Setting -->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button class="setting-title" (click)="openHeader(1)">Global Header Setting</button>
+
+
+                <div *ngIf="toogleIndex == 1" class="setting-content">
+
+                  <!-- Global Header Title -->
+                  <div class="setting-row">
+                    <label>Global Header Text:</label>
+                    <input type="text" [(ngModel)]="headerSettings.global_header" class="form-control" />
+                  </div>
+
+                  <!-- Footer Image Upload -->
+                  <div class="setting-row">
+                    <label>Header Image:</label>
+                    <input type="file" (change)="uploadHeaderImage($event)" class="form-control" />
+                    <div *ngIf="headerSettings.header_image">
+                      <img [src]="headerSettings.header_image" name="header_image" class="preview-image" alt="Header Preview" />
+                    </div>
+                  </div>
+
+                  <!-- Header Background Color -->
+                  <div class="setting-row">
+                    <label>Header Background Color:</label>
+                    <input type="color" [(ngModel)]="headerSettings.header_bgcolor" class="form-control" />
+                  </div>
+
+                  <!-- Header Text Color -->
+                  <div class="setting-row">
+                    <label>Header Text Color:</label>
+                    <input type="color" [(ngModel)]="headerSettings.header_text_color" class="form-control" />
+                  </div>
+
+                  <!-- Logo Upload -->
+                  <div class="setting-row">
+                    <label>Logo Upload:</label>
+                    <input type="file" (change)="uploadLogo($event)" class="form-control" />
+                    <div *ngIf="headerSettings.logo_url">
+                      <img [src]="headerSettings.logo_url" class="preview-image" alt="Logo Preview" />
+                    </div>
+                  </div>
+
+                  <!-- Font Family -->
+                  <div class="setting-row">
+                    <label>Font Family:</label>
+                    <select class="form-control" [(ngModel)]="headerSettings.font_family">
+                      <option value="Arial">Arial</option>
+                      <option value="Roboto">Roboto</option>
+                      <option value="Times New Roman">Times New Roman</option>
+                      <option value="Verdana">Verdana</option>
+                      <option value="Georgia">Georgia</option>
+                    </select>
+                  </div>
+
+                  <!-- Created By -->
+                  <div class="setting-row">
+                    <label>Created By:</label>
+                    <input type="text" [(ngModel)]="headerSettings.created_by" class="form-control" />
+                  </div>
+
+                  <!-- Save Button -->
+                  <div class="setting-row">
+                    <button class="btn save-btn" (click)="saveHeaderSettings()">Save</button>
+                  </div>
+
+                </div>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- Signature Setting -->
+          <tr>
+            <td>
+              <div class="setting-block signature-block">
+                <button class="setting-title" (click)="openHeader(2)">Signature Setting</button>
+
+                <ng-container *ngIf="toogleIndex == 2">
+                  <!-- Examination Controller -->
+                  <div class="row d-flex">
+                    <div class="col-md-7">
+                      <label>Examination Controller Signature</label>
+                      <img class="image-item" [src]="signatureSetting.examination_controller_signature" />
+                      <input type="file" name="examination_sign" placeholder="Select Image" (change)="selectExaminationImg($event)" />
+                    </div>
+                    <div class="setting-row col-md-4">
+                      <button class="btn save-btn" (click)="submitSignature()">Save</button>
+                      <button class="btn delete-btn">Delete</button>
+                    </div>
+                  </div>
+
+                  <!-- Center Controller -->
+                  <div class="row d-flex">
+                    <div class="col-md-7">
+                      <label>Center Controller Signature (Center)</label>
+                      <img class="image-item" [src]="signatureSetting.center_controller_signature" />
+                      <input type="file" placeholder="Select Image" (change)="selectCenterControllerImg($event)" />
+                    </div>
+                    <div class="setting-row col-md-4">
+                      <button class="btn save-btn" (click)="submitSignature()">Save</button>
+                      <button class="btn delete-btn">Delete</button>
+                    </div>
+                  </div>
+
+                  <!-- Director -->
+                  <div class="row d-flex">
+                    <div class="col-md-7">
+                      <label>Principal / Director Signature (Right)</label>
+                      <img class="image-item" [src]="signatureSetting.director_signature" />
+                      <input type="file" name="director_sign" placeholder="Select Image" (change)="selectDirectorImg($event)" />
+                    </div>
+                    <div class="setting-row col-md-4">
+                      <button class="btn save-btn" (click)="submitSignature()">Save</button>
+                      <button class="btn delete-btn">Delete</button>
+                    </div>
+                  </div>
+
+                  <!-- ICard -->
+                  <div class="row d-flex">
+                    <div class="col-md-7">
+                      <label>ICard Signature</label>
+                      <img class="image-item" [src]="signatureSetting.icard_signature" />
+                      <input type="file" name="icard_sign" placeholder="Select Image" (change)="selectICardImg($event)" />
+                    </div>
+                    <div class="setting-row col-md-4">
+                      <button class="btn save-btn" (click)="submitSignature()">Save</button>
+                      <button class="btn delete-btn">Delete</button>
+                    </div>
+                  </div>
+                   
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+
+
+          <!-- Other Settings (Non-expanded) -->
+          <!--<tr>
+    <td>
+      <div class="setting-block">
+        <button (click)="openHeader(3)" class="setting-title">Week Off / Office Timing Setting</button>
+        <div *ngIf="toogleIndex == 3" class="setting-content">
+          <div class="device-setting-wrapper">
+            <h2>Under Development</h2>
+            <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+          </div>
+
+        </div>
+      </div>
+    </td>
+  </tr>-->
+          <!--<tr>
+    <td>
+      <div class="setting-block">
+        <button (click)="openHeader(4)" class="setting-title">Class and Online Test Setting</button>
+        <div *ngIf="toogleIndex == 4" class="setting-content">
+          <div class="device-setting-wrapper">
+            <h2>Under Development</h2>
+            <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+          </div>
+        </div>
+
+      </div>
+    </td>
+  </tr>-->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(5)" class="setting-title">
+                  Registration / Live Class Setting
+                </button>
+
+                <div *ngIf="toogleIndex == 5" class="setting-content">
+
+                  <h5 class="ra-blinking">I am reseaching on it</h5>
+
+                  <!-- Registration Starting Number -->
+                  <div class="setting-section">
+                    <p>Registration Starting Number:</p>
+                    <div class="setting-row">
+                      <input type="text" name="registration" class="form-control" />
+                      <button class="btn save-btn">Save</button>
+                    </div>
+                  </div> 
+
+                  <!-- Live Class Platform -->
+                  <div class="setting-section">
+                    <p>Live Class Platform:</p>
+                    <div class="setting-row">
+                      <select class="form-control">
+                        <option>Zoom</option>
+                        <option>Google Meet</option>
+                        <option>Google Classroom</option>
+                        <option>Jio Meet</option>
+                        <option>Team Link</option>
+                      </select>
+                      <button class="btn save-btn">Save</button>
+                    </div>
+                  </div>
+
+                  <!-- Default Password -->
+                  <div class="setting-section">
+                    <p>Default Password:</p>
+                    <div class="setting-row">
+                      <input type="text" name="password" class="form-control" />
+                      <button class="btn save-btn">Save</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(6)" class="setting-title">Support Contact</button>
+                <div *ngIf="toogleIndex == 6" class="setting-content">
+
+                  <div class="setting-section">
+                    <p>Support Email :</p>
+                    <div class="setting-row">
+                      <input type="text" name="supportEmail" [(ngModel)]="supportContact.support_email" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Support Phone -->
+                  <div class="setting-section">
+                    <p>Support Phone :</p>
+                    <div class="setting-row">
+                      <input type="text" name="supportPhone" [(ngModel)]="supportContact.support_phone" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Grievance Cell -->
+                  <div class="setting-section">
+                    <p>Grievance Cell :</p>
+                    <div class="setting-row">
+                      <input type="text" name="grievance" [(ngModel)]="supportContact.grievance_cell" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Account Department -->
+                  <div class="setting-section">
+                    <p>Account Department :</p>
+                    <div class="setting-row">
+                      <input type="text" name="account" [(ngModel)]="supportContact.accountdepartment" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Exam Cell -->
+                  <div class="setting-section">
+                    <p>Exam Cell :</p>
+                    <div class="setting-row">
+                      <input type="text" name="examcell" [(ngModel)]="supportContact.examcell" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Admission Cell -->
+                  <div class="setting-section">
+                    <p>Admission Cell :</p>
+                    <div class="setting-row">
+                      <input type="text" name="addmissionCell" [(ngModel)]="supportContact.admissioncell" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Support Address -->
+                  <div class="setting-section">
+                    <p>Support Address:</p>
+                    <div class="setting-row">
+                      <input type="text" name="supportAddress" [(ngModel)]="supportContact.support_address" class="form-control" />
+                    </div>
+                  </div>
+
+                  <!-- Save Button for all inputs -->
+                  <div class="setting-row">
+                    <button class="btn save-btn" (click)="saveSupportContact()">Save</button>
+                  </div>
+
+
+                </div>
+              </div>
+            </td>
+          </tr>
+          <!--<tr>
+    <td>
+      <div class="setting-block">
+        <button (click)="openHeader(7)" class="setting-title">Online Payment (Bank Information)</button>
+      </div>
+    </td>
+  </tr>-->
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-6">
+      <table class="table">
+        <tbody>
+
+
+          <!-- Attendance Setting -->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(8)" class="setting-title">Attendance Setting</button>
+                <div *ngIf="toogleIndex == 8" class="setting-content">
+                  <div class="setting-row">
+                    <label>Subject Wise Attendance:</label>
+                    <input type="radio" name="attendance" value="Yes" /> Yes
+                    <input type="radio" name="attendance" value="No" /> No
+                    <button class="btn save-btn">Save</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <!-- ID Card Setting -->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(9)" class="setting-title">ID Card Setting</button>
+
+                <div *ngIf="toogleIndex == 9" class="setting-content">
+
+                  <h5 class="ra-blinking">I am reseaching on it</h5>
+
+                  <label>Set Global Marksheet Header:</label>
+                  <div class="d-flex justify-content-around">
+                    <div>
+                      <input type="radio" name="globalHeader" value="Yes" /> Yes
+                      <input type="radio" name="globalHeader" value="No" /> No
+                    </div>
+                    <div><button class="btn save-btn">Save</button></div>
+                  </div>
+
+                  <label>ID Card Header Background Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="headerColor" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <label>ID Card Text Header Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="textheader" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <label>ID Card Text Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="textcolor" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Other Settings (Non-expanded) -->
+          <!--<tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(10)" class="setting-title">Marksheet Setting</button>
+                <div *ngIf="toogleIndex == 10" class="setting-content">
+                  <div class="device-setting-wrapper">
+                    <h2>Under Development</h2>
+                    <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>-->
+          <!--<tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(11)" class="setting-title">Fee Slip / Demand Slip</button>
+                <div *ngIf="toogleIndex == 11" class="setting-content">
+                  <div class="device-setting-wrapper">
+                    <h2>Under Development</h2>
+                    <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>-->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(12)" class="setting-title">Admit Card Setting</button>
+                <div *ngIf="toogleIndex == 12" class="setting-content">
+                  <!-- Global Admit Card Header -->
+                  <h5 class="ra-blinking">I am reseaching on it</h5>
+                  <div class="setting-row">
+                    <label for="globalHeader">Set Global Admit Card Header:</label>
+                    <div>
+                      <input type="radio" id="headerYes" name="globalHeader" value="Yes" />
+                      <label for="headerYes">Yes</label>
+                      <input type="radio" id="headerNo" name="globalHeader" value="No" />
+                      <label for="headerNo">No</label>
+                    </div>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Show Subject Code -->
+                  <div class="setting-row">
+                    <label for="showSubjectCode">Show Subject Code:</label>
+                    <div>
+                      <input type="radio" id="subjectCodeYes" name="showSubjectCode" value="Yes" />
+                      <label for="subjectCodeYes">Yes</label>
+                      <input type="radio" id="subjectCodeNo" name="showSubjectCode" value="No" />
+                      <label for="subjectCodeNo">No</label>
+                    </div>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Student Profile Font Size -->
+                  <label for="profileFontSize">Student Profile Font Size:</label>
+                  <div class="row d-flex icard">
+                    <input type="number" id="profileFontSize" name="profileFontSize" value="25" min="10" max="50" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Admit Card Format -->
+                  <label for="admitCardFormat">Admit Card Format:</label>
+                  <div class="row d-flex icard">
+                    <select id="admitCardFormat" name="admitCardFormat">
+                      <option value="OneShift">One Shift</option>
+                      <option value="MultipleShifts">Multiple Shifts</option>
+                    </select>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <label for="examInstructionFontSize">Exam Instruction Font Size:</label>
+                  <div class="row d-flex icard">
+                    <input type="number" id="examInstructionFontSize" name="examInstructionFontSize" value="20" min="10" max="50" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Watermark -->
+                  <div class="setting-row">
+                    <label for="watermark">Watermark:</label>
+                    <input type="radio" id="watermarkYes" name="watermark" value="Yes" />
+                    <label for="watermarkYes">Yes</label>
+                    <input type="radio" id="watermarkNo" name="watermark" value="No" />
+                    <label for="watermarkNo">No</label>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Show Invigilator's Sign -->
+                  <div class="setting-row">
+                    <label for="invigilatorSign">Show Invigilator's Sign:</label>
+                    <input type="radio" id="invigilatorSignYes" name="invigilatorSign" value="Yes" />
+                    <label for="invigilatorSignYes">Yes</label>
+                    <input type="radio" id="invigilatorSignNo" name="invigilatorSign" value="No" />
+                    <label for="invigilatorSignNo">No</label>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Signature Texts -->
+                  <div class="setting-row">
+                    <label for="leftSignatureText">Admit Card Signature Text (Left Side):</label>
+                    <input type="text" id="leftSignatureText" name="leftSignatureText" placeholder="Enter Left Side Signature Text" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <div class="setting-row">
+                    <label for="centerSignatureText">Admit Card Signature Text (Center):</label>
+                    <input type="text" id="centerSignatureText" name="centerSignatureText" placeholder="Enter Center Signature Text" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <div class="setting-row">
+                    <label for="rightSignatureText">Admit Card Signature Text (Right Side):</label>
+                    <input type="text" id="rightSignatureText" name="rightSignatureText" placeholder="Enter Right Side Signature Text" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Header Background Color -->
+                  <label>Admit Card Header Background Color :</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="headerColor" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Text Header Color -->
+                  <label>Admit Card Text Header Color :</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="headerColor" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Text Header Color -->
+                  <label>Admit Card Border Color :</label>
+                  <div class="row d-flex icard">
+                    <input type="color" name="headerColor" />
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Text Header Color -->
+                  <label>Blank Card Default Notes :</label>
+                  <div class="row d-flex icard">
+                    <textarea name="headerColor"></textarea>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+
+                  <!-- Blank Card Default Notes -->
+                  <div class="setting-row">
+                    <label for="blankCardNotes">Blank Card Default Notes:</label>
+                    <textarea id="blankCardNotes" name="blankCardNotes" rows="4" placeholder="Enter default notes for blank cards"></textarea>
+                    <button class="btn save-btn">Save</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!--<tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(13)" class="setting-title">Salary Allowances Setting</button>
+                <div *ngIf="toogleIndex == 13" class="setting-content">
+                  <div class="device-setting-wrapper">
+                    <h2>Under Development</h2>
+                    <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>-->
+          <!--<tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(14)" class="setting-title">Salary Deductions Setting</button>
+                <div *ngIf="toogleIndex == 14" class="setting-content">
+                  <div class="device-setting-wrapper">
+                    <h2>Under Development</h2>
+                    <p class="info-message">🔍 We are researching it. Please check back soon.</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>-->
+          <tr>
+            <td>
+              <div class="setting-block">
+                <button (click)="openHeader(15)" class="setting-title">Application Theme Setting</button>
+                <div *ngIf="toogleIndex == 15" class="setting-content">
+
+                  <label>Website URL:</label>
+                  <div class="row d-flex icard">
+                    <input type="url" [(ngModel)]="applicationThemeSetting.appTheme_website_url" class="form-control" />
+                  </div>
+
+                  <label>YouTube URL:</label>
+                  <div class="row d-flex icard">
+                    <input type="url" [(ngModel)]="applicationThemeSetting.youtube_url" class="form-control" />
+                  </div>
+
+                  <label>Primary Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" [(ngModel)]="applicationThemeSetting.primary_color" />
+                  </div>
+
+                  <label>Secondary Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" [(ngModel)]="applicationThemeSetting.secondary_color" />
+                  </div>
+
+                  <label>Button Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" [(ngModel)]="applicationThemeSetting.button_color" />
+                  </div>
+
+                  <label>Sidebar Background Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" [(ngModel)]="applicationThemeSetting.sidebar_bgcolor" />
+                  </div>
+
+                  <label>Sidebar Text Color:</label>
+                  <div class="row d-flex icard">
+                    <input type="color" [(ngModel)]="applicationThemeSetting.sidebar_color" />
+                  </div>
+
+                  <!--<label>Favicon URL:</label>
+                  <div class="row d-flex icard">
+                    <input type="url" [(ngModel)]="applicationThemeSetting.favicon_url" class="form-control" />
+                  </div>-->
+
+                  <div class="row d-flex icard">
+                    <button class="btn btn-primary" (click)="submitApplicationTheme()">Save All Settings</button>
+                  </div>
+
+                </div>
+              </div>
+
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

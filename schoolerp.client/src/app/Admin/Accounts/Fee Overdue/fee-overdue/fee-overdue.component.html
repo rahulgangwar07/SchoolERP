@@ -1,0 +1,138 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">Student Fees Overdue </div>
+    <div class="col-md-6">
+      <a routerLink="/accounts/create-demand-slip" routerLinkActive="active">Demand Slip</a>
+      <a routerLink="/reports/yearly" routerLinkActive="active">Yearly Report</a>
+      <a routerLink="/accounts/print-demand-slip" routerLinkActive="active">Print Report</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 month-checkboxes">
+      <label><input type="checkbox" id="april"> Apr</label>
+      <label><input type="checkbox" id="may"> May</label>
+      <label><input type="checkbox" id="june"> June</label>
+      <label><input type="checkbox" id="july"> July</label>
+      <label><input type="checkbox" id="august"> Aug</label>
+      <label><input type="checkbox" id="september"> Sep</label>
+      <label><input type="checkbox" id="october"> Oct</label>
+      <label><input type="checkbox" id="november"> Nov</label>
+      <label><input type="checkbox" id="december"> Dec </label>
+      <label><input type="checkbox" id="january"> Jan</label>
+      <label><input type="checkbox" id="february"> Feb</label>
+      <label><input type="checkbox" id="march"> Mar </label>
+    </div>
+
+    <div class="col-md-7">
+      <!-- Class Select Dropdown -->
+      <select id="class">
+        <option>All Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+      </select>
+
+      <!-- Section Select Dropdown -->
+      <select id="section">
+        <option>Section</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+
+      <!-- Session Select Dropdown -->
+      <select id="session">
+        <option>2024 - 2025</option>
+        <option>2025 - 2026</option>
+      </select>
+
+      <!-- Paid Status Select Dropdown -->
+      <select id="paidstatus">
+        <option>Paid</option>
+        <option>Dues</option>
+        <option>Current</option>
+      </select>
+
+      <!-- Users Select Dropdown -->
+      <select id="users">
+        <option>Campus Cover</option>
+        <option>Rakesh Singh</option>
+        <option>Sonu Sharma</option>
+      </select>
+
+      <!-- Checkboxes -->
+      <div class="custom-dropdown">
+        <button class="dropdown-btn">Select Options</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" id="selectAll"> Select All</label>
+          <label><input type="checkbox" id="staffwards"> Staff Wards</label>
+          <label><input type="checkbox" id="hosteller"> Hosteller</label>
+        </div>
+      </div>
+
+      <!-- Branch Select Dropdown -->
+      <select id="branch">
+        <option>B Block</option>
+      </select>
+
+      <!-- Additional Inputs -->
+      <input type="text" placeholder="Range(1000-9000)" />
+      <input type="date" placeholder="FollowUp Start" />
+
+      <!-- Go Button -->
+      <button>Go</button>
+    </div>
+
+  </div>
+  <div class="row">
+    <table class="student-fee-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Student's Name</th>
+          <th>Roll No</th>
+          <th>Adm. No</th>
+          <th>Address</th>
+          <th>Class</th>
+          <th>Phone</th>
+          <th>Paid Month</th>
+          <th>Total Fee</th>
+          <th>Paid Fee</th>
+          <th>Paid Tr.</th>
+          <th>Total Paid</th>
+          <th>Con. Availed</th>
+          <th>Tr. Dues</th>
+          <th>Current Dues</th>
+          <th>Last Dues</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Row, you can dynamically fill this using Angular or other templating systems -->
+        <tr>
+          <td>1</td>
+          <td>Jatin Sharma</td>
+          <td>600</td>
+          <td>60001</td>
+          <td>Address here</td>
+          <td>I</td>
+          <td>9876543210</td>
+          <td>Nov (2024 - 2025)</td>
+          <td>1500</td>
+          <td>1000</td>
+          <td>100</td>
+          <td>1100</td>
+          <td>500</td>
+          <td>200</td>
+          <td>150</td>
+        </tr>
+        <!-- Additional rows can be added dynamically -->
+      </tbody>
+    </table>
+
+    <!-- If no records are found, display a message -->
+    <div class="no-records" *ngIf="noRecordsFound">No records found</div>
+  </div>
+
+
+</div>

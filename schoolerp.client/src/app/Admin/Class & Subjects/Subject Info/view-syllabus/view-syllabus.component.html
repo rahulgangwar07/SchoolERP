@@ -1,0 +1,73 @@
+<div class="container">
+  <h5 class="text-center">Syllabus List</h5>
+
+  <!-- Mandatory Fields Section -->
+  <div class="top-section layout-header mb-4">
+    <div class="mandatory-fields">
+      <p>Fields marked with (*) are mandatory</p>
+    </div>
+    <div class="button-section text-end">
+      <select id="ddlclass" [(ngModel)]="class_id" (change)="classChange()">
+        <option value="0">Select Class</option>
+        <option *ngFor="let cls of classList" [value]="cls.class_id">{{ cls.class_name }}</option>
+      </select>
+      <a routerLink="/subject/add-syllabus" routerLinkActive="active" class="btn btn-primary">Add Syllabus</a>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error Alert -->
+  <div *ngIf="error" class="alert alert-danger text-center" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Main Content for Syllabus List -->
+  <div *ngIf="!isLoading && syllabusList.length > 0">
+    <div *ngFor="let classGroup of syllabusList" class="class-group">
+      <h3 class="text-primary">{{ classGroup.className }}</h3>
+
+      <!-- Table for Subjects and Topics -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Topic</th>
+            <th>Chapter</th>
+            <th>Uploaded At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop over each subject -->
+          <ng-container *ngFor="let subject of classGroup.subjects">
+            <tr *ngFor="let syllabus of subject.topics;index as i">
+              <!-- Subject Name: Show once for each group of topics -->
+              <td *ngIf="i==0" [attr.rowspan]="subject.topics.length" class="align-middle">
+                {{ subject.subjectName }}
+              </td>
+              <td>{{ syllabus.topic_name }}</td>
+              <td>{{ syllabus.chapterName }}</td>
+              <td>{{ syllabus.created_at | date:'dd MMM yyyy' }}</td>
+              <td>
+                <a (click)="downloadDocument(syllabus.document)" class="btn btn-success btn-sm">
+                  <i class="bi bi-download"></i> Download
+                </a>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- No Syllabus Found -->
+  <div *ngIf="!isLoading && syllabusList.length === 0" class="alert alert-info text-center" role="alert">
+    No syllabus found.
+  </div>
+</div>

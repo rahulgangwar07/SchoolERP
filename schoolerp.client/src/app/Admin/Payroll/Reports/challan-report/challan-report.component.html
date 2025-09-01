@@ -1,0 +1,122 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Challan Report</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/payroll/challanreport/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Export Excel</a>
+      <a routerLink="/payroll/challanreport/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Print</a>
+    </div>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="row my-4">
+    <div class="col-md-3">
+      <select id="desig" class="form-control">
+        <option>Select Designations...</option>
+        <option>HOD</option>
+        <option>Accountant</option>
+        <option>Manager</option>
+        <option>Clerk</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="branch" class="form-control">
+        <option>Select Branch...</option>
+        <option>B Block</option>
+        <option>C Block</option>
+        <option>D Block</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select id="month" class="form-control">
+        <option>Jan</option>
+        <option>Feb</option>
+        <option>Mar</option>
+        <option>Apr</option>
+        <option>May</option>
+        <option>Jun</option>
+        <option>Jul</option>
+        <option>Aug</option>
+        <option>Sep</option>
+        <option>Oct</option>
+        <option>Nov</option>
+        <option>Dec</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="session" class="form-control">
+        <option>2024 - 2025</option>
+        <option>2025 - 2026</option>
+        <option>2026 - 2027</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary go-btn w-100">GO</button>
+    </div>
+  </div>
+
+  <!-- Challan Report Table Section -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>PF Account</th>
+            <th>Employee Name</th>
+            <th>Gross Wages<br>(Basic+HRA)</th>
+            <th>EPF Wages</th>
+            <th>EPS Wages</th>
+            <th>EDLI Wages</th>
+            <th>EPF Contribution Remitted</th>
+            <th>EPS Contribution Remitted</th>
+            <th>Diff EPF and EPS Contribution Remitted</th>
+            <th>NPS Days</th>
+            <th>Refund Of Advance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Placeholder for no records -->
+          <tr>
+            <td colspan="12" class="text-center">No record found !!</td>
+          </tr>
+          <!-- Example Data (Uncomment to add sample data) -->
+          <!--
+          <tr>
+            <td>1</td>
+            <td>PF12345</td>
+            <td>John Doe</td>
+            <td>30000</td>
+            <td>1200</td>
+            <td>800</td>
+            <td>200</td>
+            <td>1200</td>
+            <td>800</td>
+            <td>0</td>
+            <td>30</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>PF12346</td>
+            <td>Jane Smith</td>
+            <td>28000</td>
+            <td>1120</td>
+            <td>750</td>
+            <td>180</td>
+            <td>1100</td>
+            <td>770</td>
+            <td>10</td>
+            <td>28</td>
+            <td>1000</td>
+          </tr>
+          -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

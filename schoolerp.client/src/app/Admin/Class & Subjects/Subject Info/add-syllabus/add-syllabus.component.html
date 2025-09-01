@@ -1,0 +1,62 @@
+<div class="container">
+  <h2>Add Syllabus</h2>
+  <div class="top-section layout-header">
+    <div class="mandatory-fields">
+      <p>Fields marked with (*) are mandatory</p>
+    </div>
+    <div class="button-section"> 
+      <a routerLink="/subject/view" routerLinkActive="active" class="action-btn">View Subject</a>
+      <a routerLink="/subject/view-syllabus" routerLinkActive="active" class="action-btn">View Syllabus</a>
+      <a routerLink="/subject/add-chapter" routerLinkActive="active" class="action-btn">Add Chapter</a>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmit()" #syllabusForm="ngForm">
+    <div class="form-group">
+      <label for="class">Select Class</label>
+      <select id="class" class="form-control" [(ngModel)]="class_id" name="class_id" (change)="changeClass()" required>
+        <option value="0">Select Class</option>
+        <option *ngFor="let cls of classes" [value]="cls.class_id">
+          {{ cls.class_name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="class">Select Subject</label>
+      <select id="class" class="form-control" [(ngModel)]="subject_id" name="subject_id" (change)="changeSubject()" required>
+        <option value="0">Select Subject</option>
+        <option *ngFor="let subj of subjects" [value]="subj.subject_id">
+          {{ subj.subject_name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="chapter">Select Chapter</label>
+      <select id="chapter" class="form-control" [(ngModel)]="syllabus.chapter_id" name="chapter_id" required>
+        <option value="0">Select Chapter</option>
+        <option *ngFor="let chapter of chapters" [value]="chapter.chapter_id">
+          {{ chapter.chapter_name }}
+        </option>
+      </select>
+      <i routerLink="/subject/add-chapter" routerLinkActive="active" class="fa fa-square-plus"></i>
+    </div>
+
+    <div class="form-group">
+      <label for="topic_name">Topic Name</label>
+      <input id="topic_name" type="text" class="form-control" [(ngModel)]="syllabus.topic_name"
+             name="topic_name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="document">Document</label>
+      <input id="document" type="file" class="form-control"
+             (change)="onFileChange($event)" required />
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!syllabusForm.form.valid">
+        Add Syllabus
+      </button>
+    </div>
+  </form>
+</div>

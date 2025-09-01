@@ -1,0 +1,113 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Make Payment</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/payroll/salary/list" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Salary List</a>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Payment Form Section -->
+    <div class="col-md-5">
+      <form>
+        <div>
+          <label for="designation">Designation</label>
+          <input type="text" id="designation" placeholder="Select Designations..." />
+        </div>
+        <div>
+          <label for="employee">Employee</label>
+          <input type="text" id="employee" placeholder="Select Employee..." />
+        </div>
+        <div>
+          <label for="month">Month</label>
+          <input type="date" id="month" />
+        </div>
+        <div class="btncls">
+          <button type="submit">Go</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Earnings Section -->
+    <div class="col-md-3">
+      <div class="section-title">
+        <p><strong>Earnings</strong></p>
+      </div>
+      <div class="earning">
+        <p><strong>Basic Salary</strong></p>
+        <p>20000</p>
+      </div>
+      <div class="earning">
+        <p><strong>Dearness Allowance</strong></p>
+        <p>0</p>
+      </div>
+      <div class="earning">
+        <p><strong>House Rent Allowance</strong></p>
+        <p>0</p>
+      </div>
+      <div class="earning">
+        <p><strong>Medical Rent Allowance</strong></p>
+        <p>5000</p>
+      </div>
+      <div class="earning">
+        <p><strong>Special Rent Allowance</strong></p>
+        <p>1500</p>
+      </div>
+    </div>
+
+    <!-- Deductions Section -->
+    <div class="col-md-3">
+      <div class="section-title">
+        <p><strong>Deduction</strong></p>
+      </div>
+      <div class="deduction">
+        <p><strong>Tax Deduction</strong></p>
+        <p>0</p>
+      </div>
+      <div class="deduction">
+        <p><strong>Provident Fund</strong></p>
+        <p>0</p>
+      </div>
+      <div class="deduction">
+        <p><strong>Esic Fund</strong></p>
+        <p>0</p>
+      </div>
+      <div class="deduction">
+        <p><strong>Security Deduction</strong></p>
+        <p>0</p>
+      </div>
+      <div class="deduction">
+        <p><strong>Mess Deduction</strong></p>
+        <p>0</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment History Section -->
+  <div class="mt-5">
+    <h4>Payment History</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Payment Month</th>
+          <th>Payment Date</th>
+          <th>Gross Salary</th>
+          <th>Total Deduction</th>
+          <th>Net Salary</th>
+          <th>Fine</th>
+          <th>Attendance (Days)</th>
+          <th>Paid Amount</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="9" class="text-center">There is no data for display</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

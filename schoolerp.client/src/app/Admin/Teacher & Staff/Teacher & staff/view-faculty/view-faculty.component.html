@@ -1,0 +1,105 @@
+
+<div class="container">
+  <div class="main-wrapper">
+    <div class="page-header">
+      <div class="row">
+        <div class="col">
+          <h3 class="page-title">View Faculty/Staff</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item" *ngIf="permissions?.canView"><a routerLink="/teacher-staff/add">Add Faculty</a></li>
+            <li class="breadcrumb-item active">View {{memberList}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">{{memberList}} Members List</h5>
+      </div>
+      <div class="card-body">
+
+
+        <app-success-message-popup *ngFor="let message of messages; let i = index"
+                                   [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                                   (closePopup)="closeMessagePopup(i)">
+        </app-success-message-popup>
+
+        <table *ngIf="filteredFacultyList && filteredFacultyList.length != 0" class="faculty-table">
+          <thead>
+            <tr>
+              <th>SrNo.</th>
+              <th>Image</th>
+              <th>Faculty Name</th>
+              <th>Course</th>
+              <!--<th>Shift</th>-->
+              <th>Phone Number</th>
+              <th>Date of Birth</th>
+              <th>Report</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of filteredFacultyList; index as i" [ngClass]="{'disabled-account':f.status == 'Suspended'}">
+              <td>{{i+1}}</td>
+              <td><img src="{{f.image}}" /></td>
+              <td>
+                <p style="font-size:15px;margin:0;">{{f.first_name}}</p>
+                <p style="font-size:11px;">({{f.designation_name}})</p>
+              </td>
+              <td>
+                <div>
+                  <p style="margin:0;">Maths</p>
+                  <p style="font-size:11px;">3rd Shift</p>
+                </div>
+              </td>
+              <!--<td>3rd Shift</td>-->
+              <td *ngIf="f.phone != null">{{f.phone}}</td>
+              <td *ngIf="f.phone == null">{{f.whatsapp_no}}</td>
+              <td style="font-size:15px;">{{ f.dob | date:'dd-MMM-YYYY' }}</td>
+              <td><button class="btn-action"><i class="fas fa-file-alt"></i> Report</button></td>
+              <td>
+                <!-- Action Button Container -->
+                <div class="action-container">
+                  <button class="btn-action" (click)="toggleBtn(i)"><i class="fas fa-cogs"></i> Actions</button>
+                  <!-- Action List -->
+                  <ul class="action-list" *ngIf="showCurrentIndex === i">
+                    <li [routerLink]="['/teacher-staff/add', f.faculty_id]" *ngIf="permissions?.canEdit">
+                      <i class="fas fa-edit"></i> Edit
+                    </li>
+                    <li (click)="enableDisableAcc(f.faculty_id,f.status)">
+                      <i [ngClass]="{'fa-check-circle':f.status == 'Suspended','fa-ban':f.status == 'Active'}" class="fas"></i>
+                      {{ f.status == 'Suspended' ? 'Enable' : 'Disable' }}
+                    </li>
+                    <li (click)="changepswd(f.faculty_id,f.first_name,f.username,f.password)"><i class="fas fa-key"></i> Change Password</li>
+                    <li (click)="deleteFaculty(f.faculty_id)" *ngIf="permissions?.canDelete"><i class="fas fa-trash-alt"></i> Delete</li>
+                    <li (click)="moveAlumni(f.faculty_id)"><i class="fas fa-users"></i> Move to Alumni</li>
+                    <li><i class="fas fa-cogs"></i> Settings</li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> 
+</div>
+<div class="container password-div" *ngIf="showPasswordPopup">
+  <div class="row password-header">
+    <h6 class="col-md-11">Change Password of Mr. {{faculty_name}}</h6>
+    <button class="col-md-1 closebtn" (click)="hidePopup()"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="row">
+    <label class="col-md-4">Username: </label>
+    <input type="text" [(ngModel)]="user_name" disabled class="col-md-5" />
+  </div>
+  <div class="row">
+    <label class="col-md-4">New Password: </label>
+    <input type="password" [(ngModel)]="password" class="col-md-5" />
+  </div>
+  <div class="row changepsw">
+    <button class="col-md-3" (click)="submitPswd()">Submit Password</button>
+  </div>
+</div>

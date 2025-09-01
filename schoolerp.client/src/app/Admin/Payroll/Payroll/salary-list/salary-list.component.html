@@ -1,0 +1,59 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p><strong>Employee Salary List</strong></p>
+    </div>
+    <div class="col-md-6 text-right">
+      <!-- Dropdown for Salary Branch -->
+      <select class="form-select" id="salaryBranch" aria-label="Salary Branch">
+        <option value="">Salary Branch</option>
+        <option value="BBlock">B Block</option>
+        <option value="ABlock">A Block</option>
+        <option value="CBlock">C Block</option>
+      </select>
+
+      <!-- Button linking to Salary Details Page -->
+      <a href="/payroll/salary/details" class="btn btn-outline-primary btn-sm mx-2">
+        Salary Details
+      </a>
+    </div>
+  </div>
+
+  <!-- Employee Salary Table -->
+  <table class="table table-bordered table-striped mt-4">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Full Name</th>
+        <th>Branch</th>
+        <th>Department</th>
+        <th>Gross Salary</th>
+        <th>Deductions</th>
+        <th>Net Salary</th>
+        <th>Emp Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Example Employee Row -->
+      <tr>
+        <td>1</td>
+        <td>Mr. Sudhir Anand</td>
+        <td>B Block</td>
+        <td>Accountant</td>
+        <td>26,800</td>
+        <td>12</td>
+        <td>26,788</td>
+        <td>Permanent</td>
+        <td>
+          <button class="btn btn-info btn-sm">Details</button>
+          <button class="btn btn-warning btn-sm">Edit</button>
+        </td>
+      </tr>
+      <!-- More employee rows can be added here -->
+    </tbody>
+  </table>
+
+</div>

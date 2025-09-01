@@ -1,0 +1,87 @@
+
+.container {
+  width: 80%;
+  position: absolute;
+  background-color: #fff;
+  top: 20px;
+  left: 17%;
+  padding: 41px;
+}
+
+.answer-sheet {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.question-text p {
+  margin-bottom: 0;
+}
+
+  .question-text p:first-child, .answer-div p:first-child {
+    text-align: justify;
+  }
+
+  .question-text p:nth-child(2n), .answer-div p:nth-child(2n) { 
+    text-align: justify;
+  }
+
+.marks-question {
+  color: #ff6a00;
+}
+
+.answer-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+  .answer-row .col { 
+    padding: 5px;
+  }
+
+button {
+  margin-top: 5px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+input.form-control {
+  width: 100%;
+  max-width: 150px;
+}
+
+button.btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+button.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+button.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+button.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.updatemarks-btn{
+    display:none;
+}

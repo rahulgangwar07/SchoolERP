@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="main-wrapper">
+    <div class="page-header">
+      <div class="row">
+        <div class="col">
+          <h3 class="page-title">Teacher List</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a (click)="printWindow()">Print</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <!-- Loop through faculties and display each teacher's card -->
+      <div *ngFor="let fac of faculties" class="teacher-card">
+        <img [src]="fac.image" alt="Teacher Photo">
+        <h3>{{ fac.first_name }}</h3>
+        <p>Phone: {{ fac.phone }}</p>
+        <p>Address: {{ fac.address }}</p>
+        <p class="branch">{{ fac.designation_name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div *ngFor="let fac of faculties" style="margin:15px; display:none;">
+  <div class="teacher-card printableArea" style="width: 41%; background-color: white; border: 1px solid #eefcf7;padding:10px;">
+    <img [src]="fac.image" alt="Teacher Photo" height="120" width="120">
+    <h3>{{ fac.first_name }}</h3>
+    <p>Phone: {{ fac.phone }}</p>
+    <p>Address: {{ fac.address }}</p>
+    <p class="branch">{{ fac.designation_name }}</p>
+  </div>
+</div>-->
+
+<div *ngFor="let fac of faculties" style="margin: 20px; display: none;">
+  <div class="teacher-card printableArea" style="width: 40%; background-color: white; border: 1px solid #eefcf7; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+    <img [src]="fac.image" alt="Teacher Photo" height="120" width="120" style="border-radius: 50%; margin-bottom: 10px;">
+    <h3 style="font-size: 18px; margin: 0;">{{ fac.first_name }}</h3>
+    <p style="font-size: 14px; color: #333;">Phone: {{ fac.phone }}</p>
+    <p style="font-size: 14px; color: #333;">Address: {{ fac.address }}</p>
+    <p class="branch" style="font-size: 14px; color: #666;">{{ fac.designation_name }}</p>
+  </div>
+</div>

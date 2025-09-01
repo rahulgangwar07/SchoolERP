@@ -1,0 +1,175 @@
+<div class="container">
+  <h2>Student Registration/Enquiry List</h2>
+  <div class="row pageheader layout-header">
+    <div class="col-md-6">
+      <p>Student Registration/Enquiry List</p>
+    </div>
+    <div class="col-md-6">
+      <!--<a routerLink="/registration/enquiry" routerLinkActive="active">Export Excel</a>-->
+      <!--<a routerLink="/registration/enquiry" routerLinkActive="active">Download Form</a>-->
+      <a routerLink="/registration/enquiry" routerLinkActive="active" *ngIf="permissions?.canCreate">Add Student</a>
+      <!--<a routerLink="/registration/enquiry" routerLinkActive="active">Print report</a>-->
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <!-- Filters Section -->
+  <div class="filters">
+    <div class="filter-group">
+      <select id="selectClass">
+        <option value="all">Select Class</option>
+        <option *ngFor="let cls of classList" [value]="cls.class_id">{{cls.class_name}}</option>
+      </select>
+    </div>
+
+
+    <div class="filter-group">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate">
+    </div>
+
+    <div class="filter-group">
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate">
+    </div>
+
+    <div class="filter-group">
+      <input type="text" id="searchInput" placeholder="Enter Name or Phone">
+    </div>
+  </div>
+
+  <p><b>DPS Champs : Registration List</b></p>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Contact No.</th>
+          <th>Class</th>
+          <th>Gender</th>
+          <th>Father's Name</th>
+          <th>Session</th>
+          <th>Registration Date</th>
+          <th>Alot Admission</th>
+          <th>Print</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reg of filteredRegistrationList; index as i">
+          <td>{{i+1}}</td>
+          <td>{{reg.student.first_name}}</td>
+          <td>{{reg.student.contact_no}}</td>
+          <td>{{reg.registration.class_name}}</td>
+          <td>{{reg.student.gender}}</td>
+          <td>{{reg.student.father_name}}</td>
+          <td>{{reg.registration.session}}</td>
+          <td>{{reg.registration.adm_date | date}}</td>
+          <td><button class="btn btn-info btn-sm" [routerLink]="['/student/add', reg.student.uid, reg.registration.status]">Alot Admission No</button></td>
+          <td><a class="print-btn" (click)="printSlip(reg)">Print Slip</a></td>
+          <td>
+            <div>
+              <button class="action-btn" (click)="toggleOptions(i)">Action</button>
+              <ul *ngIf="showOptions === i" class="action-button">
+                <li [routerLink]="['/registration/enquiry', reg.student.uid]" *ngIf="permissions?.canEdit"><i class="fas fa-edit"></i>Edit</li>
+                <li (click)="deleteStudent(reg.student.uid)" *ngIf="permissions?.canDelete"><i class="fas fa-trash"></i>Delete</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Print Area (Hidden) -->
+  <div *ngFor="let reg of registrationList">
+    <div id="printableArea{{reg.student.uid}}" style="display:none;">
+      <h2 style="text-align:center; font-size: 24px; margin-bottom: 20px;">Student Registration Slip</h2>
+
+      <!-- Student Details Section -->
+      <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
+        <!-- Left Column -->
+        <div style="flex: 1; margin-right: 10px;">
+          <p><b>Student Name:</b> {{reg.student.first_name}} {{reg.student.last_name || ''}}</p>
+          <p><b>Gender:</b> {{reg.student.gender}}</p>
+          <p><b>Date of Birth:</b> {{reg.student.dob | date: 'dd-MM-yyyy'}}</p>
+          <p><b>Contact No.:</b> {{reg.student.contact_no}}</p>
+          <p><b>Alternate Contact:</b> {{reg.student.alt_contact || 'Not Provided'}}</p>
+          <p><b>Email:</b> {{reg.student.email || 'Not Provided'}}</p>
+          <p><b>Aadhar Card:</b> {{reg.student.aadhar_card || 'Not Provided'}}</p>
+        </div>
+
+        <!-- Right Column -->
+        <div style="flex: 1;">
+          <p><b>Religion:</b> {{reg.student.religion || 'Not Provided'}}</p>
+          <p><b>Caste:</b> {{reg.student.caste || 'Not Provided'}}</p>
+          <p><b>Father's Name:</b> {{reg.student.father_name || 'Not Provided'}}</p>
+          <p><b>Father's Contact No.:</b> {{reg.student.father_contact || 'Not Provided'}}</p>
+          <p><b>Father's Occupation:</b> {{reg.student.father_occupation || 'Not Provided'}}</p>
+          <p><b>Father's Income:</b> {{reg.student.father_income || 'Not Provided'}}</p>
+          <p><b>Father's Email:</b> {{reg.student.father_email || 'Not Provided'}}</p>
+        </div>
+      </div>
+
+      <!-- Address Details Section -->
+      <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
+        <!-- Left Column -->
+        <div style="flex: 1; margin-right: 10px;">
+          <p><b>Address:</b> {{reg.student.address || 'Not Provided'}}</p>
+          <p><b>City:</b> {{reg.student.city || 'Not Provided'}}</p>
+        </div>
+
+        <!-- Right Column -->
+        <div style="flex: 1;">
+          <p><b>State:</b> {{reg.student.state_id || 'Not Provided'}}</p>
+          <p><b>Pin Code:</b> {{reg.student.pin_code || 'Not Provided'}}</p>
+          <p><b>Village:</b> {{reg.student.village || 'Not Provided'}}</p>
+        </div>
+      </div>
+
+      <!-- Registration Details Section -->
+      <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
+        <!-- Left Column -->
+        <div style="flex: 1; margin-right: 10px;">
+          <p><b>Class:</b> {{reg.registration.class_name}}</p>
+          <p><b>Session:</b> {{reg.registration.session}}</p>
+          <p><b>Registration Amount:</b> {{reg.registration.registration_amt | currency}}</p>
+        </div>
+
+        <!-- Right Column -->
+        <div style="flex: 1;">
+          <p><b>Registration Date:</b> {{reg.registration.adm_date | date: 'dd-MM-yyyy HH:mm'}}</p>
+          <p><b>Enquiry Type:</b> {{reg.student.enquiry_type || 'Not Provided'}}</p>
+          <p><b>Enquiry Date:</b> {{reg.student.enquiry_date | date: 'dd-MM-yyyy' || 'Not Provided'}}</p>
+          <p><b>Reference:</b> {{reg.student.reference || 'Not Provided'}}</p>
+        </div>
+      </div>
+
+      <!-- Additional Info Section -->
+      <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px;">
+        <!-- Left Column -->
+        <div style="flex: 1; margin-right: 10px;">
+          <p><b>Counsellor:</b> {{reg.student.counsellor || 'Not Provided'}}</p>
+          <p><b>Last Institution:</b> {{reg.student.last_institution || 'Not Provided'}}</p>
+        </div>
+
+        <!-- Right Column -->
+        <div style="flex: 1;">
+          <p><b>Previous Registration No.:</b> {{reg.student.old_reg_no || 'Not Provided'}}</p>
+        </div>
+      </div>
+
+      <!-- Print Footer -->
+      <div style="margin-top: 20px; text-align: center; font-size: 12px; color: #888;">
+        <p><i>This is an automatically generated registration slip. Please check the details carefully.</i></p>
+      </div>
+    </div>
+  </div>
+
+
+</div>

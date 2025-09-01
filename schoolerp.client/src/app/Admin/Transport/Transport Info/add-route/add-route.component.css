@@ -1,0 +1,90 @@
+
+.container {
+  margin-top: 50px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.layout-header {
+  margin-bottom: 20px;
+}
+
+.stop-container {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.stop-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.stop-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+  .stop-item input {
+    width: 45%;
+  }
+
+.stop-btns {
+  border: none;
+  background: none;
+  font-size: 22px;
+}
+
+/* add-route.component.css */
+.dropdown-container {
+  width: 250px;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+.dropdown-header {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  display:block;
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+
+.arrow {
+  float: right;
+  transition: transform 0.2s;
+}
+
+  .arrow.open {
+    transform: rotate(180deg);
+  }

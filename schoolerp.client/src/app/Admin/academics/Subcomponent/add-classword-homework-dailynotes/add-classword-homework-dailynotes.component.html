@@ -1,0 +1,96 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6 class="page-title">Add {{workType}}</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p class="header-text">Add {{workType}}</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/academics/{{workTypeRoute}}" routerLinkActive="active" class="action-btn">View {{workType}}</a>
+    </div>
+  </div>
+
+  <!-- Form Section -->
+  <form [formGroup]="homeworkForm" (ngSubmit)="submitWork()">
+    <div class="row form-section">
+      <div class="col-md-8">
+        <input type="date" formControlName="date" class="form-input"
+               [ngClass]="{'valid': homeworkForm.get('date')?.invalid && homeworkForm.get('date')?.touched}" required />
+
+        <select formControlName="type" class="form-input" required>
+          <option value="dailynotes">Daily Notice</option>
+          <option value="homework">Home Work</option>
+          <option value="classwork">Class Work</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="col-md-8">
+        <select formControlName="class_id" (change)="classChange()" class="form-input" required>
+          <option value="0">Class</option>
+          <option *ngFor="let cls of classList" [value]="cls.class_id">{{cls.class_name}}</option>
+        </select>
+        <select formControlName="sec_id" class="form-input">
+          <option *ngIf="homeworkForm.get('class_id')?.value !== 0" value="0">Please Select</option>
+          <option *ngFor="let sec of sectionList" [value]="sec.sec_id">{{sec.sec_dis_name}}</option>
+        </select>
+      </div>
+
+
+      <div *ngIf="subjects.length > 0 && homeworkForm.get('class_id')?.value !== 0"  class="col-md-8">
+        <div class="row">
+          <div class="form-header">
+            <h6 class="form-title">Add Homework Details</h6>
+          </div>
+          <div formArrayName="subjects" class="row">
+            <div *ngFor="let sub of subjectsArray.controls; let i = index" [formGroupName]="i">
+              <label class="col-md-4 control-label">{{ sub.get('subject_name')?.value }}</label>
+
+              <div class="col-md-8">
+                <textarea formControlName="description" class="form-input assignment-detail" placeholder="Enter details here"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--<div *ngIf="subjects.length > 0" class="col-md-8">
+    <div class="form-header">
+      <h6 class="form-title">Add Homework Details</h6>
+    </div>
+    <div class="row form-group" *ngFor="let sub of subjects; index as i">
+      <label class="col-md-4 control-label">{{sub.subject_name}}</label>
+      <div class="col-md-8">
+        <textarea class="form-input assignment-detail" formControlName="subjects[i].description"
+                  placeholder="Enter details here"></textarea>
+      </div>
+    </div>
+  </div>-->
+
+      <div class="col-md-8">
+        <textarea class="form-input video-link" formControlName="videoLink" placeholder="Enter video URL here."></textarea>
+      </div>
+      <div formArrayName="files" class="row">
+
+        <div *ngFor="let fileGroup of fileform.controls; let i = index" [formGroupName]="i" class="col-md-8">
+          <div class="row">
+            <div><label for="fileInput">File (Max 8MB) &nbsp;&nbsp; </label></div>
+            <div class="file-input-wrapper">
+              <input type="file" id="fileInput" formControlName="file" accept=".pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx" (change)="onFileChange($event, i)" required />
+              <i *ngIf="i == 0" class="fas fa-plus file-icon" (click)="addFileField()"></i>
+              <i *ngIf="i > 0" class="fas fa-minus file-icon" (click)="removeFileField(i)"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-8">
+        <button class="submit-btn" [disabled]="!homeworkForm.valid" type="submit" [ngStyle]="{'background-color':themeSetting?.button_color}">Add {{workType}}</button>
+      </div>
+    </div>
+  </form>
+</div>

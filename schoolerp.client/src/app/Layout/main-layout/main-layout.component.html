@@ -1,0 +1,15 @@
+ 
+  <div *ngIf="userRole=='Student' || userRole=='Student'">
+    <app-student-side-bar></app-student-side-bar>
+  </div>
+  <div *ngIf="userRole==''">
+    <p>User Not Found</p>
+  </div>
+  <div *ngIf="userRole =='admin'">
+    <app-faculty-side-bar></app-faculty-side-bar>
+    <!--<app-student-side-bar></app-student-side-bar>-->
+  </div>
+  <div *ngIf="userRole!='Student'">
+    <app-faculty-side-bar></app-faculty-side-bar>
+    <!--<app-student-side-bar></app-student-side-bar>-->
+  </div> 

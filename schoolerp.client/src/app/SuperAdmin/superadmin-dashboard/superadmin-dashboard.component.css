@@ -1,0 +1,26 @@
+
+/* Custom Styling */
+.container-fluid {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #f8f9fa;
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.table {
+  background-color: #ffffff;
+}
+
+h4 {
+  color: #333;
+}
+
+ul.list-group li {
+  padding: 10px;
+}

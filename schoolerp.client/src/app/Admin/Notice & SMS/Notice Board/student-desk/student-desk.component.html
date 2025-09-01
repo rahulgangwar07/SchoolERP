@@ -1,0 +1,48 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <h6>Teacher List</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Teacher List</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <button class="btn btn-outline-primary btn-sm mx-2" [routerLink]="'/subject/view'">View Subjects</button>
+      <button class="btn btn-outline-primary btn-sm mx-2" [routerLink]="'/academics/homework'">HomeWork</button>
+    </div>
+  </div>
+
+  <!-- Teacher List -->
+  <div class="row mt-4">
+    <!-- First Teacher -->
+    <div *ngFor="let f of faculties;index as i;" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-img-top position-relative">
+          <img [src]="f.image" alt="Teacher Photo" class="teacher-image">
+          <div class="open-notification">{{ f.unread_count }} Open</div>
+        </div>
+
+
+        <div class="card-body">
+          <h5 class="card-title">{{f.name}}</h5>
+          <p class="card-text desig_name">{{f.designation_name}}</p>
+          <p class="card-text"><i class="fas fa-phone-alt"></i> {{f.phone}}</p>
+
+          <p [routerLink]="['/notice-board/reply/query',f.faculty_id]" class="card-text text-muted" (click)="messageList(f.faculty_id)">
+            <i class="fas fa-envelope-open-text"></i> Read: {{f.read_count}} |
+            <i class="fas fa-envelope"></i> Unread: {{f.unread_count}}
+          </p>
+          <ng-container *ngIf="userRole!=='Student'">
+            <button *ngIf="f.faculty_id != userId" class="btn btn-primary btn-sm" (click)="askQuestion(f.faculty_id,f.name)" [ngStyle]="{'background-color':themeSetting?.button_color}">Ask New Question</button>
+          </ng-container>
+          <ng-container *ngIf="userRole=='Student'">
+            <button class="btn btn-primary btn-sm" (click)="askQuestion(f.faculty_id,f.name)" [ngStyle]="{'background-color':themeSetting?.button_color}">Ask New Question</button>
+          </ng-container>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<app-ask-new-question *ngIf="openPopup" [status]="openPopup" [request]="request" [communication_id]="communication_id" [askedTo]="faculty_id" [name]="faculty_name" (cStatus)="closePopup($event)"></app-ask-new-question>
+

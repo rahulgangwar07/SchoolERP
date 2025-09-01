@@ -1,0 +1,35 @@
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1021px;
+  }
+}
+/* Table Styling */
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.table td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Action Buttons Styling */
+.table .btn {
+  margin-right: 5px;
+}
+
+.table .btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.table .btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}

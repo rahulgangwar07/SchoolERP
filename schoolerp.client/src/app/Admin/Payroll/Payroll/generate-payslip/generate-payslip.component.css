@@ -1,0 +1,53 @@
+
+.layout-header h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Form Section Styling */
+form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+form select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  form .btn:hover {
+    background-color: #0056b3;
+  }
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}

@@ -1,0 +1,63 @@
+<div *ngIf="studentInfo" class="receipt-overlay">
+  <div class="receipt-container printableArea p-4 border rounded">
+
+    <!-- Header -->
+    <div class="text-center mb-4 border-bottom pb-2">
+      <h4 class="fw-bold">🧾 Receipt</h4>
+      <p class="mb-1"><strong>Receipt No.:</strong> {{ studentInfo.sell_uid }}</p>
+      <p class="mb-2"><strong>Date:</strong> {{ studentInfo.sell_date | date:'dd MMM yyyy, hh:mm a' }}</p>
+    </div>
+
+    <!-- Student Info and Items -->
+    <div class="row mb-4">
+      <!-- Student Info -->
+      <div class="col-md-6">
+        <h6 class="fw-semibold border-bottom pb-1">🎓 Student Information</h6>
+        <p><strong>Name:</strong> {{ studentInfo.first_name }}</p>
+        <p><strong>Mother's Name:</strong> {{ studentInfo.mother_name }}</p>
+        <p><strong>Father's Name:</strong> {{ studentInfo.father_name }}</p>
+        <p><strong>Roll No.:</strong> {{ studentInfo.stu_id }}</p>
+        <p><strong>Contact:</strong> {{ studentInfo.contact_no }}</p>
+        <p><strong>Class:</strong> {{ studentInfo.class_id }}</p>
+      </div>
+
+      <!-- Items -->
+      <div class="col-md-6">
+        <h6 class="fw-semibold border-bottom pb-1">📦 Items</h6>
+        <table class="table table-sm table-bordered">
+          <thead class="table-light text-center">
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Price (Total)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of inventoryData" class="text-center">
+              <td>{{ item.item_name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>₹{{ item.total_amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Payment Summary -->
+    <div class="border-top pt-3">
+      <p><strong>Total:</strong> <span class="float-end fw-bold">₹{{ totalAmount }}</span></p>
+      <p><strong>Paid Amount:</strong> <span class="float-end">₹{{ totalAmount }}</span></p>
+      <p><strong>Mode:</strong> Cash <span class="float-end"><strong>Dues:</strong> ₹{{ studentInfo.balance }}</span></p>
+    </div>
+
+    <!-- Footer -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <p><strong>Authoritative Name:</strong><br>Admin</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <p><strong>Signature</strong><br><br>________________________</p>
+      </div>
+    </div>
+  </div>
+</div>

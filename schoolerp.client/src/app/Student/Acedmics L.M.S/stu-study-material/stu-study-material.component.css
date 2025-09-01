@@ -1,0 +1,58 @@
+
+.searching {
+  margin-top: 50px;
+}
+
+  .searching select,
+  .searching input,
+  .searching button {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  .searching button {
+    width: 100%;
+  }
+
+.maindiv {
+  margin-top: 40px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: aliceblue;
+}
+
+  table td, table th {
+    padding: 10px;
+    text-align: left;
+  }
+
+  table td {
+    border-top: 1px solid #ddd;
+  }
+
+  table tr:first-child td {
+    background-color: #44323e;
+    color: white;
+    font-weight: bold;
+    text-align:center;
+  }
+.table-striped tr:first-child td strong {
+  background-color: #44323e;
+  color:white;
+}
+
+
+.btndownload {
+  background-color: #50bbea;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+  .btndownload:hover {
+    background-color: #379ed9;
+  }

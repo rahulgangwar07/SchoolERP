@@ -1,0 +1,76 @@
+
+/* Popup Section Styling */
+.popupdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f9f9f9;
+  width: 50%;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.student-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+  .student-info .col-md-10 h4 {
+    color: #a40707;
+    font-size: 18px;
+  }
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+  .button-group button {
+    padding: 3px 26px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    color:#a40707;
+    border-color:#a40707;
+    margin-right: 10px;
+  }
+
+    .button-group button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+.student-details {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+  .student-details .col-md-6 {
+    font-size: 16px;
+    color: #555;
+  }
+
+/* Close Button Styling */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #e74c3c;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+  .close-btn:hover {
+    color: #c0392b;
+  }
+

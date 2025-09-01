@@ -1,0 +1,64 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Generate Payslip</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/payroll/salary/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Print Report</a>
+    </div>
+  </div>
+
+  <!-- Payslip Form Section -->
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <div class="form-group">
+          <label for="designation">Select Designation *</label>
+          <select id="designation" class="form-control">
+            <option>Select Designations...</option>
+            <option>Accountant</option>
+            <option>Manager</option>
+            <option>Clerk</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="month">Select Month *</label>
+          <select id="month" class="form-control">
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+            <!-- Add more months as needed -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="academic-year">Select Academic Year *</label>
+          <select id="academic-year" class="form-control">
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
+            <!-- Add more years as needed -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="branch">Select Branch</label>
+          <select id="branch" class="form-control">
+            <option>Select Branch...</option>
+            <option>B Block</option>
+            <option>C Block</option>
+            <option>D Block</option>
+            <!-- Add more branches as needed -->
+          </select>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary">Go</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

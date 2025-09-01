@@ -1,0 +1,41 @@
+
+/* Button hover smooth effect */
+.btn-primary {
+  transition: background-color 0.3s ease;
+}
+
+  .btn-primary:hover {
+    background-color: #004085 !important;
+  }
+
+.form-group-1 label{
+    width:40%;
+}
+/* Table row hover */
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* Card shadow & border */
+.card {
+  border: 1px solid #e3e6f0;
+}
+
+/* Header text color */
+.text-primary {
+  color: #007bff !important;
+}
+
+/* Table header color */
+.thead-light th {
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .text-md-right {
+    text-align: left !important;
+    margin-top: 10px;
+  }
+}

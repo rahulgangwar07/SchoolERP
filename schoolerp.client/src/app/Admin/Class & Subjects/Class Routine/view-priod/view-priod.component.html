@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="header-div">
+    <h6>View Period</h6>
+    <p><i class="fa fa-times-circle close-icon" (click)="closeView()"></i></p>
+  </div>
+
+  <!-- Table to display the existing periods -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let period of periods; let i = index">
+        <td>{{period.period_number}}</td>
+        <td>{{period.start_time}}</td>
+        <td>{{period.end_time}}</td>
+        <td>
+          <button class="btns" (click)="editPeriod(i)" *ngIf="permissions.canEdit"><i class="fa fa-edit"></i></button>
+          <button class="btns" (click)="deletePeriod(i,period.period_number)" *ngIf="permissions.canDelete"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Period Form (shown when edit button is clicked) -->
+  <div *ngIf="editMode" class="edit-form">
+    <h6>Edit Period</h6>
+    <form #editForm="ngForm">
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label>Period: </label>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="number" name="period_number" [(ngModel)]="selectedPeriod.period_number" max="15" min="1" style="width: 65%;" disabled />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="startTime">Starting Time</label>
+        </div>
+        <div class="form-group col-md-3 col-sm-3">
+          <div class="select-container">
+            <select name="starthour" [(ngModel)]="starthour" required>
+              <option value="00" disabled>Hour</option>
+              <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2 col-sm-3">
+          <div class="select-container">
+            <select name="startmin" [(ngModel)]="startmin" required>
+              <option *ngFor="let min of minutes" [value]="min">{{min}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2 col-sm-3">
+          <div class="select-container">
+            <select name="startperiod" [(ngModel)]="startperiod" required>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label for="endTime">Ending Time</label>
+        </div>
+        <div class="form-group col-md-3 col-sm-3">
+          <div class="select-container">
+            <select name="endTime" [(ngModel)]="endhour" required>
+              <option value="0" disabled>Hour</option>
+              <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2 col-sm-3">
+          <div class="select-container">
+            <select name="endmin" [(ngModel)]="endmin" required>
+              <option *ngFor="let min of minutes" [value]="min">{{min}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2 col-sm-3">
+          <div class="select-container">
+            <select name="endperiod" [(ngModel)]="endperiod" required>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flow;">
+        <button class="btn btn-success"  [ngStyle]="{'background-color':themeSetting?.button_color}" (click)="saveEditPeriod(selectedPeriod.id)">Save</button>
+        <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

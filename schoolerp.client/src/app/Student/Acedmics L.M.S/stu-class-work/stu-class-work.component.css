@@ -1,0 +1,28 @@
+
+.searching {
+  margin-top: 50px;
+}
+
+  .searching select,
+  .searching input,
+  .searching button {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+
+  .searching button {
+    width: 100%;
+  }
+
+.maindiv {
+  margin-top: 40px;
+}
+
+  .maindiv .datepara {
+    font-size: 13px;
+    text-align: left;
+  }
+
+.note-entry h6{
+    background-color:#ccc;
+}

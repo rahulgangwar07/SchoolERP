@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>List of all hostels</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/hostel/add-hostel" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Hostel</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Hostel List Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Hostel ID</th>
+            <th>Hostel Name</th>
+            <th>Phone</th>
+            <th>Applied Month</th>
+            <th style="width:20%">Monthly Fee</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let h of hostalData;index as i;">
+            <td>{{i+1}}</td>
+            <td>{{h.hostal_id}}</td>
+            <td>{{h.hostal_name}}</td>
+            <td>{{h.phone}}</td>
+            <td style="width:20%">{{feeMonth(h,h.fee_month)}}</td>
+            <td>{{h.monthly_fee}}</td>
+            <td>
+              <a class="btn btn-sm btn-warning" [routerLink]="['/hostel/add-hostel',h.hostal_id]">Edit</a>
+              <a class="btn btn-sm btn-danger" (click)="deleteHostal(h.hostal_id,i)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

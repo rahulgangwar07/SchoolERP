@@ -1,0 +1,103 @@
+
+span{
+    color:red;
+}
+
+.session-div{
+    padding:5px 0px;
+}
+
+
+button:disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
+.session-list {
+}
+
+.session-filter {
+  display: flex;
+  background-color: antiquewhite;
+}
+
+/*.session-filter label{
+   
+}
+*/
+select,label{
+    margin:5px;
+    border:none;
+}
+table{
+    margin-top:10px;
+    font-size:12px;
+} 
+
+table button{
+  margin:5px;
+  border:0px;
+}
+
+.session-head {
+  display: flex;
+  background-color: antiquewhite;
+  justify-content: center;
+}
+
+.session-insert {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+  .session-insert div {
+    margin-bottom: 15px;
+  }
+
+  .session-insert label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .session-insert select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+    .session-insert select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+.sessionlist-body button:first-child {
+  color: darkslateblue;
+}
+.sessionlist-body button:nth-child(2) {
+  color: red;
+}
+
+.session-insert button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ .session-insert button:hover {
+   background-color: #0056b3;
+ }
+
+
+

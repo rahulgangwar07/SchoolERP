@@ -1,0 +1,10 @@
+
+<div #popupElement class="row success-message-popup" *ngIf="showSuccessPopup" tabindex="0">
+  <div class="message-popup d-flex"
+       [ngStyle]="{'background-color': getMessageBackgroundColor(messages?.type), 'color': getMessageTextColor(messages?.type)}">
+    <p class="success-message">{{ messages?.content }}</p>
+    <button class="close-button" (click)="closeMessagePopup()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>

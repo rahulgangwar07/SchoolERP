@@ -1,0 +1,101 @@
+<div class="container">
+  <!-- Header Section -->
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <h5>View Test Results</h5>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/registration/add_lateral_entry" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Lateral Entry</a>
+      <a routerLink="/reports/yearly" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Yearly Report</a>
+      <a routerLink="/accounts/fee-list" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Fee List</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)"></app-success-message-popup>
+
+  <!-- Filters Section -->
+  <div class="row my-4 header-div">
+    <div class="col-md-3 mb-3">
+      <label for="classSelect" class="form-label">Select Class</label>
+      <select name="class" [(ngModel)]="selectedClassId" id="select-class" (change)="changeClass()" class="form-control">
+        <option value="0" selected>Select Class</option>
+        <option *ngFor="let cls of classList" [value]="cls.class_id">{{ cls.class_name }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="sectionSelect" class="form-label">Select Section</label>
+      <select id="select-section" name="select-section" [(ngModel)]="selectedSecId" class="form-control">
+        <option value="0">Section</option>
+        <option *ngFor="let sec of secList" value="{{sec.sec_id}}">{{ sec.sec_name }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="examTypeSelect" class="form-label">Exam Type</label>
+      <select id="examTypeSelect" class="form-control">
+        <option value="">Exam Type</option>
+        <option value="online-examination">Online Examination</option>
+        <option value="pre-board">Pre-board</option>
+        <option value="online">Online</option>
+      </select>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="subjectSelect" class="form-label">Subject</label>
+      <select id="subjectSelect" class="form-control">
+        <option value="">Select Subject</option>
+        <option *ngFor="let subj of subjectList" [value]="subj.subject_id">{{ subj.subject_name }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end mb-3">
+      <button class="btn btn-primary w-100">GO</button>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div class="results-container">
+    <div class="result-row header-row">
+      <div class="result-col">Sr. No.</div>
+      <div class="result-col">Roll No.</div>
+      <div class="result-col">Name</div>
+      <div class="result-col">Attempt</div>
+      <div class="result-col">Correct</div>
+      <div class="result-col">Wrong</div>
+      <div class="result-col">Subjective</div>
+      <div class="result-col">Total</div>
+      <div class="result-col">Delete</div>
+      <div class="result-col">Result</div>
+      <div class="result-col">Answer</div>
+    </div>
+
+    <div class="result-row" *ngFor="let r of results; index as i">
+      <div class="result-col">{{ i + 1 }}</div>
+      <div class="result-col">{{ r.stu_id }}</div>
+      <div class="result-col name">{{ r.stu_name }} <span>{{ r.father_name }}</span></div>
+      <div class="result-col">{{ r.attempted }}</div>
+      <div class="result-col">{{ r.correct }}</div>
+      <div class="result-col">{{ r.wrong }}</div>
+      <div class="result-col">N/A</div>
+      <div class="result-col">N/A</div>
+      <div class="result-col">
+        <button class="btn btn-danger btn-sm" (click)="deleteResult(r.student_exam_id,i)">Delete</button>
+      </div>
+      <div class="result-col">
+        <span class="badge" [ngClass]="{'badge-danger' : r.string_rate < 33,'badge-success': r.string_rate >= 33}">{{ r.string_rate < 33 ? 'Failed' : 'Passed' }}</span>
+      </div>
+      <div class="result-col">
+        <a href="javascript:void(0)" class="btn btn-info btn-sm" (click)="viewAnswer(r.exam_id,r.student_exam_id)">View Answer</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="mt-4">
+    <p><strong>Total Students:</strong> {{ results.length }}</p>
+  </div>
+</div>
+<app-view-answer *ngIf="showPopup" [popup]="showPopup" [exam_id]="exam_id" [studentExamId]="student_exam_id" (closepopup)="closePopup($event)"></app-view-answer>

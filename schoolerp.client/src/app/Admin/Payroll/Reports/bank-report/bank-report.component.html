@@ -1,0 +1,88 @@
+
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Generate Payslip</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/payroll/salary/" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Print Report</a>
+    </div>
+  </div>
+  <div class="row my-4">
+    <div class="col-md-3">
+      <select id="desig" class="form-control">
+        <option>Select Designations...</option>
+        <option>HOD</option>
+        <option>Account</option>
+
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="branch" class="form-control">
+        <option>Select Branch</option>
+        <option>B Block</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select id="month" class="form-control">
+        <option>Jan</option>
+        <option>Feb</option>
+        <option>March</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select id="session" class="form-control">
+        <option>2024 - 2025</option>
+        <option>2025 - 2026</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary go-btn w-100">GO</button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Employee Name</th>
+            <th>Phone</th>
+            <th>Bank</th>
+            <th>Account No.</th>
+            <th>Net Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Placeholder for no records -->
+          <tr>
+            <td colspan="6" class="text-center">No record found !!</td>
+          </tr>
+          <!-- Example Data (Uncomment to add sample data) -->
+          <!--
+          <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>9876543210</td>
+            <td>ABC Bank</td>
+            <td>1234567890</td>
+            <td>25000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>9876543211</td>
+            <td>XYZ Bank</td>
+            <td>0987654321</td>
+            <td>22000</td>
+          </tr>
+          -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-info {
+  background-color: #007bff;
+  color: white;
+}
+
+  .btn-info:hover {
+    opacity: 0.8;
+  }
+
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f0f4f7;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #ddd;
+}
+
+.action-btns .btn {
+  margin-right: 5px;
+}
+
+.search-section {
+  margin-bottom: 20px;
+}

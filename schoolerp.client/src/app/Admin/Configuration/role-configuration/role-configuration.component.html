@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="main-wrapper">
+    <div class="page-wrapper">
+      <div class="content container-fluid">
+        <div class="page-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="page-title">Role Configuration</h3>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/admin-dashboard" routerLinkActive="active">Dashboard</a></li>
+                <li class="breadcrumb-item"><a routerLink="/configuration" routerLinkActive="inActive">Roles</a></li>
+                <li class="breadcrumb-item active" routerLink="/configuration/permissions" routerLinkActive="active">Permissions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card shadow-lg">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title">Configure Access Permissions for Roles</h5>
+              </div>
+              <div class="card-body">
+                <form id="roleConfigForm">
+                  <!-- Role Select Dropdown -->
+                  <div class="form-group">
+                    <label for="roleSelect">Select Role</label>
+                    <select class="form-control" id="roleSelect" (change)="designationChange($event)" required>
+                      <option value="0">--- Select Role ---</option>
+                      <option *ngFor="let desig of designationList" value="{{desig.designation_id}}">
+                        {{desig.designation_name}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Modules Section -->
+                  <div class="form-group mt-4 row">
+                    <label for="moduleSelect">Modules and Sub-Modules</label>
+
+                    <div *ngFor="let module of modules" class="module row mb-4">
+                      <div class="form-check col-md-4">
+                        <label class="form-check-label" for="attendanceModule">
+                          <input id="mainhidden" type='hidden' value="{{module.module_id}}" />
+                          <ng-container *ngIf="module.subModules.length>0">
+                            <input type='checkbox' value="{{module.module_id}}" (change)="selectAllsubmodule($event,module)" />
+                          </ng-container>
+                           <strong>{{module.module_name}}</strong> 
+                          <!--<input class="form-check-input" type="checkbox" [checked]="chkValue(submodule.submodule_id)" (change)="submoduleChange($event,submodule)" value="{{submodule.submodule_id}}" id="{{submodule.submodule_name}}">-->
+                        </label>
+                      </div><br />
+                            <div class="row"> 
+                              <div class="sub-module-data">
+                                <ng-container *ngIf="module.subModules.length>0">
+                                  <div *ngFor="let submodule of module.subModules" class="submodules ">
+                                    <div class="row">
+                                      <div class="form-check col-md-3">
+                                        <input id="subhidden" type='hidden' value="{{submodule.submodule_id}}" />
+                                        <input class="form-check-input" type="checkbox" [checked]="chkValue(submodule.submodule_id)" (change)="submoduleChange($event,submodule)" value="{{submodule.submodule_id}}" id="{{submodule.submodule_name}}">
+                                        <label class="form-check-label" for="{{submodule.submodule_name}}">
+                                          {{submodule.submodule_name}}
+                                        </label>
+                                      </div>
+                                      <div class="col-md-12">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-9">
+                                          <div *ngFor="let childSubmodule of submodule.childSubModules" class="childSubmodule">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" [checked]="chkValue(childSubmodule.submodule_id)" (change)="submoduleChange($event,childSubmodule)" value="{{childSubmodule.submodule_id}}" id="{{childSubmodule.submodule_name}}">
+                                              <label class="form-check-label" for="{{childSubmodule.submodule_name}}">
+                                                {{childSubmodule.submodule_name}}
+                                              </label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    
+                                    
+                                  </div><br />
+                                </ng-container>
+                              </div>
+                            </div><br />
+                    </div>
+
+
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div class="form-group text-center mt-4">
+                    <!--<button type="submit" class="btn btn-success btn-lg" (click)="Submit()">Save Configuration</button>-->
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

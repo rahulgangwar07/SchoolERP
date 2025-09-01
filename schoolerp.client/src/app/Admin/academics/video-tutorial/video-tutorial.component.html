@@ -1,0 +1,31 @@
+<div class="container">
+  <h4><u>Video Tutorials</u></h4>
+  
+
+  <div class="video-list row">
+    <div *ngFor="let tutorial of videoTutorial; index as i" class="video-item col-md-4">
+      <div class="video-head">
+        <h6><marquee>HomeWork for | {{showSubjects(tutorial.subjects)}}</marquee></h6>
+      </div>
+      <div class="video-section">
+        <ng-container *ngIf="tutorial.videoLink; else thumbnail">
+          <iframe width="560" height="315" [src]="tutorial.videoLink" frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </ng-container>
+
+        <!-- Thumbnail for invalid URL -->
+        <ng-template #thumbnail>
+          <img [src]="'https://via.placeholder.com/560x315?text=Video+Not+Available'" alt="Thumbnail" class="video-thumbnail">
+        </ng-template>
+
+        <div class="video-description">
+          <p *ngFor="let des of tutorial.subjects"><strong>{{subjectName(des.subject_id)}}: &nbsp; </strong> {{ des.description || 'No description available' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

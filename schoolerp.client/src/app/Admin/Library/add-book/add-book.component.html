@@ -1,0 +1,201 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <h6>Add Book</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/library/view-book" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Books</a>
+    </div>
+  </div>
+
+  <!-- Book Add Form -->
+  <div class="row">
+    <div class="col-md-9">
+      <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+        <!-- Book Type -->
+        <div class="form-group row">
+          <label for="bookType" class="col-sm-3 col-form-label">Book Type <span>*</span></label>
+          <div class="col-sm-9">
+            <!--<input type="text" />-->
+            <select id="bookType" name="book_type" class="form-control" [(ngModel)]="libraryBook.book_type" required>
+              <option value="Book">Book</option>
+              <option value="Magazine">Magazine</option>
+              <option value="Newspaper">Newspaper</option>
+              <option value="Novels">Novels</option>
+              <option value="Story">Story</option>
+              <option value="Textbook">Textbook</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="form-group row">
+          <label for="title" class="col-sm-3 col-form-label">Title <span>*</span></label>
+          <div class="col-sm-9">
+            <input type="text" id="title" name="title" class="form-control"
+                   [(ngModel)]="libraryBook.title" required />
+          </div>
+        </div>
+
+        <!-- ISBN -->
+        <div class="form-group row">
+          <label for="isbn" class="col-sm-3 col-form-label">Barcode / ISBN No</label>
+          <div class="col-sm-9">
+            <input type="text" id="isbn" name="isbn_no" class="form-control"
+                   [(ngModel)]="libraryBook.isbn_no" />
+          </div>
+        </div>
+
+        <!-- Author -->
+        <div class="form-group row">
+          <label for="author" class="col-sm-3 col-form-label">Author</label>
+          <div class="col-sm-9">
+            <input type="text" id="author" name="author" class="form-control"
+                   [(ngModel)]="libraryBook.author" />
+          </div>
+        </div>
+
+        <!-- Edition -->
+        <div class="form-group row">
+          <label for="edition" class="col-sm-3 col-form-label">Edition</label>
+          <div class="col-sm-9">
+            <input type="text" id="edition" name="edition" class="form-control"
+                   [(ngModel)]="libraryBook.edition" />
+          </div>
+        </div>
+
+        <!-- Volume -->
+        <div class="form-group row">
+          <label for="volume" class="col-sm-3 col-form-label">Volume</label>
+          <div class="col-sm-9">
+            <input type="text" id="volume" name="volume" class="form-control"
+                   [(ngModel)]="libraryBook.volume" />
+          </div>
+        </div>
+
+        <!-- Publisher -->
+        <div class="form-group row">
+          <label for="publisher" class="col-sm-3 col-form-label">Publisher</label>
+          <div class="col-sm-9">
+            <input type="text" id="publisher" name="publisher" class="form-control"
+                   [(ngModel)]="libraryBook.publisher" />
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group row">
+          <label for="price" class="col-sm-3 col-form-label">Price</label>
+          <div class="col-sm-9">
+            <input type="number" id="price" name="price" class="form-control m-r-10" placeholder="Price"
+                   [(ngModel)]="libraryBook.price" min="0" />
+            <input type="number" id="no_of_copies" name="no_of_copies" class="form-control m-l-15" placeholder="Number of Copies"
+                   [(ngModel)]="libraryBook.no_of_copies" min="0" />
+          </div>
+        </div>
+
+        <!-- Number of Pages -->
+        <div class="form-group row">
+          <label for="no_of_pages" class="col-sm-3 col-form-label">Number of Pages</label>
+          <div class="col-sm-9">
+            <input type="number" id="no_of_pages" name="no_of_pages" class="form-control"
+                   [(ngModel)]="libraryBook.no_of_pages" min="0" />
+          </div>
+        </div>
+
+        <!-- Almeria No -->
+        <div class="form-group row">
+          <label for="almeria_no" class="col-sm-3 col-form-label">Almeria No</label>
+          <div class="col-sm-9">
+            <input type="text" id="almeria_no" name="almeria_no" class="form-control m-r-10" placeholder="Almeria no."
+                   [(ngModel)]="libraryBook.almeria_no" />
+          
+            <input type="text" id="rack_no" name="rack_no" class="form-control m-r-5 m-l-5" placeholder="Rack no."
+                   [(ngModel)]="libraryBook.rack_no" />
+         
+            <!--<input type="text" id="position" name="position" class="form-control m-l-15"
+                   [(ngModel)]="libraryBook.position" />-->
+            <select id="position" name="position" class="form-control m-l-15" [(ngModel)]="libraryBook.position">
+              <option value="Left">Left</option>
+              <option value="Right">Right</option>
+              <option value="Top">Top</option>
+              <option value="Bottom">Bottom</option>
+              <option value="Front">Front</option>
+              <option value="Back">Back</option>
+            </select>
+          </div>
+        </div>
+
+
+        <!-- Accession No -->
+        <div class="form-group row">
+          <label for="accession_no" class="col-sm-3 col-form-label">Accession No</label>
+          <div class="col-sm-9">
+            <input type="text" id="accession_no" name="accession_no" class="form-control"
+                   [(ngModel)]="libraryBook.accession_no" />
+          </div>
+        </div>
+        <!-- Book Language -->
+        <div class="form-group row">
+          <label for="book_language" class="col-sm-3 col-form-label">Book Language</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="book_language" name="book_language"
+                    [(ngModel)]="libraryBook.book_language">
+              <option value="">-Select Language-</option>
+              <option value="english">English</option>
+              <option value="hindi">Hindi</option>
+              <option value="french">French</option>
+              <!-- Add more languages -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Class -->
+        <div class="form-group row">
+          <label for="class_id" class="col-sm-3 col-form-label m-r-15">Class</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="class_id" name="class_id" [(ngModel)]="libraryBook.class_id">
+              <option value="0">-Select Class-</option>
+              <option *ngFor="let cls of classList;index as i" [value]="cls.class_id">{{cls.dis_name}}</option>
+              <!--<option value="2">Class 2</option>-->
+              <!-- Add class options -->
+            </select>
+          
+            <select class="form-control m-l-15" id="subject_id" name="subject_id" [(ngModel)]="libraryBook.subject_id">
+              <option value="0">-Select Subject-</option>
+              <option *ngFor="let sub of subjectList;index as i" [value]="sub.subject_id">{{sub.subject_name}}</option>
+              <!--<option value="101">Math</option>
+           <option value="102">Science</option>-->
+              <!-- Add subject options -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group row">
+          <label for="status" class="col-sm-3 col-form-label">Status</label>
+          <div class="col-sm-9">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="available" name="status"
+                     [(ngModel)]="libraryBook.status" [value]="true" />
+              <label class="form-check-label" for="available">Available</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="unavailable" name="status"
+                     [(ngModel)]="libraryBook.status" [value]="false" />
+              <label class="form-check-label" for="unavailable">Unavailable</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group row">
+          <div class="col-sm-9 offset-sm-3">
+            <button type="submit" class="btn btn-primary" [disabled]="!bookForm.form.valid">Add Book</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+/* Container and layout */
+.container {
+  margin-top: 1rem;
+}
+
+/* Gallery Image Styles */
+.gallery-image {
+  max-height: 200px;
+  max-width: 250px;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+/* Gallery Item Button */
+.gallery-item button {
+  font-weight: 500;
+  border-radius: 0px;
+  background-color: #c9d8e6;
+  margin-top: 10px;
+  width: 80%;
+  font-size: 14px;
+}
+
+/* Popup Styles for Gallery Category */
+.container-popup {
+  width: 70%;
+  background-color: #d1cfcd;
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.upload-btn {
+  background-color: #4f93d4;
+  color:white;
+  margin-left:10px;
+}
+
+
+/* Table Styles for Category Management */
+.container-popup table th {
+  color: #0b4b7f;
+}
+
+/* Action Buttons */
+.action-btn {
+  text-align: end;
+}
+
+.fa-edit, .fa-trash, .fa-close {
+  color: red;
+}
+
+/* Responsive Gallery */
+@media (max-width: 768px) {
+  .gallery-item {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    flex: 0 0 100%;
+  }
+}

@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="main-wrapper">
+    <div class="container">
+      <!-- Top Row with Class List and Buttons -->
+      <div class="layout-header">
+        <div class="col-md-5">
+          <p class="page-title">List of all Classes</p>
+        </div>
+        <div class="col-md-7">
+          <!--<a href="/api/Class/exporttoexcel" download>Export CSV</a>-->
+          <button class="btn" (click)="print(classList)">Print Class</button>
+          <button class="btn" routerLink="/class/class-report">Class Report</button>
+          <button routerLink="/class/add" class="btn" *ngIf="permissions?.canCreate">Add Class</button>
+        </div>
+      </div>
+
+      <app-success-message-popup *ngFor="let message of messages; let i = index"
+                                 [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                                 (closePopup)="closeMessagePopup(i)">
+      </app-success-message-popup>
+
+      <!--<div class="row success-message-popup" #successMessagePopup *ngIf="showSuccessPopup"
+       [ngStyle]="{'background-color': messageBackgroundColor, 'color': messageTextColor}">
+    <p class="success-message">{{ messageContent }}</p>
+    <button class="close-button" (click)="closemessagePopup()"> <i class="fas fa-times"></i> </button>
+  </div>-->
+      <!-- Filter Class Section -->
+      <div class="filter-section">
+        <label for="classFilter">Filter Class:</label>
+        <input type="text" id="classFilter" name="classFilter" (input)="changeInput($event)" placeholder="Search by class name or subject...">
+      </div>
+
+      <!-- Classes Table Section -->
+      <div class="table-section">
+        <table class="classes-table">
+          <tbody>
+            <tr *ngFor="let classes of filteredClassList;index as i">
+              <ng-container *ngIf="classes.status">
+                <td>{{classes.dis_name}}</td>
+                <td><strong>Student:</strong> {{classes.stuCount}}</td>
+                <td (click)="subjectClick(classes.class_id)"><strong class="subject-div">Subject:</strong> {{classes.subjCount}}</td>
+                <td>
+                  <select class="class-teacher-select" (change)="assignClassTeacher($event,classes.class_id)">
+                    <option value="0">Class Teacher</option>
+                    <option *ngFor="let teacher of teacherList" [value]="teacher.faculty_id">{{teacher.first_name}}</option>
+                    <!--<option value="2">Amit Kumar</option>
+                <option value="4">Sanjeet Singh</option>-->
+                  </select>
+                </td>
+                <td class="sec-div"><a (click)="openSection(classes.class_id)"><strong>Section:</strong> {{classes.secCount}}</a></td>
+                <td class="optionListTD">
+                  <button class="actionbtn" (click)="togglebtn(i)">Action</button>
+                  <ul *ngIf="showActionList === i" class="optionList">
+                    <li *ngIf="permissions?.canEdit"><i class="fa fa-pencil-alt"></i> <a routerLink="/class/add/{{classes.class_id}}">Edit</a></li>
+                    <li><i class="fa fa-info-circle"></i> Summary</li>
+                    <li><i class="fa fa-envelope"></i> Send Password</li>
+                    <li><i class="fa fa-lock"></i> Change Password</li>
+                    <li><i class="fa fa-book"></i> Syllabus</li>
+                    <li *ngIf="permissions?.canDelete"><i class="fa fa-trash-alt"></i> <a (click)="deleteClass(classes.class_id)">Delete</a></li>
+                    <li><i class="fa fa-calendar-times"></i> <a href="#">Clear TimeTable</a></li>
+                  </ul>
+                </td>
+              </ng-container>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Summary Section Below -->
+      <div class="summary-section">
+        <p>Total Students: <strong>{{totalStudents}}</strong></p>
+        <p>Total Classes: <strong>{{totalClasses}}</strong></p>
+        <p>Total Students Not in Any Class: <strong>10</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<div id="print-section" style="display:none;">
+  <div style="font-size: 20px; font-weight: bold; text-align: center; margin-bottom: 20px;">ERP Software</div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    <div *ngFor="let cls of classList" style="padding: 20px; border: 1px solid #ddd; width: 48%; box-sizing: border-box; background-color: #f9f9f9; border-radius: 8px; page-break-inside: avoid;">
+
+      <ng-container *ngIf="cls.status === true">
+        <h3 style="margin-bottom: 15px; text-align: center; font-size: 1.25rem; font-weight: bold;">Class Strength Report For: {{cls.dis_name}}</h3>
+
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <label style="font-weight: bold;">Class ID:</label>
+            <label style="padding-right: 40px;">{{cls.class_id}}</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <label style="font-weight: bold;">Total Sections:</label>
+            <label style="padding-right: 40px;">{{cls.secCount}}</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <label style="font-weight: bold;">Total Students:</label>
+            <label style="padding-right: 40px;">{{cls.total_students}}</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <label style="font-weight: bold;">Starting Time:</label>
+            <label style="padding-right: 40px;">{{cls.starting_time}}</label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between;">
+            <label style="font-weight: bold;">Ending Time:</label>
+            <label style="padding-right: 40px;">{{cls.ending_time}}</label>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+ 
+<!-- Parent Component (ViewClassesComponent) Template -->
+<app-sec-popup *ngIf="showSecPopup" [pshowPopup]="showSecPopup" [class_id]="classId" [permissions]="permissions" (pclosepopup)="closeSecPopup($event)"></app-sec-popup>
+
+ <app-subject-popup *ngIf="showSubPopup" [pshowsubPopup]="showSubPopup" [class_id]="classId" [permissions]="permissions" (pclosepopup)="closeSubPopup($event)"></app-subject-popup> 
+
+ <app-class-teacher-popup *ngIf="showTeacherPopup" [message]="popupMessageTeacher" (closepopup)="closeTeacherPopup()"></app-class-teacher-popup>
+
+

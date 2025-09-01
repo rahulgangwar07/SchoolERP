@@ -1,0 +1,149 @@
+
+  <div class="container">
+    <div class="row layout-header">
+      <div class="col-md-6">View CLASS FEE STRUCTURE list</div>
+      <div class="col-md-6 text-right"> 
+        <a routerLink="/account-settings/fee-headings" routerLinkActive="active" class="action-btn">Fee Heading</a>
+      </div>
+    </div>
+
+    <div class="row-container">
+      <div class="row acedmic">
+        <div class="col-md-3">
+          <label>Academic Year</label>
+          <select id="academic_year" name="academic_year" [(ngModel)]="academic_year" (change)="changeClassId()">
+            <option value="" disabled>Select Session</option>
+            <option *ngFor="let s of sessionList" value="{{s.session_name}}">{{s.session_name}}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Class Name</label>
+          <select id="Class" name="Class" [(ngModel)]="class_id" (change)="changeClassId()">
+            <option value="0">Select Class</option>
+            <option *ngFor="let cls of classList" value="{{cls.class_id}}">{{cls.class_name}}</option>
+          </select>
+        </div>
+        <!--<div class="col-md-3">
+        <label>Fee Group</label>
+        <select>
+          <option>Group Name</option>
+          <option>Staff Wards</option>
+          <option>Hostaller</option>
+          <option>Free Child</option>
+        </select>
+      </div>-->
+      </div>
+
+      <div class="container">
+        <ng-container *ngIf="class_id == 0">
+          <div class="table-container">
+            <table class="student-table">
+              <thead>
+                <tr>
+                  <th>Class Name</th>
+                  <th>Fee Group</th>
+                  <th>Total Fee</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let cls of classList; let i = index;">
+                  <tr *ngFor="let header of filteredFeeHeader(cls.class_id);let j=index;" class="section-row">
+                    <td *ngIf="j === 0" [attr.rowspan]="filteredFeeHeader(cls.class_id).length">{{ cls.class_name }}</td>
+                    <td>
+                      <span>{{ header.fee_type_name }}</span>
+                    </td>
+                    <td>{{ header.total_amount }}</td>
+                    <td><button class="bg-danger-dark">Print</button></td>
+                  </tr>
+                </ng-container>
+                <tr>
+                  <td colspan="4"><button class="lock-inst" (click)="lockInstallment()">Lock Installment</button></td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <p>1. Create Installment for All classes</p>
+                    <p>2. Click Lock Installment button (you cannot change installment after this)</p>
+                    <p>3. Click Create Student Ledger that is created ledger for all students.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4"><button class="ledger-btn" (click)="createInstallments()">Create Student Ledger</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="container">
+        <ng-container *ngIf="class_id != 0">
+          <div class="table-container">
+            <table class="student-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Fee Heading</th>
+                  <th>Fee Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody> 
+                <ng-container *ngFor="let header of feeHeaders; let j = index">
+                  <!-- Main Row -->
+                  <tr class="section-row">
+                    <td><input type="checkbox" /></td>
+                    <td>{{ header.fee_head_name }}</td>
+                    <td>{{ header.fee_type_name }}</td>
+                    <td>
+                      <button class="toggle-btn" (click)="bindMonths(j)">
+                        <i class="fa" [ngClass]="expandedIndex === j ? 'fa-minus' : 'fa-plus'"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Expanded Row -->
+                  <tr *ngIf="expandedIndex === j"> 
+                    <td colspan="4">
+                      <div class="month-inputs">
+                        <div class="row">
+                          <div class="col-md-1">
+                            <input type="checkbox" class="month-input" name="amount_check" (change)="installmentChange($event,header.installments)" />
+                          </div>
+                          <div class="col-md-11 d-flex flex-wrap">
+                            <div *ngFor="let cM of header.installments; index as k" class="month-item me-3 mb-2">
+                              <label class="me-1">{{ cM.month_name }}</label>
+                              <input type="number"
+                                     class="form-control form-control-sm" 
+                                     [name]="'amount_' + j + '_' + k" [(ngModel)]="cM.amount"  />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr> 
+                </ng-container>
+
+                <!-- Bottom Row -->
+                <tr>
+                  <td colspan="2">
+                    <button class="btn bg-danger text-white" (click)="clearFeeStruture()">Clear Structure</button>
+                  </td>
+                  <td colspan="2" class="text-right">
+                    <button class="btn bg-primary text-white" (click)="UpdateFeeStruture()">
+                      UPDATE FEES STRUCTURE (Modifying {{ className() }})
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-container>
+      </div>
+
+
+    </div>
+
+
+  </div>

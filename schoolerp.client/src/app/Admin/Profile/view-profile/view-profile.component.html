@@ -1,0 +1,72 @@
+
+<div class="container">
+  <div class="top-div">
+    <p class="first-para">Welcome back <span *ngIf="profile.gender === 'Male'">Mr.</span> <span>{{profile.faculty.first_name}}</span> Your Login ID is <span>{{profile.username}}</span></p>
+    <p class="erp-link">https://erp.aks.com/</p>
+  </div>
+
+  <div class="row"> 
+    <div class="col-md-6 profile-section">
+      <div class="profile-header">
+        <img src="../../../assets/img/profiles/faculty-logo.jpg" alt="Faculty Profile Picture" class="profile-img">
+        <h2>{{profile.faculty.first_name}}</h2>
+        <p class="faculty-id">{{profile.designation_name}}</p>
+      </div>
+       
+      <div class="info-section">
+        <div class="info-item">
+          <label>Blood Group</label>
+          <p>{{profile.faculty.bloodgroup}}</p>
+        </div>
+        <div class="info-item">
+          <label>DOB</label>
+          <p>{{profile.faculty.dob | date: 'dd-MMMM-yyyy'}}</p>
+        </div>
+        <div class="info-item">
+          <label>Phone</label>
+          <p>{{profile.faculty.phone}}</p>
+        </div>
+        <div class="info-item">
+          <label>Address</label>
+          <p>{{profile.faculty.address}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editable Form Section -->
+    <div class="col-md-6 form-section">
+      <form>
+        <div class="form-group">
+          <label>Blood Group</label>
+          <input type="text" [(ngModel)]="profile.faculty.bloodgroup" name="bloodgroup" />
+        </div>
+        <div class="form-group">
+          <label>DOB</label>
+          <input type="date" [(ngModel)]="profile.faculty.dob"  name="dob" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="number" [(ngModel)]="profile.faculty.phone" placeholder="Enter Phone no." name="phone" />
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" [(ngModel)]="profile.faculty.address" name="address" />
+        </div>
+        <div class="form-group">
+          <label>Change Password (If you want to change)</label>
+          <input id="pswd" type="password" [(ngModel)]="profile.faculty.password" placeholder="New Password" name="password" />
+          <input type="password" id="cpswd" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" />
+          <div *ngIf="passwordMismatch" class="error-message">
+            Passwords do not match!
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="update-btn" (click)="openModal()">Update Profile</button>
+          <button type="button" class="update-btn m-l-5" (click)="updatePassword()">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <app-update-profile-modal [profile]="profile.faculty" [showModal]="showModal" (close)="closeModal($event)" (update)="updateProfile($event)"></app-update-profile-modal>
+</div>

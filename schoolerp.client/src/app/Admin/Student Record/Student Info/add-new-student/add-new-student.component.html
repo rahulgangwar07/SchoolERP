@@ -1,0 +1,328 @@
+  <div class="container mt-1">
+  <h6>Students List</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">Fields marked with (*) are mandatory. </p>
+    </div>
+    <div class="col-md-5 text-right">
+
+      <a href="/student/view" class="btn btn-outline-primary btn-sm">View Student</a>
+    </div>
+  </div>
+  <div class="row detail-selection">
+    <div class="col-md-2 col-sm-2"><label (click)="goToNextStep(1)">Personal Detail</label></div>
+    <div class="col-md-2 col-sm-2"><label (click)="goToNextStep(2)">Contact Detail</label></div>
+    <div class="col-md-2 col-sm-2"><label (click)="goToNextStep(3)">General Detail</label></div>
+    <div class="col-md-2 col-sm-2"><label (click)="goToNextStep(4)">Accounts Detail</label></div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup" (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <div class="form-container">
+    <form (ngSubmit)="onSubmit()">
+
+      <!-- Personal Detail Section -->
+      <div class="row stepOne" *ngIf="currentStep === 1">
+        <h6>Personal Detail</h6>
+
+        <div class="form-group">
+          <div class="col-md-6">
+            <label for="studentName">Student Name <span>*</span></label>
+            <input type="text" id="studentName" [(ngModel)]="student.first_name" name="studentName" required #studentName="ngModel"
+                   [class.is-invalid]="studentName.invalid && studentName.touched" />
+
+          </div>
+          <div class="col-md-6">
+            <label for="reg_no">Reg. No.</label>
+            <div class="d-flex flex-column">
+              <input type="text" id="reg_no" [(ngModel)]="student.reg_no"
+                     name="reg_no" [disabled]="isRegNoAvailable()" class="form-control"
+                     (change)="avaiableRegno($event)" (click)="avaiableRegnoclick($event)" />
+              <p *ngIf="str_Avaiable_regno" class="mt-2 text-muted">{{str_Avaiable_regno}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admission Session -->
+        <div class="form-group col-md-6">
+          <label for="admissionSession">Admission Session</label>
+          <select id="admissionSession" [(ngModel)]="student.academic_year" name="admissionSession" class="form-control">
+            <!--#admissionSession="ngModel" [required]="student.reg_no"
+            [class.is-invalid]="admissionSession.invalid && admissionSession.touched"-->
+            <option value="0" disabled>Select Session</option>
+            <option *ngFor="let s of sessionList" value="{{s.session_name}}">{{s.session_name}}</option>
+            <!--<option value="2024 - 2025" selected>2024 - 2025</option>
+            <option value="2025 - 2026">2025 - 2026</option>-->
+          </select>
+        </div>
+
+        <!--<div class="form-group col-md-6">
+          <label for="username">Username <span>*</span></label>
+          <input type="text" id="username" [(ngModel)]="student.userid" name="username" required />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="psword">Password</label>
+          <input id="psword" type="password" [(ngModel)]="student.password" name="password" />
+        </div>-->
+
+        <div class="form-group col-md-6">
+          <label for="email">Student's Email <span>*</span></label>
+          <input type="email" id="email" [(ngModel)]="student.email" name="email" required #email="ngModel"
+                 [class.is-invalid]="email.invalid && email.touched" />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="Class"> Class <span>*</span></label>
+          <select id="Class" name="Class" [(ngModel)]="student.class_id" required #Class="ngModel" (change)="clsChange(student.class_id)"
+                  [class.is-invalid]="(Class.invalid && Class.touched) || (Class.value ==0 && Class.touched)">
+            <option value="0" disabled>Select Class</option>
+            <option *ngFor="let cls of classList" value="{{cls.class_id}}">{{cls.class_name}}</option>
+          </select>
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="section"> Section <span></span></label>
+          <select id="section" name="section" [(ngModel)]="student.sec_id" required #Sec="ngModel">
+            <!--[class.is-invalid]="(Sec.invalid && Sec.touched) || (Sec.value ==0 && Sec.touched)"-->
+
+            <option value="0" disabled>Select Section</option>
+            <option *ngFor="let sec of secList" value="{{sec.sec_id}}">{{sec.sec_dis_name}}</option>
+          </select>
+
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="gender">Gender <span>*</span></label>
+          <select id="gender" [(ngModel)]="student.gender" name="gender" #gender="ngModel"
+                  [class.is-invalid]="(gender.invalid && gender.touched) || (gender.value ==0 && gender.touched)">
+            <option value="0" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="mobile">Mobile No.</label>
+          <input type="text" id="mobile" [(ngModel)]="student.contact_no" name="mobile" />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="aadhar">Aadhar No.</label>
+          <input type="text" id="aadhar" [(ngModel)]="student.aadhar_card" name="aadhar" />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="pen_card">Pen Card</label>
+          <input type="text" id="pen_card" [(ngModel)]="student.pen_card" name="pen_card" />
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="address">Address</label>
+          <input type="text" id="address" [(ngModel)]="student.address" name="address" />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="image">Student's Image</label>
+          <input type="file" (change)="onSelectFile($event)" />
+          <div *ngIf="stuImagePreview">
+            <img [src]="stuImagePreview" alt="Preview" width="100" />
+          </div>
+        </div>
+
+        <div class="form-group text-center">
+          <button type="button" (click)="goToNextStep(0)" [ngStyle]="{'background-color':themeSetting?.button_color}" stepOne.has="is-invalid">Next Step</button>
+        </div>
+      </div>
+      <!-- Parent Contact Detail Section -->
+      <div *ngIf="currentStep === 2">
+        <div class="row">
+          <h6>Parent Contact Detail</h6>
+
+          <!-- Mother's Details -->
+          <div class="form-group col-md-6">
+            <label for="motherName">Mother's Name *</label>
+            <input type="text" id="motherName" [(ngModel)]="parentDetails.mother_name" name="motherName" required />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherName">Father's Name *</label>
+            <input type="text" id="fatherName" [(ngModel)]="parentDetails.father_name" name="fatherName" required />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherOccupation">Father's Occupation</label>
+            <input type="text" id="fatherOccupation" [(ngModel)]="parentDetails.father_occupation" name="fatherOccupation" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherEmail">Father's Email</label>
+            <input type="email" id="fatherEmail" [(ngModel)]="parentDetails.father_email" name="fatherEmail" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherAadhar">Father's Aadhar No.</label>
+            <input type="text" id="fatherAadhar" [(ngModel)]="parentDetails.father_aadhar" name="fatherAadhar" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherIncome">Father's Yearly Income</label>
+            <input type="text" id="fatherIncome" [(ngModel)]="parentDetails.father_income" name="fatherIncome" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="fatherContact">Father's Contact</label>
+            <input type="text" id="fatherContact" [(ngModel)]="parentDetails.father_contact" name="fatherContact" />
+          </div>
+
+          <!-- Additional Information -->
+          <!--<div class="form-group">
+            <label for="motherTongue">Mother Tongue</label>
+            <input type="text" id="motherTongue" [(ngModel)]="parentDetails.motherTongue" name="motherTongue" />
+          </div>-->
+          <!--<div class="form-group">
+            <label for="ews">Whether belongs to EWS</label>
+            <select id="ews" [(ngModel)]="parentDetails.ews" name="ews">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>-->
+
+          <div class="form-group col-md-6">
+            <label for="village">Village</label>
+            <input type="text" id="village" [(ngModel)]="parentDetails.village" name="village" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="post">Post</label>
+            <input type="text" id="post" [(ngModel)]="parentDetails.post" name="post" />
+          </div>
+
+          <!--<div class="form-group">
+            <label for="policeStation">Police Station / Ward No.</label>
+            <input type="text" id="policeStation" [(ngModel)]="parentDetails.policeStation" name="policeStation" />
+          </div>-->
+
+          <div class="form-group col-md-6">
+            <label for="pinCode">Pin Code</label>
+            <input type="text" id="pinCode" [(ngModel)]="parentDetails.pin_code" name="pinCode" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input type="text" id="city" [(ngModel)]="parentDetails.city" name="city" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="state_id">State</label>
+            <select id="state_id" [(ngModel)]="parentDetails.state_id" name="state_id" class="form-control">
+              <option value="0">Select State</option>
+              <option *ngFor="let state of states" [value]="state.state_id">{{state.state}}</option>
+            </select>
+          </div>
+
+
+
+          <!--<div class="form-group">
+            <label for="permanentAddress">Permanent/Official Address</label>
+            <textarea id="permanentAddress" [(ngModel)]="parentDetails.permanentAddress" name="permanentAddress"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="localAddress">Local/Residential Address</label>
+            <textarea id="localAddress" [(ngModel)]="parentDetails.localAddress" name="localAddress"></textarea>
+          </div>-->
+          <!-- Next Button -->
+          <button type="button" class="next-btn" (click)="goToNextStep(0)"  [ngStyle]="{'background-color':themeSetting?.button_color}">Next</button>
+        </div>
+      </div>
+
+
+      <!-- General Detail Section -->
+      <div *ngIf="currentStep === 3">
+        <div class="row">
+          <h6>General Detail</h6>
+
+
+
+          <!-- Religion -->
+          <div class="form-group">
+            <label for="religion">Religion</label>
+            <select id="religion" [(ngModel)]="general.religion" name="religion" class="form-control">
+              <option value="Hindu">Hindu</option>
+              <option value="Sikh">Sikh</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Caste -->
+          <div class="form-group">
+            <label for="caste">Caste</label>
+            <select id="caste" [(ngModel)]="general.caste" name="caste" class="form-control">
+              <option value="General">General</option>
+              <option value="OBC">OBC</option>
+              <option value="Sc">Sc/St</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Last Institution Name -->
+          <div class="form-group">
+            <label for="lastInstitutionName">Last Institution Name</label>
+            <input type="text" id="lastInstitutionName" [(ngModel)]="general.last_institution" name="lastInstitutionName" class="form-control" />
+          </div>
+
+          <!-- TC Number -->
+          <div class="form-group">
+            <label for="tcNumber">TC Number</label>
+            <input type="text" id="tcNumber" [(ngModel)]="general.tc_no" name="tcNumber" class="form-control" />
+          </div>
+
+          <!-- TC Date -->
+          <div class="form-group">
+            <label for="tcDate">TC Date</label>
+            <input type="date" id="tcDate" [(ngModel)]="general.tc_date" name="tcDate" class="form-control" />
+          </div>
+
+          <!-- Next Button -->
+          <button type="button" class="next-btn" (click)="goToNextStep(0)" aria-label="Go to next step"  [ngStyle]="{'background-color':themeSetting?.button_color}">Next</button>
+        </div>
+      </div>
+
+
+
+      <!-- Accounts Detail Section -->
+      <div *ngIf="currentStep === 4">
+        <div class="row">
+          <h6>Accounts Detail</h6>
+
+          <!-- Counsellor -->
+          <div class="form-group">
+            <label for="counsellor">Counsellor</label>
+            <input type="text" id="counsellor" [(ngModel)]="account.counsellor" name="counsellor" class="form-control" value="Saroj Kumari" />
+          </div>
+
+          <!-- Student's Bank Account Number -->
+          <div class="form-group">
+            <label for="bankAccountNumber">Student's Bank Account Number</label>
+            <input type="text" id="bankAccountNumber" [(ngModel)]="account.bank_account" name="bankAccountNumber" class="form-control" value="14239048230942399" />
+          </div>
+
+          <!-- Student's Bank IFSC (Code) -->
+          <div class="form-group">
+            <label for="bankIfscCode">Student's Bank IFSC (Code)</label>
+            <input type="text" id="bankIfscCode" [(ngModel)]="account.ifsc_code" name="bankIfscCode" class="form-control" value="BARB0SHAHGA" />
+          </div>
+
+          <button type="button" class="next-btn" (click)="goToNextStep(0)" [ngStyle]="{'background-color':themeSetting?.button_color}">Next</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

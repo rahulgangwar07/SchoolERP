@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.1184077">
+  <PropertyGroup>
+    <StartupCommand>npm start</StartupCommand>
+    <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\schoolerp.client\browser\</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\Admin\academics\Subcomponent\" />
+    <Folder Include="src\app\Admin\Accounts\Reports\" />
+    <Folder Include="src\app\Admin\Accounts\Expense\" />
+    <Folder Include="src\app\Admin\Accounts\Account setting\" />
+    <Folder Include="src\app\Admin\Accounts\Fee Overdue\" />
+    <Folder Include="src\app\Admin\Accounts\Fee Collection\" />
+    <Folder Include="src\app\Admin\Assets &amp; Inventory\Assets\" />
+    <Folder Include="src\app\Admin\Assets &amp; Inventory\Popup\" />
+    <Folder Include="src\app\Admin\Assets &amp; Inventory\Settings\" />
+    <Folder Include="src\app\Admin\Assets &amp; Inventory\Sell Counter\" />
+    <Folder Include="src\app\Admin\Class &amp; Subjects\Class Routine\Report Section\" />
+    <Folder Include="src\app\Admin\Class &amp; Subjects\lesson-plan\NewFolder\" />
+    <Folder Include="src\app\Admin\Configuration\Teacher &amp; Staff Settings\" />
+    <Folder Include="src\app\Admin\Examination\" />
+    <Folder Include="src\app\Admin\Certificate\" />
+    <Folder Include="src\app\Admin\Hostal\" />
+    <Folder Include="src\app\Admin\Counsellor &amp; Leads\" />
+    <Folder Include="src\app\Admin\Placement Cell\" />
+    <Folder Include="src\app\Admin\Notice &amp; SMS\SMS Board\" />
+    <Folder Include="src\app\Admin\Payroll\Department\" />
+    <Folder Include="src\app\Admin\Payroll\Reports\" />
+    <Folder Include="src\app\Admin\Payroll\Payroll\" />
+    <Folder Include="src\app\Admin\Subjects\" />
+    <Folder Include="src\app\Admin\Transport\Vehicle Info\" />
+    <Folder Include="src\app\Admin\Transport\Driver Info\" />
+    <Folder Include="src\app\Services\Messages\" />
+    <Folder Include="src\app\Services\Examination\" />
+    <Folder Include="src\app\Settings\Device Setting\" />
+    <Folder Include="src\app\Settings\System Setting\" />
+    <Folder Include="src\app\Settings\SMS Setting\" />
+    <Folder Include="src\app\SuperAdmin\" />
+    <Folder Include="src\assets\img\assets\css\" />
+    <Folder Include="src\assets\img\assets\img\" />
+    <Folder Include="src\assets\img\assets\js\" />
+    <Folder Include="src\assets\img\assets\plugins\fontawesome\css\" />
+    <Folder Include="src\assets\img\template-rtl\" />
+    <Folder Include="src\assets\img\template\" />
+  </ItemGroup>
+</Project>

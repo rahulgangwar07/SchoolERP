@@ -1,0 +1,116 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/placement-cell/view-company" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Companies</a>
+    </div>
+  </div>
+
+  <!-- Company Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form>
+        <!-- Company Code -->
+        <div class="form-group row">
+          <label for="companyCode" class="col-sm-2 col-form-label">Company Code *</label>
+        
+            <input type="text" class="form-control" id="companyCode" placeholder="Enter Company Code" required>
+      
+        </div>
+
+        <!-- Company Name -->
+        <div class="form-group row">
+          <label for="companyName" class="col-sm-2 col-form-label">Company Name *</label>
+        
+            <input type="text" class="form-control" id="companyName" placeholder="Enter Company Name" required>
+           
+        </div>
+
+        <!-- Company Type -->
+        <div class="form-group row">
+          <label for="companyType" class="col-sm-2 col-form-label">Company Type *</label>
+          
+            <select class="form-control" id="companyType" required>
+              <option value="">-Select Company Type-</option>
+              <option value="startup">Startup</option>
+              <option value="established">Established</option>
+              <option value="enterprise">Enterprise</option>
+            </select>
+        
+        </div>
+
+        <!-- Company Industry -->
+        <div class="form-group row">
+          <label for="companyIndustry" class="col-sm-2 col-form-label">Industry *</label>
+         
+            <input type="text" class="form-control" id="companyIndustry" placeholder="Enter Industry Type" required>
+         
+        </div>
+
+        <!-- Company Location -->
+        <div class="form-group row">
+          <label for="companyLocation" class="col-sm-2 col-form-label">Company Location *</label>
+          
+            <input type="text" class="form-control" id="companyLocation" placeholder="Enter Company Location" required>
+        
+        </div>
+
+        <!-- Year of Establishment -->
+        <div class="form-group">
+          <label for="establishmentYear" class="col-sm-2 col-form-label">Year of Establishment *</label>
+         
+            <input type="number" class="form-control" id="establishmentYear" placeholder="Enter Year of Establishment" required>
+         
+        </div>
+
+        <!-- Company Contact -->
+        <div class="form-group row">
+          <label for="companyContact" class="col-sm-2 col-form-label">Company Contact Number *</label>
+            <input type="text" class="form-control" id="companyContact" placeholder="Enter Company Contact Number" required>
+        </div>
+
+        <!-- Company Email -->
+        <div class="form-group row">
+          <label for="companyEmail" class="col-sm-2 col-form-label">Company Email *</label>
+            <input type="email" class="form-control" id="companyEmail" placeholder="Enter Company Email" required>
+         
+        </div>
+
+        <!-- Placement Details -->
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <div class="placement-container">
+              <p>Placement Details</p>
+              <div class="placement-list">
+                <!-- Placement 1 -->
+                <div class="placement-item">
+                  <input type="text" class="form-control" placeholder="Enter Placement Role">
+                  <input type="text" class="form-control" placeholder="Enter Package Offered">
+                  <input type="number" class="form-control" placeholder="Enter Number of Vacancies">
+                </div>
+                <!-- Placement 2 -->
+                <div class="placement-item">
+                  <input type="text" class="form-control" placeholder="Enter Placement Role">
+                  <input type="text" class="form-control" placeholder="Enter Package Offered">
+                  <input type="number" class="form-control" placeholder="Enter Number of Vacancies">
+                </div>
+                <!-- Add more placement items dynamically if needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Company Button -->
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Add Company</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

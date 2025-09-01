@@ -1,0 +1,69 @@
+<div class="container mt-4">
+  <h6>View Stock List</h6>
+
+  <div class="row layout-header p-2">
+    <div class="col-md-6">
+      <p>Stock List</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <button class="btn btn-outline-primary btn-sm mx-2" routerLink="/assets-inventory/assets/add">Add Stock</button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="shadow-sm rounded">
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3">
+            <div class="form-group w-50">
+              <input type="text" class="form-control" id="searchStock" placeholder="Search by Asset and Vendor Name.." (input)="changeInput($event)" />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success btn-sm" (click)="openSellCounter()">Sell Counter</button>
+              <button routerLink="/assets-inventory/assets/report/asset" class="btn btn-success btn-sm m-l-5">View Deployee Report</button>
+            </div>
+          </div>
+
+          <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>Sr. No.</th>
+                <th>Asset Type</th>
+                <th>Vendor</th>
+                <th>Location</th>
+                <th>Quantity</th>
+                <th>Weight/Amount</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pe of Fpurchase_entriesList;index as i;">
+                <td>{{i+1}}</td>
+                <td>{{assetName(pe.asset_id)}}</td>
+                <td>{{vendorName(pe.vendor_id)}}</td>
+                <td>{{pe.location}}</td>
+                <td>{{pe.quantity}} <span class="text-warning">({{pe.unit_price}})</span></td>
+                <td><ng-container *ngIf="pe.weight">{{pe.weight}} /</ng-container> {{pe.total_amount}}</td>
+                <td>
+                  <button [routerLink]="['/assets-inventory/assets/add',pe.purchase_EntryID]" class="btn btn-warning btn-sm">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="deletePurchase(pe.purchase_EntryID,i)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-asset-sell-popup [popupOpen]="popupOpen" [requestType]="popupType" (popupClose)="closePopup($event)"></app-asset-sell-popup>

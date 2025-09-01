@@ -1,0 +1,82 @@
+<div class="container">
+  <h5>View Exam Schedule</h5>
+
+  <!-- Filters for Branch, Class, Exam Type -->
+  <div class="row">
+    <div>
+      <label for="branch">Select Branch</label>
+      <select id="branch" name="branch">
+        <option value="All">All Branches</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Electrical">Electrical</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="class">Select Class</label>
+      <select id="class" name="class">
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+        <option value="V">V</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="exam-type">Exam Type</label>
+      <select id="exam-type" name="exam-type">
+        <option value="Half Yearly">Half Yearly</option>
+        <option value="Final Exam">Final Exam</option>
+        <option value="Mid Term">Mid Term</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search Anything (e.g. Exam Name, Date)">
+    <button type="button">Search</button>
+  </div>
+
+  <!-- Table for Exam Schedules -->
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Class</th>
+        <th>Exam Type</th>
+        <th>Result Date</th>
+        <th>Exam Seq No.</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>V</td>
+        <td>Half Yearly</td>
+        <td>06 Oct 2024</td>
+        <td>Seq: 0</td>
+        <td><button class="action-btn">Action</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>III</td>
+        <td>Half Yearly</td>
+        <td>Invalid Date</td>
+        <td>Seq: 0</td>
+        <td><button class="action-btn">Action</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>II</td>
+        <td>Half Yearly</td>
+        <td>Invalid Date</td>
+        <td>Seq: 0</td>
+        <td><button class="action-btn">Action</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

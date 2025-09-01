@@ -1,0 +1,49 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <strong>Teacher Class Routine</strong>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Teacher Routine List</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/routine/Offline" routerLinkActive="active" class="action-btn">Offline Routine</a>
+      <a routerLink="/routine/add-routine" routerLinkActive="active" class="action-btn" *ngIf="permissions?.canCreate">Add Routine</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <div class="">
+    <ul class="routine-ul">
+      <li class="routine-li" *ngFor="let routine of teacherRoutines; let i = index;">
+        <div class="row classes">
+          <button class="col-md-2 class-btn" (click)="toggleBtn(i)">{{routine.fac_name}}</button>
+          <p class="col-md-2 print">Print</p>
+        </div>
+        <div class="routine-div" *ngIf="routineIndex === i">
+          <div *ngFor="let s of routine.days" class="routine-details">
+            <div class="row day">
+              <div class="col-md-2 day">
+                <strong>{{s.day}}</strong>
+              </div>
+            </div>
+            <ng-container *ngIf="s.schedule.length !== 0">
+              <div *ngFor="let sch of s.schedule" class="col-md-2 time-slot">
+                <p class="period"><strong>{{sch.period_id}}</strong></p>
+                <p class="cls_name"><strong>{{sch.class_name}}</strong> ({{sch.subject_name}}) </p>
+                <p><strong>{{sch.startTime}} - {{sch.endTime}}</strong></p>
+                <div class="row actionsbtn">
+                  <div class="col-md-3" *ngIf="permissions?.canEdit"><button class="edit-btn" [routerLink]="['../../routine/add-routine',sch.schedule_id]" routerLinkActive="active">Edit</button></div>
+                  <div class="col-md-3" *ngIf="permissions?.canDelete"><button class="delete-btn" (click)="deleteSchedule(sch.schedule_id)">Delete</button></div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

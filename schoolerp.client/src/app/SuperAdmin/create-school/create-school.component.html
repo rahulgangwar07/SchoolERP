@@ -1,0 +1,232 @@
+
+
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <h5>Create New School</h5>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/super-admin/view-school" routerLinkActive="active" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Back to School List
+      </a>
+    </div>
+  </div>
+
+  <!-- Form for creating new school -->
+  <div class="row">
+    <div class="col-md-12">
+      <form (ngSubmit)="onSubmit()" #schoolForm="ngForm">
+
+        <!-- School Name (Required) -->
+        <div class="form-group row">
+          <label for="schoolName" class="col-sm-2 col-form-label">School Name<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="schoolName" [(ngModel)]="school.schoolName" #schoolName="ngModel" name="schoolName" required>
+            <div *ngIf="schoolName.touched && schoolName?.invalid" class="text-danger">
+              School Name is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- School Code (Required) -->
+        <div class="form-group row">
+          <label for="schoolCode" class="col-sm-2 col-form-label">School Code<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="schoolCode" [readonly]="show_div" [(ngModel)]="school.schoolId" #schoolId="ngModel" name="schoolCode" required>
+            <div *ngIf="schoolId.touched && schoolId.invalid" class="text-danger">School Id is required.</div>
+          </div>
+        </div>
+
+        <!-- Address (Required) -->
+        <div class="form-group row">
+          <label for="schoolAddress" class="col-sm-2 col-form-label">Address<span>*</span></label>
+          <div class="col-sm-12 col-md-4">
+            <textarea class="form-control" id="schoolAddress" [(ngModel)]="school.address" name="schoolAddress" #schoolAddress="ngModel" required></textarea>
+            <div *ngIf="schoolAddress.touched && schoolAddress?.invalid" class="text-danger">
+              Address is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Country and State (Required) -->
+        <div class="form-group row">
+          <label for="country" class="col-sm-2 col-form-label">Country<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <select class="form-control" id="country" [(ngModel)]="school.country" name="country" #country="ngModel" required>
+              <option value="India">India</option>
+            </select>
+            <div *ngIf="country.touched && country?.invalid" class="text-danger">
+              Country is required.
+            </div>
+          </div>
+          <label for="state" class="col-sm-2 col-form-label">State<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <select id="state" [(ngModel)]="school.state" class="form-control" name="state" #state="ngModel" required>
+              <option value="0">Select State</option>
+              <option *ngFor="let state of states" value="{{state.state_id}}">{{state.state}}</option>
+            </select>
+            <div *ngIf="state.touched && state?.invalid" class="text-danger">
+              State is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- City and Postal Code (Required) -->
+        <div class="form-group row">
+          <label for="city" class="col-sm-2 col-form-label">City<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="city" [(ngModel)]="school.city" name="city" #city="ngModel" required>
+            <div *ngIf="city.touched && city?.invalid" class="text-danger">
+              City is required.
+            </div>
+          </div>
+
+          <label for="postalCode" class="col-sm-2 col-form-label">Postal Code<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="postalCode" [(ngModel)]="school.postalCode" name="postalCode" #postalCode="ngModel" required>
+            <div *ngIf="postalCode.touched && postalCode?.invalid" class="text-danger">
+              Postal Code is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Number and Email (Required) -->
+        <div class="form-group row">
+          <label for="phoneNumber" class="col-sm-2 col-form-label">Phone Number<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="school.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required>
+            <div *ngIf="phoneNumber.touched && phoneNumber?.invalid" class="text-danger">
+              Phone Number is required.
+            </div>
+          </div>
+
+          <label for="email" class="col-sm-2 col-form-label">Email<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="email" class="form-control" id="email" [(ngModel)]="school.email" name="email" #email="ngModel" required email>
+            <div *ngIf="email.touched && email?.invalid" class="text-danger">
+              <div *ngIf="email?.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="email?.errors?.['email']">
+                Please enter a valid email address.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Website and Establishment Date (Required) -->
+        <div class="form-group row">
+          <label for="website" class="col-sm-2 col-form-label">Website<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="url" class="form-control" id="website" [(ngModel)]="school.website" name="website" #website="ngModel" required pattern="https?://.*" placeholder="http://example.com">
+            <div *ngIf="website.touched && website?.invalid" class="text-danger">
+              <div *ngIf="website?.errors?.['required']">
+                Website is required.
+              </div>
+              <div *ngIf="website?.errors?.['pattern']">
+                Please enter a valid URL.
+              </div>
+            </div>
+          </div>
+
+          <label for="EstablishmentDate" class="col-sm-2 col-form-label">Establishment Date<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="date" class="form-control" id="EstablishmentDate" [(ngModel)]="school.establishmentDate" name="establish" #establish="ngModel" required>
+            <div *ngIf="establish.touched && establish?.invalid" class="text-danger">
+              Establishment Date is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- School Board and School Type (Required) -->
+        <div class="form-group row">
+          <label for="schoolBoard" class="col-sm-2 col-form-label">School Board<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="schoolBoard" [(ngModel)]="school.schoolBoard" name="schoolBoard" #schoolBoard="ngModel" required>
+            <div *ngIf="schoolBoard.touched && schoolBoard?.invalid" class="text-danger">
+              School Board is required.
+            </div>
+          </div>
+
+          <label for="schoolType" class="col-sm-2 col-form-label">School Type<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="schoolType" [(ngModel)]="school.schoolType" name="schoolType" #schoolType="ngModel" required>
+            <div *ngIf="schoolType.touched && schoolType?.invalid" class="text-danger">
+              School Type is required.
+            </div>
+          </div>
+        </div>
+        <!-- School Logo (Required) -->
+        <div class="form-group row">
+          <label for="schoolLogo" class="col-sm-2 col-form-label">School Logo<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="file" class="form-control" accept="image/*" id="schoolLogo" name="schoolLogo" (change)="onSelectFile($event)" required>
+            <img *ngIf="school.schoolLogo" [src]="school.schoolLogo" alt="Logo Preview" class="img-thumbnail mt-2" width="100" />
+            <div *ngIf="schoolForm.touched && schoolForm.controls['schoolLogo']?.invalid" class="text-danger">
+              School Logo is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Contact Number (Required) -->
+        <div class="form-group row">
+          <label for="emergencyContact" class="col-sm-2 col-form-label">Emergency Contact Number<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <input type="text" class="form-control" id="emergencyContact" [(ngModel)]="school.emergencyContact" name="emergencyContact" required pattern="^[0-9]{10}$">
+            <div *ngIf="schoolForm.touched && schoolForm.controls['emergencyContact']?.invalid" class="text-danger">
+              Emergency Contact Number is required and should be a 10-11-digit number.
+            </div>
+          </div>
+        </div>
+
+        <!-- School Facilities (Required) -->
+        <div class="form-group row">
+          <label for="schoolFacilities" class="col-sm-2 col-form-label">School Facilities<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <textarea class="form-control" id="schoolFacilities" [(ngModel)]="school.schoolFacilities" name="schoolFacilities" required></textarea>
+            <div *ngIf="schoolForm.touched && schoolForm.controls['schoolFacilities']?.invalid" class="text-danger">
+              School Facilities is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- School Description (Required) -->
+        <div class="form-group row">
+          <label for="schoolDescription" class="col-sm-2 col-form-label">School Description<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <textarea class="form-control" id="schoolDescription" [(ngModel)]="school.schoolDescription" name="schoolDescription" required></textarea>
+            <div *ngIf="schoolForm.touched && schoolForm.controls['schoolDescription']?.invalid" class="text-danger">
+              School Description is required.
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- School Status (Required) -->
+        <div class="form-group row">
+          <label for="schoolStatus" class="col-sm-2 col-form-label">School Status<span>*</span></label>
+          <div class="col-sm-6 col-md-4">
+            <!--<input type="text" class="form-control" id="schoolStatus" [(ngModel)]="school.schoolStatus" name="schoolStatus" required>-->
+            <select class="form-control" id="schoolStatus" [(ngModel)]="school.schoolStatus" name="schoolStatus">
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+            <div *ngIf="schoolForm.touched && schoolForm.controls['schoolStatus']?.invalid" class="text-danger">
+              School Status is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+          <div class="col-sm-12 text-right">
+            <button type="submit" class="btn btn-success" [disabled]="schoolForm.invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

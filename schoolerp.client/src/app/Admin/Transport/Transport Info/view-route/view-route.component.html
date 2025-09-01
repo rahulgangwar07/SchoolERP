@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <h6>Route List</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/transport/add-route" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Route</a>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead class="route-table-hd">
+      <tr>
+        <th>#</th>
+        <th>RouteID</th>
+        <th>Route Name</th>
+        <th>Route Code</th>
+        <th>Applied Month</th>
+        <th>Stop Name</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let trr of transportRoutes; index as i;">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ trr.route.route_id }}</td>
+          <td>{{ trr.route.route_name }}</td>
+          <td>{{ trr.route.route_Code }}</td>
+          <td>{{ trr.route.aaplied_month }}</td>
+          <td>
+            <i class="fa fa-arrows-to-eye" style="cursor:pointer;" (click)="toggleStopsbtn(i)"></i>
+            <!-- Optionally show stop count or a preview -->
+          </td>
+          <td>
+            <button class="action-btn-toggle" (click)="actionToggle(i)">Action</button>
+            <div class="action-btn-list" *ngIf="toggleIndex === i">
+              <ul>
+                <li (click)="editTransportRoute(trr.route.route_id)">
+                  <i class="fa fa-edit"></i>Edit
+                </li>
+                <li (click)="deleteTransportRoute(trr.route.route_id)">
+                  <i class="fa fa-trash"></i>Delete
+                </li>
+              </ul>
+            </div>
+          </td>
+          <!--<td class="options-container">
+            <span class="options-btn">Action</span>
+            <div class="options-dropdown">
+              <a href="#">Edit</a>
+              <a href="#">Delete</a>
+            </div>
+          </td>-->
+        </tr>
+        <!-- Stop header row -->
+        <tr *ngIf="toggleStops.has(i)">
+          <td colspan="4">
+            <table class="table table-sm table-bordered w-100 table-stops">
+              <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Stop ID</th>
+                  <th>Stop</th>
+                  <th>Fare</th>  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let stt of trr.stops; index as j">
+                  <td>{{ j + 1 }}</td>
+                  <td>{{ stt.stop_id }}</td>
+                  <td>{{ stt.stop_name }}</td>
+                  <td>{{ stt.amount }}</td> 
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+
+  </table>
+</div>

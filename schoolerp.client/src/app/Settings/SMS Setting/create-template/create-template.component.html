@@ -1,0 +1,42 @@
+<div *ngIf="status" class="template-container">
+  <div class="d-flex justify-content-between">
+    <h2>Add Template</h2>
+    <p class="d-flex align-items-center text-danger" (click)="close()"><i class="fa fa-close"></i></p>
+  </div>
+  <p class="info-msg text-danger">
+    Template first needs to verify on DLT Portal. For more info, check under <strong>"FAQ's"</strong> section!
+  </p>
+
+  <div class="template-details">
+    <div class="detail-row">
+      <label><strong>Name:</strong></label>
+      <input class="form-input" type="text" name="name" [(ngModel)]="smsTemplate.template_Name" />
+    </div>
+    <div class="detail-row">
+      <label><strong>ID:</strong></label>
+      <input class="form-input" type="text" name="templateid" [(ngModel)]="smsTemplate.template_id" />
+    </div>
+    <div class="detail-row">
+      <label><strong>Type:</strong></label>
+      <select name="templateType" class="form-select" [(ngModel)]="smsTemplate.template_type_id">
+        <option *ngFor="let t of templateType; index as i" [value]="t.typeid">
+          {{ t.typename }}
+        </option>
+      </select>
+    </div>
+    <div class="detail-row">
+      <label><strong>DLT Approved:</strong></label>
+      <select name="dltApproved" class="form-select" [(ngModel)]="smsTemplate.isDLTApproved">
+        <option value="false">Not Approved</option>
+        <option value="true">Approved</option>
+      </select>
+    </div>
+    <div class="template-content">
+      <textarea class="form-textarea" [(ngModel)]="smsTemplate.template_Content"></textarea>
+    </div>
+    <div class="detail-row">
+      <label></label>
+      <button id="template" name="template" class="btn template-btn" (click)="updateTemplate()">UPDATE TEMPLATE</button>
+    </div>
+  </div>
+</div>

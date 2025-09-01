@@ -1,0 +1,31 @@
+
+<div class="popup-backdrop"> 
+  <div class="question-modal">
+    <div class="modal-header">
+      <h6>Ask your question</h6>
+      <p>{{name}}</p>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject : <span *ngIf="communication_id!=0">{{com.subject}}</span></label>
+      <input *ngIf="communication_id==0" type="text" id="subject" name="subject" [(ngModel)]="com.subject" class="form-control" placeholder="Subject" />
+    </div>
+
+    <div *ngIf="communication_id==0" class="form-group">
+      <label for="question">Your Question</label>
+      <textarea id="question" class="form-control" [(ngModel)]="com.question" placeholder="Ask Your Question?"></textarea>
+    </div>
+    <div *ngIf="communication_id!=0" class="form-group">
+      {{com.question}}
+    </div>
+
+    <div *ngIf="communication_id!=0" class="form-group"> 
+      <textarea id="response" class="form-control" [(ngModel)]="com.answer" placeholder="Response back?"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+      <button class="btn btn-secondary" (click)="closePopup()">Cancel</button>
+    </div>
+  </div>
+  </div> 
+

@@ -1,0 +1,105 @@
+<div class="container">
+  <h2>Take Teacher / Staff Attendance</h2>
+  <div class="row pageheader layout-header">
+    <div class="col-md-6">
+      <p>Record Teacher/Staff attendance</p>
+    </div>
+    <div class="col-md-6">
+      <a (click)="clearAllAttendance()">Clear Record</a>
+      <a routerLink="/teacher-staff/view-attendance" routerLinkActive="active">View Attendance</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <!-- Filters Section -->
+  <div class="filters">
+    <div>
+      <label for="select-day">Select Day:</label>
+      <select id="select-day" [(ngModel)]="selectedDay" (change)="dateFilter()">
+        <option *ngFor="let day of calenderDay" [value]="day">{{day}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="select-month">Select Month:</label>
+      <select id="select-month" [(ngModel)]="selectedMonth" (change)="dateFilter()">
+        <option *ngFor="let month of getMonthNames()" [value]="month.key">{{ month.value }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="select-year">Select Year:</label>
+      <select id="select-year" [(ngModel)]="selectedYear" (change)="dateFilter()">
+        <option *ngFor="let year of calenderYear" [value]="year">{{year}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="select-user-type">Select User Type:</label>
+      <select id="select-user-type" [(ngModel)]="selectedTypeValue" (change)="facultyType(selectedTypeValue)">
+        <option value="all">All</option>
+        <option value="staff">Staff</option>
+        <option value="faculty">Faculty</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Attendance Table -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10px;">#</th>
+        <th>Profile</th>
+        <th>Name</th>
+        <th>In Time</th>
+        <th>Status (IN) <input type="checkbox" (change)="attendanceChange($event)" /></th>
+        <th>Status (OUT)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through attendanceList and create rows dynamically -->
+      <tr *ngFor="let row of attendanceListFilter; index as i">
+        <td>{{ i + 1 }}</td>
+        <td><img *ngIf="row.image" src="{{ row.image }}" alt="Profile" width="50" height="50"></td>
+        <td>
+          <div>
+            <p>{{ row.fac_name }}</p>
+            <p class="designation" *ngIf="row.designation_name">({{ row.designation_name }})</p>
+          </div>
+        </td>
+        <!-- Bind formatted time values -->
+        <td><input type="time" [(ngModel)]="row.inTime" [disabled]="true"></td>
+        <td>
+          <div class="attendance-radio-list">
+            <div class="row">
+              <div class="col-md-7">
+                <label [ngClass]="{ 'label-present': row.status === 'P'}">
+                  <input type="radio" name="attendance-{{ row.facultyId }}" value="P" [(ngModel)]="row.status" (change)="onchange($event, row.facultyId)" /> Present
+                </label>
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-secondary" style="margin-left: 10px;font-size:10px;" (click)="clearStatus(row.facultyId)">Clear</button>
+              </div>
+            </div>
+
+            <label [ngClass]="{ 'label-absent': row.status === 'A'}">
+              <input type="radio" name="attendance-{{ row.facultyId }}" value="A" [(ngModel)]="row.status" (change)="onchange($event, row.facultyId)" /> Absent
+            </label>
+            <label [ngClass]="{ 'label-leave': row.status === 'L'}">
+              <input type="radio" name="attendance-{{ row.facultyId }}" value="L" [(ngModel)]="row.status" (change)="onchange($event, row.facultyId)" /> Leave
+            </label>
+          </div>
+        </td>
+        <!-- Show Out Time for Present -->
+        <td>
+          <input type="time" *ngIf="row.status === 'P'" [(ngModel)]="row.outTime">
+          <label *ngIf="row.status === 'A' || row.status === 'L'">Casual Leave</label>
+        </td>
+      </tr>
+      <tr>
+        <td><button class="attendance-btn" (click)="SubmitAttendance(attendanceList)">Confirm Attendance</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,100 @@
+/* General container padding */
+.container {
+  padding: 20px;
+}
+
+/* Styling for the table */
+.table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+  border-collapse: collapse;
+}
+
+  .table th,
+  .table td {
+    text-align: left;
+    padding: 5px 10px;
+  }
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #ddd;
+}
+
+/* Header styling */
+.layout-header h6 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.layout-header p {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Action buttons (Edit, Delete, Download) */
+.btn {
+  font-size: 0.875rem;
+  padding: 5px 10px;
+}
+
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+
+.btn-warning {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.notice-div {
+  margin-bottom: 1px;
+  font-size: 14px;
+}
+
+  .notice-div p {
+    margin: 0px;
+  }
+ 
+.noticeFor {
+  color: #ff4400;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Notice date and title styling */
+.notice p{
+  margin: 0;
+}
+
+.notice-date {
+  font-size: 0.675rem;
+  font-weight: 600;
+}
+
+.notice-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+}
+
+  .notice-title:hover {
+    text-decoration: underline;
+  }

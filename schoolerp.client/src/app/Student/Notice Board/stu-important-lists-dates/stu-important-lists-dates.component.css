@@ -1,0 +1,97 @@
+
+/* Search input and button */
+#searchProgram {
+  width: 100%;
+  padding: 8px;
+}
+
+#searchInput {
+  border: 0px;
+  width: 50%;
+  color: white;
+  background-color: #41a2b7;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+  #searchInput:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
+/* Overall recordtable styling */
+.recordtable {
+  margin-top: 30px;
+  background-color: #f9f9f9; /* Light background for the entire record row */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  padding: 20px; /* Adding padding for inner spacing */
+}
+
+  /* Flexbox for aligning columns */
+  .recordtable .row {
+    display: flex;
+    justify-content: space-between; /* Space out the two columns */
+    align-items: flex-start; /* Align items to the top */
+  }
+
+  /* Left section (Date, Title, Button) */
+  .recordtable .col-md-3 {
+    background-color: #ffffff; /* White background for better contrast */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    width: 28%; /* Set width to allow the other section more space */
+    text-align: center; /* Center-align content */
+  }
+
+    .recordtable .col-md-3 p {
+      margin: 10px 0; /* Add space between text elements */
+    }
+
+    .recordtable .col-md-3 button {
+      padding: 8px 16px;
+      background-color: #007bff; /* Blue button */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+      .recordtable .col-md-3 button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+  /* Right section (Notice Text) */
+  .recordtable .col-md-9 {
+    background-color: #ffffff; /* White background for notice section */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    width: 68%; /* Wider section for content */
+  }
+
+    .recordtable .col-md-9 p {
+      margin-bottom: 10px; /* Space between paragraphs */
+    }
+
+    .recordtable .col-md-9 strong {
+      font-weight: bold;
+      font-size: 16px; /* Increased font size for emphasis */
+    }
+
+.flexdiv {
+  margin: 5px;
+}
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .recordtable .row {
+    flex-direction: column; /* Stack columns vertically on small screens */
+  }
+
+  .recordtable .col-md-3,
+  .recordtable .col-md-9 {
+    width: 100%; /* Full width for each section */
+    margin-bottom: 15px; /* Space between stacked elements */
+  }
+}
+
+

@@ -1,0 +1,68 @@
+<div class="container">
+  <h6>Subject/Curriculum List</h6>
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="top-section layout-header">
+        <div class="mandatory-fields">
+          <p>Fields marked with (*) are mandatory</p>
+        </div>
+        <div class="button-section">
+          <!--<a class="action-btn">Class</a>-->
+          <select id="slclass" name="class" (change)="bindSubjectsClasswise($event)">
+            <option value="0">Class</option>
+            <option *ngFor="let cls of classList; let i=index" value="{{cls.class_id}}">{{cls.class_name}}</option>
+          </select>
+          <a routerLink="/subject/add" routerLinkActive="active" class="action-btn" *ngIf="permissions?.canCreate">Add Subject</a>
+        </div>
+      </div>
+
+      <app-success-message-popup *ngFor="let message of messages; let i = index"
+                                 [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                                 (closePopup)="closeMessagePopup(i)">
+      </app-success-message-popup>
+
+      <div class="subject-list-container">
+        <div class="subject-list">
+          <!-- Subject 1 -->
+          <div class="row">
+            <!--*ngFor="let item of arr"-->
+            <div class="col-md-4 col-sm-6 main-item" *ngFor="let subj of subjectList;let i = index;">
+              <div class="subject-item">
+                <div class="subject-info d-flex">
+                  <div><img src="/assets/img/dashboardIcons/cash-book.png" class="add-image" /></div>
+                  <div>
+                    <h6><strong>{{subj.subject_name}}</strong></h6>
+                    <p><span class="text-success">Order:</span>{{subj.priority}} | <span class="text-success">ID:</span>{{subj.subject_id}} | {{subj.optional ? 'Optional' : 'Primary' }}</p>
+                  </div>
+                </div>
+                <div class="subject-actions">
+                  <div class="row">
+                    <div class="col-md-6"><a routerLink="/subject/view-syllabus" routerLinkActive="active" class="text-primary">Syllabus</a></div>
+                    <div class="col-md-6"><a routerLink="/subject/study-material" routerLinkActive="active" class="text-success">Study Material</a></div>
+                    <div class="col-md-6"><a routerLinkActive="active" class="text-success">Lesson<span class="item-count">2</span></a></div>
+                    <div class="col-md-6"><a routerLinkActive="active" class="text-primary">Ques. Bank</a></div>
+                  </div>
+                  <!--<button class="btn btn-primary">Syllabus</button>
+              <button class="btn btn-primary">Study Material</button>
+              <button class="btn btn-primary">Lesson</button>
+              <button class="btn btn-primary">Ques. Bank</button>-->
+                  <button class="action-btn-toggle" (click)="actionToggle(i)">Action</button>
+                  <div class="action-btn-list" *ngIf="toggleIndex === i">
+                    <ul>
+                      <li (click)="editSubject(subj.subject_id)" *ngIf="permissions?.canEdit">
+                        <i class="fa fa-edit"></i>Edit
+                      </li>
+                      <li (click)="deleteSubject(subj.subject_id)" *ngIf="permissions?.canDelete">
+                        <i class="fa fa-trash"></i>Delete
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

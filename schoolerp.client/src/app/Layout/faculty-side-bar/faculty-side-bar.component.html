@@ -1,0 +1,82 @@
+
+<div class="sidebar" id="sidebar" [class.mini-sidebar]="isSidebarFull" [ngStyle]="{
+       'background-color': sidebarSettings.application_theme?.sidebar_bgcolor, 
+       'color': sidebarSettings.application_theme?.sidebar_color,
+       'font-family': sidebarSettings.application_theme?.font_family
+     }">
+  <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+      <ul>
+        <li class="menu-title"><span>Main Menu</span></li>
+
+        <li class="submenu">
+           <!--SuperAdmin with submodules--> 
+          <ng-container *ngIf="userRole === 'SuperAdmin'">
+            <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+              <i class="fas fa-tachometer-alt"></i> <span [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">Dashboard</span> <span class="menu-arrow"></span>
+            </a>
+            <ul *ngIf="userRole === 'SuperAdmin'">
+              <li><a [routerLink]="['/superadmin-dashboard']" routerLinkActive="active">SuperAdmin Dashboard</a></li>
+              <li><a [routerLink]="['/admin-dashboard']" routerLinkActive="active">Admin Dashboard</a></li>
+              <li><a [routerLink]="['/faculty-dashboard']" routerLinkActive="active">Faculty Dashboard</a></li>
+              <li><a [routerLink]="['/student-dashboard']" routerLinkActive="active">Student Dashboard</a></li>
+            </ul>
+
+             <!--Schools Section--> 
+            <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+              <i class="fas fa-school"></i> <span>Schools</span> <span class="menu-arrow"></span>
+            </a>
+            <ul>
+              <li><a [routerLink]="['/super-admin/create-school']" routerLinkActive="active">Create School</a></li>
+              <li><a [routerLink]="['/super-admin/view-school']" routerLinkActive="active">View School</a></li>
+            </ul>
+          </ng-container>
+        </li>
+
+         <!--Loop through modules based on user role--> 
+        <li *ngFor="let module of modules" class="submenu">
+          <ng-container *ngIf="module.subModules.length === 0 && userRole === 'Admin'">
+            <a [routerLink]="['/admin-dashboard']" routerLinkActive="active">
+              <i class="{{module.icon}}"></i> <span [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">{{ module.module_name }}</span>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="module.subModules.length === 0 && userRole === 'Faculty'">
+            <a [routerLink]="['/faculty-dashboard']" routerLinkActive="active">
+              <i class="{{module.icon}}"></i> <span [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">{{ module.module_name }}</span>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="module.subModules.length > 0">
+            <a class="submenu-toggle" (click)="toggleSubMenu($event)">
+              <i class="{{module.icon}}"></i> <span [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">{{ module.module_name }}</span> <span class="menu-arrow"></span>
+            </a>
+            <ul *ngIf="module.subModules.length > 0">
+              <li *ngFor="let submodule of module.subModules" [class.has-child]="submodule.childSubModules?.length > 0">
+                <ng-container *ngIf="submodule.childSubModules?.length > 0">
+                  <a (click)="toggleSubSubMenu($event, submodule)" [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">
+                    {{submodule.submodule_name}} <span class="menu-arrow"></span>
+                  </a>
+                </ng-container>
+                <ng-container *ngIf="submodule.childSubModules?.length == 0">
+                  <a [routerLink]="submodule.submodule_route" routerLinkActive="active" [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">
+                    {{submodule.submodule_name}}
+                  </a>
+                </ng-container>
+
+                 <!--Nested child submodules--> 
+                <ul *ngIf="submodule.childSubModules?.length > 0">
+                  <li *ngFor="let child of submodule.childSubModules" class="newsubmenu">
+                    <a [routerLink]="child.submodule_route" routerLinkActive="active"><i class="{{child.icon}}"></i>&nbsp;<span [ngStyle]="{ 'color': sidebarSettings.application_theme?.sidebar_color  }">{{child.submodule_name}}</span></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container setting-div">
+  <label><i class="fa fa-kitchen-set"></i> Settings <i class="fa fa-arrow-alt-circle-up"></i></label>
+</div>-->

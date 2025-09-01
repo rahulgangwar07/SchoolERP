@@ -1,0 +1,98 @@
+
+/* Styling the payment history section */
+.pandingpayment {
+  margin-top: 20px;
+}
+
+.paymenthead {
+  color: lightgreen;
+  font-size: 14px; /* Increased font size for readability */
+  margin-bottom: 15px;
+}
+
+
+
+.pendingtable tr:nth-child(2n+1) td {
+  background-color: #ccc;
+}
+
+.pendingtable img {
+  width: 150px;
+  height: auto;
+}
+
+/* Styling the payment history table */
+table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px; /* Rounded corners for a smoother look */
+  overflow: hidden;
+}
+
+  table td, table th {
+    padding: 12px; /* Increased padding for better spacing */
+    text-align: left;
+  }
+
+  /* Header row styling */
+.paytable tr:first-child td {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+}
+
+  /* Alternate row background colors */
+.paytable tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+  table tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+
+  /* Hover effect on rows */
+  table tr:hover {
+    background-color: #e1e1e1;
+  }
+
+  /* Styling the 'Accept' column */
+/*  table td:nth-child(3) {
+    font-weight: bold;
+    color: #28a745;
+  }*/
+
+/* Styling the 'Dues' column */
+.dues {
+  color: #e86d6d;
+}
+
+/* Adding a bottom border for the last row */
+table tr:last-child td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* View button styling */
+table button {
+  padding: 5px 10px;
+  background-color: #ca1919;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  table button:hover {
+    background-color: #a31414; /* Slight darkening effect on hover */
+  }
+
+/* Minor margin adjustments */
+p.paymenthead {
+  margin-bottom: 20px;
+}
+
+/* Smaller details for the second row's payment details text */
+table tr td p {
+  font-size: 12px;
+  color: #7f8c8d;
+}

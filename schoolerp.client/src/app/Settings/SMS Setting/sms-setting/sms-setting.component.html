@@ -1,0 +1,202 @@
+<div class="sms-settings-container">
+
+  <h2>📲 SMS Settings</h2>
+
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>SMS Settings</p>
+    </div>
+    <div class="col-md-6 text-right">
+      <a class="action-btn" (click)="togglePopup()">Create Template</a>
+      <a routerLink="/sms-board/compose-sms" routerLinkActive="active" class="action-btn">Compose SMS</a>
+      <a routerLink="/configuration/session" routerLinkActive="active" class="action-btn">Session Setting</a>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+
+      <!-- Toggle Settings -->
+      <div class="toggle-section">
+
+        <!-- Toggle Switches -->
+        <div class="setting-toggle-group">
+          <div class="setting-toggle">
+            <label>Voice SMS:</label>
+            <label><input type="radio" name="voice_sms" [(ngModel)]="smsGSetting.voice_sms_enabled" [value]="true"> Enable</label>
+            <label><input type="radio" name="voice_sms" [(ngModel)]="smsGSetting.voice_sms_enabled" [value]="false"> Disable</label>
+          </div>
+
+          <div class="setting-toggle">
+            <label>Text SMS:</label>
+            <label><input type="radio" name="sms" [(ngModel)]="smsGSetting.sms_enabled" [value]="true"> Enable</label>
+            <label><input type="radio" name="sms" [(ngModel)]="smsGSetting.sms_enabled" [value]="false"> Disable</label>
+          </div>
+
+          <div class="setting-toggle">
+            <label>Forget Password SMS:</label>
+            <label><input type="radio" name="forget_sms" [(ngModel)]="smsGSetting.forget_password_sms_enabled" [value]="true"> Enable</label>
+            <label><input type="radio" name="forget_sms" [(ngModel)]="smsGSetting.forget_password_sms_enabled" [value]="false"> Disable</label>
+
+            <!-- SMS Service Dropdown -->
+            <select class="sms-provider-select" name="serviceProvider" [(ngModel)]="smsGSetting.sms_service">
+              <option value="0">--Select Service--</option>
+              <option value="1">Just Go SMS</option>
+              <option value="2">Muzz Tech</option>
+              <option value="3">OCIOT Technology</option>
+              <option value="4">Bhash SMS</option>
+              <option value="5">Imperial SMS</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- API Inputs -->
+        <div class="api-inputs">
+          <label>
+            Delivery SMS API:
+            <input type="text" name="deliveryapiUrl" [(ngModel)]="smsGSetting.delivery_api_url" placeholder="Enter Delivery API URL" />
+          </label> 
+          <label>
+            Check Balance API:
+            <input type="text" name="balanceapiUrl" [(ngModel)]="smsGSetting.check_balance_api_url" placeholder="Enter Balance API URL" />
+          </label>
+        </div>
+
+      </div>
+
+
+      <!-- API Settings -->
+      <div class="api-settings">
+        <h3>🛠️ API Configuration</h3>
+        <div class="form-row"><label>SMS Username:<span>*</span></label> <input name="user_name" [(ngModel)]="smsGSetting.sms_username" /></div>
+        <div class="form-row"><label>Primary Sender ID:</label> <input name="primary_sender_id" [(ngModel)]="smsGSetting.primary_sender_id" /></div>
+        <div class="form-row"><label>Secondary Sender ID:</label> <input name="secondary_sender_id" [(ngModel)]="smsGSetting.secondary_sender_id" /></div>
+        <div class="form-row"><label>Password:</label> <input type="password" name="password" [(ngModel)]="smsGSetting.sms_password" /></div>
+        <div class="form-row"><label>API URL:</label> <input name="apiUrl" [(ngModel)]="smsGSetting.api_url" /></div>
+        <div class="form-row"><label>Route ID:</label> <input name="route_id" [(ngModel)]="smsGSetting.route_id" /></div>
+        <div class="form-row">
+          <label>API Status:</label>
+          <select id="api-status" class="api-status" name="api-status" [(ngModel)]="smsGSetting.api_status">
+            <option value="Enabled">Enable</option>
+            <option value="Disable">Disable</option>
+          </select>
+        </div>
+        <div class="form-row"><button class="check-balance-btn" (click)="saveGatewaySetting()">Save</button></div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <!-- FAQs Section -->
+      <!-- Check Balance Section -->
+      <div class="check-balance-section">
+        <h3>💰 SMS Balance</h3>
+        <div class="balance-display">
+          <span>Total Available Messages:</span>
+          <strong id="smsBalance">--</strong>
+          <button class="check-balance-btn"><i class="fas fa-sync-alt"></i> Check Balance</button>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h3>❓ How-To Guides</h3>
+        <ul>
+          <li>📽️ <a href="#">Send Text SMS From CAMPUS COVER</a></li>
+          <li>📽️ <a href="#">Register with DLT (STEP 1)</a></li>
+          <li>📽️ <a href="#">Register Templates (STEP 2)</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- Template Table -->
+  <div class="template-list">
+    <h3>📜 Template List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SL.No.</th>
+          <th>Title</th>
+          <th>Template ID</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example rows - should be rendered dynamically --> 
+          <ng-container *ngFor="let t of templateList;index as i;">
+            <tr *ngIf="!t.isDLTApproved" class="template-row">
+              <td>{{i+1}}</td>
+              <td>
+                <div>
+                  <label>{{t.template_Name}}</label>
+                  <p>{{templateName(t.template_type_id)}}</p>
+                </div>
+              </td>
+              <td>{{t.template_id}}</td>
+              <td>{{t.template_Content}}</td> 
+              <td>
+                <button (click)="editTemplate(t.id)">Edit</button>
+                <button class="delete-btn" (click)="deleteTemplate(t.id,i)">Delete</button>
+              </td>
+            </tr>
+          </ng-container> 
+          
+        <!-- Repeat for each template -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Default Template List -->
+  <div class="default-templates">
+    <h3>📌 Default Templates</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SL.No.</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Template ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let t of templateList;index as i;">
+          <tr *ngIf="t.isDLTApproved" class="template-row">
+            <td>{{i+1}}</td>
+            <td>
+              <div>
+                <label>{{t.template_Name}}</label>
+                <p>{{templateName(t.template_type_id)}}</p>
+              </div>
+            </td>
+            <td>{{t.template_Content}}</td>
+            <td>{{t.template_id}}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Marcro Template List -->
+  <div class="macro-templates"> 
+    <table>
+      <thead>
+        <tr>
+          <th><span>MACRO Available :</span> <span> It can be used in Demand Bill , and Id/Password Template / Absent Students</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>{{macroNames}}</strong></td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<app-create-template [status]="closePopup" [template_id]="template_id" (popupStatus)="closePopupClick($event)"></app-create-template>
+

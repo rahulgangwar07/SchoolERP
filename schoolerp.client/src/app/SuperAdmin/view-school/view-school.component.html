@@ -1,0 +1,86 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header mb-4">
+    <div class="col-md-6">
+      <h6>Schools List</h6>
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/super-admin/create-school" routerLinkActive="active" class="btn btn-outline-primary">
+        <i class="fas fa-plus"></i> Add New School
+      </a>
+    </div>
+  </div>
+
+  <!-- Schools Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>School Name</th>
+            <th>School Logo</th>
+            <th>School Code</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let school of schools; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ school.schoolName }}</td>
+            <td><img *ngIf="school.schoolLogo" [src]="school.schoolLogo" alt="School Logo" width="50"></td>
+            <td>{{ school.schoolId }}</td>
+            <td>{{ school.city }}</td>
+            <td>
+              <label>{{ school.schoolStatus === true ? 'Active' : 'Inactive' }}</label>
+            </td>
+            <td>
+              <a [routerLink]="['/super-admin/create-school', school.id]" class="btn btn-outline-info btn-sm">
+                <i class="fas fa-edit"></i> Edit
+              </a>
+              <a (click)="loginPopup(school.schoolId)" class="btn btn-outline-info btn-sm">
+                <i class="fas fa-eye"></i>Login
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Login Popup (if active) -->
+<!-- Admin Login Popup (if active) -->
+<div *ngIf="adminLogin" class="admin-login-popup">
+  <div class="popup-content">
+    <p>Admin Login</p>
+    <i (click)="closeAdminLogin()" class="fas fa-close"></i>
+
+    <!-- Admin Table -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>UserId</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of adminList;index as i">
+          <td>{{admin.first_name}}</td>
+          <td>{{admin.username}}</td>
+          <td>{{admin.password}}</td>
+        </tr> 
+      </tbody>
+    </table>
+
+    <!-- Close button -->
+    <button class="close-btn" (click)="closeAdminLogin()">Close</button>
+  </div>
+</div>
+
+
+

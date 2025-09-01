@@ -1,0 +1,43 @@
+<div *ngIf="loading" class="loading-spinner">Loading...</div>
+
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="saveMaxMins()">
+    <!-- Dropdown -->
+    <div class="form-group mb-3">
+      <label for="common_exam_set_id" class="form-label fw-bold">Select Exam Set Group:</label>
+      <select id="common_exam_set_id" class="form-select"
+              formControlName="common_exam_set_id"
+              (change)="onSelectGroup($event.target)">
+        <option value="">-- Select --</option>
+        <option *ngFor="let group of groupedSets" [value]="group.common_exam_set_id">
+          {{ group.common_exam_set_id }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Exam Cards -->
+    <div class="row g-3" formArrayName="maxMins" *ngIf="selectedGroup">
+      <div class="col-md-12" *ngFor="let maxMin of maxMins.controls; let i = index" [formGroupName]="i">
+        <div class="shadow-sm">
+          <div class="card-body">
+            <div class="">
+              <label for="exam_title" class="form-label col-md-5">Exam Title</label>
+              <input id="exam_title" class="form-control form-control-sm" formControlName="exam_title" type="text" />
+            </div>
+            <div class=" ">
+              <label for="max_marks" class="form-label col-md-5">Max Marks</label>
+              <input id="max_marks" class="form-control form-control-sm" formControlName="max_marks" type="number" />
+            </div>
+            <div class=" ">
+              <label for="min_marks" class="form-label col-md-5">Min Marks</label>
+              <input id="min_marks" class="form-control form-control-sm" formControlName="min_marks" type="number" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <input class="form-group btn btn-primary" type="submit" />
+    </div>
+  </form>
+</div>

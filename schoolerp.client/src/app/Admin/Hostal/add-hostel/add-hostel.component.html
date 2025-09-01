@@ -1,0 +1,113 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/hostel/view-hostel" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Hostels</a>
+    </div>
+  </div>
+
+  <!-- Hostel Add Form -->
+  <div class="row hostal-form">
+    <div class="col-md-12">
+      <form #hostalForm="ngForm">
+        <!-- Hostel Name -->
+        <div class="form-group row">
+          <label for="hostelName" class="col-sm-2 col-form-label">Hostel Name <span>*</span></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="hostelName" name="hostelName" [(ngModel)]="hData.hostal_name" placeholder="Enter Hostel Name" required>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group row">
+          <label for="hostelPhone" class="col-sm-2 col-form-label">Phone <span>*</span></label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="hostelPhone" name="hostelPhone" [(ngModel)]="hData.phone" placeholder="Enter Hostel Phone" required>
+          </div>
+        </div>
+
+        <!-- Fee Month -->
+        <div class="form-group row">
+          <div>
+            <label for="feemonth" class="col-sm-2 col-form-label">Fee Month</label>
+            <div class="d-inline-block">
+              <button class="drop-toggle btn flat" (click)="toggleDropDown()">
+                <span *ngIf="checkedList.length<=0">Select</span>
+                <span *ngIf="checkedList.length>0">{{checkboxName(checkedList)}}</span>
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <div class="drop-show d-grid" *ngIf="showDropDown">
+                <input type="checkbox" (change)="selectAllcheckbox($event)" />
+                <span>Select All</span>
+                <label *ngFor="let a of calenderMonth | keyvalue; index as i;">
+                  <input type="checkbox" [(ngModel)]="a.value.checked" name="checkbox_{{i}}" (change)="getSelectedValue()" />
+                  <span>{{a.value.name}}</span> 
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Fee -->
+        <div class="form-group row">
+          <label for="monthlyFee" class="col-sm-2 col-form-label">Monthly Fee</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="monthlyFee" name="monthlyFee" [(ngModel)]="hData.monthly_fee" placeholder="Enter Monthly Fee">
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group row">
+          <label for="address" class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" id="address" name="address" rows="3" [(ngModel)]="hData.address" placeholder="Enter Hostel Address"></textarea>
+          </div>
+        </div>
+
+        <!-- Room Type -->
+        <div class="form-group row">
+          <label for="roomType" class="col-sm-2 col-form-label">Room Type</label>
+          <div class="col-sm-6">
+            <select class="form-control" id="roomType" name="roomType" [(ngModel)]="hData.room_type">
+              <option value="">Select Room Type</option>
+              <option value="single">Single</option>
+              <option value="shared">Shared</option>
+              <option value="suite">Suite</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Occupancy Status -->
+        <div class="form-group row">
+          <label for="occupancyStatus" class="col-sm-2 col-form-label">Occupancy Status</label>
+          <div class="col-sm-6">
+            <select class="form-control" id="occupancyStatus" name="occupancyStatus" [(ngModel)]="hData.occupancy_status">
+              <option value="">Select Status</option>
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+              <option value="maintenance">Under Maintenance</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Facilities -->
+        <div class="form-group row">
+          <label for="facilities" class="col-sm-2 col-form-label">Facilities</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="facilities" name="facilities" [(ngModel)]="hData.facilities" placeholder="Enter Facilities (comma separated)">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+          <div class="col-sm-6 offset-sm-2">
+            <button type="submit" class="btn btn-primary" (click)="addHostal(hostalForm)" [disabled]="hostalForm.invalid" [ngStyle]="{'background-color':themeSetting?.button_color}">Add Hostel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

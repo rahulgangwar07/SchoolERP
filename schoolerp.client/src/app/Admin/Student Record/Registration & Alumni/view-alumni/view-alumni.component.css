@@ -1,0 +1,122 @@
+
+.container {
+  font-family: Arial, sans-serif;
+  margin: 0; 
+  overflow-x: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+  .filters select, .filters input {
+    padding: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #ccc; 
+  font-size: 15px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.action-btns button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  .action-btns button:hover {
+    background-color: #45a049;
+  }
+
+  .action-btns button:nth-child(2) {
+    background-color: #f44336;
+  }
+
+    .action-btns button:nth-child(2):hover {
+      background-color: #e53935;
+    }
+
+/* Option List Styling for actions */
+.optionListTD {
+  position:relative;
+}
+.optionListTD ul {
+  padding-left: 5px;
+}
+
+.optionList {
+  position: absolute;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  list-style: none;
+  font-size: 12px; 
+  background-color: white;
+  border: 1px solid #cfbbbb;
+}
+
+  .optionList li {
+    position: relative;
+    border-bottom: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    z-index: 1;
+    background-color:white;
+  }
+
+  .optionList a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .optionList li:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Styling for Icons in Option List */
+  .optionList i.fa-edit, i.fa-trash {
+    color: red;
+  }
+
+.my-class {
+  background-color: yellow;
+}
+
+.actionbtn {
+  padding: 5px 25px;
+  color: #c65050;
+  border: 1px solid #c65050;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+}
+

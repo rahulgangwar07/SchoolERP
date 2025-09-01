@@ -1,0 +1,94 @@
+/* Styling for the container */
+.container {
+  max-width: 1200px;
+  margin-top: 30px;
+  padding: 15px;
+}
+
+/* Title */
+.syllabus-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Chapter Cards */
+.syllabus-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.chapter-card {
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+  .chapter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+/* Chapter Header */
+.chapter-header {
+  background-color: #cf8f29;
+  color: white;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.chapter-title {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+/* Syllabus List */
+.chapter-content {
+  padding: 20px;
+}
+
+.syllabus-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+  .syllabus-list li {
+    font-size: 1rem;
+    color: #7f8c8d;
+    padding: 5px 0;
+  }
+
+    .syllabus-list li:last-child {
+      padding-bottom: 0;
+    }
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+  .syllabus-section {
+    flex-direction: column;
+  }
+
+  .chapter-card {
+    margin-bottom: 20px;
+  }
+
+  .syllabus-title {
+    font-size: 1.3rem;
+  }
+
+  .chapter-title {
+    font-size: 1rem;
+  }
+
+  .syllabus-list li {
+    font-size: 0.9rem;
+  }
+}

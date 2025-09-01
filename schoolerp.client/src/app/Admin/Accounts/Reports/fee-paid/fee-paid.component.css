@@ -1,0 +1,76 @@
+/* Styling for select dropdowns */
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width: 15%;
+}
+
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  select:last-child {
+    margin-right: 0; /* No margin after the last select */
+  }
+
+/* Styling for input fields */
+input[type="date"] {
+  width: 20%;
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  font-size: 14px;
+}
+
+  input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+/* Button styling */
+.row button {
+  margin-top: 10px;
+  width: 15%;
+}
+
+/* Styling for tables */
+.fee-paid-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  .fee-paid-table th, .fee-paid-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .fee-paid-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+/* Style for "No record found" */
+.no-records p {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+}
+
+/* Grand Total styling */
+.grand-total {
+  margin-top: 20px;
+}
+
+  .grand-total h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: green;
+    margin-top: 20px;
+  }

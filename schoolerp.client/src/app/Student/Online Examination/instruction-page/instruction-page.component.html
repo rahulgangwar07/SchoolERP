@@ -1,0 +1,28 @@
+<div class="exam-container">
+  <!-- Exam Header Section -->
+  <div class="exam-header">
+    <h3 class="exam-title">{{exam?.exam_title}}</h3>
+    <!--<p class="exam-id">Exam ID: {{exam?.exam_id}}</p>-->
+  </div>
+
+  <!-- Instructions Section -->
+  <div class="exam-instructions">
+    <h4 class="section-title">Instructions for Student</h4>
+    <p class="instructions">{{exam?.instruction_to_condidate}}</p>
+    <p class="redinstructions">After Start Exam Don't Referesh Page</p>
+  </div>
+
+  <!-- Exam Description Section -->
+  <div class="exam-description">
+    <h4 class="section-title">Exam Description</h4>
+    <p>{{exam?.description}}</p>
+  </div>
+
+  <!-- Start Exam Button -->
+  <button [routerLink]="['/s/start/onlineexam',exam?.exam_id,exam?.student_exam_id]"  class="start-exam-btn"> Start Exam </button>
+
+  <!-- Confirmation Message when Exam Starts -->
+  <!--<div *ngIf="isExamStarted" class="exam-started-message">
+    <p>The exam has started! Best of luck!</p>
+  </div>-->
+</div>

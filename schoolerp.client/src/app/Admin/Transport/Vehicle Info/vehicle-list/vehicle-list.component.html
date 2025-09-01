@@ -1,0 +1,152 @@
+<div class="container mt-2">
+  <!-- Header Section -->
+  <h4>Vehicle List</h4>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Vehicle / Vehicle Details</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/transport/add-vehicle" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add New Vehicle</a>
+    </div>
+  </div>
+
+  <!-- Vehicle List Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Reg. No.</th>
+            <th>Vehicle Owner</th>
+            <th>Vehicle Model</th>
+            <th>Driver Name</th>
+            <th>IMEI No.</th>
+            <th>Track</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vi of vehicleInfo;index as i;">
+            <td>{{i+1}}</td>
+            <td>{{ vi.vehicle.vehicle }}</td>
+            <td>{{ vi.vehicle.vehicle_owner }}</td>
+            <td>{{ vi.vehicle_Model.model_name }}</td>
+            <td>{{ vi.driver.name }}</td>
+            <td>{{ vi.vehicle.imeI_no }}</td>
+            <td><a *ngIf="vi.vehicle.status == '1'" href="#" class="btn btn-sm btn-info">Live Location</a></td> 
+            <td>
+              <div class="action-container">
+                <button class="btn btn-info btn-sm btn-action" (click)="toggleAction(i)">Action</button>
+                <ul *ngIf="currentIndex == i" class="action-list">
+                  <li (click)="editVehicleInfo(vi.vehicle.vehicle_id)">
+                    <i class="fas fa-edit"></i> Edit
+                  </li> 
+                  <li (click)="deleteVehicleInfo(vi.vehicle.vehicle_id,i)">
+                    <i class="fas fa-trash-alt"></i> Delete
+                  </li>
+                </ul> 
+              </div>
+            </td>
+          </tr>
+          <!--<tr>
+    <td>2</td>
+    <td>12367899425</td>
+    <td>School</td>
+    <td>Maruti</td>
+    <td>Suresh</td>
+    <td>IMEI67890</td>
+    <td><a href="#" class="btn btn-sm btn-info">Track</a></td>
+    <td>
+      <a href="#" class="btn btn-sm btn-warning">Edit</a>
+      <a href="#" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>BR31 3311</td>
+    <td>School</td>
+    <td>TATA</td>
+    <td>Rajesh</td>
+    <td>IMEI11111</td>
+    <td><a href="#" class="btn btn-sm btn-info">Track</a></td>
+    <td>
+      <a href="#" class="btn btn-sm btn-warning">Edit</a>
+      <a href="#" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>283833999</td>
+    <td>Sanjeet</td>
+    <td>TATA</td>
+    <td>Rajesh</td>
+    <td>IMEI22222</td>
+    <td><a href="#" class="btn btn-sm btn-info">Track</a></td>
+    <td>
+      <a href="#" class="btn btn-sm btn-warning">Edit</a>
+      <a href="#" class="btn btn-sm btn-danger">Delete</a>
+    </td>
+  </tr>-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add New Vehicle Form (for Add New Vehicle) -->
+  <!--<div class="row mt-5">
+    <div class="col-md-8">
+      <h5>Add New Vehicle</h5>
+      <form>
+        <div class="form-group row">
+          <label for="regNo" class="col-sm-2 col-form-label">Reg. No. *</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="regNo" placeholder="Enter Registration Number" required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="vehicleOwner" class="col-sm-2 col-form-label">Vehicle Owner</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="vehicleOwner" placeholder="Enter Vehicle Owner Name">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="vehicleModel" class="col-sm-2 col-form-label">Vehicle Model *</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="vehicleModel" required>
+              <option value="">Please Select</option>
+              <option value="Maruti">Maruti</option>
+              <option value="TATA">TATA</option>
+              <option value="Ashok Leyland">Ashok Leyland</option>
+              <option value="Force Traveller">Force Traveller</option>
+              <option value="Winger">Winger</option>-->
+              <!-- Add more models as needed -->
+            <!--</select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="driverName" class="col-sm-2 col-form-label">Driver Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="driverName" placeholder="Enter Driver Name">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="imeiNo" class="col-sm-2 col-form-label">IMEI No.</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="imeiNo" placeholder="Enter IMEI Number">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Save Vehicle</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>-->
+</div>

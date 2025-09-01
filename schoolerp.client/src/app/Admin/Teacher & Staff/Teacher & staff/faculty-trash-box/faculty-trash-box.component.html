@@ -1,0 +1,61 @@
+<div class="container">
+  <h6>Trash Box</h6>
+
+  <!-- Layout Header -->
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Trash Box Report</p>
+    </div>
+    <div class="col-md-6 text-md-right text-center">
+      <a (click)="print()" class="action-btn">View Tests</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <!-- Table for Trash Box Records -->
+  <table *ngIf="facultyList.length != 0" class="table faculty-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Profile</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Moved On</th>
+        <th>Added On</th>
+        <th>MAC ID</th>
+        <th>Restore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of facultyList; index as i" [ngClass]="{'disabled-account': f.status == 'Suspended'}">
+        <td>{{i+1}}</td>
+        <td><img src="{{f.image}}" class="img-thumbnail" /></td>
+        <td><p style="font-size:15px; margin: 0;">{{f.first_name}}</p></td>
+        <td *ngIf="f.phone != null">{{f.phone}}</td>
+        <td *ngIf="f.phone == null">{{f.whatsapp_no}}</td>
+        <td style="font-size:15px;">{{f.updated_at | date: 'dd-MMM-YYYY'}}</td>
+        <td style="font-size:15px;">{{f.created_at | date: 'dd-MMM-YYYY'}}</td>
+        <td></td>
+        <td>
+          <button class="btn-action" (click)="openButtons(i)">
+            <i class="fas fa-cogs"></i> Action
+          </button>
+          <div *ngIf="showActionpopup === i" class="actiondiv">
+            <ul>
+              <li (click)="restoreFaculty(f.faculty_id)">
+                <i class="fas fa-undo"></i> Restore
+              </li>
+              <li (click)="movetoAlumni(f.faculty_id)">
+                <i class="fas fa-users"></i> Move to alumni
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,212 @@
+/* Basic card styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Header Styling */
+.card-header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Body Styling */
+.card-body {
+  padding: 25px;
+}
+
+/* Form Section Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  color: #333;
+}
+
+/* Input & Select Styling */
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.form-check {
+  width: 100%;
+}
+
+strong {
+  color: #d86e6e;
+}
+
+.form-check-label {
+  float: left;
+}
+
+.childSubmodule label {
+  font-weight: 400 !important;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Module Styling */
+.module {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Submodule Styling */
+.submodules {
+  padding-left: 20px;
+}
+
+/* Button Styling */
+.btn-lg {
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+.sub-module-data {
+  display: block;
+}
+ 
+
+@media (min-width: 992px) {
+  .mini-sidebar .page-wrapper {
+    margin-left: 0px !important;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  /* General padding adjustment */
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Form group adjustments for smaller screens */
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  /* Adjust input, select, and checkbox size */
+  select,
+  input[type="text"],
+  input[type="checkbox"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Buttons take up full width on smaller screens */
+  .btn-lg {
+    width: 100%;
+  }
+
+  /* Adjusting for mobile and smaller tablets */
+  .module {
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  /* Smaller submodule padding */
+  .submodules {
+    padding-left: 15px;
+  }
+
+  .submodule {
+    padding-left: 20px;
+  }
+
+  /* Adjusting the margin and padding for child submodules */
+  .childSubmodule {
+    padding-left: 25px;
+  }
+}
+
+/* Further optimization for small screens and mobile */
+@media screen and (max-width: 768px) {
+  /* Adjust the card padding for small screens */
+  .card-body {
+    padding: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  /* Buttons */
+  .btn-lg {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* Form group for modules, submodules, and submodule data */
+  .submodule {
+    padding-left: 15px;
+  }
+
+  .submodules {
+    padding-left: 10px;
+  }
+   
+  .module {
+    margin-bottom: 10px;
+  }
+   
+  select,
+  input[type="text"] {
+    font-size: 13px;
+    padding: 10px;
+  }
+   
+  .childSubmodule {
+    padding-left: 15px;
+  }
+   
+  .form-check-label {
+    font-size: 12px;
+  }
+
+  .submodule input[type="checkbox"] {
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,71 @@
+
+<div class="container mt-2">
+  <!-- Header Section -->
+  <h6>Important Programs / Dates</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Important Programs / Dates</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!-- Button to add new program --> 
+      <a *ngIf="userRole != 'Student'" routerLink="/notice-board/add-programs" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add New Program</a>
+    </div>
+  </div>
+
+  <!-- Important Programs List Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Title</th>
+            <th>Program For</th>
+            <th>Download</th>
+            <th>Created On</th>
+            <th *ngIf="userRole != 'Student'">Options</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr *ngFor="let p of programList;index as i">
+            <td>{{i+1}}</td>
+            <td class="table-title">{{p.title}}</td>
+            <td>{{p.program_For}}</td>
+            <td><a [href]="p.filePath" class="download-btn" target="_blank">Download</a></td>
+            <td>{{p.created_On | date}}</td>
+            <td *ngIf="userRole != 'Student'">
+              <div class="action-container">
+                <button class="btn btn-info btn-sm btn-action" (click)="toggleBtn(i)">Action</button>
+                <ul *ngIf="toggleIndex === i" class="action-list">
+                  <li [routerLink]="['/notice-board/add-programs',p.program_id]"><i class="fa fa-edit"></i> <a> Edit</a></li>
+                  <li (click)="deleteProgram(p.program_id)"><i class="fa fa-trash"></i> <a> Delete</a></li>
+                </ul>
+              </div>
+            </td> 
+          </tr>
+          <!--<tr>
+            <td>2</td>
+            <td>Parent-Teacher Meeting</td>
+            <td>For Parents and Teachers</td>
+            <td><a href="#" class="btn btn-sm btn-success">Download</a></td>
+            <td>15/09/2024</td>
+            <td>
+              <button class="action-btn-toggle" (click)="actionToggle(i)">Action</button>
+              <div class="action-btn-list" *ngIf="toggleIndex === i">
+                <ul>
+                  <li (click)="editProgram(subj.subject_id)" *ngIf="permissions?.canEdit">
+                    <i class="fa fa-edit"></i>Edit
+                  </li>
+                  <li (click)="deleteProgram(subj.subject_id)" *ngIf="permissions?.canDelete">
+                    <i class="fa fa-trash"></i>Delete
+                  </li>
+                </ul>
+              </div> 
+            </td>
+          </tr>-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

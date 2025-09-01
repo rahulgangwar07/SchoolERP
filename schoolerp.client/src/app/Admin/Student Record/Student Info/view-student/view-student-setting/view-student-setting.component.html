@@ -1,0 +1,24 @@
+
+<!-- Student Popup Section -->
+<div class="row popupdiv">
+  <div class="col-md-12 mx-auto fc-center">
+    <div class="student-info row">
+      <div class="col-md-10"><h4>{{handleData.student.first_name}} ({{handleData.registration.class_name}})</h4></div>
+      <div class="col-md-2">
+        <button class="close-btn" (click)="closePopup(1)">&#10005;</button>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary" disabled>Promote Class</button>
+      <button class="btn btn-success" disabled>PaySlip</button>
+      <button (click)="moveToalumni(handleData.studentMaster.uid)">Move to Alumni</button>
+      <button class="btn btn-info" disabled>Send Notice</button>
+    </div>
+
+    <div class="student-details row">
+      <div class="col-md-6"><strong>Student Card</strong></div>
+      <div class="col-md-6"><strong>Parents/RFID No.</strong></div>
+    </div>
+  </div>
+</div>

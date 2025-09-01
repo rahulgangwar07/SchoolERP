@@ -1,0 +1,115 @@
+
+<div class="container mt-2">
+  <h6>Add Notice</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <button class="btn btn-outline-primary btn-sm mx-2" [routerLink]="'/notice-board/view-notice'">View Notices</button>
+    </div>
+  </div>
+
+
+  <!-- Add Notice Form -->
+  <div class="row notice-form">
+    <div class="col-md-7">
+      <form [formGroup]="noticeForm" (submit)="onSubmit()">
+        <div class="form-group row">
+          <label for="subject" class="col-sm-2 col-form-label">Subject <span>*</span></label>
+          <div class="col-sm-10">
+            <input type="text" formControlName="subject" class="form-control" id="subject" placeholder="Enter Subject" required>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="notice" class="col-sm-2 col-form-label">Notice <span>*</span></label>
+          <div class="col-sm-10">
+            <textarea class="form-control" formControlName="notice" id="notice" rows="5" placeholder="Enter Notice Message" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="noticeFor" class="col-sm-2 col-form-label">Notice For</label>
+          <div class="col-sm-5">
+            <select class="form-control" id="noticeFor" formControlName="notice_for" (change)="changeNotice()" required>
+              <option value="all">All</option>
+              <option value="teachers">Teachers</option>
+              <option value="students">Students</option>
+              <option value="singleClass">Single Class</option>
+              <option value="multipleClass">Multiple Class</option>
+            </select>
+          </div>
+          <div class="col-sm-5">
+            <select class="form-control" id="noticeType" formControlName="notice_type" required>
+              <option value="general">General Notice</option>
+              <option value="reminder">Reminder</option>
+              <option value="events">Events</option>
+              <option value="circular">Circular</option>
+              <option value="ptm">P.T.M</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <ng-container *ngIf="noticeForm.get('notice_for')?.value == 'singleClass'">
+          <div class="form-group row">
+            <label for="class" class="col-sm-2 col-form-label">Select Class</label>
+            <div class="col-sm-5">
+              <select class="form-control" formControlName="class_ids" id="class" (change)="onSectionChange()">
+                <option *ngFor="let cls of classList" [value]="cls.class_id">{{cls.class_name}}</option> 
+                <!-- Add more classes as needed -->
+              </select>
+            </div>
+            <div class="col-sm-5">
+              <select class="form-control" formControlName="sec_id" id="sec">
+                <option value="">Select Section</option>
+                <option *ngFor="let sec of secList" [value]="sec.sec_id">{{sec.sec_dis_name}}</option> 
+              </select>
+            </div>
+          </div>
+        </ng-container>
+
+
+        <div class="form-group row">
+          <label for="videoLink" class="col-sm-2 col-form-label">Video Link</label>
+          <div class="col-sm-10">
+            <input type="url" class="form-control" formControlName="video_link" id="videoLink" placeholder="Enter Video Link">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fileUpload" class="col-sm-2 col-form-label">Image/File</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control-file" (change)="onFileChange($event)"  formControlName="file_path" id="fileUpload">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color':themeSetting?.button_color}">Send Notice</button>
+          </div>
+        </div>
+
+        <div class="text-success text-center mt-2">
+          Users will get Notification as soon as you click on Send Button!
+        </div>
+      </form>
+    </div>
+
+    <ng-container *ngIf="noticeForm.get('notice_for')?.value === 'multipleClass'">
+      <div class="col-md-5 card-container">
+        <p class="selectClass">Select Class</p>
+        <div class="checkbox-group">
+          <label class="checkbox-label" *ngFor="let cls of classList">
+            <input type="checkbox" name="class" [value]="cls.class_id" [checked]="classIds.includes(cls.class_id)"
+                   (change)="onClassChange($event)" />
+            {{ cls.class_name }}
+          </label>
+          <!-- Add more checkboxes if needed -->
+        </div>
+      </div>
+    </ng-container>
+    
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0">Help / Support</h5>
+    <button class="btn btn-outline-primary btn-sm" [routerLink]="'/notice-board/student-desk'">Ask a Question</button>
+  </div>
+
+  <!-- Logged-in User Info -->
+  <div class="mb-3">
+    <p><strong>User:</strong> {{communications[0].created_by_name}}</p>
+  </div>
+
+  <!-- Search -->
+  <div class="input-group mb-4 w-50">
+    <input id="search" class="form-control" placeholder="Search anything..." />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary">GO</button>
+    </div>
+  </div>
+
+  <!-- Communication Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white">
+      <thead class="thead-light">
+        <tr>
+          <th>User</th>
+          <th>Subject</th>
+          <th>Conversation</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comm of communications; index as i" [ngClass]="{isClose : comm.isOpen == false}">
+          <!-- User Info -->
+          <td>
+            <strong>{{ comm.created_by_name }}</strong>
+            <br />
+            <small *ngIf="comm.class_id > 0" class="text-muted" style="color:#ff4400!important;">{{ comm.class_name }}</small>
+          </td>
+
+          <!-- Subject -->
+          <td>
+            <strong>{{ comm.subject }}</strong>
+          </td>
+
+          <!-- Conversation -->
+          <td>
+            <div class="ask-question mb-2">
+              <strong>{{ comm.created_by_name }}:</strong>
+              <p class="mb-0">{{ comm.question }}</p>
+            </div>
+
+            <div *ngIf="comm.answered_by" class="reply-question mb-2">
+              <p class="mb-0">{{ comm.answer }}</p>
+              <strong>By: {{ comm.answered_by_name }}</strong>
+            </div>
+          </td>
+
+          <!-- Action -->
+          <td>
+            <!-- For Faculty/Admin (can reply) -->
+            <ng-container *ngIf="userRole !== 'Student' && userId !== comm.created_by">
+              <button *ngIf="comm.answered_by" class="btn btn-sm btn-warning mb-2" (click)="openResponsePopup(comm,comm.created_by_name)">Change Response</button>
+              <button *ngIf="!comm.answered_by" class="btn btn-sm btn-primary mb-2" (click)="openResponsePopup(comm,comm.created_by_name)">Add Response</button>
+            </ng-container>
+
+            <!-- For Student (see reply status) -->
+            <ng-container *ngIf="userRole === 'Student' && userId == comm.created_by">
+              <button *ngIf="comm.answered_by" class="btn btn-sm btn-success mb-2">Replied</button>
+            </ng-container>
+
+            <!-- General fallback -->
+            <button *ngIf="!comm.answered_by && userId == comm.created_by" class="btn btn-sm btn-outline-secondary mb-2" disabled>
+              Waiting for reply
+            </button>
+            <br />
+            <small class="text-muted">{{ (comm.answered_at ? comm.answered_at : comm.asked_at) | date: 'dd MMM yyyy hh:mm a' }}</small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Popup Component -->
+<app-ask-new-question *ngIf="isPopupOpen"
+                      [status]="isPopupOpen"
+                      [request]="requestType"
+                      [communication_id]="communicationId"
+                      [askedTo]="facultyId" [name]="askedName"
+                      (cStatus)="closePopup($event)">
+</app-ask-new-question>

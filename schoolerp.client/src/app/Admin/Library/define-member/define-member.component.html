@@ -1,0 +1,97 @@
+<div class="container mt-5">
+  <!-- Header -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/library/issue-book" class="btn btn-outline-primary btn-sm mx-2">Issue Book</a>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form (ngSubmit)="submitForm()" #memberForm="ngForm">
+
+        <!-- Member Type -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">User Type <span>*</span></label>
+          <div class="col-sm-9">
+            <select class="form-control" [(ngModel)]="library_member.member_type" name="member_type" (change)="changeUserName()" required>
+              <option value="">-Select User Type-</option>
+              <option value="student">Student</option>
+              <option value="staff">Staff</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Class Dropdown -->
+        <div class="form-group row" *ngIf="library_member.member_type == 'student'">
+          <label class="col-sm-3 col-form-label">Class</label>
+          <div class="col-sm-9">
+            <select class="form-control" [(ngModel)]="library_member.class_id" name="class" (change)="changeClass()">
+              <option value="">-Select Class-</option>
+              <option *ngFor="let cls of classList" [value]="cls.class_id">{{ cls.dis_name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Department (Staff) -->
+        <div class="form-group row" *ngIf="library_member.member_type == 'staff'">
+          <label class="col-sm-3 col-form-label">Department</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="library_member.department" name="department" placeholder="Enter Department">
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Full Name <span>*</span></label>
+          <div class="col-sm-9 student-div">
+            <input type="text" class="form-control" name="full_name" [(ngModel)]="library_member.full_name"
+                   (input)="onFullNameInput()" placeholder="Enter Full Name" required>
+
+            <!-- Suggestions -->
+            <div *ngIf="classload && (filteredStudentList.length > 0 || filteredFacultyList.length > 0)" class="student-list-wrapper">
+              <ul class="student-list">
+                <li *ngFor="let stu of (library_member.member_type === 'student' ? filteredStudentList : filteredFacultyList)"
+                    (click)="(library_member.member_type === 'student' ? loadSingleStudentData(stu.stu_id) : loadSingleFacultyData(stu.faculty_id))">
+                  <strong>{{ stu.first_name }}</strong> 
+                  <small *ngIf="stu.father_name">({{ stu.father_name }})</small>
+                  <span *ngIf="library_member.member_type === 'student'" class="reg-no">Reg No: {{ stu.registration_no }}</span>
+                  <span *ngIf="library_member.member_type !== 'student'" class="reg-no">Reg No: {{ stu.faculty_id }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Mobile No.</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="library_member.mobile_no" name="mobile_no" placeholder="Enter Mobile Number">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Email</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" [(ngModel)]="library_member.email" name="email" placeholder="Enter Email">
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-group row">
+          <div class="col-sm-9 offset-sm-3">
+            <button type="submit" class="btn btn-primary">Save Member</button>
+            <button type="button" class="btn btn-secondary ml-2" (click)="clear()">Clear</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

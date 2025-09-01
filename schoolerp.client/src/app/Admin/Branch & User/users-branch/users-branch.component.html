@@ -1,0 +1,57 @@
+
+<div class="container mt-5">
+  <!-- Header Section -->
+  <h6 class="font-weight-bold">Branch List</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Edit Branches details</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/branch-user/add" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Add Branch</a>
+      <a routerLink="/branch-user/users" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Users</a>
+    </div>
+  </div>
+
+  <!-- Branch Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Branch Name</th>
+            <th>Code</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Options</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>B BLOCK</td>
+            <td>387</td>
+            <td>123455</td>
+            <td>College Address</td>
+            <td>
+              <a href="#" class="btn btn-info btn-sm">Fee Slip Overall</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-warning btn-sm">Edit</a>
+              <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer Section with Save Button -->
+  <div class="row mt-3">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-success">Save</button>
+    </div>
+  </div>
+</div>

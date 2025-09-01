@@ -1,0 +1,46 @@
+
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-sub-header">
+            <h6 class="page-title" *ngIf="sec_name">{{class_name}}({{sec_name}})</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="weekSchedule" class="routine-table">
+      <!-- Monday Routine -->
+      <div *ngFor="let week of weekSchedule;index as i" class="routine-row">
+        <div class="routine-day">{{week.day}}</div>
+        <div *ngFor="let s of weekSchedule[i].schedules;index as j" class="routine-subject">
+          <span class="subject-name">{{s.subject}}</span><br>
+          <span class="teacher-name">Mr. {{s.fac_name}}</span><br>
+          <span class="class-time">{{s.startTime}} - {{s.endTime}}</span><br>
+          <span class="class-time"><strong>Period:</strong> {{s.period}}</span>
+        </div>
+        <!--<div class="routine-subject">
+          <span class="subject-name">Hindi</span><br>
+          <span class="teacher-name">Mr. Alok Jha</span><br>
+          <span class="class-time">9:00 AM - 9:55 AM</span>
+        </div>
+        <div class="routine-subject">
+          <span class="subject-name">Maths</span><br>
+          <span class="teacher-name">Mr. Rahul Kumar</span><br>
+          <span class="class-time">10:00 AM - 10:55 AM</span>
+        </div>
+        <div class="routine-subject">
+          <span class="subject-name">Science</span><br>
+          <span class="teacher-name">Mr. Sanjeet Singh</span><br>
+          <span class="class-time">11:00 AM - 11:55 AM</span>
+        </div>-->
+      </div> 
+    </div>
+    <div *ngIf="!weekSchedule">
+      No Class routine Found for Session {{session}}
+    </div>
+
+  </div>
+</div>

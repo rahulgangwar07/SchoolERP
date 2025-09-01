@@ -1,0 +1,37 @@
+<div class="container">
+  <!-- Study Materials Section -->
+  <div class="maindiv">
+    <div class="row note-entry">
+      <table class="table table-striped">
+        <tr>
+          <td colspan="4"><strong>List of Topics</strong></td>
+        </tr>
+        <tr>
+          <td><strong>#</strong></td>
+          <td><strong>Chapter Name</strong></td>
+          <td><strong>Topic Name</strong></td>
+          <td><strong>Download</strong></td>
+        </tr>
+        <!-- Loop through study materials and their subjects -->
+        <ng-container *ngIf="studyMaterials?.length > 0">
+          <ng-container *ngFor="let subject of studyMaterials[0].subjects">
+            <!-- Loop through topics for each subject -->
+            <ng-container *ngFor="let syl of subject.topics; let i = index">
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ syl.chapterName }}</td>
+                <td>{{ syl.topic_name }}</td>
+
+                <td>
+                  <a (click)="downloadDocument(syl.document)" class="btn btn-success btn-sm">
+                    <i class="bi bi-download"></i> Download
+                  </a>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>

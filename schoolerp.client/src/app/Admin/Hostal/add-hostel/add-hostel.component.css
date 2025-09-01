@@ -1,0 +1,16 @@
+ 
+
+.form-control {
+  border-radius: 0px;
+}
+
+  span {
+  color: red;
+  font-weight: 600;
+}
+
+.hostal-form {
+  background-color: aliceblue;
+  padding: 15px 0px;
+}
+

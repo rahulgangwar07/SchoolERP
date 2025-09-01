@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title mb-4">📊 Define Exam Weightages</h5>
+
+    <!-- Common Exam Set Dropdown -->
+    <div class="mb-3">
+      <label class="form-label">Select Common Exam Set</label>
+      <select class="form-select" [disabled]="loading" (change)="onSelectGroup($event.target)">
+        <option value="">-- Select --</option>
+        <option *ngFor="let g of groupedSets" [value]="g.common_exam_set_id">
+          {{ g.common_exam_set_id }} - ({{ g.exam_sets.length }} exams)
+        </option>
+      </select>
+    </div>
+
+    <!-- Display Table -->
+    <div *ngIf="selectedGroup">
+      <h6 class="mb-3">🧾 Common Exam Set ID: <strong>{{ selectedGroup.common_exam_set_id }}</strong></h6>
+
+      <form [formGroup]="form" (ngSubmit)="saveWeightages()">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 60px;">#</th>
+                <th>Exam Title</th>
+                <th>Session</th>
+                <th style="width:160px;">Weightage (%)</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="weightages">
+              <tr *ngFor="let w of weightages.controls; let i = index" [formGroupName]="i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ w.get('exam_title')?.value }}</td>
+                <td>{{ selectedGroup.exam_sets[i]?.session || 'N/A' }}</td>
+                <td>
+                  <input type="number" class="form-control" formControlName="weightage" step="0.01" />
+                  <div *ngIf="w.get('weightage')?.touched && w.get('weightage')?.invalid" class="text-danger small">
+                    Enter valid weight (0 - 100)
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex gap-2 mt-3">
+          <button type="button" class="btn btn-secondary" (click)="setSameWeightToAll(0)">Set All to 0</button>
+          <button type="button" class="btn btn-secondary" (click)="setSameWeightToAll(100)">Set All to 100</button>
+          <button type="submit" class="btn btn-primary" [disabled]="loading">Save Weightages</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- No group selected -->
+    <div *ngIf="!selectedGroup && !loading" class="text-muted mt-3">
+      Please select a Common Exam Set to define weightages.
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="mt-2">Loading...</div>
+  </div>
+</div>

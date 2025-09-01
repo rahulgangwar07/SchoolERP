@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="row layout-header">
+    <div class="col-md-6">
+      View All My Test
+    </div>
+    <div class="col-md-6 text-right">
+      <a routerLink="/students/online-examination/exams-result" routerLinkActive="active">Test Result</a>
+    </div>
+  </div>
+
+  <div class="row my-test-container">
+    <div *ngFor="let exam of examList;index as i;" class="col-md-3 divpart">
+      <div class="fstpart">
+        <div>
+          <label>{{exam.exam_start_date | date:'dd MMM yyyy'}}</label>
+          <label> {{ exam.exam_title }} </label>
+          <label><strong> {{subjectName(exam.subject_id)}} </strong></label>
+        </div>
+        <div class="fstpartImg">
+          <img src="../../../../assets/img/icons/award-icon-03.svg" />
+        </div>
+      </div>
+      <div (click)="onlineExam(exam.exam_id)">
+        <button *ngIf="examStatus(exam.exam_id) == 'Pending'" class="start-exam-btn"> Time Duration {{ exam.duration }} Mins Start Exam</button> 
+        <button *ngIf="examStatus(exam.exam_id) != 'Pending'" class="start-exam-btn"> Exam Submmited Y'Can Only View Result</button> 
+      </div> 
+    </div>
+     
+  </div>
+</div>

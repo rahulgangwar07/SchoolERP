@@ -1,0 +1,82 @@
+/* Admin Login Popup Styling */
+.admin-login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+  .admin-login-popup .popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+    .admin-login-popup .popup-content p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .admin-login-popup .popup-content i {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+  .admin-login-popup .table {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+    .admin-login-popup .table th, .admin-login-popup .table td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .admin-login-popup .table th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+
+    .admin-login-popup .table td {
+      background-color: #f1f1f1;
+    }
+
+  /* Close button style */
+  .admin-login-popup .popup-content .close-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+    .admin-login-popup .popup-content .close-btn:hover {
+      background-color: #c82333;
+    }
+
+/* Add spacing between the popup and the body content */
+body {
+  overflow: hidden;
+}
+
+/* Optional: Add a smooth transition to the popup */
+.admin-login-popup {
+  transition: opacity 0.3s ease-in-out;
+}

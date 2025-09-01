@@ -1,0 +1,42 @@
+
+table {
+  margin-top: 40px;
+  /*display:inline-block;*/
+  width: 80%;
+  margin-left: 40px;
+}
+
+  table tr {
+    box-shadow: 0px 21px 2px -18px rgba(0, 0, 0, 0.1);
+  }
+
+    table tr:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    table tr td {
+      padding: 10px;
+    }
+
+      table tr td:first-child {
+        width: 50%;
+        padding: 10px;
+        text-align: start;
+      }
+
+      table tr td:nth-child(2) button {
+        border: 0px;
+        background-color: aquamarine; /* First button */
+      }
+
+      /* Target the second button in each td (Study Material) */
+      table tr td:nth-child(3) button {
+        border: 0px;
+        background-color: bisque; /* Second button */
+      }
+
+      /* Target the third button in each td (Lesson) */
+      table tr td:nth-child(4) button {
+        border: 0px;
+        background-color: lightyellow; /* Third button */
+      }

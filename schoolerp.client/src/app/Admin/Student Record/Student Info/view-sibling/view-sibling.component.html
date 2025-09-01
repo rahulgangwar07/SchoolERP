@@ -1,0 +1,57 @@
+<div class="container">
+  <h6>View Siblings</h6> 
+  <div class="row layout-header mb-3">
+    <div class="col-md-7">
+      <p class="font-weight-bold">View student list </p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a class="btn btn-outline-primary btn-sm" (click)="printReport()">Print</a>
+      <a routerLink="/student/view" class="btn btn-outline-primary btn-sm">View Student</a>
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="filters-container">
+    <div class="filter-group">
+      <label for="studentNameFilter">Student Name:</label>
+      <input type="text" id="studentNameFilter" [(ngModel)]="allfilter" placeholder="Search by Student Name/reg no" (input)="filterChange()">
+    </div>
+  </div>
+
+  <div class="table-container" id="alsoPrint">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Father's Name</th>
+          <th>Mother's Name</th>
+          <th>Phone</th>
+          <th>Student Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of filteredsiblingStudent; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{record.father_name}}</td>
+          <td>{{record.mother_name}}</td>
+          <td>{{record.phone}}</td>
+          <td class="student-div">
+            <table class="nested-table">
+              <tr *ngFor="let stu of record.students; index as j">
+                <td>{{j + 1}}</td>
+                <td>{{stu.stu_name}}</td>
+                <td>{{stu.reg_no}}</td>
+                <td>200</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="no-results" *ngIf="!siblingStudent || siblingStudent.length === 0">
+      <p>No siblings found for the selected filters.</p>
+    </div>
+  </div>
+
+</div>

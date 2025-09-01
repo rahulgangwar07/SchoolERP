@@ -1,0 +1,17 @@
+
+.action-btn-list{
+    cursor:pointer;
+}
+
+.table-stops th, .table-stops td {
+  white-space: nowrap;
+  background-color: #f9f9f9;
+}
+
+/*#4d6694*/
+.route-table-hd th {
+  color: #4d6694;
+  /*color: white;*/
+  font-weight: bold;
+  text-align: center;
+}

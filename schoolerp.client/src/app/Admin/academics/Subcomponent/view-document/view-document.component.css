@@ -1,0 +1,29 @@
+/* view-document.component.css */
+.view-documents-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+  ul li {
+    margin: 10px 0;
+  }
+
+    ul li a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+      ul li a:hover {
+        text-decoration: underline;
+      }

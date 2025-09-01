@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolERP.Server", "SchoolERP.Server\SchoolERP.Server.csproj", "{F0164D68-BACB-4F51-BA0C-FC9ECA0E4285}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "schoolerp.client", "schoolerp.client\schoolerp.client.esproj", "{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0164D68-BACB-4F51-BA0C-FC9ECA0E4285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0164D68-BACB-4F51-BA0C-FC9ECA0E4285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0164D68-BACB-4F51-BA0C-FC9ECA0E4285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0164D68-BACB-4F51-BA0C-FC9ECA0E4285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ECE0E04-5A77-4A2F-9332-3AE340E70E80}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BC5B525-B92A-4D33-8FF6-A725CC26DE87}
+	EndGlobalSection
+EndGlobal

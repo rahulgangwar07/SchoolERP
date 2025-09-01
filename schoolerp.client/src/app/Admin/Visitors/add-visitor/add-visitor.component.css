@@ -1,0 +1,116 @@
+form {
+  margin-top: 30px;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group span {
+  color:red;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"], input[type="tel"], input[type="date"], input[type="time"], textarea {
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 12px 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+  input[type="text"]:focus, input[type="tel"]:focus, input[type="date"]:focus, input[type="time"]:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"], .btn-outline-info, .btn-outline-danger {
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+  button[type="submit"]:hover, .btn-outline-info:hover, .btn-outline-danger:hover {
+    background-color: #0056b3;
+  }
+
+  button[type="submit"]:focus, .btn-outline-info:focus, .btn-outline-danger:focus {
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  }
+
+.student-details h5 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4c8bf5;
+  margin-top: 20px;
+  padding: 8px 15px;
+  border-radius: 8px 8px 0 0;
+  text-align: left;
+}
+
+.stu_detail {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f5f9fc;
+}
+
+  .stu_detail table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+    .stu_detail table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    .stu_detail table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .stu_detail table tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+.image-div img{
+    max-height:100px;
+    max-width:100px;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .visitor-div, .stu_detail {
+    margin-bottom: 30px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}

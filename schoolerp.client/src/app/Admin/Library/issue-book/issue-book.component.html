@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <!-- Header Section -->
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (*) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/library/define-member" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">Define Member</a>
+    </div>
+  </div>
+
+  <!-- Book Add Form -->
+  <div class="row">
+    <div class="col-md-8">
+      <form (ngSubmit)="submitForm()" #issueForm="ngForm">
+        <!-- Book Dropdown -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Book</label>
+          <div class="col-sm-9 student-div">
+            <input type="text" id="book_id" name="book" class="form-control" [(ngModel)]="bookname" (input)="onBookNameInput()" (click)="toggleBookList(true)" placeholder="Enter Book Name" />
+            <input id="bookid" name="bookid" type="hidden" [(ngModel)]="lIssue.book_id" />
+            <div class="student-list-wrapper" *ngIf="bookListStatus" (mouseleave)="toggleBookList(false)">
+              <ul class="student-list">
+                <li *ngFor="let book of filteredBookList; let i = index" (click)="selectBook(book.accession_no)">
+                  <span>{{ book.title }}</span>
+                  <span *ngIf="book.title !== ''"> ({{ book.accession_no }}) </span>
+                </li>
+              </ul>
+              <div *ngIf="filteredBookList.length === 0" class="no-results">No results found</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member ID Input -->
+        <div class="form-group row">
+          <label for="memberid" class="col-sm-3 col-form-label">Member ID *</label>
+          <div class="col-sm-9">
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="memberid" name="memberid" (blur)="existsMember()" [(ngModel)]="lIssue.member_id" placeholder="Enter Member ID" required>
+            </div>
+            <div class="col-md-6">
+              <label class="col-form-label member-label">{{member_name}}</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item Title / No -->
+        <div class="form-group row">
+          <label for="itemTitle" class="col-sm-3 col-form-label">Accession No</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="accession_no" [(ngModel)]="lIssue.accession_no" name="accession_no" placeholder="Enter Item Title or Item No" required>
+          </div>
+        </div>
+
+        <!-- Item Details -->
+        <!--<div class="form-group row">
+          <label for="itemDetails" class="col-sm-3 col-form-label">Item Details</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="itemDetails" [(ngModel)]="lIssue.item_details" name="item_details" placeholder="Enter Item Details">
+          </div>
+        </div>-->
+        <!-- Issue Date -->
+        <div class="form-group row">
+          <label for="issueDate" class="col-sm-3 col-form-label">Issue Date *</label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="issueDate" [(ngModel)]="lIssue.issue_date" name="issue_date" required>
+          </div>
+        </div>
+
+        <!-- Return Date -->
+        <div class="form-group row">
+          <label for="returnDate" class="col-sm-3 col-form-label">Return Date *</label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="returnDate" [(ngModel)]="lIssue.return_date" name="return_date" required>
+          </div>
+        </div>
+
+        <!-- Submit & Clear Buttons -->
+        <div class="form-group row">
+          <div class="col-sm-9 offset-sm-2">
+            <button type="submit" class="btn btn-primary" [disabled]="!issueForm.valid">Issue Book</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

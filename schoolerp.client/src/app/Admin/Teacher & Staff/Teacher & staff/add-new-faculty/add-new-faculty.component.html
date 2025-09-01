@@ -1,0 +1,245 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Add Teacher / Staff</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+      <p>Fields marked with (<span>*</span>) are mandatory.</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/teacher-staff/view-teacher" routerLinkActive="active" class="action-btn" *ngIf="permissions?.canView">View Teacher</a>
+      <a routerLink="/teacher-staff/view-staff" routerLinkActive="active" class="action-btn" *ngIf="permissions?.canView">View Staff</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+
+  <div class="formdiv">
+    <form [formGroup]="facultyForm" (ngSubmit)="onSubmit()">
+      <!--Faculty Personal Information-->
+      <div class="form-section row">
+        <h3><strong>Faculty Information</strong></h3>
+
+
+        <div class="form-group col-md-4">
+          <label for="facultyName">Name <span class="mandatory">*</span></label>
+          <input type="text" id="facultyName" name="facultyName" formControlName="first_name"
+                 [class.is-invalid]="facultyForm.get('first_name').invalid && facultyForm.get('first_name').touched"
+                 required />
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="username">Username <span class="mandatory">*</span></label>
+          <input type="text" id="username" name="username" formControlName="username"
+                 [class.is-invalid]="facultyForm.get('username').invalid && facultyForm.get('username').touched" required autocomplete="off">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="designation">Designation <span class="mandatory">*</span> </label>
+          <select id="designation" name="designation" formControlName="designation" required
+                  [class.is-invalid]="facultyForm.get('designation').invalid && facultyForm.get('designation').touched">
+            <option value="0" selected="selected" disabled>Select Designation</option>
+            <option *ngFor="let desig of desigList" value="{{desig.designation_id}}">{{desig.designation_name}}</option>
+            <!--<option value="Assistant Professor">Assistant Professor</option>
+            <option value="Associate Professor">Associate Professor</option>
+            <option value="Professor">Professor</option>-->
+          </select>
+        </div>
+
+
+
+        <div class="form-group col-md-6">
+          <label for="dob">Date of Birth  <span class="mandatory">*</span></label>
+          <input type="date" id="dob" name="dob" formControlName="dob" required
+                 [class.is-invalid]="facultyForm.get('dob').invalid && facultyForm.get('dob').touched">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="dateOfJoining">Date of Joining <span class="mandatory">*</span></label>
+          <input type="date" id="dateOfJoining" name="dateOfJoining" formControlName="date_of_joining" required
+                 [class.is-invalid]="facultyForm.get('date_of_joining').invalid && facultyForm.get('date_of_joining').touched">
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label class="col-md-4">Gender <span class="mandatory">*</span></label>
+          <div class="gender-group">
+            <input type="radio" id="male" name="gender" formControlName="gender" value="Male" required
+                   [class.is-invalid]="facultyForm.get('gender').invalid && facultyForm.get('gender').touched"> <span>Male</span>
+            <input type="radio" id="female" name="gender" formControlName="gender" value="Female" required
+                   [class.is-invalid]="facultyForm.get('gender').invalid && facultyForm.get('gender').touched"> <span>Female</span>
+          </div>
+
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="phone">Phone <span class="mandatory">*</span> </label>
+          <input type="text" id="phone" name="phone" formControlName="phone" required
+                 [class.is-invalid]="facultyForm.get('phone').invalid && facultyForm.get('phone').touched">
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="whatsapp">Public Contact / WhatsApp</label>
+          <input type="text" id="whatsapp" formControlName="whatsapp_no" name="whatsapp">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="email">Email <span class="mandatory">*</span></label>
+          <input type="email" id="email" formControlName="email" name="email" required
+                 [class.is-invalid]="facultyForm.get('email').invalid && facultyForm.get('email').touched">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="password">Password <span class="mandatory">*</span></label>
+          <input type="password" id="password" formControlName="password" name="password" required
+                 [class.is-invalid]="facultyForm.get('password').invalid && facultyForm.get('password').touched">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="userType">User Type </label>
+          <select id="userType" name="userType" formControlName="userType">
+            <option value="0">Select UserType</option>
+            <option value="Director">Director</option>
+            <option value="Principal">Principal</option>
+            <option value="Vice President">Vice President</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Staff">Staff</option>
+            <!--<option value="Other">Other</option>-->
+          </select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="speciality">Speciality</label>
+          <input type="text" id="speciality" name="speciality" formControlName="speciality">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="qualification">Qualification</label>
+          <input type="text" id="qualification" name="qualification" formControlName="qualification">
+        </div>
+      </div>
+      <!--Family and Personal Information-->
+      <div class="form-section row">
+        <h3><strong>Family and Personal Information</strong></h3>
+
+        <div class="form-group col-md-6">
+          <label for="spouseName">Spouse Name</label>
+          <input type="text" id="spouseName" name="spouseName" formControlName="spouse_name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="motherName">Mother Name</label>
+          <input type="text" id="motherName" name="motherName" formControlName="mother_name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="fatherName">Father Name</label>
+          <input type="text" id="fatherName" name="fatherName" formControlName="father_name">
+        </div>
+
+        <!--<div class="form-group">
+          <label for="motherPhone">Mother Mobile No</label>
+          <input type="text" id="motherPhone" name="motherPhone">
+        </div>-->
+
+        <div class="form-group col-md-6">
+          <label for="bloodGroup">Blood Group</label>
+          <input type="text" id="bloodGroup" name="bloodGroup" formControlName="phone">
+        </div>
+      </div>
+      <!--Faculty Additional Information-->
+      <div class="form-section row">
+        <h3><strong>Additional Information</strong></h3>
+
+        <!--<div class="form-group">
+          <label for="employeeFileNo">Employee File No</label>
+          <input type="text" id="employeeFileNo" name="employeeFileNo">
+        </div>-->
+
+        <div class="form-group col-md-6">
+          <label for="permanentAddress">Permanent Address</label>
+          <textarea id="permanentAddress" name="permanentAddress" formControlName="address"></textarea>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="localAddress">Local Address</label>
+          <textarea id="localAddress" name="localAddress" formControlName="local_address"></textarea>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="experienceDetails">Experience Details</label>
+          <input id="experienceDetails" type="number" name="experienceDetails" formControlName="experience" />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="bankName">Bank Name</label>
+          <input type="text" id="bankName" name="bankName" formControlName="bank_name">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="bankAccountDetails">Bank A/C Detail</label>
+          <input type="text" id="bankAccountDetails" name="bankAccountDetails" formControlName="account_no">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="bankIfscCode">Bank IFSC Code</label>
+          <input type="text" id="bankIfscCode" name="bankIfscCode" formControlName="ifsc_code">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="aadhaarNo">Aadhaar Number</label>
+          <input type="text" id="aadhaarNo" name="aadhaarNo" formControlName="aadhar_no">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="panCard">Pan Card</label>
+          <input type="text" id="panCard" name="panCard" formControlName="pan_card">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="passport">Passport</label>
+          <input type="text" id="passport" name="passport" formControlName="passport">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="dlDetails">DL Details</label>
+          <input type="text" id="dlDetails" name="dlDetails" formControlName="dl_details">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="pfAccountNumber">PF Account Number</label>
+          <input type="text" id="pfAccountNumber" name="pfAccountNumber" formControlName="pf_account_no">
+        </div>
+      </div>
+      <!--Upload Photo and Signature-->
+      <div class="form-section row">
+        <h3><strong>Upload Documents</strong></h3>
+
+        <div class="form-group col-md-6">
+          <label for="photo">Photo (Max Size = 200KB)</label>
+          <input type="file" id="photo" name="photo" (change)="onFileChange($event)">
+          <div *ngIf="facImage">
+            <img [src]="facImage" alt="Preview" width="80" />
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="signature">Signature (Max Size = 200KB)</label>
+          <input type="file" id="signature" name="signature" (change)="onSignatureChange($event)">
+          <div *ngIf="facSignature">
+            <img [src]="facSignature" alt="Preview" width="80" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="submit-btn" [ngStyle]="{'background-color':themeSetting?.button_color}">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <!-- Page Header -->
+  <div class="body">
+    <h5 class="page-title">📦 Item List - Stock Report</h5>
+    <div class="row layout-header align-items-center bg-light p-3 rounded">
+      <div class="col-md-7">
+        <p class="header-subtitle">View current stock details by item and variant.</p>
+      </div>
+      <div class="col-md-5 text-end">
+        <button class="btn btn-outline-primary btn-sm me-2" (click)="printReport()">
+          🖨️ Print Report
+        </button>
+        <button class="btn btn-success btn-sm" (click)="openSellCounter()">
+          💰 Sell Counter
+        </button>
+      </div>
+    </div>
+
+    <!-- Stock Table -->
+    <div class="row mt-4 printableInventory">
+      <div class="col-12">
+        <div class="card shadow-sm border-0 rounded">
+          <div class="card-body">
+            <table class="table table-bordered table-hover align-middle text-center">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th colspan="6">Item Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let inv of inventoryData; index as i">
+                  <tr class="table-primary">
+                    <td [attr.rowspan]="inv.inventory_s.length + 1"><strong>{{ i + 1 }}</strong></td>
+                    <td colspan="6" class="text-start fw-bold">{{ inv.item_name }}</td>
+                  </tr>
+                  <tr *ngFor="let v of inv.inventory_s; index as j">
+                    <td class="variant-cell">{{ v.variant_name }}</td>
+                    <td class="text-danger"><span class="fw-bolder">Rs</span> {{ v.unit_price }}</td>
+                    <td class="text-info"><span class="fw-bolder">Qty:</span> {{ v.quantity }}</td>
+                    <td class="text-success"><span class="fw-bolder">Sold:</span> 15</td>
+                    <td class="text-success"><span class="fw-bolder">Rs.</span> {{ v.unit_price * v.quantity }}</td>
+                    <td class="text-success"><span class="fw-bolder"> Available:</span> {{ v.quantity - 15 }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup -->
+<app-inventory-sell-popup [popupOpen]="popupOpen"
+                          [requestType]="popupType"
+                          (popupClose)="closePopup($event)">
+</app-inventory-sell-popup>

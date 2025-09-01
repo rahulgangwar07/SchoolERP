@@ -1,0 +1,133 @@
+.month-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  background-color:#e2b6a1;
+}
+
+  .month-checkboxes label {
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .month-checkboxes input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+select, input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 25%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.checkbox-group label {
+  margin-right: 20px;
+}
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+.layout-header {
+   width: 94%;
+}
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1120px;
+  }
+}
+
+/* Basic styles for the custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.dropdown-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Show the dropdown when the button is clicked */
+.custom-dropdown:hover .dropdown-content {
+  display: block;
+ 
+}
+
+/* Style for each checkbox inside the dropdown */
+.dropdown-content label {
+  display: block;
+  margin: 5px 0;
+}
+
+.dropdown-content input[type="checkbox"] {
+  margin-right: 5px;
+}
+/* Basic Table Styling */
+.student-fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  .student-fee-table th, .student-fee-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  .student-fee-table th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .student-fee-table td {
+    background-color: #f9f9f9;
+  }
+
+  /* Hover Effect on Rows */
+  .student-fee-table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+/* Message for No Records Found */
+.no-records {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+

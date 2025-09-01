@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Bulk Student Import</h2>
+
+  <form action="#" method="POST" enctype="multipart/form-data">
+    <!-- Select File Section -->
+    <div class="form-group">
+      <label for="fileUpload">Select Excel or CSV File *</label>
+      <input type="file" id="fileUpload" name="fileUpload" accept=".xlsx, .xls, .csv" required>
+    </div>
+
+    <!-- Academic Year Selection -->
+    <div class="form-group">
+      <label for="academicYear">Academic Year *</label>
+      <select id="academicYear" name="academicYear" required>
+        <option value="2024-2025">2024 - 2025</option>
+        <option value="2023-2024">2023 - 2024</option>
+        <option value="2022-2023">2022 - 2023</option>
+      </select>
+    </div>
+
+    <!-- Update Record By (Username or Admission No.) -->
+    <div class="form-group">
+      <label for="updateRecordBy">Update Record By *</label>
+      <select id="updateRecordBy" name="updateRecordBy" required>
+        <option value="username">Username</option>
+        <option value="admissionNo">Admission No.</option>
+      </select>
+    </div>
+
+    <!-- Information about columns to be included -->
+    <div class="info-text">
+      <p><strong>Available Titles for Excel/CSV Sheet:</strong></p>
+      <ul>
+        <li>ACTIVE, Y/N</li>
+        <li>ADDRESS</li>
+        <li>ADMISSION NO</li>
+        <li>CLASS</li>
+        <li>ADMISSION DATE</li>
+        <li>BLOOD GROUP</li>
+        <li>CASTE</li>
+        <li>CATEGORY</li>
+        <li>CITY</li>
+        <li>CLASS NAME</li>
+        <li>DATE OF BIRTH</li>
+        <li>EMAIL</li>
+        <li>FATHER'S NAME, OCCUPATION, AADHAR, INCOME</li>
+        <li>MOTHER'S NAME, OCCUPATION, PHONE</li>
+        <li>GENDER</li>
+        <li>HEIGHT, WEIGHT</li>
+        <li>USERNAME, STUDENT NAME</li>
+        <li>ETC...</li>
+      </ul>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn">Upload and Update Students</button>
+  </form>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Bulk Student Import | Year 2024-2025</p>
+  </div>
+</div>

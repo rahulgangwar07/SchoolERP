@@ -1,0 +1,79 @@
+
+
+<div class="container mt-2">
+  <!-- Header Section -->
+  <h6 class="font-weight-bold">Upload Forms</h6>
+  <div class="row layout-header">
+    <div class="col-md-7">
+
+      <p>Upload Forms</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <!--<a routerLink="/branch-user/activity-report" routerLinkActive="active" class="btn btn-outline-primary btn-sm mx-2">View Activity Report</a>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <tr>
+          <td colspan="4">Document / Form</td>
+        </tr>
+        <tr>
+          <td>#</td>
+          <td>TITLE</td>
+          <td>DOWNLOAD</td>
+          <td>OPTIONS</td>
+        </tr>
+        <tr *ngFor="let f of filtereddownloadFormList;index as i;">
+          <td>{{i+1}}</td>
+          <td>{{f.form_name}}</td>
+          <td>
+            <a [href]="f.form_url" class="download" target="_blank">DOWNLOAD</a>
+          <!--<button></button>--> 
+          </td>
+          <td>
+            <div class="action-container">
+              <button class="btn btn-info btn-sm btn-action" (click)="toggleBtn(i)">Action</button>
+              <ul *ngIf="toggleIndex === i" class="action-list">
+                <li (click)="editForm(f.form_id)"><i class="fas fa-edit"></i> Edit</li> 
+                <li (click)="deleteForm(f.form_id,i)"><i class="fas fa-trash-alt"></i> Delete</li>
+              </ul>
+            </div>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-6 submitdiv">
+      <div class="form-group">
+        <label for="formtype">Form Type</label>
+        <select id="formtype" name="formtype" [(ngModel)]="downloadForm.form_type" class="form-control" (change)="filter()">
+          <option value="0" disabled>--Select FormType--</option>
+          <option value="registration">Registration</option>
+          <option value="scholarship">ScholarShip</option>
+          <option value="cbsereg">C.B.S.E. Reg</option>
+          <option value="other">Other</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="downloadForm.form_name" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="upload">Upload</label>
+        <input type="file" id="upload" class="form-control" accept=".pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx" (change)="fileUpload($event)" />
+        <div *ngIf="form_url">
+          <p>Current File: <a [href]="form_url" target="_blank">{{ form_url | slice: -20 }}</a></p>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button id="btnsaveall" class="btn btn-primary" (click)="submitForm()" [ngStyle]="{'background-color':themeSetting?.button_color}">Save All</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

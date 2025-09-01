@@ -1,0 +1,239 @@
+<div class="container mt-1">
+  <!-- Header Section -->
+  <h6>Generate Transfer Certificate</h6>
+
+  <div id="contentDiv">
+    <div class="row layout-header mb-3">
+      <div class="col-md-7">
+        <p class="font-weight-bold">View Transfer Certificate</p>
+      </div>
+      <div class="col-md-5 text-right">
+        <a class="btn btn-outline-primary btn-sm" (click)="print()">Print</a>
+      </div>
+    </div>
+    <!-- TC Number and Admission No. -->
+    <div class="row">
+      <img src="../../../../../assets/img/profile-user.jpg" class="header-img" />
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label><strong>TC No:</strong></label>
+        <input [(ngModel)]="tcData.tcNo" class="form-control" placeholder="Enter TC No." />
+      </div>
+      <div class="col-md-6">
+        <label><strong>Admission No.:</strong></label>
+        <input [(ngModel)]="tcData.admissionNo" class="form-control" placeholder="Enter Admission No." />
+      </div>
+    </div>
+
+    <!-- Student Information Section -->
+    <div class="mb-4">
+      <div class="text-danger mb-3">
+        <h6><strong>TRANSFER CERTIFICATE</strong></h6>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Name of Pupil:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.first_name" class="form-control" placeholder="Enter Name" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Personal Education Number (PEN):</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.pen_card" class="form-control" placeholder="Enter PEN" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Mother's Name / Guardian's Name:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.mother_name" class="form-control" placeholder="Enter Mother's Name" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Father's / Guardian's Name:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.father_name" class="form-control" placeholder="Enter Father's Name" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Nationality:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.nationality" class="form-control" placeholder="Enter Nationality" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Caste (SC/ST/General):</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.caste" class="form-control" placeholder="Enter Caste" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Date of Birth:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.dob" class="form-control" placeholder="Enter Date of Birth" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Date of First Admission in School:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.first_admission_date" class="form-control" placeholder="Enter Admission Date" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label><strong>Class Last Studied:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.class_id" class="form-control" placeholder="Enter Last Studied Class" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label><strong>Subjects Studied:</strong></label>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input [(ngModel)]="tcData.subjects" class="form-control" placeholder="Enter Subjects" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Last Exam Result:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.exam_result" class="form-control" placeholder="Enter Exam Result" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Failed Information (If Any):</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.failed_info" class="form-control" placeholder="Enter Failure Information" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Promotion Status:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.promotion" class="form-control" placeholder="Enter Promotion Info" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Reason for Leaving:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.reason_for_leaving" class="form-control" placeholder="Enter Reason for Leaving" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>School Dues Paid Till:</strong></label>
+        <input [(ngModel)]="tcData.dues_paid" class="form-control" placeholder="Enter Dues Paid" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Fee Concession (If Any):</strong></label>
+        <input [(ngModel)]="tcData.fee_concession" class="form-control" placeholder="Enter Fee Concession" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Total Working Days:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.working_days" class="form-control" placeholder="Enter Total Working Days" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Days Present:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.days_present" class="form-control" placeholder="Enter Days Present" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Extra-Curricular Activities:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.extra_curricular" class="form-control" placeholder="Enter Extra-Curricular Activities" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Games Played and Achievements:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.activities" class="form-control" placeholder="Enter Activities" />
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>General Conduct:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.conduct" class="form-control" placeholder="Enter Conduct" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Remarks:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.remarks" class="form-control" placeholder="Enter Remarks" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Prepared By:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.prepared_by" class="form-control" placeholder="Enter Prepared By" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Class Teacher's Signature:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.class_teacher" class="form-control" placeholder="Enter Signature" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Principal's Signature:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.principal_signature" class="form-control" placeholder="Enter Principal's Signature" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label><strong>Application Date:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.application_date" class="form-control" placeholder="Enter Application Date" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label><strong>Issue Date:</strong></label>
+      </div>
+      <div class="col-md-6 mb-3">
+        <input [(ngModel)]="tcData.issue_date" class="form-control" placeholder="Enter Issue Date" />
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="saveTC()">Save TC</button>
+  </div>
+</div>

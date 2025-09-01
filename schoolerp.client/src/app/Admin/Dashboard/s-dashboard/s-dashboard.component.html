@@ -1,0 +1,179 @@
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-sub-header">
+            <h3 class="page-title">Welcome to Your Student Dashboard</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active">Student Panel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- Row 1: Dashboard Widgets -->
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-comman w-100">
+          <div class="card-body">
+            <div class="db-widgets d-flex justify-content-between align-items-center">
+              <div class="db-info">
+                <h6>Homework</h6>
+                <h3>{{studentHeader?.homework}}</h3> 
+              </div>
+              <div class="db-icon">
+                <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Assignments Widget -->
+      <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-comman w-100">
+          <div class="card-body">
+            <div class="db-widgets d-flex justify-content-between align-items-center">
+              <div class="db-info">
+                <h6>Live Classes</h6>
+                <h3>{{studentHeader?.live_classes}}</h3>  
+              </div>
+              <div class="db-icon">
+                <img src="assets/img/icons/dash-icon-02.svg" alt="Dashboard Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Exam Widget -->
+      <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-comman w-100">
+          <div class="card-body">
+            <div class="db-widgets d-flex justify-content-between align-items-center">
+              <div class="db-info">
+                <h6>Online Exam</h6>
+                <h3>{{studentHeader?.online_exam}}</h3>
+              </div>
+              <div class="db-icon">
+                <img src="assets/img/icons/dash-icon-03.svg" alt="Dashboard Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Next Exam Widget -->
+      <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-comman w-100">
+          <div class="card-body">
+            <div class="db-widgets d-flex justify-content-between align-items-center">
+              <div class="db-info">
+                <h6>Syllabus</h6>
+                <h3>{{studentHeader?.syllabus}}</h3>
+              </div>
+              <div class="db-icon">
+                <img src="assets/img/icons/teacher-icon-01.svg" alt="Dashboard Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Performance and Attendance -->
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-6">
+                <h5 class="card-title">Course Performance</h5>
+              </div>
+              <div class="col-6">
+                <ul class="chart-list-out">
+                  <li><span class="circle-blue"></span>Completed</li>
+                  <li><span class="circle-green"></span>Ongoing</li>
+                  <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="apexcharts-area"></div>  <!-- Dynamic Data: Performance graph for each course -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Overview Chart -->
+      <div class="col-md-12 col-lg-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-6">
+                <h5 class="card-title">Attendance Overview</h5>
+              </div>
+              <div class="col-6">
+                <ul class="chart-list-out">
+                  <li><span class="circle-blue"></span>Present</li>
+                  <li><span class="circle-green"></span>Absent</li>
+                  <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="bar"></div>  <!-- Dynamic Data: Attendance graph -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Assignments Section -->
+    <div class="row">
+      <div class="col-xl-6 d-flex">
+        <div class="card flex-fill student-space comman-shadow">
+          <div class="card-header d-flex align-items-center">
+            <h5 class="card-title">My Assignments</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table star-student table-hover table-center table-borderless table-striped">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Assignment</th>
+                    <th>Due Date</th>
+                    <th class="text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Math Assignment 1</td>
+                    <td class="text-nowrap">Dec 5, 2024</td>
+                    <td class="text-center">Pending</td>  <!-- Dynamic Data: Assignment status (Pending/Submitted) -->
+                  </tr>
+                  <tr>
+                    <td>History Essay</td>
+                    <td class="text-nowrap">Dec 12, 2024</td>
+                    <td class="text-center">Submitted</td>  <!-- Dynamic Data: Assignment status -->
+                  </tr>
+                  <tr>
+                    <td>Science Lab Report</td>
+                    <td class="text-nowrap">Dec 20, 2024</td>
+                    <td class="text-center">Pending</td>  <!-- Dynamic Data: Assignment status -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container">
+  <h6>ONLINE PAYMENT REPORT</h6>
+
+  <div class="row">
+    <div class="col-md-12"><p>Payment Decline list will be deleted after 30 Days.</p></div>
+    <div class="col-md-12">
+      <select id="class">
+        <option>All Class</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+      </select>
+
+      <select id="section">
+        <option>Section</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+
+      <select id="branch">
+        <option>B Block</option>
+      </select>
+      <button class="go">Go</button>
+    </div>
+  </div>
+
+  <div class="row  localrow">
+    <p>Date Wise Online Collection</p>
+  </div>
+  <div class="row datediv">
+    <div class="col-md-6">
+      Between 28/11/2024 To 28/11/2024
+    </div>
+    <div class="col-md-6">
+      Rajeev Nagar, Patna (Bihar)<br />
+      All Fees
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="print-btn-parent"><button class="printbtn">Print Record</button></div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Student Name</th>
+          <th>Father's Name</th>
+          <th>Class</th>
+          <th>Amount</th>
+          <th>Receipt Date</th>
+          <th>Status</th>
+          <th>Action</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 1 -->
+        <tr>
+          <td>1</td>
+          <td>Jatin Sharma</td>
+          <td>Mr. Ashutosh Sharma</td>
+          <td>I</td>
+          <td>Rs 1</td>
+          <td>30 Jul 2024 01:57 PM</td>
+          <td>Payment</td>
+          <td><button class="btn btn-info">Accept</button></td>
+        </tr>
+        <tr class="tdd">
+          <td colspan="9">
+              Shopping_order_id : 1 | Razorpay_order_id : order_OerqeZU3APwCDp | Amount : 1 | Payment By Razorpay Gateway
+          </td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+          <td>2</td>
+          <td>Jatin Sharma</td>
+          <td>Mr. Ashutosh Sharma</td>
+          <td>I</td>
+          <td>Rs 100</td>
+          <td>29 Mar 2024 07:47 AM</td>
+          <td>Payment</td>
+          <td><button class="btn btn-info">Accept</button></td> 
+        </tr>
+        <tr class="tdd">
+          <td colspan="9">Purpose : test | Amount : 100 | Payment by Bank Transfer</td>
+        </tr>
+        <tr class="grand-total">
+          <td>Grand Total: Rs 101</td>
+          <td>Payment Accepted: Rs 101</td>
+        </tr>
+      </tbody>
+    </table>
+     
+  </div>
+
+</div>

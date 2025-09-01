@@ -1,0 +1,56 @@
+
+<div class="container mt-1">
+  <!-- Header Section -->
+  <strong>{{routeName}} Class Routine</strong>
+  <div class="row layout-header">
+    <div class="col-md-6">
+      <p>Class Routine List</p>
+    </div>
+    <div class="col-md-5 text-right">
+      <a routerLink="/routine/teacher-routine" routerLinkActive="active" class="action-btn">Teacher Routine</a>
+      <a routerLink="/routine/add-routine" routerLinkActive="active" class="action-btn" *ngIf="permissions?.canCreate">Add Routine</a>
+    </div>
+  </div>
+
+  <app-success-message-popup *ngFor="let message of messages; let i = index"
+                             [messages]="message" [showSuccessPopup]="showSuccessPopup"
+                             (closePopup)="closeMessagePopup(i)">
+  </app-success-message-popup>
+
+  <div class="">
+    <ul class="routine-ul">
+      <li class="routine-li" *ngFor="let routine of classRoutines;let i=index;">
+        <div class="row classes">
+          <button class="col-md-2 col-sm-2 class-btn" (click)="toggleBtn(i)">{{routine.class_name}}({{routine.section_name}})</button>
+          <p class="col-md-1 col-sm-2 print">
+            <button [routerLink]="['../view-routine/print', routine.class_id]" routerLinkActive="active">Print</button>
+          </p>
+        </div>
+        <div class="routine-div" *ngIf="routineIndex === i">
+          <div *ngFor="let s of routine.days" class="routine-details">
+            <div class="row day">
+              <div class="col-md-2 day">
+                <strong>{{s.day}}</strong>
+              </div>
+            </div>
+            <ng-container *ngIf="s.schedule.Count !== 0">
+              <div *ngFor="let sch of s.schedule" class="col-md-2 time-slot">
+                <p class="priod"><strong>{{sch.period_id}}</strong></p>
+                <p><strong>{{sch.startTime}} - {{sch.endTime}}</strong></p>
+                <label>{{sch.faculty_name}}</label>
+                <div class="row actionsbtn">
+                  <div class="col-md-3" *ngIf="permissions?.canEdit"> <button class="edit-btn" [routerLink]="['../../routine/add-routine',sch.schedule_id]" routerLinkActive="active">Edit</button></div>
+                  <div class="col-md-3" *ngIf="permissions?.canDelete"><button class="delete-btn" (click)="deleteSchedule(sch.schedule_id)">Delete</button></div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>

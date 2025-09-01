@@ -1,0 +1,46 @@
+
+.container{
+    position:relative;
+}
+
+.buttons-all {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-all button {
+  color: white;
+  background-color: #098ade;
+}
+
+.tableDiv {
+  margin: 0px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.exam_title{
+    color:#ff6a00;
+}
+
+.ques_gen {
+  width: 360px;
+}
+
+.question-td p, .objective p{
+  margin: 0PX;
+}
+ 
+
+.question-td button, .objectiveType {
+  border: 0px;
+  color: #ff6a00;
+  background-color: none;
+  margin: 0px 5px;
+}
+
+.optTrue {
+  background-color: #62bffb;
+  color: white;
+}
+

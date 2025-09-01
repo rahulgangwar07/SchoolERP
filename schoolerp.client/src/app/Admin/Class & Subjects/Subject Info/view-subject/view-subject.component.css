@@ -1,0 +1,139 @@
+/* General Styling */
+.container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fa;
+}
+
+#slclass {
+  border: none;
+  background-color: #e60b0b;
+  color: white;
+  width: 95px; 
+  text-align: center;
+}
+ 
+
+.subject-item {
+  margin-bottom: 20px;
+  border-right: 1px solid #ddd;
+}
+
+  .subject-item:hover {
+    background-color: oldlace;
+  }
+
+
+.subject-info div {
+  padding: 10px 0px 5px 12px;
+}
+
+.subject-info h6 {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.subject-info p {
+  font-size: 10px;
+}
+
+.subject-info img {
+  max-height: 70px;
+  max-width: 70px;
+}
+
+.subject-actions {
+  margin: 10px 12px;
+  font-size: 13px;
+}
+
+  .subject-actions a {
+    text-decoration: none;
+  }
+
+  .subject-actions .row {
+    border-top: 2px solid #bd7575;
+    margin-bottom: 5px;
+  }
+
+  .subject-actions button {
+    width: 100%;
+    border: 1px solid red;
+  }
+
+.item-count {
+  background-color: #5f5f5f;
+  margin-left: 4px;
+  padding: 4px;
+  border-radius: 19px 24px;
+  color: white;
+}
+
+/* Button that toggles the dropdown */
+/*.action-btn-toggle {
+  padding: 10px 20px; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+*/
+/*  .action-btn-toggle:hover {
+    background-color: #0056b3;
+  }*/
+
+/* Dropdown menu container */
+/*.action-btn {
+  background-color: white;
+  width: 150px;*/ /* Adjust width to fit the content */
+/*display: none;*/ /* Hidden by default */
+/*position: absolute;
+  top: 40px;*/ /* Position below the button */
+/*right: 0;*/ /* Align to the right of the button */
+/*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 5px 0;
+  z-index: 10;
+}*/
+
+.action-btn-list {
+  background-color: white;
+  width: 150px;
+  position: absolute;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /*display:none;*/
+}
+
+  .action-btn-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+    .action-btn-list ul li {
+      padding: 2px 11px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+      .action-btn-list ul li:hover {
+        background-color: #f0f0f0;
+      }
+
+      .action-btn-list ul li i {
+        padding-right: 10px;
+        color: #ff3b30; /* Red color for icons */
+      }
+
+  /* Show the dropdown when the button is clicked */
+  .action-btn-list.show {
+    display: block;
+  }

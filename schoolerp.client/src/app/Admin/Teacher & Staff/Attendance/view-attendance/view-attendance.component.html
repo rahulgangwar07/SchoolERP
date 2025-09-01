@@ -1,0 +1,105 @@
+<div class="container">
+  <!-- Header Section -->
+  <h6 class="mt-2">View Teacher / Staff Attendance</h6>
+  <div class="row layout-header mb-3">
+    <div class="col-md-4">
+      <p class="font-weight-bold">View Teacher / Staff Attendance sheet </p>
+    </div>
+    <div class="col-md-8 text-left">
+      <a routerLink="/teacher-staff/take-attendance" routerLinkActive="active">Take Attendance</a>
+      <a routerLink="/teacher-staff/-attendance" routerLinkActive="active" (click)="printReport()">Monthly Report</a>
+      <!--<a routerLink="/teacher-staff/-attendance" routerLinkActive="active">Export CSV</a>-->
+      <!--<a routerLink="/teacher-staff/-attendance" routerLinkActive="active">Summary Report</a>-->
+    </div>
+  </div>
+   
+  <div class="filters"> 
+    <div>
+      <label for="select-month">Select Month:</label>
+      <select id="select-month" [(ngModel)]="selectedMonth" (change)="dateFilter()">
+        <option *ngFor="let month of calenderMonth | keyvalue" [value]="month.key">{{ month.value }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="select-year">Select Year:</label>
+      <select id="select-year" [(ngModel)]="selectedYear" (change)="dateFilter()">
+        <option *ngFor="let year of calenderYear" [value]="year">{{year}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="search-name">Search Name:</label>
+      <input type="text" id="search-name" placeholder="Search Teacher Name">
+    </div>
+    
+  </div> 
+  <div class="attendance_div">
+    <div class="table-container" id="printableArea">
+      <h2 style="display:none;">Attendance Report {{selectedYear}}</h2>
+      <table *ngIf="monthlyAttendanceReport">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th *ngFor="let date of getMonthDates()">
+              {{date | date : 'dd MMM' }}
+            </th>
+
+            <!--<th>2 Nov (Sat)</th>
+      <th>30 Nov (Sat)</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row 1 -->
+          <tr *ngFor="let attdate of monthlyAttendanceReport; index as i">
+            <td>{{i+1}}</td>
+            <td><label class="fName"><strong>{{attdate.faculty_name}}</strong></label> <p>({{attdate.desig_name}})</p></td>
+            <td *ngFor="let att of attdate.faculty_">
+            <div *ngIf="att.status != 'P'" class="status {{att.status}}">{{att.status}}</div>
+            <div *ngIf="att.status == 'P'"><p class="status {{att.status}}">  {{ getFormattedTime(att.inTime) }}</p>
+            <p *ngIf="att.outTime != '00:00:00'" class="status outtime">{{getFormattedTime(att.outTime)}}</p>
+              </div>
+            </td>
+            <!--<td><div class="status a">A</div></td>
+      <td><div class="status l">L</div></td>
+      <td><div class="status p">P</div></td>
+      <td><div class="status p">P</div></td>
+      <td><div class="status waiting">Waiting</div></td>
+      <td><div class="status p">P</div></td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
+
+<!--<div id="printableArea" style="display:none;">
+  <div class="table-container">
+    <table *ngIf="monthlyAttendanceReport">
+      <thead style="border-style: solid;">
+        <tr>
+          <th>Sr. No.</th>
+          <th>Name</th>
+          <th *ngFor="let date of getMonthDates()">
+            {{date | date: 'dd MMM yyyy'}}
+          </th> 
+        </tr>
+      </thead>
+      <tbody> 
+        <tr *ngFor="let attdate of monthlyAttendanceReport; index as i">
+          <td>{{i+1}}</td>
+          <td>{{attdate.faculty_name}} (IT Department)</td>
+          <td *ngFor="let att of attdate.faculty_">
+            <div *ngIf="att.status != 'P'" class="status {{att.status}}">{{att.status}}</div>
+            <div *ngIf="att.status == 'P'">
+              <p class="status {{att.status}}">  {{ getFormattedTime(att.inTime) }}</p>
+              <p *ngIf="att.outTime != '00:00:00'" class="status outtime">{{getFormattedTime(att.outTime)}}</p>
+            </div>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+  </div> 
+</div>-->
+
+
