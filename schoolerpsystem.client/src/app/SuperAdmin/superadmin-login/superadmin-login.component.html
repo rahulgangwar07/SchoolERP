@@ -1,0 +1,53 @@
+
+<div class="login-wrapper">
+  <div class="login-background">
+    <div class="background-cube"></div>
+    <div class="background-cube"></div>
+  </div>
+
+  <div class="login-container">
+    <div class="row">
+
+      <!-- Login Form Section -->
+      <div class="col-lg-6 col-md-8 form-section">
+        <div class="form-content">
+          <div class="logo">
+            <img src="/assets/img/logo.jpg" alt="Logo" class="logourl">
+          </div>
+          <h3>Sign Into ERP (Superadmin)</h3>
+
+          <!-- Login Form -->
+          <form (ngSubmit)="login()">
+            <!-- Use ngSubmit instead of (click) for form submission -->
+            <div class="form-group">
+              <input name="username" [(ngModel)]="user.Username" type="text" class="form-control" placeholder="User Id:" required>
+            </div>
+
+            <div class="form-group">
+              <input name="password" type="password" [(ngModel)]="user.Password" class="form-control" placeholder="Password:" required>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Login</button> <!-- Use type="submit" for form submission -->
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Background Section -->
+      <div class="col-lg-6 col-md-4 bg-img">
+        <div class="info">
+          <div class="overlay-box">
+            <span></span><span></span><span></span><span></span>
+            <div class="content">
+              <div class="logo">
+                <img src="assets/img/img33.png" alt="Background Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
