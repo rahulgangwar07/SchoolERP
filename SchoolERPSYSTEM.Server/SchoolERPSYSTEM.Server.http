@@ -1,0 +1,6 @@
+@SchoolERPSYSTEM.Server_HostAddress = http://localhost:5031
+
+GET {{SchoolERPSYSTEM.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
